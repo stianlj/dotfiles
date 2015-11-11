@@ -137,6 +137,14 @@ set splitright
 " For convenience (and shitty workflow at work)
 noremap <C-a> :%y+<CR>
 
+" Easily copy to and from system clipboard
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
 " PLUGINS
 " -----------------------------------------------------------------------------
 
