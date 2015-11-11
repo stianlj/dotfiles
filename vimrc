@@ -9,6 +9,7 @@ Plug 'airblade/vim-rooter'
 Plug 'milkypostman/vim-togglelist'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ktonga/vim-follow-my-lead'
+Plug 'terryma/vim-expand-region'
 
 " Code enhancing plugins
 Plug 'tpope/vim-surround'
@@ -147,6 +148,10 @@ vmap <Leader>P "+P
 
 " PLUGINS
 " -----------------------------------------------------------------------------
+
+" Vim-expand-plugin
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 " Map Gundo to F5
 nnoremap <F5> :GundoToggle<CR>
