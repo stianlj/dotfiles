@@ -91,12 +91,12 @@ set nobackup
 set list
 set noswapfile
 set colorcolumn=80
+highlight ColorColumn guibg=#211818 ctermbg=235
 set laststatus=2
 set showtabline=2
 set noshowmode
 set ttyfast
 set lazyredraw
-set cursorline
 
 let mapleader=","
 
