@@ -83,7 +83,7 @@ call plug#end()
 syntax on
 set t_Co=256
 color meta5
-set relativenumber 
+set relativenumber
 set number
 set mouse=a
 set list
