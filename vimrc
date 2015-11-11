@@ -49,6 +49,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'lilydjwg/colorizer'
   Plug 'trusktr/seti.vim'
   Plug 'NLKNguyen/papercolor-theme'
+  Plug 'christophermca/meta5'
   Plug 'zenorocha/dracula-theme'
   " Plug 'scrooloose/syntastic' "
   Plug 'benekastah/neomake'
@@ -81,21 +82,21 @@ filetype plugin indent on
 
 syntax on
 set t_Co=256
-color dracula
+color meta5
 set relativenumber
 set number
 set mouse=a
-"set background=dark
+" set background=dark
 set nobackup
 set list
 set noswapfile
 set colorcolumn=80
+highlight ColorColumn guibg=#211818 ctermbg=235
 set laststatus=2
 set showtabline=2
 set noshowmode
 set ttyfast
 set lazyredraw
-set cursorline
 
 let mapleader=","
 
