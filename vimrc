@@ -8,6 +8,7 @@ Plug 'tpope/vim-sensible'
 Plug 'airblade/vim-rooter'
 Plug 'milkypostman/vim-togglelist'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'ktonga/vim-follow-my-lead'
 
 " Code enhancing plugins
 Plug 'tpope/vim-surround'

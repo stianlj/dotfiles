@@ -1,3 +1,10 @@
+# Key mappings:
+<Leader> ,      Shortcut to save
+<Leader> n      Toggle NERDTree
+<Leader> t      Toggle tagbar
+<Leader> b      Open Controllbuffer
+<Leader> m      Toggle markdown mode
+
 # File management
 
 :e              reload file
