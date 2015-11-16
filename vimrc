@@ -83,7 +83,10 @@ call plug#end()
 " -----------------------------------------------------------------------------
 
 syntax on
-let base16colorspace=256
+let s:uname = system("echo -n \"$(uname)\"")
+if !v:shell_error && s:uname == "Linux"
+  let base16colorspace=256
+endif
 colorscheme base16-monokai
 set relativenumber
 set background=dark
