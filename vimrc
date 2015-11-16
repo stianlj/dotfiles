@@ -10,6 +10,7 @@ Plug 'milkypostman/vim-togglelist'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ktonga/vim-follow-my-lead'
 Plug 'terryma/vim-expand-region'
+Plug 'chriskempson/base16-vim'
 
 " Code enhancing plugins
 Plug 'tpope/vim-surround'
@@ -82,8 +83,10 @@ call plug#end()
 " -----------------------------------------------------------------------------
 
 syntax on
-set t_Co=256
-color meta5
+" let base16colorspace=256
+" set t_Co=256
+color base16-monokai
+set background=dark
 set relativenumber
 set number
 set mouse=a
