@@ -127,7 +127,7 @@ nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
 " shortcut to save
-nmap <leader>w :w<cr>
+nmap <leader><Space> :w<cr>
 
 " disable Ex mode
 noremap Q <NOP>
