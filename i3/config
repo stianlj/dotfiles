@@ -33,7 +33,7 @@ bar {
 
 set $mod Mod4
 
-font pango:DejaVu Sans Mono 8
+font xft:Droid sans mono for powerline plus nerd file types plus font awesome plus octicons 9
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -50,7 +50,7 @@ bindsym --release XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%
 bindsym --release XF86AudioMute exec --no-startup-id amixer set Master toggle
 bindsym Control+$mod+l exec sh ~/.i3/i3lock.sh
 
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop 
 
 # change focus
 bindsym $mod+j focus left
