@@ -1,7 +1,7 @@
 " PLUGIN LOADER
 " -----------------------------------------------------------------------------
 
-call plug#begin('~/.vim/plugged')
+call g:plug#begin('~/.vim/plugged')
 
 " More sensible Vim and project enhancement
 Plug 'tpope/vim-sensible'
@@ -77,15 +77,16 @@ Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 " Plug 'jelera/vim-javascript-syntax'
 " Plug 'mxw/vim-jsx'
 
-call plug#end()
+call g:plug#end()
 
 " SETTINGS
 " -----------------------------------------------------------------------------
 
+scriptencoding utf-8
 syntax on
 let s:uname = system("echo -n \"$(uname)\"")
-if !v:shell_error && s:uname == "Linux"
-  let base16colorspace=256
+if !v:shell_error && s:uname ==# 'Linux'
+  let g:base16colorspace=256
 endif
 colorscheme base16-monokai
 set relativenumber
@@ -104,7 +105,7 @@ set noshowmode
 set lazyredraw
 set softtabstop=2 " makes the spaces feel like real tabs
 
-let mapleader="\<Space>"
+let g:mapleader="\<Space>"
 
 set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 set showbreak=↪
@@ -173,12 +174,12 @@ set omnifunc=syntaxcomplete#Complete
 inoremap <C-@> <C-x><C-o>
 
 " Tern completions
-" noremap <M-.> :TernDef<CR>
-" noremap <M-Space> :TernRefs<CR>
+noremap <M-.> :TernDef<CR>
+noremap <M-Space> :TernRefs<CR>
 
 " NERDTree
 map <Leader>n :NERDTreeToggle<CR>
-let NERDTreeShowHidden = 1
+let g:NERDTreeShowHidden = 1
 
 " Tagbar
 map <Leader>t :TagbarToggle<CR>
@@ -214,33 +215,33 @@ augroup END
 " -----------------------------------------------------------------------------
 
 " NERDTrees File highlighting
-function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+function! s:NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
   exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
   exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
 
-call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
-call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
-call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
-call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
-call NERDTreeHighlightFile('ds_store', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('gitconfig', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
+call s:NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+call s:NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+call s:NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+call s:NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+call s:NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+call s:NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+call s:NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+call s:NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+call s:NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+call s:NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+call s:NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
+call s:NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+call s:NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+call s:NERDTreeHighlightFile('ds_store', 'Gray', 'none', '#686868', '#151515')
+call s:NERDTreeHighlightFile('gitconfig', 'Gray', 'none', '#686868', '#151515')
+call s:NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#151515')
+call s:NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
+call s:NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
 
 " Markdown mode
-function! ToggleMarkdownMode()
+function! g:ToggleMarkdownMode()
   exec 'Goyo'
   exec 'Limelight!! 0.8'
 endfunction
-nmap <leader>m :call ToggleMarkdownMode()<CR>
+nmap <leader>m :call g:ToggleMarkdownMode()<CR>
