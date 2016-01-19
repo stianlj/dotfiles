@@ -34,6 +34,9 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'ervandew/supertab'
 
+" CSV
+Plug 'chrisbra/csv.vim'
+
 " CtrlP plugins
 Plug 'kien/ctrlp.vim'
 Plug 'fisadev/vim-ctrlp-cmdpalette'
@@ -55,10 +58,13 @@ Plug 'christophermca/meta5'
 Plug 'zenorocha/dracula-theme'
 " Plug 'scrooloose/syntastic' "
 Plug 'benekastah/neomake'
+Plug 'keith/investigate.vim'
 
 " CSS frameworks
+Plug 'hail2u/vim-css3-syntax'
 Plug 'groenewege/vim-less'
 Plug 'wavded/vim-stylus'
+Plug 'cakebaker/scss-syntax.vim'
 
 " HTML
 Plug 'mattn/emmet-vim' " Emmet.io support in Vim
@@ -75,7 +81,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'walm/jshint.vim'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 " Plug 'jelera/vim-javascript-syntax'
-" Plug 'mxw/vim-jsx'
+Plug 'mxw/vim-jsx'
 
 call g:plug#end()
 
@@ -89,14 +95,15 @@ if !v:shell_error && s:uname ==# 'Linux'
   let g:base16colorspace=256
 endif
 colorscheme base16-monokai
-set relativenumber
+" set relativenumber
 set background=dark
 set number
 set mouse=a
 set list
+set autowrite
 
 set swapfile
-set dir=/tmp
+set directory=/tmp
 
 set colorcolumn=80
 highlight ColorColumn guibg=#211818 ctermbg=235
@@ -134,10 +141,10 @@ nmap <leader><Space> :w<cr>
 noremap Q <NOP>
 
 " Split windows
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+nnoremap <C-j> <C-W><C-J>
+nnoremap <C-k> <C-W><C-K>
+nnoremap <C-l> <C-W><C-L>
+nnoremap <C-h> <C-W><C-H>
 set splitbelow
 set splitright
 
@@ -151,6 +158,8 @@ nmap <Leader>p "+p
 nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
+
+nmap <Leader>lc :lclose<CR>
 
 " PLUGINS
 " -----------------------------------------------------------------------------
@@ -174,8 +183,9 @@ set omnifunc=syntaxcomplete#Complete
 inoremap <C-@> <C-x><C-o>
 
 " Tern completions
-noremap <M-.> :TernDef<CR>
-noremap <M-Space> :TernRefs<CR>
+noremap <Leader>td :TernDef<CR>
+noremap <Leader>tr :TernRefs<CR>
+noremap <Leader>tdo :TernDoc<CR>
 
 " NERDTree
 map <Leader>n :NERDTreeToggle<CR>
@@ -198,7 +208,14 @@ let g:ctrlp_open_new_file = 'r'
 let g:neomake_javascript_enabled_makers = ['eslint']
 
 " Vim markdown
-let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_folding_disabled = 1
+
+" Vim JSX
+let g:jsx_ext_required = 0
+
+" Investigate
+let g:investigate_use_dash = 1
+let g:investigate_dash_for_javascriptjsx = 'javascript'
 
 " vim-json
 let g:vim_json_syntax_conceal=0
@@ -208,6 +225,7 @@ set conceallevel=0
 " -----------------------------------------------------------------------------
 
 augroup configgroup
+  autocmd BufNewFile,BufRead *.css set filetype=scss
   autocmd FileType make setlocal expandtab
   autocmd FileType * set tabstop=2|set shiftwidth=2|set expandtab
   autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
