@@ -59,6 +59,7 @@ Plug 'zenorocha/dracula-theme'
 " Plug 'scrooloose/syntastic' "
 Plug 'benekastah/neomake'
 Plug 'keith/investigate.vim'
+Plug 'KabbAmine/zeavim.vim'
 
 " CSS frameworks
 Plug 'hail2u/vim-css3-syntax'
@@ -217,9 +218,18 @@ let g:jsx_ext_required = 0
 let g:investigate_use_dash = 1
 let g:investigate_dash_for_javascriptjsx = 'javascript'
 
+" Zeavim
+if !v:shell_error && s:uname ==# 'Linux'
+  let g:zv_file_types = {
+    \ 'javascript.jsx': 'javascript'
+  \ }
+  nmap gK <Plug>Zeavim
+  vmap gK <Plug>ZVVisSelection
+endif
+
 " vim-json
-let g:vim_json_syntax_conceal = 0
-set conceallevel = 0
+let g:vim_json_syntax_conceal=0
+set conceallevel=0
 
 " AUTO GROUP
 " -----------------------------------------------------------------------------
