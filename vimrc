@@ -95,7 +95,7 @@ if !v:shell_error && s:uname ==# 'Linux'
   let g:base16colorspace=256
 endif
 colorscheme base16-monokai
-set relativenumber
+" set relativenumber
 set background=dark
 set number
 set mouse=a
@@ -208,7 +208,7 @@ let g:ctrlp_open_new_file = 'r'
 let g:neomake_javascript_enabled_makers = ['eslint']
 
 " Vim markdown
-let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_folding_disabled = 1
 
 " Vim JSX
 let g:jsx_ext_required = 0
