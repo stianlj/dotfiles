@@ -200,6 +200,10 @@ let g:neomake_javascript_enabled_makers = ['eslint']
 " Vim markdown
 let g:vim_markdown_folding_disabled=1
 
+" vim-json
+let g:vim_json_syntax_conceal=0
+set conceallevel=0 
+
 " AUTO GROUP
 " -----------------------------------------------------------------------------
 
