@@ -218,8 +218,8 @@ let g:investigate_use_dash = 1
 let g:investigate_dash_for_javascriptjsx = 'javascript'
 
 " vim-json
-let g:vim_json_syntax_conceal=0
-set conceallevel=0 
+let g:vim_json_syntax_conceal = 0
+set conceallevel = 0
 
 " AUTO GROUP
 " -----------------------------------------------------------------------------
