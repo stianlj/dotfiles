@@ -138,6 +138,12 @@ nnoremap <Down> :echoe "Use j"<CR>
 " shortcut to save
 nmap <leader><Space> :w<cr>
 
+" shortcut for closing buffer
+nmap <leader>, :bd<cr>
+
+" shortcut for quit
+nmap <leader>Q :qa!<cr>
+
 " disable Ex mode
 noremap Q <NOP>
 
@@ -228,8 +234,9 @@ if !v:shell_error && s:uname ==# 'Linux'
 endif
 
 " vim-json
-let g:vim_json_syntax_conceal=0
-set conceallevel=0
+" let g:vim_json_syntax_conceal = 0
+" let g:indentLine_noConcealCursor=""
+" set conceallevel=0
 
 " AUTO GROUP
 " -----------------------------------------------------------------------------
