@@ -84,6 +84,9 @@ Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 " Plug 'jelera/vim-javascript-syntax'
 Plug 'mxw/vim-jsx'
 
+" Openhab
+Plug 'cyberkov/openhab-vim'
+
 call g:plug#end()
 
 " SETTINGS
