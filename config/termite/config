@@ -7,7 +7,7 @@ allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
-font = Droid Sans Mono for Powerline Plus Nerd File Types Plus Font Awesome 10 
+font = Knack 10
 scrollback_lines = 9999
 search_wrap = true
 cursor_blink = system
@@ -17,7 +17,7 @@ cursor_shape = block
 foreground = #f8f8f2
 foreground_bold = #f8f8f2
 cursor = #f8f8f2
-background = #272822
+background = rgba(39, 40, 34, 0.9)
 
 # 16 color space
 color0 = #272822
