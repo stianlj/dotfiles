@@ -11,6 +11,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'ktonga/vim-follow-my-lead'
 Plug 'terryma/vim-expand-region'
 Plug 'chriskempson/base16-vim'
+Plug 'mhinz/vim-startify'
 
 " Code enhancing plugins
 Plug 'tpope/vim-surround'
@@ -25,7 +26,8 @@ Plug 'majutsushi/tagbar'
 " Plug 'janko-m/vim-test'
 
 " Utils and GUI
-Plug 'bling/vim-airline' | Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons'
+Plug 'itchyny/lightline.vim' | Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons'
+" Plug 'bling/vim-airline' | Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons'
 Plug 'bling/vim-bufferline'
 Plug 'Yggdroot/indentLine'
 Plug 'SirVer/ultisnips'
@@ -60,6 +62,8 @@ Plug 'zenorocha/dracula-theme'
 Plug 'benekastah/neomake'
 Plug 'keith/investigate.vim'
 Plug 'KabbAmine/zeavim.vim'
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'smancill/conky-syntax.vim'
 
 " CSS frameworks
 Plug 'hail2u/vim-css3-syntax'
@@ -141,6 +145,15 @@ nnoremap <Down> :echoe "Use j"<CR>
 " shortcut to save
 nmap <leader><Space> :w<cr>
 
+" save read only files
+nmap <leader>ro w !sudo tee %
+
+" shortcut for closing buffer
+nmap <leader>, :bd<cr>
+
+" shortcut for quit
+nmap <leader>Q :qa!<cr>
+
 " disable Ex mode
 noremap Q <NOP>
 
@@ -198,9 +211,27 @@ let g:NERDTreeShowHidden = 1
 " Tagbar
 map <Leader>t :TagbarToggle<CR>
 
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#neomake#enabled = 1
+" let g:airline_powerline_fonts = 1
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#neomake#enabled = 1
+
+" Lightline. Fonts:   
+let g:lightline = {
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+  \ },
+  \ 'component': {
+  \   'readonly': '%{&readonly?"":""}',
+  \   'fugitive': '%{exists("*fugitive#head")?"  ".fugitive#head():""}',
+  \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}'
+  \ },
+  \ 'component_visible_condition': {
+  \   'readonly': '(&filetype!="help"&& &readonly)',
+  \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())',
+  \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))'
+  \ }
+  \ }
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
 let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
@@ -231,8 +262,9 @@ if !v:shell_error && s:uname ==# 'Linux'
 endif
 
 " vim-json
-let g:vim_json_syntax_conceal=0
-set conceallevel=0
+" let g:vim_json_syntax_conceal = 0
+" let g:indentLine_noConcealCursor=""
+" set conceallevel=0
 
 " AUTO GROUP
 " -----------------------------------------------------------------------------

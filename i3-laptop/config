@@ -1,0 +1,175 @@
+# Workspaces
+workspace_auto_back_and_forth yes
+
+# Set screen layout
+# exec --no-startup-id xrandr --newmode "2560x1440_60.00"  311.83  2560 2744 3024 3488  1440 1441 1444 1490  -HSync +Vsync
+# exec --no-startup-id xrandr --addmode DP1 "2560x1440_60.00"
+# exec --no-startup-id xrandr --output eDP1 --mode 1920x1080 --pos 2560x360 --rotate normal --output DP1 --primary --mode 2560x1440 --pos 0x0 --rotate normal
+
+
+# Start programs
+exec --no-startup-id compton -b
+exec --no-startup-id clipit
+exec --no-startup-id nm-applet
+exec --no-startup-id pasystray
+exec --no-startup-id blueman-applet
+
+# Set Wallpaper
+exec --no-startup-id feh --bg-fill /home/stigandr/Wallpapers/x_wing_wallpaper_by_theadamtaylor-d9ulfk2.png
+
+# Float programs
+for_window [class="mplayer2"] floating enable
+for_window [class="mpv"] floating enable
+for_window [class="mpv"] border none
+for_window [class="Blueman-manager"] floating enable
+for_window [class="Steam"] floating enable
+for_window [class="lxappearence"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [instance="scratchpad"] move window to scratchpad, scratchpad show
+for_window [instance="chrome_app_list" window_role="bubble"] floating enable
+
+gaps inner 15
+gaps outer 2
+smart_gaps on
+smart_borders on
+
+new_window pixel 1
+
+set $mod Mod4
+
+font pango:Knack 10
+floating_modifier $mod
+bindsym $mod+Return exec termite
+bindsym $mod+Shift+q kill
+
+# Custom keys
+bindsym --release XF86AudioRaiseVolume exec --no-startup-id pamixer --increase 5
+bindsym --release XF86AudioLowerVolume exec --no-startup-id pamixer --decrease 5
+bindsym --release XF86AudioMute exec --no-startup-id pamixer --toggle-mute
+bindsym --release XF86AudioPlay exec playerctl play-pause
+bindsym --release XF86AudioPrev exec playerctl previous
+bindsym --release XF86AudioNext exec playerctl next
+bindsym --release XF86MonBrightnessUp exec xbacklight -inc 20
+bindsym --release XF86MonBrightnessDown exec xbacklight -dec 20
+bindsym --release $mod+p exec rofi-pass -font "Knack 10"
+bindsym --release $mod+g exec --no-startup-id google-chrome-stable --show-app-list
+# bindsym --release $mod+m exec clerk
+bindsym $mod+m exec --no-startup-id termite --name scratchpad -e ncmpcpp
+
+client.focused             #607D8B   #607D8B    #FFFFFF
+client.focused_inactive    #000000   #333333    #FFFFFF
+client.unfocused           #000000   #333333    #FFFFFF
+client.urgent              #FF0000   #FF0000    #FF0000
+
+set $mode_system   (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (S) shutdown
+
+mode "$mode_system" {
+  bindsym l exec --no-startup-id ~/bin/i3lock-pixelated.sh, mode "default"
+  bindsym e exec --no-startup-id i3-msg exit, mode "default"
+  bindsym s exec --no-startup-id i3lock -f && systemctl suspend, mode "default"
+  bindsym h exec --no-startup-id i3lock -f && systemctl hibernate, mode "default"
+  bindsym r exec --no-startup-id systemctl reboot, mode "default"
+  bindsym Shift+s exec --no-startup-id systemctl poweroff, mode "default"
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+Delete mode "$mode_system"
+
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -show run -font "Knack 10" -fuzzy'
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# bindsym $mod+h split h
+
+bindsym $mod+v split v
+
+bindsym $mod+f fullscreen toggle
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+Shift+space floating toggle
+
+bindsym $mod+space focus mode_toggle
+
+bindsym $mod+a focus parent
+
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+set $mode_resize   resize
+mode "$mode_resize" {
+  bindsym j resize shrink width 10 px or 10 ppt
+  bindsym k resize grow height 10 px or 10 ppt
+  bindsym l resize shrink height 10 px or 10 ppt
+  bindsym semicolon resize grow width 10 px or 10 ppt
+
+  bindsym Left resize shrink width 10 px or 10 ppt
+  bindsym Down resize grow height 10 px or 10 ppt
+  bindsym Up resize shrink height 10 px or 10 ppt
+  bindsym Right resize grow width 10 px or 10 ppt
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "$mode_resize"
+
+bar {
+  status_command i3blocks
+  position top
+  i3bar_command i3bar -t
+  colors {
+    background #1d202100
+
+    focused_workspace  #ffffff00 #00000000 #EEEEEE
+    active_workspace   #ffffff00 #00000000 #EEEEEE
+    inactive_workspace #ffffff00 #00000000 #455A64
+    urgent_workspace   #ffffff00 #00000000 #b71c1c
+  }
+}
+# vim:filetype=i3
