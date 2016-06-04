@@ -55,7 +55,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
 Plug 'lilydjwg/colorizer'
 Plug 'trusktr/seti.vim'
-Plug 'NLKNguyen/papercolor-theme'
+" Plug 'NLKNguyen/papercolor-theme'
 Plug 'christophermca/meta5'
 Plug 'zenorocha/dracula-theme'
 " Plug 'scrooloose/syntastic' "
@@ -87,6 +87,8 @@ Plug 'walm/jshint.vim'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 " Plug 'jelera/vim-javascript-syntax'
 Plug 'mxw/vim-jsx'
+
+Plug 'cyberkov/openhab-vim'
 
 call g:plug#end()
 

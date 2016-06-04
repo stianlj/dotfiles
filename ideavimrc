@@ -1,0 +1,28 @@
+set showmode
+set incsearch
+set hlsearch
+
+let mapleader = " "
+
+nmap <leader><Space> :w<CR>
+nmap gcc :action CommentByLineComment<CR>
+vnoremap gc :action CommentByBlockComment<CR>
+
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-L> <C-W>l
+map <C-H> <C-W>h
+
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+
+nmap <Leader>n :action ActivateProjectToolWindow<CR>
+nmap <Leader>be :action Switcher<CR>
+nmap <Leader>m :action CodeGlance.toggle<CR>
+nmap <Leader>fg :action FindInPath<CR>
+
+" https://raw.githubusercontent.com/ericvanjohnson/dot_files/master/.ideavimrc
+" https://github.com/Valloric/dotfiles/blob/master/intellij/ideavimrc
+" https://github.com/beloglazov/vimrc/blob/master/.ideavimrc
