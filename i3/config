@@ -2,38 +2,30 @@
 workspace_auto_back_and_forth yes
 
 # Start programs
-exec parcellite
+# exec parcellite
 exec --no-startup-id xrandr --output DVI-D-0 --auto --output DVI-I-1 --primary --auto --right-of DVI-D-0 --output HDMI-0 --auto --right-of DVI-I-1
 exec xautolock -time 10 -locker '~/.i3/i3lock.sh' &
+exec compton -b
+exec clipit
 
 # Float programs
 for_window [class="mplayer2"] floating enable
 for_window [class="mpv"] floating enable
+for_window [class="mpv"] border none
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 
-# Remove borders and title
-new_window none
+gaps inner 15
+gaps outer 2
+smart_gaps on
+smart_borders on
 
-bar {
-  output DVI-I-1
-  status_command py3status -c ~/.config/i3status/config
-}
-
-bar {
-  output DVI-D-0
-  tray_output none
-}
-
-bar {
-  output HDMI-0
-  tray_output none
-}
-
+new_window pixel 1
 
 set $mod Mod4
 
-font xft:Droid sans mono for powerline plus nerd file types plus font awesome plus octicons 9
+# font xft:Droid sans mono for powerline plus nerd file types plus font awesome plus octicons 9
+font pango:Knack 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -43,6 +35,11 @@ bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
+
+client.focused             #607D8B   #607D8B    #FFFFFF
+client.focused_inactive    #000000   #333333    #FFFFFF
+client.unfocused           #000000   #333333    #FFFFFF
+client.urgent              #FF0000   #FF0000    #FF0000
 
 # Custom keys
 bindsym --release XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
@@ -151,5 +148,30 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+bar {
+  output DVI-I-1
+  status_command i3blocks
+  position bottom
+  i3bar_command i3bar
+  colors {
+    background #1d202195
+
+    focused_workspace  #ffffff00 #00000000 #EEEEEE
+    active_workspace   #ffffff00 #00000000 #EEEEEE
+    inactive_workspace #ffffff00 #00000000 #455A64
+    urgent_workspace   #ffffff00 #00000000 #b71c1c
+  }
+}
+
+bar {
+  output DVI-D-0
+  tray_output none
+}
+
+bar {
+  output HDMI-0
+  tray_output none
+}
 # Set background
-exec --no-startup-id feh --bg-scale ~/wallpapers/super_mario_bros_2-wallpaper-2560x1440.jpg
+
+exec --no-startup-id feh --bg-scale ~/wallpapers/wall_e_4-wallpaper-2560x1440.jpg
