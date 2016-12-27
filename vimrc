@@ -79,6 +79,7 @@ Plug 'mattn/emmet-vim' " Emmet.io support in Vim
 Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'shime/vim-livedown'
 
 " Javascript
 Plug 'moll/vim-node'
@@ -272,7 +273,7 @@ endif
 
 augroup configgroup
   autocmd BufNewFile,BufRead *.css set filetype=scss
-  autocmd FileType make setlocal expandtab
+  autocmd FileType make setlocal noexpandtab
   autocmd FileType * set tabstop=2|set shiftwidth=2|set expandtab
   autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
   autocmd! BufWritePost * Neomake

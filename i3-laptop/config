@@ -3,16 +3,18 @@ workspace_auto_back_and_forth yes
 
 # Start programs
 exec --no-startup-id compton -b
+exec --no-startup-id xscreensaver &
 exec --no-startup-id dropbox &
 exec --no-startup-id clipit
 exec --no-startup-id nm-applet
 exec --no-startup-id pasystray
 exec --no-startup-id blueman-applet
-exec --no-startup-id davmail
+# exec --no-startup-id davmail
 exec --no-startup-id pidgin
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Set Wallpaper
-exec --no-startup-id feh --bg-fill /home/stigandr/Wallpapers/1964262-80s-wallpaper.jpg
+exec --no-startup-id feh --bg-fill /home/stigandr/Wallpapers/darth_vader_wedding-wallpaper-2560x1440.jpg
 
 # Float programs
 for_window [class="mplayer2"] floating enable
@@ -27,6 +29,29 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [instance="scratchpad"] move window to scratchpad, scratchpad show
 for_window [instance="chrome_app_list" window_role="bubble"] floating enable
+for_window [class="chromium" window_role="pop-up" title="^Twitter$"] floating disable
+for_window [class="chromium" window_role="pop-up" title="^Facebook$"] floating disable
+for_window [class="chromium" window_role="pop-up" title="^Outlook Web App$"] floating disable
+for_window [class="chromium" window_role="pop-up" title="^Trello$"] floating disable
+for_window [class="VirtualBox" title="^IE11 - Win7*"] fullscreen enable
+
+# set $tag1 "1: "
+# set $tag2 "2: "
+# set $tag3 "3: "
+# set $tag4 "4: "
+# set $tag5 "5: "
+# set $tag6 "6: "
+set $tag1 "1"
+set $tag2 "2"
+set $tag3 "3"
+set $tag4 "4"
+set $tag5 "5"
+set $tag6 "6"
+
+assign [class="Thunderbird"] $tag5
+assign [class="chromium" window_role="pop-up" title="^Outlook Web App$"] $tag5
+assign [class="Scudcloud"] $tag4
+# assign [class="^Pidgin$" title="^Buddy List$"] $tag6
 
 gaps inner 15
 gaps outer 2
@@ -52,7 +77,6 @@ bindsym --release XF86AudioNext exec playerctl next
 bindsym --release XF86MonBrightnessUp exec xbacklight -inc 20
 bindsym --release XF86MonBrightnessDown exec xbacklight -dec 20
 bindsym --release $mod+g exec --no-startup-id google-chrome-stable --show-app-list
-# bindsym --release $mod+m exec clerk
 bindsym $mod+m exec --no-startup-id termite --name scratchpad -e ncmpcpp
 
 client.focused             #607D8B   #607D8B    #FFFFFF
@@ -63,7 +87,7 @@ client.urgent              #FF0000   #FF0000    #FF0000
 set $mode_system   (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (S) shutdown
 
 mode "$mode_system" {
-  bindsym l exec --no-startup-id ~/bin/i3lock-pixelated.sh, mode "default"
+  bindsym l exec --no-startup-id xscreensaver-command --lock, mode "default"
   bindsym e exec --no-startup-id i3-msg exit, mode "default"
   bindsym s exec --no-startup-id i3lock -f && systemctl suspend, mode "default"
   bindsym h exec --no-startup-id i3lock -f && systemctl hibernate, mode "default"
@@ -76,7 +100,9 @@ mode "$mode_system" {
 bindsym $mod+Delete mode "$mode_system"
 
 bindsym --release $mod+p exec rofi-pass -font "Knack 15"
+bindsym --release $mod+s exec teiler --screenshot
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -show run -fuzzy -font "Knack 15" -location 0 -lines 8 -bw 0 -fullscreen -padding 400 -separator-style none -opacity 75 -hide-scrollbar -p " " -terminal termite -no-disable-history'
+bindsym $mod+w exec --no-startup-id rofi -show window -fuzzy -font "Knack 15" -location 0 -lines 8 -bw 0 -fullscreen -padding 400 -separator-style none -opacity 75 -hide-scrollbar -p " " -terminal termite -no-disable-history
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -104,8 +130,8 @@ bindsym $mod+v split v
 
 bindsym $mod+f fullscreen toggle
 
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+# bindsym $mod+s layout stacking
+# bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 bindsym $mod+Shift+space floating toggle
@@ -114,23 +140,23 @@ bindsym $mod+space focus mode_toggle
 
 bindsym $mod+a focus parent
 
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
+bindsym $mod+1 workspace $tag1
+bindsym $mod+2 workspace $tag2
+bindsym $mod+3 workspace $tag3
+bindsym $mod+4 workspace $tag4
+bindsym $mod+5 workspace $tag5
+bindsym $mod+6 workspace $tag6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+1 move container to workspace $tag1
+bindsym $mod+Shift+2 move container to workspace $tag2
+bindsym $mod+Shift+3 move container to workspace $tag3
+bindsym $mod+Shift+4 move container to workspace $tag4
+bindsym $mod+Shift+5 move container to workspace $tag5
+bindsym $mod+Shift+6 move container to workspace $tag6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
@@ -158,17 +184,17 @@ mode "$mode_resize" {
 
 bindsym $mod+r mode "$mode_resize"
 
-bar {
-  status_command i3blocks
-  position top
-  i3bar_command i3bar -t
-  colors {
-    background #00000095
-
-    focused_workspace  #ffffff00 #00000000 #EEEEEE
-    active_workspace   #ffffff00 #00000000 #EEEEEE
-    inactive_workspace #ffffff00 #00000000 #455A64
-    urgent_workspace   #ffffff00 #00000000 #b71c1c
-  }
-}
+# bar {
+#   status_command i3blocks
+#   position top
+#   i3bar_command i3bar -t
+#   colors {
+#     background #00000095
+#
+#     focused_workspace  #ffffff00 #00000000 #EEEEEE
+#     active_workspace   #ffffff00 #00000000 #EEEEEE
+#     inactive_workspace #ffffff00 #00000000 #455A64
+#     urgent_workspace   #ffffff00 #00000000 #b71c1c
+#   }
+# }
 # vim:filetype=i3
