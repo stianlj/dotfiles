@@ -1,0 +1,83 @@
+###########
+# muttrc
+# needs secrets and mailboxes
+###########
+
+
+source ~/.mutt/secrets
+set imap_user = $my_imap_user
+set imap_pass = $my_imap_password
+set folder = $my_imap_folder
+set spoolfile = +INBOX
+source ~/.mutt/mailboxes
+unset record
+set header_cache = "~/.cache/mutt"
+set message_cachedir = "~/.cache/mutt"
+unset imap_passive
+set imap_keepalive = 300
+
+# Sidebar options -------------------------------------------------------------
+set sidebar_visible = yes
+set sidebar_width = 35
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+set sidebar_short_path
+set sidebar_delim_chars = "/"
+set sidebar_folder_indent
+set sidebar_indent_string = "  "
+set sidebar_divider_char = " │"
+set mail_check_stats
+
+# bindings
+bind index,pager <down> sidebar-next
+bind index,pager <up> sidebar-prev
+bind index,pager <right> sidebar-open
+
+# 
+set date_format = "%d.%m.%y"
+set index_format = "[%Z]  %D  %-20.20F  %s"
+set sort = threads
+set sort_aux = reverse-last-date-received
+set uncollapse_jump
+
+set trash = "+Trash"
+
+bind index R group-reply
+bind index <tab> sync-mailbox
+bind index <space> collapse-thread
+
+bind index gg first-entry
+bind index G last-entry
+
+set mime_forward = yes
+set mime_forward_rest = yes
+
+# Saner copy/move dialogs -----------------------------------------------------
+macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
+macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
+macro index A ":set confirmappend=no delete=yes\n<save-message>=Archive\n
+
+# Pager View Options ----------------------------------------------------------
+set pager_index_lines = 10
+set pager_context = 3
+set pager_stop
+set menu_scroll
+set tilde
+unset markers
+
+bind pager R group-reply
+
+# View attachments properly.
+bind attach <return> view-mailcap
+
+set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+alternative_order text/plain text/enriched text/html
+
+set edit_headers = yes
+
+set imap_check_subscribed = yes
+set mail_check = 60
+
+set mailcap_path = ~/.mutt/mailcap
+auto_view text/html
+
+source ~/.mutt/colors 
