@@ -3,18 +3,19 @@ workspace_auto_back_and_forth yes
 
 # Start programs
 exec --no-startup-id compton -b
-exec --no-startup-id xscreensaver &
+exec --no-startup-id ~/bin/screensaver.sh
 exec --no-startup-id dropbox &
 exec --no-startup-id clipit
 exec --no-startup-id nm-applet
 exec --no-startup-id pasystray
 exec --no-startup-id blueman-applet
+exec --no-startup-id hamster &
 # exec --no-startup-id davmail
-exec --no-startup-id pidgin
+# exec --no-startup-id pidgin
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Set Wallpaper
-exec --no-startup-id feh --bg-fill /home/stigandr/Wallpapers/darth_vader_wedding-wallpaper-2560x1440.jpg
+exec --no-startup-id feh --bg-fill /home/stigandr/Wallpapers/pulp_starwars.png
 
 # Float programs
 for_window [class="mplayer2"] floating enable
@@ -32,26 +33,31 @@ for_window [instance="chrome_app_list" window_role="bubble"] floating enable
 for_window [class="chromium" window_role="pop-up" title="^Twitter$"] floating disable
 for_window [class="chromium" window_role="pop-up" title="^Facebook$"] floating disable
 for_window [class="chromium" window_role="pop-up" title="^Outlook Web App$"] floating disable
-for_window [class="chromium" window_role="pop-up" title="^Trello$"] floating disable
-for_window [class="VirtualBox" title="^IE11 - Win7*"] fullscreen enable
+for_window [class="Chromium" window_role="pop-up" instance="nrk.facebook.com"] floating disable
+# for_window [class="VirtualBox" title="^IE11 - Win7*"] fullscreen enable
+for_window [title=".*Trello.*"] floating disable
+for_window [title=".*Stian.Lund.Johansen@nrk.no.*"] floating disable
 
-# set $tag1 "1: "
-# set $tag2 "2: "
-# set $tag3 "3: "
-# set $tag4 "4: "
-# set $tag5 "5: "
-# set $tag6 "6: "
 set $tag1 "1"
 set $tag2 "2"
 set $tag3 "3"
 set $tag4 "4"
 set $tag5 "5"
 set $tag6 "6"
+set $tag7 "7"
+set $tag8 "8"
+set $tag9 "9"
+set $tag10 "10"
+
+for_window [title="Startup, work - Chromium"] move workspace number 1
 
 assign [class="Thunderbird"] $tag5
-assign [class="chromium" window_role="pop-up" title="^Outlook Web App$"] $tag5
-assign [class="Scudcloud"] $tag4
-# assign [class="^Pidgin$" title="^Buddy List$"] $tag6
+assign [class="jetbrains-idea"] $tag2
+assign [title=".*Stian.Lund.Johansen@nrk.no.*"] $tag5
+assign [class="Franz"] $tag4
+assign [class="Chromium" window_role="pop-up" instance="nrk.facebook.com"] $tag4
+assign [class="Chromium" window_role="pop-up" instance="www.trello.com"] $tag7
+assign [class="Chromium" window_role="pop-up" instance="outlook.office.com__owa"] $tag5
 
 gaps inner 15
 gaps outer 2

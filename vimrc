@@ -310,6 +310,6 @@ call s:NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515'
 " Markdown mode
 function! g:ToggleMarkdownMode()
   exec 'Goyo'
-  exec 'Limelight!! 0.8'
+  exec 'Limelight!! 0.9'
 endfunction
 nmap <leader>m :call g:ToggleMarkdownMode()<CR>
