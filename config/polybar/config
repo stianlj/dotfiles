@@ -18,6 +18,8 @@ deep_orange = #FF5722
 brown = #795548
 grey = #9E9E9E
 blue_grey = #607D8B
+black = #222220
+white = #fafafa
 
 [module/temperature]
 type = internal/temperature
@@ -95,17 +97,17 @@ ws-icon-4 = 5;
 ws-icon-5 = 6;
 ws-icon-default =  
 label-focused = %index%: %icon%
-label-focused-foreground = #ffffff
-label-focused-background = #3f3f3f
+label-focused-foreground = ${colors.black}
+label-focused-background = ${colors.green}
 label-focused-padding = 2
 label-unfocused = %index%: %icon%
 label-unfocused-padding = 2
 label-visible = %index%: %icon%
-label-visible-underline = #555555
+label-visible-underline = ${colors.blue_grey}
 label-visible-padding = 2
 label-urgent = %index%: %icon%
-label-urgent-foreground = #000000
-label-urgent-background = #bd2c40
+label-urgent-foreground = ${colors.black}
+label-urgent-background = ${colors.red}
 label-urgent-padding = 2
 
 
@@ -114,8 +116,8 @@ monitor = ${env:LEFT_MONITOR}
 width = 100%
 height = 25
 bottom = true
-background = #222220
-foreground = #fafafa
+background = ${colors.black}
+foreground = ${colors.white}
 font-0 = Knack:size=10;0
 font-1 = MaterialIcons:size=10;0
 font-2 = Termsynu:size=8;-1
@@ -132,8 +134,8 @@ monitor = ${env:RIGHT_MONITOR}
 width = 100%
 height = 25
 bottom = true
-background = #222220
-foreground = #fafafa
+background = ${colors.black}
+foreground = ${colors.white}
 font-0 = Knack:size=10;0
 font-1 = MaterialIcons:size=10;0
 font-2 = Termsynu:size=8;-1
@@ -148,10 +150,10 @@ monitor = ${env:CENTER_MONITOR}
 width = 100%
 height = 25
 bottom = ${env:CENTER_POLYBAR_BOTTOM}
-background = #222220
-foreground = #fafafa
+background = ${colors.black}
+foreground = ${colors.white}
 underline-size = 1
-underline-color = #f00
+underline-color = ${colors.red}
 padding-left = 0
 padding-right = 0
 module-margin-left = 1
@@ -169,7 +171,7 @@ modules-right = filesystem network cpu temperature memory date
 tray-position = right
 tray-detached = false
 tray-maxsize = 16
-tray-background = #222220
+tray-background = ${colors.black}
 tray-offset-x = 0
 tray-offset-y = 0
 tray-padding = 2
