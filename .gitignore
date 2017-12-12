@@ -1,3 +1,4 @@
 ncmpcpp/error.log
 *.log
 config/i3/config
+config/polybar/mounts.ini
