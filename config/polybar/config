@@ -1,0 +1,181 @@
+[colors]
+red = #F44336
+pink = #E91E63
+purple = #9C27B0
+deep_purple = #673AB7
+indigo = #3F51B5
+blue = #2196F3
+light_blue = #03A9F4
+cyan = #00BCD4
+teal = #009688
+green = #4CAF50
+light_green = #8BC34A
+lime = #CDDC39
+yellow = #FFEB3B
+amber = #FFC107
+orange = #FF9800
+deep_orange = #FF5722
+brown = #795548
+grey = #9E9E9E
+blue_grey = #607D8B
+black = #222220
+white = #fafafa
+
+[module/temperature]
+type = internal/temperature
+interval = 0.5
+thermal-zone = 2
+format = <label>
+format-underline = ${colors.cyan}
+label = ༬ %temperature%
+
+[module/filesystem]
+type = internal/fs
+interval = 10
+fixed-values = true
+format-mounted = <label-mounted>
+format-mounted-underline = ${colors.purple}
+label-mounted = %mountpoint%: %free%/%total%
+include-file = ~/.config/polybar/mounts.ini
+
+[module/network]
+type = internal/network
+interface = ${env:WIRED_ETHERNET_INTERFACE}
+interval = 3.0
+accumulate-stats = true
+format-connected = <label-connected>
+format-connected-underline = ${colors.deep_orange}
+label-connected = %local_ip% %downspeed:9% %upspeed:9%
+label-connected-foreground = #eefafafa
+
+[module/cpu]
+format-label = internal/cpu
+format = <label> <ramp-coreload>
+format-underline = ${colors.green}
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+type = internal/cpu
+interval = 2
+label = 
+
+[module/memory]
+type = internal/memory
+interval = 3
+format = <label>
+format-underline = ${colors.red}
+label =  %gb_used%/%gb_total%
+
+[module/title]
+type = internal/xwindow
+format-underline = ${colors.yellow}
+label = %title%
+label-maxlen = 50
+
+[module/date]
+type = internal/date
+date = %d-%m-%Y %H:%M
+date-alt = %%{F#fba922}%A%%{F#ff}, %d. %b %Y, Week: %W
+format-underline = ${colors.grey}
+
+[module/i3]
+type = internal/i3
+pin-workspaces = true
+strip-wsnumbers = true
+index-sort = true
+enable-scroll = false
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-default =  
+label-focused = %index%: %icon%
+label-focused-foreground = ${colors.black}
+label-focused-background = ${colors.green}
+label-focused-padding = 2
+label-unfocused = %index%: %icon%
+label-unfocused-padding = 2
+label-visible = %index%: %icon%
+label-visible-underline = ${colors.blue_grey}
+label-visible-padding = 2
+label-urgent = %index%: %icon%
+label-urgent-foreground = ${colors.black}
+label-urgent-background = ${colors.red}
+label-urgent-padding = 2
+
+
+[bar/left]
+monitor = ${env:LEFT_MONITOR}
+width = 100%
+height = 25
+bottom = true
+background = ${colors.black}
+foreground = ${colors.white}
+font-0 = Knack:size=10;0
+font-1 = MaterialIcons:size=10;0
+font-2 = Termsynu:size=8;-1
+font-3 = FontAwesome:size=10;0
+wm-name = barright
+locale = en_US.UTF-8
+modules-right = i3
+module-margin = 0
+padding = 0
+enable-ipc = true
+
+[bar/right]
+monitor = ${env:RIGHT_MONITOR}
+width = 100%
+height = 25
+bottom = true
+background = ${colors.black}
+foreground = ${colors.white}
+font-0 = Knack:size=10;0
+font-1 = MaterialIcons:size=10;0
+font-2 = Termsynu:size=8;-1
+font-3 = FontAwesome:size=10;0
+wm-name = barright
+locale = en_US.UTF-8
+modules-left = i3
+enable-ipc = true
+
+[bar/middle]
+monitor = ${env:CENTER_MONITOR}
+width = 100%
+height = 25
+bottom = ${env:CENTER_POLYBAR_BOTTOM}
+background = ${colors.black}
+foreground = ${colors.white}
+underline-size = 1
+underline-color = ${colors.red}
+padding-left = 0
+padding-right = 0
+module-margin-left = 1
+module-margin-right = 1
+font-0 = Knack:size=10;0
+font-1 = MaterialIcons:size=10;0
+font-2 = Termsynu:size=8;-1
+font-3 = FontAwesome:size=10;0
+separator = :
+wm-name = bar
+locale = en_US.UTF-8
+modules-left = i3 title
+; modules-center = mpd
+modules-right = filesystem network cpu temperature memory date
+tray-position = right
+tray-detached = false
+tray-maxsize = 16
+tray-background = ${colors.black}
+tray-offset-x = 0
+tray-offset-y = 0
+tray-padding = 2
+tray-scale = 1.0
+enable-ipc = true
+
+; vim:filetype=dosini

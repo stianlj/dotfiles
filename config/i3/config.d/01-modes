@@ -1,0 +1,32 @@
+set $mode_system   (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (S) shutdown
+mode "$mode_system" {
+  bindsym l exec --no-startup-id xscreensaver-command --lock, mode "default"
+  bindsym e exec --no-startup-id i3-msg exit, mode "default"
+  bindsym s exec --no-startup-id i3lock -f && systemctl suspend, mode "default"
+  bindsym h exec --no-startup-id i3lock -f && systemctl hibernate, mode "default"
+  bindsym r exec --no-startup-id systemctl reboot, mode "default"
+  bindsym Shift+s exec --no-startup-id systemctl poweroff, mode "default"
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+Delete mode "$mode_system"
+
+set $mode_resize   resize
+mode "$mode_resize" {
+  bindsym j resize shrink width 10 px or 10 ppt
+  bindsym k resize grow height 10 px or 10 ppt
+  bindsym l resize shrink height 10 px or 10 ppt
+  bindsym semicolon resize grow width 10 px or 10 ppt
+
+  bindsym Left resize shrink width 10 px or 10 ppt
+  bindsym Down resize grow height 10 px or 10 ppt
+  bindsym Up resize shrink height 10 px or 10 ppt
+  bindsym Right resize grow width 10 px or 10 ppt
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+r mode "$mode_resize"
+
+# vim:filetype=i3

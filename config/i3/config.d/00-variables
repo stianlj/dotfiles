@@ -1,0 +1,13 @@
+set_from_resource $wallpaper echo "$WALLPAPER"
+set_from_resource $latLon echo "$LAT_LON"
+
+set $tag1 "1"
+set $tag2 "2"
+set $tag3 "3"
+set $tag4 "4"
+set $tag5 "5"
+set $tag6 "6"
+
+set $mod Mod4
+
+# vim:filetype=i3

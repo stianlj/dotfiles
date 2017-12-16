@@ -1,0 +1,14 @@
+workspace_auto_back_and_forth yes
+gaps inner 15
+gaps outer 2
+smart_gaps on
+smart_borders on
+new_window pixel 1
+font pango:Knack 10
+floating_modifier $mod
+client.focused             #607D8B   #607D8B    #FFFFFF
+client.focused_inactive    #000000   #333333    #FFFFFF
+client.unfocused           #000000   #333333    #FFFFFF
+client.urgent              #FF0000   #FF0000    #FF0000
+
+# vim:filetype=i3

@@ -1,0 +1,83 @@
+bindsym $mod+Return exec termite
+bindsym $mod+Shift+q kill
+
+bindsym --release XF86AudioRaiseVolume exec --no-startup-id pamixer --increase 5
+bindsym --release XF86AudioLowerVolume exec --no-startup-id pamixer --decrease 5
+bindsym --release XF86AudioMute exec --no-startup-id pamixer --toggle-mute
+bindsym --release XF86AudioPlay exec playerctl play-pause
+bindsym --release XF86AudioPrev exec playerctl previous
+bindsym --release XF86AudioNext exec playerctl next
+bindsym --release XF86MonBrightnessUp exec xbacklight -inc 20
+bindsym --release XF86MonBrightnessDown exec xbacklight -dec 20
+bindsym --release $mod+g exec --no-startup-id google-chrome-stable --show-app-list
+bindsym $mod+m exec --no-startup-id termite --name scratchpad -e ncmpcpp
+
+
+bindsym --release $mod+p exec rofi-pass -font "Knack 15"
+bindsym --release $mod+s exec teiler --screenshot
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -show run -fuzzy -font "Knack 15" -location 0 -lines 8 -bw 0 -fullscreen -padding 400 -separator-style none -opacity 75 -hide-scrollbar -p " " -terminal termite -no-disable-history'
+bindsym $mod+w exec --no-startup-id rofi -show window -fuzzy -font "Knack 15" -location 0 -lines 8 -bw 0 -fullscreen -padding 400 -separator-style none -opacity 75 -hide-scrollbar -p " " -terminal termite -no-disable-history
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# bindsym $mod+h split h
+
+bindsym $mod+v split v
+
+bindsym $mod+f fullscreen toggle
+
+# bindsym $mod+s layout stacking
+# bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+Shift+space floating toggle
+
+bindsym $mod+space focus mode_toggle
+
+bindsym $mod+a focus parent
+
+bindsym $mod+1 workspace $tag1
+bindsym $mod+2 workspace $tag2
+bindsym $mod+3 workspace $tag3
+bindsym $mod+4 workspace $tag4
+bindsym $mod+5 workspace $tag5
+bindsym $mod+6 workspace $tag6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+bindsym $mod+Shift+1 move container to workspace $tag1
+bindsym $mod+Shift+2 move container to workspace $tag2
+bindsym $mod+Shift+3 move container to workspace $tag3
+bindsym $mod+Shift+4 move container to workspace $tag4
+bindsym $mod+Shift+5 move container to workspace $tag5
+bindsym $mod+Shift+6 move container to workspace $tag6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+bindsym $mod+Shift+c exec --no-startup-id ~/./config/i3/merge_config.sh; reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# vim:filetype=i3

@@ -1,0 +1,13 @@
+exec --no-startup-id setxkbmap -option compose:ralt
+exec --no-startup-id xrandr --output HDMI2 --auto --output DP1 --primary --auto --right-of HDMI2 --output DP2 --auto --right-of DP1
+exec --no-startup-id compton -b
+exec --no-startup-id xscreensaver &
+exec --no-startup-id dropbox &
+exec --no-startup-id clipit
+exec --no-startup-id pasystray
+exec --no-startup-id blueman-applet
+exec --no-startup-id redshift -l $latLon &
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec --no-startup-id feh --bg-fill $wallpaper
+
+# vim:filetype=i3
