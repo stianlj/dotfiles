@@ -93,6 +93,9 @@ Plug 'mxw/vim-jsx'
 " Openhab
 Plug 'cyberkov/openhab-vim'
 
+" Scratchpad
+Plug 'metakirby5/codi.vim'
+
 call g:plug#end()
 
 " SETTINGS
