@@ -4,11 +4,11 @@
 
 In order to make these things work, you have to set some environment variables
 
-* `WALLPAPER`: Add wallpaper. _string_
-* `LAT_LON`: If you use redshift. _string_
-* `WIRED_ETHERNET_INTERFACE`: To show network stats for wired ethernet. _string_
-* `LEFT_MONITOR`: Self explanatory. Use if triple monitor. _string_
-* `CENTER_MONITOR`: Again ... _string_
-* `RIGHT_MONITOR`: Yeah. _string_
-* `CENTER_POLYBAR_BOTTOM`: Use this if polybar should be at bottom. _boolean_
-* `COMPUTER_IDENTIFIER`: Identify the machine. _string_
+* `WALLPAPER`: **string** Add wallpaper.
+* `LAT_LON`: **string** If you use redshift. _Optional_
+* `WIRED_ETHERNET_INTERFACE`: **string** To show network stats for wired ethernet.
+* `LEFT_MONITOR`: **string** Self explanatory. Use if triple monitor. _Optional_
+* `CENTER_MONITOR`: **string** Again ...
+* `RIGHT_MONITOR`: **string** Yeah. _Optional_
+* `CENTER_POLYBAR_BOTTOM`: **boolean** Use this if polybar should be at bottom.
+* `COMPUTER_IDENTIFIER`: **string** Identify the machine.
