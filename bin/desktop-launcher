@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# TODO: Weird ass 'Cannot find file %u'
+# Make a list with both pretty name, command and placement
+
+{ ls -d /usr/share/applications/* ; ls -d ~/.local/share/applications/* ; } |\
+  fzf |\
+  xargs grep '^Exec' |\
+  tail -1 |\
+  sed 's/^Exec=//' |\
+  { sh <&3 3<&- & } 3<&0
