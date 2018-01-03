@@ -4,5 +4,6 @@ lpass export --fields=name,username,id,grouping |\
   sed 's/\r$//' |\
   tail -n +2 |\
   awk -F "," '{print "\033[90m" $4 "\\\033[0m\033[32m" $1 "\033[0m \033[34m"  $2 "\033[0m \033[90m[" $3 "]\033[0m"}' |\
-  fzf +m -i --ansi |\
-  lpass show -c --password $(awk 'match($0, /\[([^,]+)/) {print substr( $0, RSTART+1, RLENGTH-2 )}')
+  fzf +m -i --ansi --reverse --margin 5% --border |\
+  lpass show -c --password $(awk 'match($0, /\[([^,]+)/) {print substr( $0, RSTART+1, RLENGTH-2 )}') && \
+  echo "Copied!" && sleep 1s

@@ -11,7 +11,7 @@ bindsym --release XF86MonBrightnessUp exec xbacklight -inc 20
 bindsym --release XF86MonBrightnessDown exec xbacklight -dec 20
 bindsym --release $mod+g exec --no-startup-id google-chrome-stable --show-app-list
 bindsym $mod+m exec --no-startup-id termite --name scratchpad -e ncmpcpp
-bindsym $mod+p exec --no-startup-id termite --name scratchpad -e lpi --hold
+bindsym $mod+p exec --no-startup-id termite --name scratchpad -e lpi
 
 
 bindsym --release $mod+o exec rofi-pass -font "Knack 15"
