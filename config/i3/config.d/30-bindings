@@ -11,9 +11,10 @@ bindsym --release XF86MonBrightnessUp exec xbacklight -inc 20
 bindsym --release XF86MonBrightnessDown exec xbacklight -dec 20
 bindsym --release $mod+g exec --no-startup-id google-chrome-stable --show-app-list
 bindsym $mod+m exec --no-startup-id termite --name scratchpad -e ncmpcpp
+bindsym $mod+p exec --no-startup-id termite --name scratchpad -e lpi --hold
 
 
-bindsym --release $mod+p exec rofi-pass -font "Knack 15"
+bindsym --release $mod+o exec rofi-pass -font "Knack 15"
 bindsym --release $mod+s exec teiler --screenshot
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -show run -fuzzy -font "Knack 15" -location 0 -lines 8 -bw 0 -fullscreen -padding 400 -separator-style none -opacity 75 -hide-scrollbar -p " " -terminal termite -no-disable-history'
 bindsym $mod+w exec --no-startup-id rofi -show window -fuzzy -font "Knack 15" -location 0 -lines 8 -bw 0 -fullscreen -padding 400 -separator-style none -opacity 75 -hide-scrollbar -p " " -terminal termite -no-disable-history
