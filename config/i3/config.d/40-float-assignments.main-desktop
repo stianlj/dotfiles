@@ -18,6 +18,7 @@ for_window [class="chromium" window_role="pop-up" title="^Trello$"] floating dis
 for_window [title=".*Get nett-tv.*"] floating disable
 for_window [title=".*Netflix.*"] floating disable
 for_window [title=".*Muximux.*"] floating disable
+for_window [title=".*Home Assistant.*"] floating disable
 for_window [class="VirtualBox" title="^IE11 - Win7*"] fullscreen enable
 for_window [title="pinentry"] floating disable
 
