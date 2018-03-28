@@ -1,0 +1,9 @@
+#!/bin/bash
+
+IMAGE_PATH=/tmp/.lock-image.png
+BLUR_TYPE="0x5"
+
+scrot $IMAGE_PATH
+convert $IMAGE_PATH -blur $BLUR_TYPE $IMAGE_PATH
+i3lock -i $IMAGE_PATH
+rm $IMAGE_PATH
