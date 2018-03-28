@@ -96,6 +96,9 @@ Plug 'cyberkov/openhab-vim'
 " Scratchpad
 Plug 'metakirby5/codi.vim'
 
+" sxhkd
+Plug 'kovetskiy/sxhkd-vim'
+
 call g:plug#end()
 
 " SETTINGS
@@ -107,6 +110,10 @@ let s:uname = system("echo -n \"$(uname)\"")
 if !v:shell_error && s:uname ==# 'Linux'
   let g:base16colorspace=256
 endif
+if &term =~ '256color'
+  set t_ut=
+endif
+set termguicolors
 colorscheme base16-monokai
 " set relativenumber
 set background=dark
@@ -151,7 +158,7 @@ nnoremap <Down> :echoe "Use j"<CR>
 nmap <leader><Space> :w<cr>
 
 " save read only files
-nmap <leader>ro w !sudo tee %
+cmap w!! w !sudo tee % >/dev/null
 
 " shortcut for closing buffer
 nmap <leader>, :bd<cr>

@@ -48,6 +48,11 @@ format-connected-underline = ${colors.deep_orange}
 label-connected = %local_ip% %downspeed:9% %upspeed:9%
 label-connected-foreground = #eefafafa
 
+[module/battery-combined-shell]
+type = custom/script
+exec = ~/.config/polybar/scripts/battery-combined-shell.sh
+interval = 10
+
 [module/cpu]
 format-label = internal/cpu
 format = <label> <ramp-coreload>
@@ -110,6 +115,32 @@ label-urgent-foreground = ${colors.black}
 label-urgent-background = ${colors.red}
 label-urgent-padding = 2
 
+[module/bspwm]
+type = internal/bspwm
+pin-workspaces = true
+enable-scroll = false
+ws-icon-0 = I;
+ws-icon-1 = II;
+ws-icon-2 = III;
+ws-icon-3 = IV;
+ws-icon-4 = V;
+ws-icon-5 = VI;
+ws-icon-default =  
+label-focused = %index%: %icon%
+label-focused-foreground = ${colors.black}
+label-focused-background = ${colors.green}
+label-focused-padding = 2
+label-dimmed = %index%: %icon%
+label-dimmed-padding = 2
+label-occupied = %index%: %icon%
+label-occupied-underline = ${colors.blue_grey}
+label-occupied-padding = 2
+label-urgent = %index%: %icon%
+label-urgent-foreground = ${colors.black}
+label-urgent-background = ${colors.red}
+label-urgent-padding = 2
+label-empty = %index%: %icon%
+label-empty-padding = 2
 
 [bar/left]
 monitor = ${env:LEFT_MONITOR}
@@ -158,16 +189,15 @@ padding-left = 0
 padding-right = 0
 module-margin-left = 1
 module-margin-right = 1
-font-0 = Knack:size=10;0
+font-0 = Knack:size=12;2
 font-1 = MaterialIcons:size=10;0
-font-2 = Termsynu:size=8;-1
-font-3 = FontAwesome:size=10;0
+font-2 = Termsynu:size=12;-1
+font-3 = FontAwesome:size=12;0
 separator = :
 wm-name = bar
 locale = en_US.UTF-8
-modules-left = i3 title
-; modules-center = mpd
-modules-right = filesystem network cpu temperature memory date
+modules-left = bspwm title
+modules-right = battery-combined-shell cpu temperature memory date
 tray-position = right
 tray-detached = false
 tray-maxsize = 16

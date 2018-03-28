@@ -2,8 +2,8 @@ set $mode_system   (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) rebo
 mode "$mode_system" {
   bindsym l exec --no-startup-id xscreensaver-command --lock, mode "default"
   bindsym e exec --no-startup-id i3-msg exit, mode "default"
-  bindsym s exec --no-startup-id i3lock -f && systemctl suspend, mode "default"
-  bindsym h exec --no-startup-id i3lock -f && systemctl hibernate, mode "default"
+  bindsym s exec --no-startup-id systemctl suspend, mode "default"
+  bindsym h exec --no-startup-id systemctl hibernate, mode "default"
   bindsym r exec --no-startup-id systemctl reboot, mode "default"
   bindsym Shift+s exec --no-startup-id systemctl poweroff, mode "default"
 

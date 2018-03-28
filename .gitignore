@@ -2,3 +2,5 @@ ncmpcpp/error.log
 *.log
 config/i3/config
 config/polybar/mounts.ini
+config/systemd/user/multi-user.target.wants
+.idea
