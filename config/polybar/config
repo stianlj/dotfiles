@@ -17,6 +17,7 @@ orange = #FF9800
 deep_orange = #FF5722
 brown = #795548
 grey = #9E9E9E
+dark_grey = #616161
 blue_grey = #607D8B
 black = #222220
 white = #fafafa
@@ -27,7 +28,7 @@ interval = 0.5
 thermal-zone = 2
 format = <label>
 format-underline = ${colors.cyan}
-label = ༬ %temperature%
+label =  %temperature%
 
 [module/filesystem]
 type = internal/fs
@@ -133,13 +134,14 @@ label-focused-padding = 2
 label-dimmed = %index%: %icon%
 label-dimmed-padding = 2
 label-occupied = %index%: %icon%
-label-occupied-underline = ${colors.blue_grey}
+; label-occupied-underline = ${colors.blue_grey}
 label-occupied-padding = 2
 label-urgent = %index%: %icon%
 label-urgent-foreground = ${colors.black}
 label-urgent-background = ${colors.red}
 label-urgent-padding = 2
 label-empty = %index%: %icon%
+label-empty-foreground = ${colors.dark_grey}
 label-empty-padding = 2
 
 [bar/left]
