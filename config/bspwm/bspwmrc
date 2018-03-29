@@ -35,14 +35,14 @@ blueman-applet &
 if [ $COMPUTER_IDENTIFIER = "main-desktop" ]; then
   redshift -l $LAT_LON &
   dropbox &
-  $HOME/.config/polybar/launch.sh
 fi
 
 if [ $COMPUTER_IDENTIFIER = "work-laptop" ]; then
-  polybar middle &
   conky -c ~/.config/conky/conky.conf &
   nm-applet &
   # hamster &
 fi
+
+$HOME/.config/polybar/launch.sh
 
 feh --bg-fill $WALLPAPER
