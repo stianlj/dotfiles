@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-  termite
+  termite --config ~/.config/termite/config-$COMPUTER_IDENTIFIER
 
 super + d
   rofi -show drun
@@ -28,15 +28,14 @@ super + Delete ; r
 super + Delete ; l
   xscreensaver-command --lock
 
-
 super + p
-  termite --name=pass-popup -e lpi
+  termite --name=pass-popup -e lpi --config ~/.config/termite/config-$COMPUTER_IDENTIFIER
 
 super + m
-  termite --name=ncmpcpp-popup -e ncmpcpp
+  termite --name=ncmpcpp-popup -e ncmpcpp --config ~/.config/termite/config-$COMPUTER_IDENTIFIER
 
 super + r
-  termite --name=ranger-popup -e ranger
+  termite --name=ranger-popup -e ranger --config ~/.config/termite/config-$COMPUTER_IDENTIFIER
 
 # fn-keys
 XF86Audio{Raise,Lower}Volume
