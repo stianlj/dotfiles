@@ -1,8 +1,15 @@
 #! /bin/sh
 
+if [ $COMPUTER_IDENTIFIER = "main-desktop" ]; then
+  xrandr --output HDMI2 --auto --output DP1 --primary --auto --right-of HDMI2 --output DP2 --auto --right-of DP1
+  bspc monitor $LEFT_MONITOR -d 1 2 3
+  bspc monitor $CENTER_MONITOR -d 4 5 6 7
+  bspc monitor $RIGHT_MONITOR -d 8 9 10
+fi
+
 if [ $COMPUTER_IDENTIFIER = "work-laptop" ]; then
   # This should include more. Maybe in sync with udev?
-  bspc monitor -d I II III IV V VI VII VIII IX X
+  bspc monitor -d 1 2 3 4 5 6 7 8 9 10
 fi
 
 bspc config border_width 1
@@ -18,15 +25,24 @@ bspc rule -a mpv state=floating border=off
 bspc rule -a Blueman-manager state=floating
 
 # autostart
-polybar middle &
 setxkbmap -option compose:ralt
 compton -b
-conky -c ~/.config/conky/conky.conf &
 xscreensaver &
-# dropbox &
 clipit &
-nm-applet &
 pasystray &
 blueman-applet &
-# hamster &
+
+if [ $COMPUTER_IDENTIFIER = "main-desktop" ]; then
+  redshift -l $LAT_LON &
+  dropbox &
+  $HOME/.config/polybar/launch.sh
+fi
+
+if [ $COMPUTER_IDENTIFIER = "work-laptop" ]; then
+  polybar middle &
+  conky -c ~/.config/conky/conky.conf &
+  nm-applet &
+  # hamster &
+fi
+
 feh --bg-fill $WALLPAPER

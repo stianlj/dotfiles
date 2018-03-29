@@ -120,27 +120,31 @@ label-urgent-padding = 2
 type = internal/bspwm
 pin-workspaces = true
 enable-scroll = false
-ws-icon-0 = I;
-ws-icon-1 = II;
-ws-icon-2 = III;
-ws-icon-3 = IV;
-ws-icon-4 = V;
-ws-icon-5 = VI;
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
 ws-icon-default =  
-label-focused = %index%: %icon%
+label-focused = %name%: %icon%
 label-focused-foreground = ${colors.black}
 label-focused-background = ${colors.green}
 label-focused-padding = 2
-label-dimmed = %index%: %icon%
+label-dimmed = %name%: %icon%
 label-dimmed-padding = 2
-label-occupied = %index%: %icon%
+label-occupied = %name%: %icon%
 ; label-occupied-underline = ${colors.blue_grey}
 label-occupied-padding = 2
-label-urgent = %index%: %icon%
+label-urgent = %name%: %icon%
 label-urgent-foreground = ${colors.black}
 label-urgent-background = ${colors.red}
 label-urgent-padding = 2
-label-empty = %index%: %icon%
+label-empty = %name%: %icon%
 label-empty-foreground = ${colors.dark_grey}
 label-empty-padding = 2
 
@@ -155,9 +159,8 @@ font-0 = Knack:size=10;0
 font-1 = MaterialIcons:size=10;0
 font-2 = Termsynu:size=8;-1
 font-3 = FontAwesome:size=10;0
-wm-name = barright
 locale = en_US.UTF-8
-modules-right = i3
+modules-right = bspwm
 module-margin = 0
 padding = 0
 enable-ipc = true
@@ -173,12 +176,11 @@ font-0 = Knack:size=10;0
 font-1 = MaterialIcons:size=10;0
 font-2 = Termsynu:size=8;-1
 font-3 = FontAwesome:size=10;0
-wm-name = barright
 locale = en_US.UTF-8
-modules-left = i3
+modules-left = bspwm
 enable-ipc = true
 
-[bar/middle]
+[bar/middle-work-laptop]
 monitor = ${env:CENTER_MONITOR}
 width = 100%
 height = 25
@@ -196,10 +198,40 @@ font-1 = MaterialIcons:size=10;0
 font-2 = Termsynu:size=12;-1
 font-3 = FontAwesome:size=12;0
 separator = :
-wm-name = bar
 locale = en_US.UTF-8
 modules-left = bspwm title
 modules-right = battery-combined-shell cpu temperature memory date
+tray-position = right
+tray-detached = false
+tray-maxsize = 16
+tray-background = ${colors.black}
+tray-offset-x = 0
+tray-offset-y = 0
+tray-padding = 2
+tray-scale = 1.0
+enable-ipc = true
+
+[bar/middle-main-desktop]
+monitor = ${env:CENTER_MONITOR}
+width = 100%
+height = 25
+bottom = ${env:CENTER_POLYBAR_BOTTOM}
+background = ${colors.black}
+foreground = ${colors.white}
+underline-size = 1
+underline-color = ${colors.red}
+padding-left = 0
+padding-right = 0
+module-margin-left = 1
+module-margin-right = 1
+font-0 = Knack:size=10;2
+font-1 = MaterialIcons:size=8;0
+font-2 = Termsynu:size=10;-1
+font-3 = FontAwesome:size=10;0
+separator = :
+locale = en_US.UTF-8
+modules-left = bspwm title
+modules-right = network cpu temperature memory date
 tray-position = right
 tray-detached = false
 tray-maxsize = 16
