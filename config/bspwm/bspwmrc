@@ -40,6 +40,7 @@ fi
 if [ $COMPUTER_IDENTIFIER = "work-laptop" ]; then
   conky -c ~/.config/conky/conky.conf &
   nm-applet &
+  systemctl --user start mopidy
   # hamster &
 fi
 
