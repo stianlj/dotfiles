@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 
-find /usr/share/applications ~/.local/share/applications -type f -name \*.desktop -print0 |\
+selection=$(find /usr/share/applications ~/.local/share/applications -type f -name \*.desktop -print0 |\
   xargs -0 awk '/^Name=/{ NAME=$0; next } /^Exec=/{ print substr(NAME, 6) " [ " substr($0, 6) " ]" }' |\
   fzf +m -i --ansi --reverse --margin 5% --border |\
   awk 'match($0, /\[([^,]+)/) {print substr( $0, RSTART+2, RLENGTH-4 )}' |\
-  sed 's/%u//g' |\
-  sed 's/%U//g' |\
-  { sh <&3 3<&- & } 3<&0
+  sed 's/%.//' | sed 's/^"//g' | sed 's/" *$//g')
+  # sed 's/%U//g' &
+  # { sh <&3 3<&- & } 3<&0
+  # cat; sleep 5
+
+nohup $selection &>/dev/null &
+sleep 5

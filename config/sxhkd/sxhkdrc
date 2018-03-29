@@ -6,11 +6,8 @@
 super + Return
   kitty
 
-# program launcher
-# super + d
-#   rofi -show run -fuzzy -font "Knack 20" -location 0 -lines 8 -bw 0 -fullscreen -padding 400 -separator-style none -opacity 75 -hide-scrollbar -p " " -terminal termite -no-disable-history
 super + d
-  kupfer
+  rofi -show drun
 
 # make sxhkd reload its configuration files:
 super + Escape
