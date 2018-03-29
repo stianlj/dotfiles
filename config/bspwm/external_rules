@@ -3,30 +3,38 @@
 wid=$1
 class=$2
 instance=$3
+total_screen_width=$(xwininfo -root | grep 'Width' | cut -d ':' -f2 | sed 's/ //g')
+
 
 if [ "$instance" = "pass-popup" ]; then
+  width=1280
+  height=576
   echo "state=floating"
   echo "focus=on"
   echo "border=off"
   
-  xdotool windowsize $wid 50% 40% windowmove $wid 25% 7% windowactivate $wid
+  xdotool windowsize $wid $width $height windowmove $wid $(((total_screen_width / 2) - (width / 2))) 100 windowactivate $wid
   exit 0
 fi
 
 if [ "$instance" = "ncmpcpp-popup" ]; then
+  width=2048
+  height=1152
   echo "state=floating"
   echo "focus=on"
   echo "border=off"
   
-  xdotool windowsize $wid 80% 80% windowmove $wid 10% 10% windowactivate $wid
+  xdotool windowsize $wid $width $height windowmove $wid $(((total_screen_width / 2) - (width / 2))) 100 windowactivate $wid
   exit 0
 fi
 
 if [ "$instance" = "ranger-popup" ]; then
+  width=2048
+  height=1152
   echo "state=floating"
   echo "focus=on"
   echo "border=off"
   
-  xdotool windowsize $wid 80% 80% windowmove $wid 10% 10% windowactivate $wid
+  xdotool windowsize $wid $width $height windowmove $wid $(((total_screen_width / 2) - (width / 2))) 100 windowactivate $wid
   exit 0
 fi
