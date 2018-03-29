@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-  kitty
+  termite
 
 super + d
   rofi -show drun
@@ -30,13 +30,13 @@ super + Delete ; l
 
 
 super + p
-  kitty --name=pass-popup lpi
+  termite --name=pass-popup -e lpi
 
 super + m
-  kitty --name=ncmpcpp-popup ncmpcpp
+  termite --name=ncmpcpp-popup -e ncmpcpp
 
 super + r
-  kitty --name=ranger-popup ranger
+  termite --name=ranger-popup -e ranger
 
 # fn-keys
 XF86Audio{Raise,Lower}Volume
