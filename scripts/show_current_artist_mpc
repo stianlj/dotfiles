@@ -1,3 +1,0 @@
-#!/bin/bash
-
-mpc -f '%artist% - %title%' | head -n1
