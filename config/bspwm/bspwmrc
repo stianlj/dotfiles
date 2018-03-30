@@ -20,8 +20,8 @@ bspc config borderless_monocle true
 bspc config gapless_monocle true
 bspc config focus_follows_pointer true
 bspc config normal_border_color \#212121
-bspc config active_border_color \#B2DFDB
-bspc config focused_border_color \#009688
+bspc config active_border_color \#212121
+bspc config focused_border_color \#212121
 
 bspc config external_rules_command ~/.config/bspwm/external_rules
 bspc rule -a mpv state=floating border=off
@@ -29,7 +29,7 @@ bspc rule -a Blueman-manager state=floating
 
 # autostart
 setxkbmap -option compose:ralt
-compton -b
+compton -b --config="$HOME/.config/compton/compton.conf"
 xscreensaver &
 clipit &
 pasystray &
