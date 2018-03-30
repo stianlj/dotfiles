@@ -29,6 +29,7 @@ bspc rule -a Blueman-manager state=floating
 
 # autostart
 setxkbmap -option compose:ralt
+setxkbmap -option caps:escape
 compton -b --config="$HOME/.config/compton/compton.conf"
 xscreensaver &
 clipit &
