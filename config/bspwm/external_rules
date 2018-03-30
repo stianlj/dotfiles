@@ -11,7 +11,6 @@ if [ "$instance" = "pass-popup" ]; then
   height=576
   echo "state=floating"
   echo "focus=on"
-  echo "border=off"
   
   xdotool windowsize $wid $width $height windowmove $wid $(((total_screen_width / 2) - (width / 2))) 100 windowactivate $wid
   exit 0
@@ -22,7 +21,6 @@ if [ "$instance" = "ncmpcpp-popup" ]; then
   height=1152
   echo "state=floating"
   echo "focus=on"
-  echo "border=off"
   
   xdotool windowsize $wid $width $height windowmove $wid $(((total_screen_width / 2) - (width / 2))) 100 windowactivate $wid
   exit 0
@@ -33,7 +31,6 @@ if [ "$instance" = "ranger-popup" ]; then
   height=1152
   echo "state=floating"
   echo "focus=on"
-  echo "border=off"
   
   xdotool windowsize $wid $width $height windowmove $wid $(((total_screen_width / 2) - (width / 2))) 100 windowactivate $wid
   exit 0
