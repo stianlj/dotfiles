@@ -50,6 +50,11 @@ XF86Audio{Play,Prev,Next}
 XF86MonBrightness{Up,Down}
   xbacklight -{inc,dec} 20
 
+Print
+  gscreenshot-cli
+
+shift + Print
+  gscreenshot-cli --selection
 #
 # bspwm hotkeys
 #

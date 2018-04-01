@@ -14,35 +14,28 @@ cursor_blink = system
 cursor_shape = block
 
 [colors]
-foreground = #f8f8f2
-foreground_bold = #f8f8f2
-cursor = #f8f8f2
-background = rgba(33, 33, 33, 0.9)
+foreground = #D8DEE9
+background = rgba(46, 52, 64, 1)
+foreground_bold = #D8DEE9
+cursor = #D8DEE9
+cursor_foreground = #2E3440
+highlight = #4C566A
 
-# 16 color space
-color0 = #272822
-color1 = #f92672
-color2 = #a6e22e
-color3 = #f4bf75
-color4 = #66d9ef
-color5 = #ae81ff
-color6 = #a1efe4
-color7 = #f8f8f2
-color8 = #75715e
-color9 = #f92672
-color10 = #a6e22e
-color11 = #f4bf75
-color12 = #66d9ef
-color13 = #ae81ff
-color14 = #a1efe4
-color15 = #f9f8f5
-
-# 256 color space
-color16 = #fd971f
-color17 = #cc6633
-color18 = #383830
-color19 = #49483e
-color20 = #a59f85
-color21 = #f5f4f1
+color0  = #3B4252
+color1  = #BF616A
+color2  = #A3BE8C
+color3  = #EBCB8B
+color4  = #81A1C1
+color5  = #B48EAD
+color6  = #88C0D0
+color7  = #E5E9F0
+color8  = #4C566A
+color9  = #BF616A
+color10 = #A3BE8C
+color11 = #EBCB8B
+color12 = #81A1C1
+color13 = #B48EAD
+color14 = #8FBCBB
+color15 = #ECEFF4
 
 # vim: ft=dosini cms=#%s
