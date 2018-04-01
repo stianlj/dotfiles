@@ -19,9 +19,9 @@ bspc config split_ratio 0.5
 bspc config borderless_monocle true
 bspc config gapless_monocle true
 bspc config focus_follows_pointer true
-bspc config normal_border_color \#212121
-bspc config active_border_color \#212121
-bspc config focused_border_color \#212121
+bspc config normal_border_color \#2e3440
+bspc config active_border_color \#2e3440
+bspc config focused_border_color \#2e3440
 
 bspc config external_rules_command ~/.config/bspwm/external_rules
 bspc rule -a mpv state=floating border=off

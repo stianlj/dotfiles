@@ -10,7 +10,8 @@ Plug 'milkypostman/vim-togglelist'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ktonga/vim-follow-my-lead'
 Plug 'terryma/vim-expand-region'
-Plug 'chriskempson/base16-vim'
+" Plug 'chriskempson/base16-vim'
+Plug 'arcticicestudio/nord-vim'
 Plug 'mhinz/vim-startify'
 
 " Code enhancing plugins
@@ -114,7 +115,7 @@ if &term =~ '256color'
   set t_ut=
 endif
 set termguicolors
-colorscheme base16-monokai
+colorscheme nord
 " set relativenumber
 set background=dark
 set number
