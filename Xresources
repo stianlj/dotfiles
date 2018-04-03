@@ -47,3 +47,37 @@ rofi.line-margin:                    0
 rofi.separator-style:                none
 rofi.hide-scrollbar:                 true
 rofi.theme: ~/.themes/rofi/custom-nord.rasi
+
+! URxvt SETUP HERE !
+URxvt.internalBorder: 0
+URxvt.font: xft:Knack:size=10
+URxvt.depth: 32
+URxvt.background:	[100]#2e3440
+URxvt*scrollBar:                      false
+URxvt*mouseWheelScrollPage:           true
+URxvt*cursorBlink:                    true
+URxvt*foreground: 		                #d8dee9
+URxvt*cursorColor:		                #d8dee9
+URxvt*saveLines: 9999
+
+*.foreground: #d8dee9
+*.background: #2e3440
+*.cursorColor: #d8dee9
+*.cursor: #d8dee9
+
+*.color0: #3B4252
+*.color1: #BF616A
+*.color2: #A3BE8C
+*.color3: #EBCB8B
+*.color4: #81A1C1
+*.color5: #B48EAD
+*.color6: #88C0D0
+*.color7: #E5E9F0
+*.color8: #4C566A
+*.color9: #BF616A
+*.color10: #A3BE8C
+*.color11: #EBCB8B
+*.color12: #81A1C1
+*.color13: #B48EAD
+*.color14: #8FBCBB
+*.color15: #ECEFF4

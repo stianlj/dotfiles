@@ -114,7 +114,7 @@ endif
 if &term =~ '256color'
   set t_ut=
 endif
-set termguicolors
+" set termguicolors
 colorscheme nord
 " set relativenumber
 set background=dark
