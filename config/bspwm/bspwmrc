@@ -8,8 +8,27 @@ if [ $COMPUTER_IDENTIFIER = "main-desktop" ]; then
 fi
 
 if [ $COMPUTER_IDENTIFIER = "work-laptop" ]; then
-  # This should include more. Maybe in sync with udev?
-  bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+  numberOfMonitorsConnected=$(xrandr -d :0 -q | grep ' connected' | wc -l)
+
+  if [ "$numberOfMonitorsConnected" -gt "2" ]; then
+
+    export LEFT_MONITOR="eDP1"
+    export CENTER_MONITOR="DP1-1"
+    export RIGHT_MONITOR="DP1-2"
+    export CENTER_POLYBAR_BOTTOM="true"
+
+    bspc monitor eDP1 -d 1 2 3
+    bspc monitor DP1\-1 -d 4 5 6 7
+    bspc monitor DP1\-2 -d 8 9 10
+
+    polybar middle-$COMPUTER_IDENTIFIER &
+    polybar left &
+    polybar right &
+  else
+    # This should include more. Maybe in sync with udev?
+    bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+    polybar middle-$COMPUTER_IDENTIFIER &
+  fi
 fi
 
 bspc config border_width 15
@@ -26,6 +45,7 @@ bspc config focused_border_color \#2e3440
 bspc config external_rules_command ~/.config/bspwm/external_rules
 bspc rule -a mpv state=floating border=off
 bspc rule -a Blueman-manager state=floating
+bspc rule -a jetbrains-idea border=off
 
 # autostart
 setxkbmap -option compose:ralt
@@ -39,6 +59,7 @@ blueman-applet &
 if [ $COMPUTER_IDENTIFIER = "main-desktop" ]; then
   redshift -l $LAT_LON &
   dropbox &
+  $HOME/.config/polybar/launch.sh
 fi
 
 if [ $COMPUTER_IDENTIFIER = "work-laptop" ]; then
@@ -47,7 +68,5 @@ if [ $COMPUTER_IDENTIFIER = "work-laptop" ]; then
   systemctl --user start mopidy
   # hamster &
 fi
-
-$HOME/.config/polybar/launch.sh
 
 feh --bg-fill $WALLPAPER
