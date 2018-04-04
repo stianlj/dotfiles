@@ -1,3 +1,43 @@
+#define nord0 #2E3440
+#define nord1 #3B4252
+#define nord2 #434C5E
+#define nord3 #4C566A
+#define nord4 #D8DEE9
+#define nord5 #E5E9F0
+#define nord6 #ECEFF4
+#define nord7 #8FBCBB
+#define nord8 #88C0D0
+#define nord9 #81A1C1
+#define nord10 #5E81AC
+#define nord11 #BF616A
+#define nord12 #D08770
+#define nord13 #EBCB8B
+#define nord14 #A3BE8C
+#define nord15 #B48EAD
+
+*.foreground:   nord4
+*.background:   nord0
+*.cursorColor:  nord4
+
+*.color0: nord1
+*.color1: nord11
+*.color2: nord14
+*.color3: nord13
+*.color4: nord9
+*.color5: nord15
+*.color6: nord8
+*.color7: nord5
+*.color8: nord3
+*.color9: nord11
+*.color10: nord14
+*.color11: nord13
+*.color12: nord9
+*.color13: nord15
+*.color14: nord7
+*.color15: nord6
+
+*.nordColor12: nord12
+
 xscreensaver.splash: false
 
 !font settings
@@ -10,23 +50,23 @@ xscreensaver.Dialog.dateFont:           -*-dina-medium-r-*-*-12-*-*-*-*-*-*-*
 xscreensaver.passwd.passwdFont:         -*-dina-bold-r-*-*-12-*-*-*-*-*-*-*
 
 !general dialog box (affects main hostname, username, password text)
-xscreensaver.Dialog.foreground:         #ffffff
-xscreensaver.Dialog.background:         #111111
-xscreensaver.Dialog.topShadowColor:     #111111
-xscreensaver.Dialog.bottomShadowColor:  #111111
-xscreensaver.Dialog.Button.foreground:  #666666
-xscreensaver.Dialog.Button.background:  #ffffff
+xscreensaver.Dialog.foreground:         nord4
+xscreensaver.Dialog.background:         nord0
+xscreensaver.Dialog.topShadowColor:     nord0
+xscreensaver.Dialog.bottomShadowColor:  nord0
+xscreensaver.Dialog.Button.foreground:  nord0
+xscreensaver.Dialog.Button.background:  nord4
 
 !username/password input box and date text colour
-xscreensaver.Dialog.text.foreground:    #666666
-xscreensaver.Dialog.text.background:    #ffffff
+xscreensaver.Dialog.text.foreground:    nord0
+xscreensaver.Dialog.text.background:    nord4
 xscreensaver.Dialog.internalBorderWidth:24
 xscreensaver.Dialog.borderWidth:        20
 xscreensaver.Dialog.shadowThickness:    2
 
 !timeout bar (background is actually determined by Dialog.text.background)
-xscreensaver.passwd.thermometer.foreground:  #ff0000
-xscreensaver.passwd.thermometer.background:  #000000
+xscreensaver.passwd.thermometer.foreground:  nord11
+xscreensaver.passwd.thermometer.background:  nord0
 xscreensaver.passwd.thermometer.width:       8
 
 !datestamp format--see the strftime(3) manual page for details
@@ -35,11 +75,11 @@ xscreensaver.dateFormat:    %I:%M%P %a %b %d, %Y
 rofi.show-icons:                     false
 rofi.modi:                           window,run,ssh,drun
 rofi.lines:                          8
-rofi.font:                           Knack 12
+rofi.font:                           Knack Nerd Font 12
 rofi.bw:                             0
 rofi.line-padding:                   10
 rofi.padding:                        0
-rofi.terminal:                       termite
+rofi.terminal:                       urxvt
 rofi.run-shell-command:              {terminal} -e {cmd}
 rofi.disable-history:                false
 rofi.matching:                       fuzzy
@@ -49,35 +89,17 @@ rofi.hide-scrollbar:                 true
 rofi.theme: ~/.themes/rofi/custom-nord.rasi
 
 ! URxvt SETUP HERE !
+#define termfont xft:Knack Nerd Font:size=12
 URxvt.internalBorder: 0
-URxvt.font: xft:Knack:size=10
+URxvt.font: termfont
+URxvt.boldFont: termfont
+URxvt.italicFont: termfont
+URxvt.boldItalicFont: termfont
 URxvt.depth: 32
-URxvt.background:	[100]#2e3440
+! URxvt.background:	[100]#2e3440
 URxvt*scrollBar:                      false
 URxvt*mouseWheelScrollPage:           true
 URxvt*cursorBlink:                    true
-URxvt*foreground: 		                #d8dee9
-URxvt*cursorColor:		                #d8dee9
+! URxvt*foreground: 		                #d8dee9
+! URxvt*cursorColor:		                #d8dee9
 URxvt*saveLines: 9999
-
-*.foreground: #d8dee9
-*.background: #2e3440
-*.cursorColor: #d8dee9
-*.cursor: #d8dee9
-
-*.color0: #3B4252
-*.color1: #BF616A
-*.color2: #A3BE8C
-*.color3: #EBCB8B
-*.color4: #81A1C1
-*.color5: #B48EAD
-*.color6: #88C0D0
-*.color7: #E5E9F0
-*.color8: #4C566A
-*.color9: #BF616A
-*.color10: #A3BE8C
-*.color11: #EBCB8B
-*.color12: #81A1C1
-*.color13: #B48EAD
-*.color14: #8FBCBB
-*.color15: #ECEFF4

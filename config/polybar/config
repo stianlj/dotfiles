@@ -1,26 +1,19 @@
 [colors]
-red = #F44336
-pink = #E91E63
-purple = #9C27B0
-deep_purple = #673AB7
-indigo = #3F51B5
-blue = #2196F3
-light_blue = #03A9F4
-cyan = #00BCD4
-teal = #009688
-green = #4CAF50
-light_green = #8BC34A
-lime = #CDDC39
-yellow = #FFEB3B
-amber = #FFC107
-orange = #FF9800
-deep_orange = #FF5722
-brown = #795548
-grey = #9E9E9E
-dark_grey = #616161
-blue_grey = #607D8B
-black = #222220
-white = #fafafa
+background = ${xrdb:background}
+foreground = ${xrdb:foreground}
+active_background = ${xrdb:color6}
+active_foreground = ${xrdb:color0}
+urgent_background = ${xrdb:color1}
+urgent_foreground = ${xrdb:color0}
+unfocused_background = ${xrdb:color8}
+cyan = ${xrdb:color4} 
+yellow = ${xrdb:color11}
+green = ${xrdb:color12}
+blue = ${xrdb:color6}
+grey = ${xrdb:color0}
+purple = ${xrdb:color13}
+deep_orange = ${xrdb:nordColor12}
+red = ${xrdb:color1}
 
 [module/temperature]
 type = internal/temperature
@@ -87,34 +80,7 @@ label-maxlen = 50
 type = internal/date
 date = %d-%m-%Y %H:%M
 date-alt = %%{F#fba922}%A%%{F#ff}, %d. %b %Y, Week: %W
-format-underline = ${colors.grey}
-
-[module/i3]
-type = internal/i3
-pin-workspaces = true
-strip-wsnumbers = true
-index-sort = true
-enable-scroll = false
-ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
-ws-icon-5 = 6;
-ws-icon-default =  
-label-focused = %index%: %icon%
-label-focused-foreground = ${colors.black}
-label-focused-background = ${colors.green}
-label-focused-padding = 2
-label-unfocused = %index%: %icon%
-label-unfocused-padding = 2
-label-visible = %index%: %icon%
-label-visible-underline = ${colors.blue_grey}
-label-visible-padding = 2
-label-urgent = %index%: %icon%
-label-urgent-foreground = ${colors.black}
-label-urgent-background = ${colors.red}
-label-urgent-padding = 2
+format-underline = ${colors.purple}
 
 [module/bspwm]
 type = internal/bspwm
@@ -132,29 +98,28 @@ ws-icon-8 = 9;
 ws-icon-9 = 10;
 ws-icon-default =  
 label-focused = %name%: %icon%
-label-focused-foreground = ${colors.black}
-label-focused-background = ${colors.teal}
+label-focused-foreground = ${colors.active_foreground}
+label-focused-background = ${colors.active_background}
 label-focused-padding = 2
 label-dimmed = %name%: %icon%
 label-dimmed-padding = 2
 label-occupied = %name%: %icon%
-; label-occupied-underline = ${colors.blue_grey}
 label-occupied-padding = 2
 label-urgent = %name%: %icon%
-label-urgent-foreground = ${colors.black}
-label-urgent-background = ${colors.red}
+label-urgent-foreground = ${colors.urgent_foreground}
+label-urgent-background = ${colors.urgent_background}
 label-urgent-padding = 2
 label-empty = %name%: %icon%
-label-empty-foreground = ${colors.dark_grey}
+label-empty-foreground = ${colors.unfocused_background}
 label-empty-padding = 2
 
 [bar/left]
 monitor = ${env:LEFT_MONITOR}
 width = 100%
-height = 25
+height = 35
 bottom = true
-background = ${colors.black}
-foreground = ${colors.white}
+background = ${colors.background}
+foreground = ${colors.foreground}
 font-0 = Knack:size=10;0
 font-1 = MaterialIcons:size=10;0
 font-2 = Termsynu:size=8;-1
@@ -168,10 +133,10 @@ enable-ipc = true
 [bar/right]
 monitor = ${env:RIGHT_MONITOR}
 width = 100%
-height = 25
+height = 35
 bottom = true
-background = ${colors.black}
-foreground = ${colors.white}
+background = ${colors.background}
+foreground = ${colors.foreground}
 font-0 = Knack:size=10;0
 font-1 = MaterialIcons:size=10;0
 font-2 = Termsynu:size=8;-1
@@ -183,10 +148,10 @@ enable-ipc = true
 [bar/middle-work-laptop]
 monitor = ${env:CENTER_MONITOR}
 width = 100%
-height = 25
+height = 35
 bottom = ${env:CENTER_POLYBAR_BOTTOM}
-background = ${colors.black}
-foreground = ${colors.white}
+background = ${colors.background}
+foreground = ${colors.foreground}
 underline-size = 1
 underline-color = ${colors.red}
 padding-left = 0
@@ -204,7 +169,7 @@ modules-right = battery-combined-shell cpu temperature memory date
 tray-position = right
 tray-detached = false
 tray-maxsize = 16
-tray-background = ${colors.black}
+tray-background = ${colors.background}
 tray-offset-x = 0
 tray-offset-y = 0
 tray-padding = 2
@@ -216,8 +181,8 @@ monitor = ${env:CENTER_MONITOR}
 width = 100%
 height = 25
 bottom = ${env:CENTER_POLYBAR_BOTTOM}
-background = ${colors.black}
-foreground = ${colors.white}
+background = ${colors.background}
+foreground = ${colors.foreground}
 underline-size = 1
 underline-color = ${colors.red}
 padding-left = 0
@@ -235,7 +200,7 @@ modules-right = network cpu temperature memory date
 tray-position = right
 tray-detached = false
 tray-maxsize = 16
-tray-background = ${colors.black}
+tray-background = ${colors.background}
 tray-offset-x = 0
 tray-offset-y = 0
 tray-padding = 2
