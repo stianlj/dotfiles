@@ -82,7 +82,7 @@ rofi.padding:                        0
 rofi.terminal:                       urxvt
 rofi.run-shell-command:              {terminal} -e {cmd}
 rofi.disable-history:                false
-rofi.matching:                       fuzzy
+rofi.matching:                       normal
 rofi.line-margin:                    0
 rofi.separator-style:                none
 rofi.hide-scrollbar:                 true
