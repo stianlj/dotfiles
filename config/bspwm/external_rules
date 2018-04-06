@@ -17,8 +17,8 @@ if [ "$instance" = "pass-popup" ]; then
 fi
 
 if [ "$instance" = "ncmpcpp-popup" ]; then
-  width=2048
-  height=1152
+  width=1800
+  height=1000
   echo "state=floating"
   echo "focus=on"
   
@@ -27,8 +27,8 @@ if [ "$instance" = "ncmpcpp-popup" ]; then
 fi
 
 if [ "$instance" = "ranger-popup" ]; then
-  width=2048
-  height=1152
+  width=1800
+  height=1000
   echo "state=floating"
   echo "focus=on"
   
