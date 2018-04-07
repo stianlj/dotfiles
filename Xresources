@@ -100,6 +100,7 @@ URxvt.depth: 32
 URxvt*scrollBar:                      false
 URxvt*mouseWheelScrollPage:           true
 URxvt*cursorBlink:                    true
+URxvt*skipBuiltinGlyphs:              true
 ! URxvt*foreground: 		                #d8dee9
 ! URxvt*cursorColor:		                #d8dee9
-URxvt*saveLines: 9999
+URxvt*saveLines: 1000

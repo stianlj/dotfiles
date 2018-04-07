@@ -111,9 +111,9 @@ let s:uname = system("echo -n \"$(uname)\"")
 if !v:shell_error && s:uname ==# 'Linux'
   let g:base16colorspace=256
 endif
-if &term =~ '256color'
-  set t_ut=
-endif
+" if &term =~ '256color'
+"   set t_ut=
+" endif
 " set termguicolors
 colorscheme nord
 " set relativenumber
