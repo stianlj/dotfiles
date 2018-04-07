@@ -104,3 +104,5 @@ URxvt*skipBuiltinGlyphs:              true
 ! URxvt*foreground: 		                #d8dee9
 ! URxvt*cursorColor:		                #d8dee9
 URxvt*saveLines: 1000
+URxvt.perl-ext:
+URxvt.perl-ext-common:

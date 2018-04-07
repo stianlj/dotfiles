@@ -56,9 +56,9 @@ xscreensaver &
 clipit &
 pasystray &
 blueman-applet &
+redshift -l $LAT_LON &
 
 if [ $COMPUTER_IDENTIFIER = "main-desktop" ]; then
-  redshift -l $LAT_LON &
   dropbox &
   $HOME/.config/polybar/launch.sh
 fi
