@@ -56,7 +56,7 @@ xscreensaver &
 clipit &
 pasystray &
 blueman-applet &
-redshift -l $LAT_LON &
+redshift-gtk -l $LAT_LON &
 
 if [ $COMPUTER_IDENTIFIER = "main-desktop" ]; then
   dropbox &
