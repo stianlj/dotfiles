@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+notify-send "Checks in at Apple!"
+
+cd $HOME/.aerial-videos/
+
+url='http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json'
+
+curl $url | jq -r '.[].assets[].url' > .aerial-videos
+
+aria2c -x10 -i .aerial-videos \
+  --auto-file-renaming=false \
+  --conditional-get=true \
+  --allow-overwrite=true \
+  --save-session=.aria.session \
+  --force-save=true
+
+videoscount="$(find $HOME/.aerial-videos/ -name '*.mov' | wc -l)"
+
+notify-send "Checked in with Apple!" "There are currently ${videoscount} videos in the directory"

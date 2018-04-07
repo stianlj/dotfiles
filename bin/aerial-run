@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+wid=$1
+
+mpv --hwdec=vaapi --vo=opengl \
+  --shuffle --really-quiet --no-audio --fs \
+  --video-aspect=16:9 \
+  --no-stop-screensaver \
+  --wid=$wid \
+  $HOME/.aerial-videos/* \
