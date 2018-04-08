@@ -13,13 +13,13 @@ center_monitor_position_start=$(xwininfo -name $monitor | grep 'Absolute upper-l
 if [ "$instance" = "pass-popup" ]; then
   width=1280
   height=576
-  position_top=10
+  percent_from_top=10
   echo "state=floating"
   echo "focus=on"
 
   xdotool \
     windowsize $wid $width $height \
-    windowmove $wid $((center_monitor_position_start + ((center_monitor_width / 2) - (width / 2)))) $(((center_monitor_height * position_top) / 100)) \
+    windowmove $wid $((center_monitor_position_start + ((center_monitor_width / 2) - (width / 2)))) $(((center_monitor_height * percent_from_top) / 100)) \
     windowactivate $wid
   exit 0
 fi
@@ -27,13 +27,13 @@ fi
 if [ "$instance" = "ncmpcpp-popup" ]; then
   width=1800
   height=1000
-  position_top=10
+  percent_from_top=10
   echo "state=floating"
   echo "focus=on"
   
   xdotool \
     windowsize $wid $width $height \
-    windowmove $wid $((center_monitor_position_start + ((center_monitor_width / 2) - (width / 2)))) $(((center_monitor_height * position_top) / 100)) \
+    windowmove $wid $((center_monitor_position_start + ((center_monitor_width / 2) - (width / 2)))) $(((center_monitor_height * percent_from_top) / 100)) \
     windowactivate $wid
   exit 0
 fi
@@ -41,13 +41,27 @@ fi
 if [ "$instance" = "ranger-popup" ]; then
   width=1800
   height=1000
-  position_top=10
+  percent_from_top=10
   echo "state=floating"
   echo "focus=on"
   
   xdotool \
     windowsize $wid $width $height \
-    windowmove $wid $((center_monitor_position_start + ((center_monitor_width / 2) - (width / 2)))) $(((center_monitor_height * position_top) / 100)) \
+    windowmove $wid $((center_monitor_position_start + ((center_monitor_width / 2) - (width / 2)))) $(((center_monitor_height * percent_from_top) / 100)) \
+    windowactivate $wid
+  exit 0
+fi
+
+if [ "$instance" = "blueman-manager" ]; then
+  width=1000
+  height=500
+  percent_from_top=10
+  echo "state=floating"
+  echo "focus=on"
+  
+  xdotool \
+    windowsize $wid $width $height \
+    windowmove $wid $((center_monitor_position_start + ((center_monitor_width / 2) - (width / 2)))) $(((center_monitor_height * percent_from_top) / 100)) \
     windowactivate $wid
   exit 0
 fi
