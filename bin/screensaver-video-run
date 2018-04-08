@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+wid=$1
+
+IFS=$'\n'
+trap : SIGTERM SIGINT SIGHUP
+while (true) #!(keystate lshift)
+do
+  mpv --hwdec=vaapi --vo=opengl \
+    --loop-file --really-quiet --no-audio --fs \
+    --video-aspect=16:9 \
+    --no-stop-screensaver \
+    --wid=$wid \
+    $SCREENSAVER_VIDEO &
+  pid=$!
+  wait $pid
+  [ $? -gt 128 ] && { kill $pid ; exit 128; } ;
+done
