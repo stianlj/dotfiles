@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/dash
 
 if [ $COMPUTER_IDENTIFIER = "main-desktop" ]; then
   xrandr --output HDMI2 --auto --output DP1 --primary --auto --right-of HDMI2 --output DP2 --auto --right-of DP1
