@@ -72,7 +72,7 @@ xscreensaver.passwd.thermometer.width:       8
 !datestamp format--see the strftime(3) manual page for details
 xscreensaver.dateFormat:    %I:%M%P %a %b %d, %Y
 
-rofi.show-icons:                     false
+rofi.show-icons:                     true
 rofi.modi:                           window,run,ssh,drun
 rofi.lines:                          8
 rofi.font:                           Knack Nerd Font 12
