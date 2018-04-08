@@ -3,35 +3,51 @@
 wid=$1
 class=$2
 instance=$3
-total_screen_width=$(xwininfo -root | grep 'Width' | cut -d ':' -f2 | sed 's/ //g')
+monitor=$CENTER_MONITOR
+
+center_monitor_width=$(xwininfo -name $monitor | grep 'Width' | cut -d ':' -f2 | sed 's/ //g')
+center_monitor_height=$(xwininfo -name $monitor | grep 'Height' | cut -d ':' -f2 | sed 's/ //g')
+center_monitor_position_start=$(xwininfo -name $monitor | grep 'Absolute upper-left X' | cut -d ':' -f2 | sed 's/ //g')
 
 
 if [ "$instance" = "pass-popup" ]; then
   width=1280
   height=576
+  position_top=10
   echo "state=floating"
   echo "focus=on"
-  
-  xdotool windowsize $wid $width $height windowmove $wid $(((total_screen_width / 2) - (width / 2))) 100 windowactivate $wid
+
+  xdotool \
+    windowsize $wid $width $height \
+    windowmove $wid $((center_monitor_position_start + ((center_monitor_width / 2) - (width / 2)))) $(((center_monitor_height * position_top) / 100)) \
+    windowactivate $wid
   exit 0
 fi
 
 if [ "$instance" = "ncmpcpp-popup" ]; then
   width=1800
   height=1000
+  position_top=10
   echo "state=floating"
   echo "focus=on"
   
-  xdotool windowsize $wid $width $height windowmove $wid $(((total_screen_width / 2) - (width / 2))) 100 windowactivate $wid
+  xdotool \
+    windowsize $wid $width $height \
+    windowmove $wid $((center_monitor_position_start + ((center_monitor_width / 2) - (width / 2)))) $(((center_monitor_height * position_top) / 100)) \
+    windowactivate $wid
   exit 0
 fi
 
 if [ "$instance" = "ranger-popup" ]; then
   width=1800
   height=1000
+  position_top=10
   echo "state=floating"
   echo "focus=on"
   
-  xdotool windowsize $wid $width $height windowmove $wid $(((total_screen_width / 2) - (width / 2))) 100 windowactivate $wid
+  xdotool \
+    windowsize $wid $width $height \
+    windowmove $wid $((center_monitor_position_start + ((center_monitor_width / 2) - (width / 2)))) $(((center_monitor_height * position_top) / 100)) \
+    windowactivate $wid
   exit 0
 fi
