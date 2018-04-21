@@ -1,0 +1,30 @@
+#!/bin/sh
+
+while test $# -gt 0; do
+  case "$1" in
+    --download)
+      lpass export \
+        --fields=name,username,id,grouping |\
+        gpg -e -r "$GPG_DEFAULT_USER_ID" > ~/.offline-lastpass/output.gpg
+      shift
+      ;;
+    --read-local)
+      gpg -d ~/.offline-lastpass/output.gpg | cat
+      shift
+      ;;
+    --read-interactive)
+      gpg -d ~/.offline-lastpass/output.gpg | cat |\
+        sed 's/\r$//' |\
+        tail -n +2 |\
+        awk -F "," '{print "\033[90m" $4 "\\\033[0m\033[32m" $1 "\033[0m \033[34m"  $2 "\033[0m \033[90m[" $3 "]\033[0m"}' |\
+        fzf +m -i --ansi --reverse --margin 5% --border |\
+        lpass show -c --password $(awk 'match($0, /\[([^,]+)/) {print substr( $0, RSTART+1, RLENGTH-2 )}') && \
+        echo "Copied!" && sleep 1s
+      shift
+      ;;
+    *)
+      break
+      ;;
+  esac
+done
+
