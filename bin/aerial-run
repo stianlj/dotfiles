@@ -2,9 +2,17 @@
 
 wid=$1
 
-mpv --hwdec=vaapi --vo=opengl \
-  --shuffle --really-quiet --no-audio --fs \
-  --video-aspect=16:9 \
-  --no-stop-screensaver \
-  --wid=$wid \
-  $HOME/.aerial-videos/* \
+IFS=$'\n'
+trap : SIGTERM SIGINT SIGHUP
+while (true) #!(keystate lshift)
+do
+  mpv --hwdec=vaapi --vo=opengl \
+    --shuffle --really-quiet --no-audio --fs \
+    --video-aspect=16:9 \
+    --no-stop-screensaver \
+    --wid=$wid \
+    $HOME/.aerial-videos/* &
+  pid=$!
+  wait $pid
+  [ $? -gt 128 ] && { kill $pid ; exit 128; } ;
+done

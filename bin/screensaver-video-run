@@ -8,7 +8,7 @@ while (true) #!(keystate lshift)
 do
   mpv --hwdec=vaapi --vo=opengl \
     --loop-file --really-quiet --no-audio --fs \
-    --video-aspect=16:9 \
+    --no-keepaspect \
     --no-stop-screensaver \
     --wid=$wid \
     $SCREENSAVER_VIDEO &

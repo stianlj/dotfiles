@@ -88,6 +88,11 @@ rofi.separator-style:                none
 rofi.hide-scrollbar:                 true
 rofi.theme: ~/.themes/rofi/custom-nord.rasi
 
+
+
+XTerm*faceName: Knack Nerd Font:size=12
+xterm*metaSendsEscape: true
+
 ! URxvt SETUP HERE !
 #define termfont xft:Knack Nerd Font:size=12
 URxvt.internalBorder: 0
@@ -97,12 +102,12 @@ URxvt.italicFont: termfont
 URxvt.boldItalicFont: termfont
 URxvt.depth: 32
 ! URxvt.background:	[100]#2e3440
+! URxvt.letterSpace: 0
 URxvt*scrollBar:                      false
 URxvt*mouseWheelScrollPage:           true
 URxvt*cursorBlink:                    true
-URxvt*skipBuiltinGlyphs:              true
 ! URxvt*foreground: 		                #d8dee9
 ! URxvt*cursorColor:		                #d8dee9
 URxvt*saveLines: 1000
-URxvt.perl-ext:
-URxvt.perl-ext-common:
+! URxvt.perl-ext:
+! URxvt.perl-ext-common:

@@ -15,6 +15,24 @@ purple = ${xrdb:color13}
 deep_orange = ${xrdb:nordColor12}
 red = ${xrdb:color1}
 
+[module/menu-power]
+type = custom/menu
+menu-0-0 = (S)hutdown
+menu-0-0-exec = systemctl poweroff
+menu-0-1 = (r)eboot
+menu-0-1-exec = systemctl reboot
+menu-0-2 = (l)ock
+menu-0-2-exec = xscreensaver-command --lock
+menu-0-padding = 1
+label-open =  
+label-open-padding-left = 2
+label-open-padding-right = 1
+label-close = 
+label-close-padding-left = 2
+label-close-padding-right = 1
+label-separator = :
+label-separator-margin = 1
+
 [module/temperature]
 type = internal/temperature
 interval = 0.5
@@ -26,6 +44,16 @@ label =  %temperature%
 [module/network]
 type = internal/network
 interface = ${env:WIRED_ETHERNET_INTERFACE}
+interval = 3.0
+accumulate-stats = true
+format-connected = <label-connected>
+format-connected-underline = ${colors.deep_orange}
+label-connected = %local_ip% %downspeed:9% %upspeed:9%
+label-connected-foreground = #eefafafa
+
+[module/docked-network]
+type = internal/network
+interface = ${env:WIRED_DOCK_INTERFACE}
 interval = 3.0
 accumulate-stats = true
 format-connected = <label-connected>
@@ -75,7 +103,7 @@ label =  %gb_used%/%gb_total%
 type = internal/xwindow
 format-underline = ${colors.yellow}
 label = %title%
-label-maxlen = 40
+label-maxlen = 30
 
 [module/date]
 type = internal/date
@@ -165,8 +193,8 @@ font-2 = Termsynu:size=12;-1
 font-3 = FontAwesome:size=12;0
 separator = :
 locale = en_US.UTF-8
-modules-left = bspwm title
-modules-right = network wireless-network battery-combined-shell cpu temperature memory date
+modules-left = menu-power bspwm title
+modules-right = network wireless-network docked-network battery-combined-shell cpu temperature memory date
 tray-position = right
 tray-detached = false
 tray-maxsize = 16

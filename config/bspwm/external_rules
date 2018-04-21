@@ -27,7 +27,7 @@ popup() {
 if [ "$instance" = "pass-popup" ]; then
   echo "state=floating"
   echo "focus=on"
-  popup 30 20 10
+  popup 50 50 20
   exit 0
 fi
 

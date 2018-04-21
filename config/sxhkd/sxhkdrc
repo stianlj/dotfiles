@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-  urxvt
+  xterm
 
 super + d
   rofi -show drun
@@ -12,7 +12,6 @@ super + d
 # make sxhkd reload its configuration files:
 super + Escape
   pkill -USR1 -x sxhkd
-
 
 # shutdown menu
 
@@ -29,13 +28,13 @@ super + Delete ; l
   xscreensaver-command --lock
 
 super + p
-  urxvt -name pass-popup -e lpi
+  xterm -name pass-popup -e lpi
 
 super + m
-  urxvt -name ncmpcpp-popup -e ncmpcpp
+  xterm -name ncmpcpp-popup -e ncmpcpp
 
 super + r
-  urxvt -name ranger-popup -e ranger
+  xterm -name ranger-popup -e ranger
 
 # fn-keys
 XF86Audio{Raise,Lower}Volume
