@@ -8,6 +8,7 @@ while (true) #!(keystate lshift)
 do
   mpv --hwdec=vaapi --vo=opengl \
     --loop-file --really-quiet --no-audio --fs \
+    --start=$(( (RANDOM % 100 ) + 1 ))% \
     --no-keepaspect \
     --no-stop-screensaver \
     --wid=$wid \
