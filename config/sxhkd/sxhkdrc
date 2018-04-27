@@ -31,13 +31,13 @@ super + Delete ; l
   xscreensaver-command --lock
 
 super + p
-  xterm -name pass-popup -e lpi
+  kitty --name="pass-popup" lpi
 
 super + m
-  xterm -name ncmpcpp-popup -e ncmpcpp
+  kitty --name="ncmpcpp-popup" ncmpcpp
 
 super + r
-  xterm -name ranger-popup -e ranger
+  kitty --name="ranger-popup" ranger
 
 # fn-keys
 XF86Audio{Raise,Lower}Volume
