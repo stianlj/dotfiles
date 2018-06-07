@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-  kitty
+  kitty fish
 
 super + d
   rofi -show drun
