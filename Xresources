@@ -75,7 +75,7 @@ xscreensaver.dateFormat:    %I:%M%P %a %b %d, %Y
 rofi.show-icons:                     true
 rofi.modi:                           window,run,ssh,drun
 rofi.lines:                          8
-rofi.font:                           Knack Nerd Font 12
+rofi.font:                           Hack Nerd Font 12
 rofi.bw:                             0
 rofi.line-padding:                   10
 rofi.padding:                        0
@@ -90,11 +90,11 @@ rofi.theme: ~/.themes/rofi/custom-nord.rasi
 
 
 
-XTerm*faceName: Knack Nerd Font:size=12
+XTerm*faceName: Hack Nerd Font:size=12
 xterm*metaSendsEscape: true
 
 ! URxvt SETUP HERE !
-#define termfont xft:Knack Nerd Font:size=12
+#define termfont xft:Hack Nerd Font:size=12
 URxvt.internalBorder: 0
 URxvt.font: termfont
 URxvt.boldFont: termfont
