@@ -1,10 +1,12 @@
 #!/bin/dash
 
 if [ $COMPUTER_IDENTIFIER = "main-desktop" ]; then
-  xrandr --output HDMI2 --auto --output DP2 --primary --auto --right-of HDMI2 --output DP1 --auto --right-of DP2
+  xrandr --output DVI-D-0 --auto --output HDMI-0 --primary --auto --right-of DVI-D-0 --output DVI-I-1 --auto --rotate left --right-of HDMI-0
   bspc monitor $LEFT_MONITOR -d 1 2 3
   bspc monitor $CENTER_MONITOR -d 4 5 6 7
   bspc monitor $RIGHT_MONITOR -d 8 9 10
+  # bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+  # polybar middle-$COMPUTER_IDENTIFIER &
 fi
 
 if [ $COMPUTER_IDENTIFIER = "work-laptop" ]; then
@@ -56,11 +58,11 @@ compton -b --config="$HOME/.config/compton/compton.conf"
 xscreensaver &
 clipit &
 pasystray &
-blueman-applet &
-redshift-gtk -l $LAT_LON &
+# blueman-applet &
+# redshift-gtk -l $LAT_LON &
 
 if [ $COMPUTER_IDENTIFIER = "main-desktop" ]; then
-  dropbox &
+  # dropbox &
   $HOME/.config/polybar/launch.sh
 fi
 
