@@ -12,6 +12,8 @@ Plug 'ktonga/vim-follow-my-lead'
 Plug 'terryma/vim-expand-region'
 " Plug 'chriskempson/base16-vim'
 Plug 'arcticicestudio/nord-vim'
+Plug 'joshdick/onedark.vim'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'mhinz/vim-startify'
 
 " Code enhancing plugins
@@ -32,11 +34,18 @@ Plug 'itchyny/lightline.vim' | Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtr
 " Plug 'bling/vim-airline' | Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons'
 Plug 'bling/vim-bufferline'
 Plug 'Yggdroot/indentLine'
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 Plug 'rking/ag.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 
 " CSV
 Plug 'chrisbra/csv.vim'
@@ -52,6 +61,7 @@ Plug 'sgur/ctrlp-extensions.vim'
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'jreybert/vimagit'
 
 " General languages
 Plug 'sheerun/vim-polyglot'
@@ -61,7 +71,8 @@ Plug 'trusktr/seti.vim'
 Plug 'christophermca/meta5'
 Plug 'zenorocha/dracula-theme'
 " Plug 'scrooloose/syntastic' "
-Plug 'benekastah/neomake'
+" Plug 'benekastah/neomake'
+Plug 'w0rp/ale'
 Plug 'keith/investigate.vim'
 Plug 'KabbAmine/zeavim.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
@@ -87,7 +98,8 @@ Plug 'moll/vim-node'
 Plug 'othree/yajs.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'walm/jshint.vim'
-Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
+Plug 'flowtype/vim-flow'
+" Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 " Plug 'jelera/vim-javascript-syntax'
 Plug 'mxw/vim-jsx'
 
@@ -108,16 +120,14 @@ call g:plug#end()
 scriptencoding utf-8
 syntax on
 let s:uname = system("echo -n \"$(uname)\"")
-if !v:shell_error && s:uname ==# 'Linux'
-  let g:base16colorspace=256
-endif
+" if !v:shell_error && s:uname ==# 'Linux'
+"   let g:base16colorspace=256
+" endif
 " if &term =~ '256color'
 "   set t_ut=
 " endif
 " set termguicolors
-colorscheme nord
 " set relativenumber
-set background=dark
 set number
 set mouse=a
 set list
@@ -126,12 +136,14 @@ set autowrite
 set swapfile
 set directory=/tmp
 
-set colorcolumn=80
+set colorcolumn=120
 highlight ColorColumn guibg=#211818 ctermbg=235
 set laststatus=2
 set noshowmode
 set lazyredraw
 set softtabstop=2 " makes the spaces feel like real tabs
+set background=dark
+colorscheme nord
 
 let g:mapleader="\<Space>"
 
@@ -140,6 +152,8 @@ set showbreak=↪
 highlight SpecialKey ctermbg=none " make the highlighting of tabs less annoying
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
+
+let g:deoplete#enable_at_startup = 1
 
 let g:indentLine_color_term = 239
 
@@ -208,9 +222,9 @@ let g:ctrlp_extensions = ['funky']
 let g:ctrlp_extensions = ['filetype']
 
 " Tern autocomplete
-set omnifunc=syntaxcomplete#Complete
-" Remaping omni complete for convinience
-inoremap <C-@> <C-x><C-o>
+" set omnifunc=syntaxcomplete#Complete
+" " Remaping omni complete for convinience
+" inoremap <C-@> <C-x><C-o>
 
 " Tern completions
 noremap <Leader>td :TernDef<CR>
@@ -230,6 +244,7 @@ map <Leader>t :TagbarToggle<CR>
 
 " Lightline. Fonts:   
 let g:lightline = {
+  \ 'colorscheme': 'nord',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
@@ -253,7 +268,17 @@ noremap <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_open_new_file = 'r'
 
 " Neomake
-let g:neomake_javascript_enabled_makers = ['eslint']
+" let g:neomake_javascript_enabled_makers = ['eslint']
+
+" Ale
+let g:ale_fixers = {}
+let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_linters = {'javascript': ['eslint', 'flow', 'prettier']}
+let g:ale_javascript_prettier_use_local_config = 1
+let g:ale_fix_on_save = 1
+
+" Flow
+let g:javascript_plugin_flow = 1
 
 " Vim markdown
 let g:vim_markdown_folding_disabled = 1
@@ -287,7 +312,6 @@ augroup configgroup
   autocmd FileType make setlocal noexpandtab
   autocmd FileType * set tabstop=2|set shiftwidth=2|set expandtab
   autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
-  autocmd! BufWritePost * Neomake
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 augroup END
 

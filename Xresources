@@ -95,6 +95,7 @@ xterm*metaSendsEscape: true
 
 ! URxvt SETUP HERE !
 #define termfont xft:Hack Nerd Font:size=12
+! #define termfont xft:FantasqueSansMono Nerd Font Mono:size=12
 URxvt.internalBorder: 0
 URxvt.font: termfont
 URxvt.boldFont: termfont
@@ -102,7 +103,7 @@ URxvt.italicFont: termfont
 URxvt.boldItalicFont: termfont
 URxvt.depth: 32
 ! URxvt.background:	[100]#2e3440
-! URxvt.letterSpace: 0
+! URxvt.letterSpace: 1
 URxvt*scrollBar:                      false
 URxvt*mouseWheelScrollPage:           true
 URxvt*cursorBlink:                    true
