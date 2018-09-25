@@ -35,7 +35,6 @@ Plug 'itchyny/lightline.vim' | Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtr
 Plug 'bling/vim-bufferline'
 Plug 'Yggdroot/indentLine'
 " Plug 'SirVer/ultisnips'
-Plug 'rking/ag.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 " Plug 'ervandew/supertab'
@@ -51,7 +50,8 @@ endif
 Plug 'chrisbra/csv.vim'
 
 " CtrlP plugins
-Plug 'kien/ctrlp.vim'
+" Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'fisadev/vim-ctrlp-cmdpalette'
 Plug 'endel/ctrlp-filetype.vim'
 Plug 'DavidEGx/ctrlp-smarttabs'
@@ -77,6 +77,7 @@ Plug 'keith/investigate.vim'
 Plug 'KabbAmine/zeavim.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'smancill/conky-syntax.vim'
+Plug 'mileszs/ack.vim'
 
 " CSS frameworks
 Plug 'hail2u/vim-css3-syntax'
@@ -99,9 +100,9 @@ Plug 'othree/yajs.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'walm/jshint.vim'
 Plug 'flowtype/vim-flow'
-" Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
-" Plug 'jelera/vim-javascript-syntax'
-Plug 'mxw/vim-jsx'
+Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
+" Plug 'mxw/vim-jsx'
+Plug 'maxmellon/vim-jsx-pretty'
 
 " Openhab
 Plug 'cyberkov/openhab-vim'
@@ -208,6 +209,13 @@ nmap <Leader>lc :lclose<CR>
 " PLUGINS
 " -----------------------------------------------------------------------------
 
+" Ack
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
+
 " Vim-expand-plugin
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
@@ -228,8 +236,10 @@ let g:ctrlp_extensions = ['filetype']
 
 " Tern completions
 noremap <Leader>td :TernDef<CR>
-noremap <Leader>tr :TernRefs<CR>
+noremap <Leader>trd :TernRefs<CR>
 noremap <Leader>tdo :TernDoc<CR>
+noremap <Leader>tt :TernType<CR>
+noremap <Leader>tr :TernRename<CR>
 
 " NERDTree
 map <Leader>n :NERDTreeToggle<CR>
@@ -261,14 +271,14 @@ let g:lightline = {
   \ }
   \ }
 
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
-let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$',
+  \ 'file': '\.so$\|\.dat$|\.DS_Store$'
+  \ }
 let g:ctrlp_use_caching = 0
 noremap <leader>b :CtrlPBuffer<CR>
+noremap <leader>. :CtrlPTag<CR>
 let g:ctrlp_open_new_file = 'r'
-
-" Neomake
-" let g:neomake_javascript_enabled_makers = ['eslint']
 
 " Ale
 let g:ale_fixers = {}
@@ -276,6 +286,21 @@ let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_linters = {'javascript': ['eslint', 'flow', 'prettier']}
 let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_fix_on_save = 1
+
+" let g:javascript_conceal_function             = "ƒ"
+" let g:javascript_conceal_null                 = "ø"
+" let g:javascript_conceal_this                 = "@"
+" let g:javascript_conceal_return               = "⇚"
+" let g:javascript_conceal_undefined            = "¿"
+" let g:javascript_conceal_NaN                  = "ℕ"
+" let g:javascript_conceal_prototype            = "¶"
+" let g:javascript_conceal_static               = "•"
+" let g:javascript_conceal_super                = "Ω"
+" let g:javascript_conceal_arrow_function       = "⇒"
+" let g:javascript_conceal_noarg_arrow_function = "🞅"
+" let g:javascript_conceal_underscore_arrow_function = "🞅"
+"
+" set conceallevel=1
 
 " Flow
 let g:javascript_plugin_flow = 1
