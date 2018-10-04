@@ -14,6 +14,7 @@ Plug 'terryma/vim-expand-region'
 Plug 'arcticicestudio/nord-vim'
 Plug 'joshdick/onedark.vim'
 Plug 'NLKNguyen/papercolor-theme'
+" Plug 'kaicataldo/material.vim'
 Plug 'mhinz/vim-startify'
 
 " Code enhancing plugins
@@ -128,7 +129,7 @@ let s:uname = system("echo -n \"$(uname)\"")
 "   set t_ut=
 " endif
 " set termguicolors
-" set relativenumber
+set relativenumber
 set number
 set mouse=a
 set list
@@ -145,6 +146,10 @@ set lazyredraw
 set softtabstop=2 " makes the spaces feel like real tabs
 set background=dark
 colorscheme nord
+
+let g:nord_italic_comments = 1
+let g:nord_underline = 1
+let g:nord_comment_brightness = 15
 
 let g:mapleader="\<Space>"
 
