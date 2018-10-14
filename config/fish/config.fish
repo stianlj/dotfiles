@@ -1,7 +1,7 @@
 # fish_vi_key_bindings
 set fish_greeting ""
 
-set -gx TERM xterm-256color
+# set -gx TERM xterm-256color
 set -gx LIBVIRT_DEFAULT_URI qemu:///system
 set -gx EDITOR nvim
 
