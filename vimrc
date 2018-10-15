@@ -14,12 +14,14 @@ Plug 'terryma/vim-expand-region'
 Plug 'arcticicestudio/nord-vim'
 Plug 'joshdick/onedark.vim'
 Plug 'NLKNguyen/papercolor-theme'
-" Plug 'kaicataldo/material.vim'
+Plug 'kaicataldo/material.vim'
+Plug 'joshdick/onedark.vim'
 Plug 'mhinz/vim-startify'
 
 " Code enhancing plugins
 Plug 'tpope/vim-surround'
-Plug 'Raimondi/delimitMate'
+" Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
 Plug 'ciaranm/detectindent'
 " Plug 'terryma/vim-multiple-cursor'
 Plug 'tomtom/tcomment_vim'
@@ -35,7 +37,7 @@ Plug 'itchyny/lightline.vim' | Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtr
 " Plug 'bling/vim-airline' | Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons'
 Plug 'bling/vim-bufferline'
 Plug 'Yggdroot/indentLine'
-" Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 " Plug 'ervandew/supertab'
@@ -46,6 +48,9 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+let g:deoplete#enable_at_startup = 1
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
 
 " CSV
 Plug 'chrisbra/csv.vim'
@@ -79,6 +84,8 @@ Plug 'KabbAmine/zeavim.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'smancill/conky-syntax.vim'
 Plug 'mileszs/ack.vim'
+Plug 'ekalinin/Dockerfile.vim'
+
 
 " CSS frameworks
 Plug 'hail2u/vim-css3-syntax'
@@ -147,9 +154,9 @@ set softtabstop=2 " makes the spaces feel like real tabs
 set background=dark
 colorscheme nord
 
-let g:nord_italic_comments = 1
-let g:nord_underline = 1
-let g:nord_comment_brightness = 15
+" let g:nord_italic_comments = 1
+" let g:nord_underline = 1
+" let g:nord_comment_brightness = 15
 
 let g:mapleader="\<Space>"
 
@@ -159,7 +166,6 @@ highlight SpecialKey ctermbg=none " make the highlighting of tabs less annoying
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
 
-let g:deoplete#enable_at_startup = 1
 
 let g:indentLine_color_term = 239
 
@@ -213,8 +219,18 @@ nmap <Leader>lc :lclose<CR>
 
 " PLUGINS
 " -----------------------------------------------------------------------------
+"
 
+" Close tag
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.js,*.ejs"
+
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+"
+" " Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets'
 " Ack
+
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
@@ -227,6 +243,22 @@ inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " use tab to backward cycle
 inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+" imap <CR>     <Plug>(neosnippet_expand_or_jump)
+" smap <CR>     <Plug>(neosnippet_expand_or_jump)
+" xmap <CR>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <expr><TAB>
+\ pumvisible() ? "\<C-n>" :
+\ neosnippet#expandable_or_jumpable() ?
+\    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " Vim-expand-plugin
 vmap v <Plug>(expand_region_expand)
