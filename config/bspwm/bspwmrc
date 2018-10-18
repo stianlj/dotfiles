@@ -59,6 +59,7 @@ compton -b --config="$HOME/.config/compton/compton.conf"
 xscreensaver &
 clipit &
 pasystray &
+megasync &
 # blueman-applet &
 # redshift-gtk -l $LAT_LON &
 
