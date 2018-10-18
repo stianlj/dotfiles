@@ -18,7 +18,7 @@ c.fonts.completion.category = defaultFont
 c.fonts.completion.entry = defaultFont
 
 # Bindings
-config.bind(';yy', 'hint links spawn --detach mpv --force-window yes {hint-url}')
+config.bind(';my', 'hint links spawn --detach mpv --force-window yes {hint-url}')
 config.bind(';ss', 'spawn --userscript search-site')
 
 # Themeing
