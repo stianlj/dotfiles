@@ -1,12 +1,12 @@
 # Variables
-defaultFont = "20px Hack Nerd Font"
+defaultFont = "15px Hack Nerd Font"
 defaultPadding = {"top": 10, "bottom": 10, "left": 10, "right": 10}
 
 # Config
-c.url.start_pages = ["https://duckduckgo.com"]
+c.url.start_pages = ["https://start.duckduckgo.com"]
 c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}'}
 
-c.zoom.default = '150%'
+c.zoom.default = '125%'
 
 c.fonts.tabs = defaultFont
 c.tabs.padding = defaultPadding
