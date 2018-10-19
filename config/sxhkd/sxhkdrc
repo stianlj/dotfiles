@@ -14,6 +14,9 @@ super + d
 super + space
   rofi -show window
 
+super + b
+  buku_run
+
 # make sxhkd reload its configuration files:
 super + Escape
   pkill -USR1 -x sxhkd
