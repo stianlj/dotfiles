@@ -1,12 +1,19 @@
+import os
+
 # Variables
-defaultFont = "15px Hack Nerd Font"
+defaultFont = "20px Hack Nerd Font"
+defaultZoom = "150%"
 defaultPadding = {"top": 10, "bottom": 10, "left": 10, "right": 10}
+
+if os.environ['COMPUTER_IDENTIFIER'] == 'work-laptop':
+    defaultFont = "15px Hack Nerd Font"
+    defaultZoom = "125%"
 
 # Config
 c.url.start_pages = ["https://start.duckduckgo.com"]
 c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}'}
 
-c.zoom.default = '125%'
+c.zoom.default = defaultZoom
 
 c.fonts.tabs = defaultFont
 c.tabs.padding = defaultPadding
