@@ -25,8 +25,9 @@ c.fonts.completion.category = defaultFont
 c.fonts.completion.entry = defaultFont
 
 # Bindings
-config.bind(';my', 'hint links spawn --detach mpv --force-window yes {hint-url}')
-config.bind(';ss', 'spawn --userscript search-site')
+config.bind(';gy', 'hint links spawn --detach mpv --force-window yes {hint-url}')
+config.bind(';gs', 'spawn --userscript search-site')
+config.bind(';gb', 'spawn buku -a {url}')
 
 # Themeing
 config.source('nord-qutebrowser.py')
