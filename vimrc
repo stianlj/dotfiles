@@ -70,7 +70,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'jreybert/vimagit'
 
 " General languages
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 Plug 'lilydjwg/colorizer'
 Plug 'trusktr/seti.vim'
 " Plug 'NLKNguyen/papercolor-theme'
@@ -108,7 +108,7 @@ Plug 'othree/yajs.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'walm/jshint.vim'
 Plug 'flowtype/vim-flow'
-Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
+" Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 " Plug 'mxw/vim-jsx'
 Plug 'maxmellon/vim-jsx-pretty'
 
