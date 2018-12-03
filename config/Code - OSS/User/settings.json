@@ -1,0 +1,10 @@
+{
+  "vim.enableNeovim": true,
+  "vim.neovimPath": "/usr/bin/nvim",
+  "editor.fontSize": 16,
+  "window.zoomLevel": 1,
+  "workbench.colorTheme": "Mariana Nord",
+  "terminal.integrated.shell.linux": "/bin/fish",
+  "telemetry.enableCrashReporter": false,
+  "editor.lineNumbers": "relative"
+}
