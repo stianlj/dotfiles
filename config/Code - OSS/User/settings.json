@@ -5,6 +5,16 @@
   "vim.leader": "<space>",
   "vim.sneak": true,
   "vim.statusBarColorControl": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        ":"
+      ],
+      "commands": [
+        "workbench.action.showCommands",
+      ]
+    }
+  ],
   "editor.fontSize": 16,
   "window.zoomLevel": 1,
   "workbench.colorTheme": "Mariana Nord",
