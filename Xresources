@@ -106,6 +106,9 @@ rofi.separator-style:                none
 rofi.hide-scrollbar:                 true
 rofi.theme: ~/.themes/rofi/custom-nord.rasi
 
+st.font: Hack Nerd Font:pixelsize=15:antialias=true:autohint=true;
+st.bold_font: 1
+st.shell: /usr/bin/fish
 
 
 XTerm*faceName: Hack Nerd Font:size=12
