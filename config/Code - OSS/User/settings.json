@@ -5,16 +5,6 @@
   "vim.leader": "<space>",
   "vim.sneak": true,
   "vim.statusBarColorControl": true,
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": [
-        ":"
-      ],
-      "commands": [
-        "workbench.action.showCommands",
-      ]
-    }
-  ],
   "editor.fontSize": 16,
   "window.zoomLevel": 1,
   "workbench.colorTheme": "Mariana Nord",
@@ -26,5 +16,6 @@
     "statusBar.noFolderBackground": "#005f5f",
     "statusBar.debuggingBackground": "#005f5f"
   },
-  "gitlens.advanced.telemetry.enabled": false
+  "gitlens.advanced.telemetry.enabled": false,
+  "window.titleBarStyle": "native"
 }
