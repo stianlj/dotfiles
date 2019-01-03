@@ -50,6 +50,7 @@ bspc rule -a mpv state=floating border=off
 bspc rule -a qutebrowser border=off
 bspc rule -a Blueman-manager state=floating
 bspc rule -a Alacritty border=off
+bspc rule -a st border=off
 bspc rule -a jetbrains-idea border=off
 bspc rule -a Surf state=tiled
 

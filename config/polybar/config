@@ -76,6 +76,22 @@ type = custom/script
 exec = ~/.config/polybar/scripts/battery-combined-shell.sh
 interval = 10
 
+[module/system-nvidia-smi]
+type = custom/script
+exec = ~/.config/polybar/scripts/system-nvidia-smi.sh
+interval = 10
+
+[module/updates-arch-combined]
+type = custom/script
+exec = ~/.config/polybar/scripts/updates-arch-combined.sh
+interval = 600
+
+[module/player-mpris-tail]
+type = custom/script
+exec = ~/.config/polybar/scripts/player-mpris-tail.py -f '{artist} - {title}'
+tail = true
+label = %output%
+
 [module/cpu]
 format-label = internal/cpu
 format = <label> <ramp-coreload>
@@ -224,8 +240,8 @@ font-2 = Termsynu:size=16;-1
 font-3 = FontAwesome:size=16;0
 separator = :
 locale = en_US.UTF-8
-modules-left = bspwm title
-modules-right = network cpu temperature memory date
+modules-left = bspwm title player-mpris-tail
+modules-right = network system-nvidia-smi cpu temperature memory updates-arch-combined date
 tray-position = right
 tray-detached = false
 tray-maxsize = 16
