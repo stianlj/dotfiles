@@ -121,6 +121,8 @@ Plug 'metakirby5/codi.vim'
 " sxhkd
 Plug 'kovetskiy/sxhkd-vim'
 
+Plug 'vifm/vifm.vim'
+
 call g:plug#end()
 
 " SETTINGS
