@@ -35,8 +35,11 @@ super + Delete ; r
 super + Delete ; l
   xscreensaver-command --lock
 
-super + p
+super + o
   kitty --name="pass-popup" lpi
+
+super + p
+  bwmenu -c 30
 
 super + m
   kitty --name="ncmpcpp-popup" ncmpcpp
