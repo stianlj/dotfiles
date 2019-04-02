@@ -92,6 +92,11 @@ exec = ~/.config/polybar/scripts/player-mpris-tail.py -f '{artist} - {title}'
 tail = true
 label = %output%
 
+[module/system-gpu-intel]
+type = custom/script
+exec = ~/.config/polybar/scripts/system-gpu-intel.sh
+interval = 20
+
 [module/cpu]
 format-label = internal/cpu
 format = <label> <ramp-coreload>
@@ -210,7 +215,7 @@ font-3 = FontAwesome:size=12;0
 separator = :
 locale = en_US.UTF-8
 modules-left = menu-power bspwm title
-modules-right = network wireless-network docked-network battery-combined-shell cpu temperature memory date
+modules-right = network wireless-network docked-network battery-combined-shell system-gpu-intel cpu temperature memory date
 tray-position = right
 tray-detached = false
 tray-maxsize = 16

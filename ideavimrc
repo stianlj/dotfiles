@@ -1,6 +1,8 @@
 set showmode
 set incsearch
 set hlsearch
+set surround
+set multiple-cursors
 
 let mapleader = " "
 
@@ -22,6 +24,7 @@ nmap <Leader>n :action ActivateProjectToolWindow<CR>
 nmap <Leader>be :action Switcher<CR>
 nmap <Leader>m :action CodeGlance.toggle<CR>
 nmap <Leader>fg :action FindInPath<CR>
+nmap <Leader>p :action ReformatWithPrettierAction<CR>
 
 " https://raw.githubusercontent.com/ericvanjohnson/dot_files/master/.ideavimrc
 " https://github.com/Valloric/dotfiles/blob/master/intellij/ideavimrc
