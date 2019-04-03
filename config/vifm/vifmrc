@@ -64,7 +64,7 @@ set norunexec
 
 " Selected color scheme
 
-colorscheme nord
+colorscheme lucius
 
 " Format for displaying time in file list. For example:
 " TIME_STAMP_FORMAT=%m/%d-%H:%M
@@ -395,6 +395,9 @@ filextype */
 " For Windows:
 " filetype * start, explorer
 " ------------------------------------------------------------------------------
+"
+
+set shell=/bin/fish
 
 " file types
 set classify=' :dir:/, :exe:, :reg:, :link:'
