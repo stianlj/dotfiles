@@ -64,7 +64,7 @@ set norunexec
 
 " Selected color scheme
 
-colorscheme lucius
+colorscheme ph
 
 " Format for displaying time in file list. For example:
 " TIME_STAMP_FORMAT=%m/%d-%H:%M
@@ -310,6 +310,8 @@ filetype *.zip,*.jar,*.war,*.ear,*.oxt,*.apkg
        \ zip -sf %c | less,
        \ {Extract here}
        \ tar -xf %c,
+       \ {Open with mcomix}
+       \ mcomix %c,
 fileviewer *.zip,*.jar,*.war,*.ear,*.oxt zip -sf %c
 
 " ArchiveMount
@@ -396,8 +398,6 @@ filextype */
 " filetype * start, explorer
 " ------------------------------------------------------------------------------
 "
-
-set shell=/bin/fish
 
 " file types
 set classify=' :dir:/, :exe:, :reg:, :link:'
