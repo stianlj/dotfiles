@@ -140,6 +140,10 @@ command! make !!make %a
 command! mkcd :mkdir %a | cd %a
 command! vgrep vim "+grep %a"
 command! reload :write | restart
+command! rcopy
+      \ :execute '!for f in %f; do rsync -avz --info=progress2 --no-perms --no-owner --no-group --no-times "${f}" %D; done'
+command! rdelete rm -rf %f
+command! dush du -sh %c %m 2> /dev/null
 
 " ------------------------------------------------------------------------------
 
@@ -226,7 +230,7 @@ fileviewer *.mp3 mp3info
 fileviewer *.flac soxi
 
 " Video
-filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
+filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,*.gif,
          \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
          \*.as[fx]
         \ mpv %f %i &
@@ -253,7 +257,7 @@ filetype *.[1-8] man ./%c
 fileviewer *.[1-8] man ./%c | col -b
 
 " Images
-filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
+filextype *.bmp,*.jpg,*.jpeg,*.png,*.xpm
         \ {View in sxiv}
         \ sxiv %f,
         \ {View in gpicview}
@@ -348,7 +352,7 @@ filetype *.ftp
 filetype *.7z
        \ {Mount with fuse-7z}
        \ FUSE_MOUNT|fuse-7z %SOURCE_FILE %DESTINATION_DIR,
-fileviewer *.7z 7z l %c
+fileviewer *.7z als %c
 
 " Office files
 filextype *.odt,*.doc,*.docx,*.xls,*.xlsx,*.odp,*.pptx libreoffice %f &

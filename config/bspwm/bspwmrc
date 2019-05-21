@@ -2,10 +2,11 @@
 
 if [ $COMPUTER_IDENTIFIER = "main-desktop" ]; then
   xrandr --output DVI-D-0 --auto --output HDMI-0 --primary --auto --right-of DVI-D-0 --output DVI-I-1 --auto --rotate left --right-of HDMI-0 --output DP-1 --auto --above HDMI-0 --rotate left
+  # xrandr --output DVI-D-0 --auto --output HDMI-0 --primary --auto --right-of DVI-D-0 --output DVI-I-1 --auto --rotate left --right-of HDMI-0
   bspc monitor $LEFT_MONITOR -d 2 3 4
   bspc monitor $CENTER_MONITOR -d 5 6 7
   bspc monitor $RIGHT_MONITOR -d 8 9 10
-  xinput map-to-output 16 DP-1
+  # xinput map-to-output 16 DP-1
   # bspc monitor -d 1 2 3 4 5 6 7 8 9 10
   # polybar middle-$COMPUTER_IDENTIFIER &
 fi
