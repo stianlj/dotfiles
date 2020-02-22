@@ -122,7 +122,7 @@ XTerm*faceName: Hack Nerd Font:size=12
 xterm*metaSendsEscape: true
 
 ! URxvt SETUP HERE !
-#define termfont xft:Hack Nerd Font:size=12
+#define termfont xft:Hack Nerd Font:size=13
 ! #define termfont xft:FantasqueSansMono Nerd Font Mono:size=12
 URxvt.internalBorder: 0
 URxvt.font: termfont

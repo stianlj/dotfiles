@@ -12,6 +12,7 @@ if os.environ['COMPUTER_IDENTIFIER'] == 'work-laptop':
 # Config
 c.url.start_pages = ["https://start.duckduckgo.com"]
 c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}'}
+c.notifications = False
 
 c.zoom.default = defaultZoom
 
