@@ -56,6 +56,13 @@
 
 *.nordColor12: nord12
 
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
+Xft.hintin: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
 xscreensaver.splash: false
 
 !font settings
