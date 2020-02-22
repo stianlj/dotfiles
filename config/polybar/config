@@ -76,6 +76,11 @@ type = custom/script
 exec = ~/.config/polybar/scripts/battery-combined-shell.sh
 interval = 10
 
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+
 [module/system-nvidia-smi]
 type = custom/script
 exec = ~/.config/polybar/scripts/system-nvidia-smi.sh
@@ -215,10 +220,42 @@ font-3 = FontAwesome:size=12;0
 separator = :
 locale = en_US.UTF-8
 modules-left = menu-power bspwm title
-modules-right = network wireless-network docked-network battery-combined-shell system-gpu-intel cpu temperature memory date
+modules-right = network wireless-network docked-network battery cpu temperature memory date
 tray-position = right
 tray-detached = false
 tray-maxsize = 16
+tray-background = ${colors.background}
+tray-offset-x = 0
+tray-offset-y = 0
+tray-padding = 2
+tray-scale = 1.0
+enable-ipc = true
+
+[bar/middle-work-laptop-hidpi]
+monitor = ${env:CENTER_MONITOR}
+width = 100%
+height = 62
+dpi = 144
+bottom = ${env:CENTER_POLYBAR_BOTTOM}
+background = ${colors.background}
+foreground = ${colors.foreground}
+underline-size = 1
+underline-color = ${colors.red}
+padding-left = 0
+padding-right = 0
+module-margin-left = 1
+module-margin-right = 1
+font-0 = Hack Nerd Font:size=12;2
+font-1 = MaterialIcons:size=10;0
+font-2 = Termsynu:size=12;-1
+font-3 = FontAwesome:size=12;0
+separator = :
+locale = en_US.UTF-8
+modules-left = menu-power bspwm title
+modules-right = network wireless-network docked-network battery cpu temperature memory date
+tray-position = right
+tray-detached = false
+tray-maxsize = 32
 tray-background = ${colors.background}
 tray-offset-x = 0
 tray-offset-y = 0

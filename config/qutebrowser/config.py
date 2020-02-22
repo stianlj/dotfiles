@@ -7,7 +7,7 @@ defaultPadding = {"top": 10, "bottom": 10, "left": 10, "right": 10}
 
 if os.environ['COMPUTER_IDENTIFIER'] == 'work-laptop':
     defaultFont = "15px Hack Nerd Font"
-    defaultZoom = "125%"
+    defaultZoom = "100%"
 
 # Config
 c.url.start_pages = ["https://start.duckduckgo.com"]
@@ -23,6 +23,8 @@ c.statusbar.padding = defaultPadding
 
 c.fonts.completion.category = defaultFont
 c.fonts.completion.entry = defaultFont
+
+c.content.notifications = False
 
 # Bindings
 config.bind(';gy', 'hint links spawn --detach mpv --force-window yes {hint-url}')

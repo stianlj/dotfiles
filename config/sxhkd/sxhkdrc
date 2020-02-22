@@ -4,7 +4,9 @@
 
 # terminal emulator
 super + Return
- WINIT_HIDPI_FACTOR=1.0 alacritty -e fish
+  WINIT_HIDPI_FACTOR=1.0 alacritty -e fish
+# super + Return
+#  alacritty -e fish
 # super + Return
 #   urxvt -e fish
 
@@ -61,7 +63,7 @@ XF86MonBrightness{Up,Down}
   xbacklight -{inc,dec} 20
 
 Print
-  gscreenshoT-cli
+  gscreenshot-cli
 
 shift + Print
   gscreenshot-cli --selection

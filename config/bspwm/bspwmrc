@@ -25,13 +25,13 @@ if [ $COMPUTER_IDENTIFIER = "work-laptop" ]; then
     # bspc monitor HDMI\-1\-3 -d 4 5 6 7
     # bspc monitor DP\-1\-3 -d 8 9 10
     export LEFT_MONITOR="eDP1"
-    export CENTER_MONITOR="DP1-1"
-    export RIGHT_MONITOR="DP1-2"
+    export CENTER_MONITOR="DP1-3"
+    export RIGHT_MONITOR="DP1-1"
     export CENTER_POLYBAR_BOTTOM="true"
 
     bspc monitor eDP1 -d 1 2 3
-    bspc monitor DP1\-1 -d 4 5 6 7
-    bspc monitor DP1\-2 -d 8 9 10
+    bspc monitor DP1\-3 -d 4 5 6 7
+    bspc monitor DP1\-1 -d 8 9 10
 
     polybar middle-$COMPUTER_IDENTIFIER &
     polybar left &
@@ -39,7 +39,7 @@ if [ $COMPUTER_IDENTIFIER = "work-laptop" ]; then
   else
     # This should include more. Maybe in sync with udev?
     bspc monitor -d 1 2 3 4 5 6 7 8 9 10
-    polybar middle-$COMPUTER_IDENTIFIER &
+    polybar middle-$COMPUTER_IDENTIFIER-hidpi &
   fi
 fi
 
@@ -63,15 +63,16 @@ bspc rule -a Alacritty border=off
 bspc rule -a st border=off
 bspc rule -a jetbrains-idea border=off
 bspc rule -a Surf state=tiled
+bspc rule -a Emacs state=tiled
 
 # autostart
 setxkbmap -option compose:ralt
 setxkbmap -option caps:escape
-compton -b --config="$HOME/.config/compton/compton.conf"
+# compton -b --config="$HOME/.config/compton/compton.conf"
 xscreensaver &
 clipit &
 pasystray &
-megasync &
+# megasync &
 # blueman-applet &
 # redshift-gtk -l $LAT_LON &
 
@@ -81,9 +82,9 @@ if [ $COMPUTER_IDENTIFIER = "main-desktop" ]; then
 fi
 
 if [ $COMPUTER_IDENTIFIER = "work-laptop" ]; then
-  conky -c ~/.config/conky/conky.conf &
+  # conky -c ~/.config/conky/conky.conf &
   nm-applet &
-  systemctl --user start mopidy
+  # systemctl --user start mopidy
   # hamster &
 fi
 
