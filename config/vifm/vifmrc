@@ -1,3 +1,4 @@
+" -*- mode: vimrc -*-
 " vim: filetype=vifm :
 " Sample configuration file for vifm (last updated: 20 July, 2018)
 " You can edit this file by hand.
@@ -116,7 +117,8 @@ set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
 
 " :mark mark /full/directory/path [filename]
 
-mark h ~/
+mark h /home/stianlj
+mark m /mnt/morty/
 
 " ------------------------------------------------------------------------------
 
@@ -140,13 +142,19 @@ command! make !!make %a
 command! mkcd :mkdir %a | cd %a
 command! vgrep vim "+grep %a"
 command! reload :write | restart
-command! rcopy
-      \ :execute '!for f in %f; do rsync -avz --info=progress2 --no-perms --no-owner --no-group --no-times "${f}" %D; done'
-command! rdelete rm -rf %f
+command! xcopy
+      \ :execute '!for f in %f; do rsync -avh --info=progress2 --no-perms --no-owner --no-group --no-times "${f}" %D; done'
+command! xcopydel
+      \ :execute '!for f in %f; do rsync -avh --info=progress2 --no-perms --no-owner --no-group --no-times "${f}" %D && rm -rf "${f}"; done'
+" command! x7z
+"       \ :execute '!for f in %f; do 7z x "${f}"; done'
+command! xdelete rm -rf %f
 command! dush du -sh %c %m 2> /dev/null
+command! mi mediainfo %c %m 2> /dev/null
+command! translate
+      \ :execute '!mv %c "$(trans -brief ru:en \"%c\") (%c)"'
 
-" ------------------------------------------------------------------------------
-
+"------------------------------------------------------------------------------
 " The file type is for the default programs to be used with
 " a file extension.
 " :filetype pattern1,pattern2 defaultprogram,program2
@@ -190,6 +198,10 @@ fileviewer *.cbr,*.cbz
         \ %pc
         \ vifmimg clear
 
+filextype *.cbr,*.cbz
+        \ {View in mcomix}
+        \ mcomix -f -b %f
+
 fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
         \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
         \ vifmimg videopreview %px %py %pw %ph %c
@@ -230,16 +242,19 @@ fileviewer *.mp3 mp3info
 fileviewer *.flac soxi
 
 " Video
-filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,*.gif,
+filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
          \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
          \*.as[fx]
-        \ mpv %f %i &
+         \ mpv --loop-file --mute=yes %f %i &
 " fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
 "           \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
 "           \*.as[fx]
 "          \ ffprobe -pretty %c 2>&1
 
-" Web
+"  Gif
+filextype *.gif
+        \ mplayer %f %i &
+"  Web
 filextype *.html,*.htm
         \ {Open with dwb}
         \ dwb %f %i &,
@@ -259,7 +274,7 @@ fileviewer *.[1-8] man ./%c | col -b
 " Images
 filextype *.bmp,*.jpg,*.jpeg,*.png,*.xpm
         \ {View in sxiv}
-        \ sxiv %f,
+        \ sxiv_all %c -Z -q %i &,
         \ {View in gpicview}
         \ gpicview %c,
         \ {View in shotwell}

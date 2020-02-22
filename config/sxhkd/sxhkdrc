@@ -61,7 +61,7 @@ XF86MonBrightness{Up,Down}
   xbacklight -{inc,dec} 20
 
 Print
-  gscreenshoT-cli
+  gscreenshot-cli
 
 shift + Print
   gscreenshot-cli --selection

@@ -246,7 +246,7 @@ font-3 = FontAwesome:size=16;0
 separator = :
 locale = en_US.UTF-8
 modules-left = bspwm title player-mpris-tail
-modules-right = network system-nvidia-smi cpu temperature memory updates-arch-combined date
+modules-right = network cpu temperature memory updates-arch-combined date
 tray-position = right
 tray-detached = false
 tray-maxsize = 16

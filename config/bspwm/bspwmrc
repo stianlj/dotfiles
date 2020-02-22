@@ -1,10 +1,10 @@
 #!/bin/dash
 
 if [ $COMPUTER_IDENTIFIER = "main-desktop" ]; then
-  xrandr --output DVI-D-0 --auto --output HDMI-0 --primary --auto --right-of DVI-D-0 --output DVI-I-1 --auto --rotate left --right-of HDMI-0 --output DP-1 --auto --above HDMI-0 --rotate left
+  xrandr --output DVI-D-0 --auto --output HDMI-A-0 --primary --auto --right-of DVI-D-0 --output HDMI-A-1 --auto --rotate left --right-of HDMI-A-0 --output DisplayPort-0 --auto --above HDMI-A-0 --rotate left
   # xrandr --output DVI-D-0 --auto --output HDMI-0 --primary --auto --right-of DVI-D-0 --output DVI-I-1 --auto --rotate left --right-of HDMI-0
-  bspc monitor $LEFT_MONITOR -d 2 3 4
-  bspc monitor $CENTER_MONITOR -d 5 6 7
+  bspc monitor $LEFT_MONITOR -d 1 2 3
+  bspc monitor $CENTER_MONITOR -d 4 5 6 7
   bspc monitor $RIGHT_MONITOR -d 8 9 10
   # xinput map-to-output 16 DP-1
   # bspc monitor -d 1 2 3 4 5 6 7 8 9 10
@@ -63,6 +63,7 @@ bspc rule -a Alacritty border=off
 bspc rule -a st border=off
 bspc rule -a jetbrains-idea border=off
 bspc rule -a Surf state=tiled
+bspc rule -a Emacs state=tiled
 
 # autostart
 setxkbmap -option compose:ralt
@@ -78,6 +79,7 @@ megasync &
 if [ $COMPUTER_IDENTIFIER = "main-desktop" ]; then
   # dropbox &
   $HOME/.config/polybar/launch.sh
+  indicator-kdeconnect &
 fi
 
 if [ $COMPUTER_IDENTIFIER = "work-laptop" ]; then
