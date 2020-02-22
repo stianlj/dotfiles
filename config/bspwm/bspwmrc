@@ -28,6 +28,7 @@ if [ $COMPUTER_IDENTIFIER = "work-laptop" ]; then
     export CENTER_MONITOR="DP1-3"
     export RIGHT_MONITOR="DP1-1"
     export CENTER_POLYBAR_BOTTOM="true"
+    export EMACS_FONT_SIZE="20"
 
     bspc monitor eDP1 -d 1 2 3
     bspc monitor DP1\-3 -d 4 5 6 7
@@ -40,6 +41,7 @@ if [ $COMPUTER_IDENTIFIER = "work-laptop" ]; then
     # This should include more. Maybe in sync with udev?
     bspc monitor -d 1 2 3 4 5 6 7 8 9 10
     polybar middle-$COMPUTER_IDENTIFIER-hidpi &
+    export EMACS_FONT_SIZE="28"
   fi
 fi
 
