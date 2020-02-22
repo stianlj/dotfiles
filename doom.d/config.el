@@ -1,8 +1,10 @@
+(setq font-size (string-to-number (getenv "EMACS_FONT_SIZE")))
+
 (setq user-full-name "Stian Lund Johansen"
       user-mail-address "stian@lundjohansen.no")
-(setq doom-font (font-spec :family "Source Code Pro Semibold" :size 28))
+(setq doom-font (font-spec :family "Source Code Pro Semibold" :size font-size))
 
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-vibrant)
 
 (setq org-directory "~/org/")
 
