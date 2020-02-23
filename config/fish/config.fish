@@ -1,4 +1,4 @@
-fish_vi_key_bindings
+fish_vi_key_bindings 2>/dev/null
 set fish_greeting ""
 
 # set -gx TERM xterm-256color
@@ -9,3 +9,7 @@ bind yy fish_clipboard_copy
 bind p fish_clipboard_paste
 
 thefuck --alias | source
+
+if test "$TERM" = "eterm-color"
+    function fish_title; end
+end
