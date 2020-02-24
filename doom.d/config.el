@@ -1,4 +1,5 @@
 (setq font-size (string-to-number (getenv "EMACS_FONT_SIZE")))
+(setenv "SHELL" "/usr/bin/fish")
 
 (setq user-full-name "Stian Lund Johansen"
       user-mail-address "stian@lundjohansen.no")
