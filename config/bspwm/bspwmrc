@@ -65,7 +65,7 @@ bspc rule -a Alacritty border=off
 bspc rule -a st border=off
 bspc rule -a jetbrains-idea border=off
 bspc rule -a Surf state=tiled
-bspc rule -a Emacs state=tiled
+bspc rule -a Emacs state=tiled border=off
 
 # autostart
 setxkbmap -option compose:ralt
@@ -80,6 +80,8 @@ pasystray &
 
 if [ $COMPUTER_IDENTIFIER = "main-desktop" ]; then
   # dropbox &
+  megasync &
+  nextcloud --background &
   $HOME/.config/polybar/launch.sh
   indicator-kdeconnect &
 fi
