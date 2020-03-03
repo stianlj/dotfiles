@@ -5,6 +5,9 @@
       user-mail-address "stian@lundjohansen.no")
 (setq doom-font (font-spec :family "Source Code Pro Semibold" :size font-size))
 
+(display-time-mode 1)
+(setq display-time-24hr-format 1)
+
 (setq doom-theme 'doom-acario-dark)
 
 (setq org-directory "~/org/")
