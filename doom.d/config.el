@@ -12,11 +12,19 @@
 
 ;; MODELINE
 (display-time-mode 1)
-;; (display-battery-mode 1)
+(display-battery-mode 1)
 (setq display-time-24hr-format 1)
 
 ;; EDITOR
 (setq display-line-numbers-type 'relative)
+
+;; BINDINGS
+(map!
+ "C-h" #'evil-window-left
+ "C-j" #'evil-window-down
+ "C-k" #'evil-window-up
+ "C-l" #'evil-window-right
+ )
 
 ;; ORG-MODE
 (setq org-directory "~/org/")
