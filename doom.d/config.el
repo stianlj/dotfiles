@@ -1,35 +1,43 @@
+;; VARIABLES AND ENVIRONMENT
 (setq font-size (string-to-number (getenv "EMACS_FONT_SIZE")))
 (setenv "SHELL" "/usr/bin/fish")
 
+;; USER
 (setq user-full-name "Stian Lund Johansen"
       user-mail-address "stian@lundjohansen.no")
-(setq doom-font (font-spec :family "Source Code Pro Semibold" :size font-size))
 
+;; MODELINE
 (display-time-mode 1)
+(display-battery-mode 1)
 (setq display-time-24hr-format 1)
 
-(setq doom-theme 'doom-acario-dark)
+;; DOOM CONFIG
+(setq doom-theme 'doom-one)
+(setq doom-font (font-spec :family "Source Code Pro Semibold" :size font-size))
 
-(setq org-directory "~/org/")
-
+;; EDITOR
 (setq display-line-numbers-type 'relative)
 
+;; ORG-MODE
+(setq org-directory "~/org/")
+
+;; JAVASCRIPT/TYPESCRIPT
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
 
-(defun setup-tide-mode ()
-  (interactive)
-  (tide-setup)
-  (flycheck-mode +1)
-  (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (eldoc-mode +1)
-  (tide-hl-identifier-mode +1)
-  (company-mode +1))
+;; (defun setup-tide-mode ()
+;;   (interactive)
+;;   (tide-setup)
+;;   (flycheck-mode +1)
+;;   (setq flycheck-check-syntax-automatically '(save mode-enabled))
+;;   (eldoc-mode +1)
+;;   (tide-hl-identifier-mode +1)
+;;   (company-mode +1))
 
 ;; aligns annotation to the right hand side
-(setq company-tooltip-align-annotations t)
+;; (setq company-tooltip-align-annotations t)
 
-(add-hook 'typescript-mode-hook #'setup-tide-mode)
+;; (add-hook 'typescript-mode-hook #'setup-tide-mode)
 ;; (add-hook 'typescript-mode-hook 'prettier-js-mode)
 ;; (add-hook 'js2-mode-hook 'prettier-js-mode)
 ;; (add-hook 'web-mode-hook 'prettier-js-mode)
