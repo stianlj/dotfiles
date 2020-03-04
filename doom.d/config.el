@@ -6,14 +6,14 @@
 (setq user-full-name "Stian Lund Johansen"
       user-mail-address "stian@lundjohansen.no")
 
-;; MODELINE
-(display-time-mode 1)
-(display-battery-mode 1)
-(setq display-time-24hr-format 1)
-
 ;; DOOM CONFIG
 (setq doom-theme 'doom-one)
 (setq doom-font (font-spec :family "Source Code Pro Semibold" :size font-size))
+
+;; MODELINE
+(display-time-mode 1)
+;; (display-battery-mode 1)
+(setq display-time-24hr-format 1)
 
 ;; EDITOR
 (setq display-line-numbers-type 'relative)
