@@ -1,5 +1,6 @@
 ;; VARIABLES AND ENVIRONMENT
 (setq font-size (string-to-number (getenv "EMACS_FONT_SIZE")))
+(setq computer-identifier (getenv "COMPUTER_IDENTIFIER"))
 (setenv "SHELL" "/usr/bin/fish")
 
 ;; USER
@@ -18,6 +19,9 @@
 ;; EDITOR
 (setq display-line-numbers-type 'relative)
 
+;; PROJECTILE
+(setq projectile-project-search-path '("~/Code/Work/applications"))
+
 ;; BINDINGS
 (map!
  "C-h" #'evil-window-left
@@ -27,7 +31,12 @@
  )
 
 ;; ORG-MODE
-(setq org-directory "~/org/")
+(setq org-agenda-files '("~/org-agenda/" "~/Nextcloud/Agenda/"))
+;; (setq org-directory "~/org/")
+;; (if (eq 'computer-identifier "work-laptop")
+;;       (setq org-agenda-files '("~/org-agenda/" "~/Nextcloud/Agenda/")))
+;; (if (eq 'computer-identifier "main-desktop")
+;;       (setq org-agenda-files '("~/Nextcloud/Agenda/")))
 
 ;; JAVASCRIPT/TYPESCRIPT
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
