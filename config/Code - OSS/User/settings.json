@@ -12,10 +12,10 @@
   "telemetry.enableCrashReporter": false,
   "editor.lineNumbers": "relative",
   "workbench.colorCustomizations": {
-    "statusBar.background": "#005f5f",
-    "statusBar.noFolderBackground": "#005f5f",
-    "statusBar.debuggingBackground": "#005f5f"
+    "statusBar.background": "#007acc",
+    "statusBar.noFolderBackground": "#007acc",
+    "statusBar.debuggingBackground": "#007acc"
   },
   "gitlens.advanced.telemetry.enabled": false,
-  "window.titleBarStyle": "native"
+  "window.titleBarStyle": "native",
 }

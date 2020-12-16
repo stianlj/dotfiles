@@ -35,6 +35,8 @@
 (display-fill-column-indicator-mode 1)
 ;; (setq display-fill-column-indicator-character '|')
 ;; (setq display-fill-column-indicator-column 80)
+(setq evil-split-window-below t
+      evil-vsplit-window-right t)
 
 ;; MAIL
 (when (string-match-p computer-identifier "main-desktop")

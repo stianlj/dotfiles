@@ -70,9 +70,6 @@ bspc config single_monocle true
 bspc config focus_follows_pointer true
 bspc config pointer_follows_monitor true
 bspc config pointer_follows_focus true
-# bspc config normal_border_color \#2e3440
-# bspc config active_border_color \#2e3440
-# bspc config focused_border_color \#2e3440
 
 bspc config external_rules_command ~/.config/bspwm/external_rules
 bspc rule -a mpv state=floating border=off
@@ -88,18 +85,13 @@ bspc rule -a Emacs state=tiled border=off
 # autostart
 setxkbmap -option compose:ralt
 setxkbmap -option caps:escape
-# compton -b --config="$HOME/.config/compton/compton.conf"
-picom --experimental-backends -b
-# deadd-notification-center &
 xscreensaver &
 clipit &
 pasystray &
-# megasync &
-# blueman-applet &
-# redshift-gtk -l $LAT_LON &
 
 if [ $COMPUTER_IDENTIFIER = "main-desktop" ]; then
   # dropbox &
+  picom --experimental-backends -b
   megasync &
   nextcloud --background &
   $HOME/.config/polybar/launch.sh
