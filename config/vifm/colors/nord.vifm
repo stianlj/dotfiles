@@ -1,3 +1,4 @@
+" -*- mode: vimrc -*-
 highlight clear
 
 highlight Border        cterm=none      ctermfg=none       ctermbg=none

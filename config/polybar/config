@@ -1,11 +1,14 @@
 [colors]
-background = ${xrdb:background}
+background = #DD00141d
+; background = ${xrdb:background}
 foreground = ${xrdb:foreground}
-active_background = ${xrdb:color6}
-active_foreground = ${xrdb:color0}
+active_background = ${xrdb:color4}
+active_foreground = ${xrdb:foreground}
 urgent_background = ${xrdb:color1}
-urgent_foreground = ${xrdb:color0}
+urgent_foreground = ${xrdb:foreground}
 unfocused_background = ${xrdb:color8}
+unfocused_foreground = ${xrdb:foreground}
+occupied_background = ${xrdb:color14}
 cyan = ${xrdb:color4} 
 yellow = ${xrdb:color11}
 green = ${xrdb:color12}
@@ -160,12 +163,13 @@ label-dimmed = %name%: %icon%
 label-dimmed-padding = 2
 label-occupied = %name%: %icon%
 label-occupied-padding = 2
+label-occupied-background = ${colors.occupied_background}
 label-urgent = %name%: %icon%
 label-urgent-foreground = ${colors.urgent_foreground}
 label-urgent-background = ${colors.urgent_background}
 label-urgent-padding = 2
 label-empty = %name%: %icon%
-label-empty-foreground = ${colors.unfocused_background}
+label-empty-foreground = ${colors.unfocused_foreground}
 label-empty-padding = 2
 
 [bar/left]
@@ -198,6 +202,21 @@ font-2 = Termsynu:size=8;-1
 font-3 = FontAwesome:size=10;0
 locale = en_US.UTF-8
 modules-left = bspwm
+enable-ipc = true
+
+[bar/top]
+monitor = ${env:TOP_MONITOR}
+width = 100%
+height = 50
+bottom = true
+background = ${colors.background}
+foreground = ${colors.foreground}
+font-0 = JetBrainsMonoMedium Nerd Font Mono:size=16;2
+font-1 = MaterialIcons:size=16;0
+font-2 = Termsynu:size=14;-1
+font-3 = FontAwesome:size=14;0
+locale = en_US.UTF-8
+modules-center = bspwm
 enable-ipc = true
 
 [bar/middle-work-laptop]
@@ -266,7 +285,7 @@ enable-ipc = true
 [bar/middle-main-desktop]
 monitor = ${env:CENTER_MONITOR}
 width = 100%
-height = 50
+height = 40
 bottom = ${env:CENTER_POLYBAR_BOTTOM}
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -276,10 +295,10 @@ padding-left = 0
 padding-right = 0
 module-margin-left = 1
 module-margin-right = 1
-font-0 = Hack Nerd Font:size=16;2
-font-1 = MaterialIcons:size=16;0
-font-2 = Termsynu:size=16;-1
-font-3 = FontAwesome:size=16;0
+font-0 = JetBrainsMonoMedium Nerd Font Mono:size=14;2
+font-1 = MaterialIcons:size=14;0
+font-2 = Termsynu:size=14;-1
+font-3 = FontAwesome:size=14;0
 separator = :
 locale = en_US.UTF-8
 modules-left = bspwm title player-mpris-tail

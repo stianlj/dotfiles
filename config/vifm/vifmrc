@@ -45,9 +45,8 @@ set nofollowlinks
 
 " set fastrun
 
-" Natural sort of (version) numbers within text.
-
-set sortnumbers
+" Sort
+set sort=iname
 
 " Maximum number of changes that can be undone.
 
@@ -65,13 +64,13 @@ set norunexec
 
 " Selected color scheme
 
-colorscheme ph
+colorscheme minimal
 
 " Format for displaying time in file list. For example:
 " TIME_STAMP_FORMAT=%m/%d-%H:%M
 " See man date or man strftime for details.
 
-set timefmt=%m/%d\ %H:%M
+set timefmt=%d/%m\ %H:%M
 
 " Show list of matches on tab completion in command-line mode
 
@@ -94,7 +93,8 @@ set smartcase
 
 " Don't highlight search results automatically
 
-set nohlsearch
+" set nohlsearch
+set hlsearch
 
 " Use increment searching (search while typing)
 set incsearch
@@ -142,14 +142,23 @@ command! make !!make %a
 command! mkcd :mkdir %a | cd %a
 command! vgrep vim "+grep %a"
 command! reload :write | restart
-command! xcopy
+command! xcopyold
       \ :execute '!for f in %f; do rsync -avh --info=progress2 --no-perms --no-owner --no-group --no-times "${f}" %D; done'
 command! xcopydel
       \ :execute '!for f in %f; do rsync -avh --info=progress2 --no-perms --no-owner --no-group --no-times "${f}" %D && rm -rf "${f}"; done'
-" command! x7z
-"       \ :execute '!for f in %f; do 7z x "${f}"; done'
+command! xcopy
+      \ :execute '!rsync -avh --info=progress2 --no-perms --no-owner --no-group --no-times %f %D'
+command! xmove
+      \ :execute '!rsync -avh --info=progress2 --no-perms --no-owner --no-group --no-times %f %D && rm -rf %f'
+command! unzip
+      \ :execute '!for f in %"f; do 7z x "${f}" -o"$(dirname "${f}")"; done'
+command! punzip
+      \ :execute '!for f in %"f; do 7z -p%a x "${f}" -o"$(dirname "${f}")"; done'
+command! foldertocbz
+      \ :execute '!for f in %f; do 7z a "%D/${f}".cbz "${f}/*" && rm -rf "${f}"; done'
 command! xdelete rm -rf %f
 command! dush du -sh %c %m 2> /dev/null
+command! concatvob ffmpeg_concat '%f'
 command! mi mediainfo %c %m 2> /dev/null
 command! translate
       \ :execute '!mv %c "$(trans -brief ru:en \"%c\") (%c)"'
@@ -208,7 +217,7 @@ fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
         \ %pc
         \ vifmimg clear
 
-fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.xpm
+fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.xpm,*.webp
         \ vifmimg draw %px %py %pw %ph %c
         \ %pc
         \ vifmimg clear
@@ -253,7 +262,8 @@ filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
 
 "  Gif
 filextype *.gif
-        \ mplayer %f %i &
+        \ mplayer -loop 0 %f %i &
+        " \ mpv --loop-file %f %i &
 "  Web
 filextype *.html,*.htm
         \ {Open with dwb}
@@ -272,7 +282,7 @@ filetype *.[1-8] man ./%c
 fileviewer *.[1-8] man ./%c | col -b
 
 " Images
-filextype *.bmp,*.jpg,*.jpeg,*.png,*.xpm
+filextype *.bmp,*.jpg,*.jpeg,*.png,*.xpm,*.webp
         \ {View in sxiv}
         \ sxiv_all %c -Z -q %i &,
         \ {View in gpicview}

@@ -15,6 +15,45 @@
 #define nord14 #A3BE8C
 #define nord15 #B48EAD
 
+#define supplementalWhite #fefefe
+
+#define materialColor0 #00141d
+#define materialColor1 #e00233
+#define materialColor2 #72D266
+#define materialColor3 #fb9e3c
+#define materialColor4 #016EE3
+#define materialColor5 #e00267
+#define materialColor6 #733881
+#define materialColor7 #dfe5ec
+#define materialColor8 #16262e
+#define materialColor9 #f90239
+#define materialColor10 #7DF26F
+#define materialColor11 #fdc400
+#define materialColor12 #017AFC
+#define materialColor13 #f90273
+#define materialColor14 #803e8f
+#define materialColor15 #ffffff
+
+! *.color0 #00141d
+! *.color8 #16262e
+! *.color1 #e00233
+! *.color9 #f90239
+! *.color2 #72D266
+! *.color10 #7DF26F
+! *.color3 #fb9e3c
+! *.color11 #fdc400
+! *.color4 #016EE3
+! *.color12 #017AFC
+! *.color5 #e00267
+! *.color13 #f90273
+! *.color6 #733881
+! *.color14 #803e8f
+! *.color7 #dfe5ec
+! *.color15 #ffffff
+!
+! *.foreground:   #016ee3
+! *.background:   #00141d
+! *.cursorColor:  #016ee3
 
 ! #define nord0       #282C34
 ! #define nord8       #3E4452
@@ -33,28 +72,44 @@
 ! #define nord7       #ABB2BF
 ! #define nord15      #5C6370
 
-*.foreground:   nord4
-*.background:   nord0
-*.cursorColor:  nord4
+*.foreground:   supplementalWhite
+*.background:   materialColor0
+*.cursorColor:  supplementalWhite
 
-*.color0: nord1
-*.color1: nord11
-*.color2: nord14
-*.color3: nord13
-*.color4: nord9
-*.color5: nord15
-*.color6: nord8
-*.color7: nord5
-*.color8: nord3
-*.color9: nord11
-*.color10: nord14
-*.color11: nord13
-*.color12: nord9
-*.color13: nord15
-*.color14: nord7
-*.color15: nord6
+! *.color0: materialColor1
+! *.color1: materialColor11
+! *.color2: materialColor14
+! *.color3: materialColor13
+! *.color4: materialColor9
+! *.color5: materialColor15
+! *.color6: materialColor8
+! *.color7: materialColor5
+! *.color8: materialColor3
+! *.color9: materialColor11
+! *.color10: materialColor14
+! *.color11: materialColor13
+! *.color12: materialColor9
+! *.color13: materialColor15
+! *.color14: materialColor7
+! *.color15: materialColor6
+*.color0: materialColor0
+*.color1: materialColor1
+*.color2: materialColor2
+*.color3: materialColor3
+*.color4: materialColor4
+*.color5: materialColor5
+*.color6: materialColor6
+*.color7: materialColor7
+*.color8: materialColor8
+*.color9: materialColor9
+*.color10: materialColor10
+*.color11: materialColor11
+*.color12: materialColor12
+*.color13: materialColor13
+*.color14: materialColor14
+*.color15: materialColor15
 
-*.nordColor12: nord12
+*.nordColor12: materialColor12
 
 Xft.autohint: 0
 Xft.lcdfilter: lcddefault
@@ -75,23 +130,23 @@ xscreensaver.Dialog.dateFont:           -*-dina-medium-r-*-*-12-*-*-*-*-*-*-*
 xscreensaver.passwd.passwdFont:         -*-dina-bold-r-*-*-12-*-*-*-*-*-*-*
 
 !general dialog box (affects main hostname, username, password text)
-xscreensaver.Dialog.foreground:         nord4
-xscreensaver.Dialog.background:         nord0
-xscreensaver.Dialog.topShadowColor:     nord0
-xscreensaver.Dialog.bottomShadowColor:  nord0
-xscreensaver.Dialog.Button.foreground:  nord0
-xscreensaver.Dialog.Button.background:  nord4
+xscreensaver.Dialog.foreground:         materialColor4
+xscreensaver.Dialog.background:         materialColor0
+xscreensaver.Dialog.topShadowColor:     materialColor0
+xscreensaver.Dialog.bottomShadowColor:  materialColor0
+xscreensaver.Dialog.Button.foreground:  materialColor0
+xscreensaver.Dialog.Button.background:  materialColor4
 
 !username/password input box and date text colour
-xscreensaver.Dialog.text.foreground:    nord0
-xscreensaver.Dialog.text.background:    nord4
+xscreensaver.Dialog.text.foreground:    materialColor0
+xscreensaver.Dialog.text.background:    materialColor4
 xscreensaver.Dialog.internalBorderWidth:24
 xscreensaver.Dialog.borderWidth:        20
 xscreensaver.Dialog.shadowThickness:    2
 
 !timeout bar (background is actually determined by Dialog.text.background)
-xscreensaver.passwd.thermometer.foreground:  nord11
-xscreensaver.passwd.thermometer.background:  nord0
+xscreensaver.passwd.thermometer.foreground:  materialColor11
+xscreensaver.passwd.thermometer.background:  materialColor0
 xscreensaver.passwd.thermometer.width:       8
 
 !datestamp format--see the strftime(3) manual page for details

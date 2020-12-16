@@ -4,17 +4,27 @@
 ###########
 
 
-source ~/.mutt/secrets
-set imap_user = $my_imap_user
-set imap_pass = $my_imap_password
-set folder = $my_imap_folder
-set spoolfile = +INBOX
+# source ~/.mutt/secrets
+# set imap_user = $my_imap_user
+# set imap_pass = $my_imap_password
+# set folder = $my_imap_folder
+# set spoolfile = +INBOX
+# source ~/.mutt/mailboxes
+# unset record
+# set header_cache = "~/.cache/mutt"
+# set message_cachedir = "~/.cache/mutt"
+# unset imap_passive
+# set imap_keepalive = 300
+
+set mbox_type=Maildir
+set mask="!^\\.[^.]"
+set mbox="~/Mail/Main"
+set record="+Main/Sent"
+set postponed="+Main/Drafts"
+set spoolfile="+Main/INBOX"
 source ~/.mutt/mailboxes
-unset record
 set header_cache = "~/.cache/mutt"
 set message_cachedir = "~/.cache/mutt"
-unset imap_passive
-set imap_keepalive = 300
 
 # Sidebar options -------------------------------------------------------------
 set sidebar_visible = yes
@@ -39,7 +49,7 @@ set sort = threads
 set sort_aux = reverse-last-date-received
 set uncollapse_jump
 
-set trash = "+Trash"
+set trash = "+Main/Trash"
 
 bind index R group-reply
 bind index <tab> sync-mailbox
@@ -55,7 +65,7 @@ set mime_forward_rest = yes
 # Saner copy/move dialogs -----------------------------------------------------
 macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
 macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
-macro index A ":set confirmappend=no delete=yes\n<save-message>=Archive\n
+macro index A ":set confirmappend=no delete=yes\n<save-message>=Main/Archive\n
 
 # Pager View Options ----------------------------------------------------------
 set pager_index_lines = 10

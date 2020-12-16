@@ -1,26 +1,72 @@
 ;; VARIABLES AND ENVIRONMENT
-(setq font-size (string-to-number (getenv "EMACS_FONT_SIZE")))
-(setq computer-identifier (getenv "COMPUTER_IDENTIFIER"))
+(setq computer-identifier (getenv "COMPUTER_IDENTIFIER")
+      env-user-full-name (getenv "USER_FULL_NAME")
+      env-user-mail-address (getenv "USER_MAIL_ADDRESS"))
+
 (setenv "SHELL" "/usr/bin/fish")
+(global-evil-quickscope-mode 1)
 
 ;; USER
-(setq user-full-name "Stian Lund Johansen"
-      user-mail-address "stian@lundjohansen.no")
+(setq user-full-name env-user-full-name
+      user-mail-address env-user-mail-address)
 
 ;; DOOM CONFIG
-(setq doom-theme 'doom-one)
-(setq doom-font (font-spec :family "Source Code Pro Semibold" :size font-size))
+(setq doom-theme 'doom-vibrant)
+(setq doom-font (font-spec :family "JetBrainsMonoMedium Nerd Font Mono" :size 20)
+      doom-big-font (font-spec :family "JetBrainsMonoMedium Nerd Font Mono" :size 28))
+(after! doom-themes
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t))
+(custom-set-faces!
+  '(font-lock-comment-face :slant italic)
+  '(font-lock-keyword-face :slant italic))
 
 ;; MODELINE
-(display-time-mode 1)
-(display-battery-mode 1)
+(if (string-match-p computer-identifier "main-desktop")
+    (progn
+      (display-time-mode 1)
+      ))
+;; (display-time-mode 1)
+;; (display-battery-mode 1)
 (setq display-time-24hr-format 1)
 
 ;; EDITOR
 (setq display-line-numbers-type 'relative)
 
+;; MAIL
+(after! mu4e
+  (setq mu4e-root-maildir (expand-file-name "~/Mail/Main")
+        mu4e-headers-date-format "%d/%m/%Y"
+        mu4e-headers-time-format "%H:%M"
+        mu4e-drafts-folder "/Drafts"
+        mu4e-sent-folder "/Sent"
+        mu4e-trash-folder "/Trash"
+        mu4e-spam-folder "/Spam"
+        mu4e-refile-folder "/Archive")
+
+  (setq! mu4e-get-mail-command "offlineimap")
+
+  (setq mu4e-bookmarks '(("maildir:/INBOX" "Inbox" ?i)
+                         ("maildir:/INBOX AND flag:flagged" "Flagged messages" ?f)
+                         ("maildir:/INBOX AND flag:unread" "Unread messages" ?u)
+                         ("maildir:/INBOX AND date:today..now" "Today's messages" ?t)
+                         ("maildir:/INBOX AND date:7d..now" "Last 7 days" ?w)))
+
+  ;; Mark as read and move to spam
+  (add-to-list 'mu4e-marks
+               '(spam
+                 :char "S"
+                 :prompt "Spam"
+                 :show-target (lambda (target) mu4e-spam-folder)
+                 :action (lambda (docid msg target)
+                           (mu4e~proc-move docid mu4e-spam-folder "+S-u-N"))))
+
+  (mu4e~headers-defun-mark-for spam)
+  (define-key mu4e-headers-mode-map (kbd "S") 'mu4e-headers-mark-for-spam)
+  )
+
 ;; PROJECTILE
-(setq projectile-project-search-path '("~/Code/Work/applications"))
+;; (setq projectile-project-search-path '("~/Code/Work/applications"))
 
 ;; BINDINGS
 (map!
@@ -41,6 +87,9 @@
 ;; JAVASCRIPT/TYPESCRIPT
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
+
+;; ELFEED
+(setq rmh-elfeed-org-files '("~/Documents/Notes/elfeed.org"))
 
 ;; (defun setup-tide-mode ()
 ;;   (interactive)

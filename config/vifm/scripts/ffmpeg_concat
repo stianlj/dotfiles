@@ -1,0 +1,5 @@
+#!/bin/bash
+
+FILES="$1"
+
+ffmpeg -i concat:"${FILES// /|}" -c copy output.mpeg

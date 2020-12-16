@@ -1,14 +1,12 @@
 #!/bin/dash
 
 if [ $COMPUTER_IDENTIFIER = "main-desktop" ]; then
-  xrandr --output DVI-D-0 --auto --output HDMI-A-0 --primary --auto --right-of DVI-D-0 --output HDMI-A-1 --auto --rotate left --right-of HDMI-A-0 --output DisplayPort-0 --auto --above HDMI-A-0 --rotate left
-  # xrandr --output DVI-D-0 --auto --output HDMI-0 --primary --auto --right-of DVI-D-0 --output DVI-I-1 --auto --rotate left --right-of HDMI-0
-  bspc monitor $LEFT_MONITOR -d 1 2 3
-  bspc monitor $CENTER_MONITOR -d 4 5 6 7
-  bspc monitor $RIGHT_MONITOR -d 8 9 10
-  # xinput map-to-output 16 DP-1
-  # bspc monitor -d 1 2 3 4 5 6 7 8 9 10
-  # polybar middle-$COMPUTER_IDENTIFIER &
+  xrandr \
+    --output DisplayPort-0 --auto --primary --pos 0x2160 \
+    --output DisplayPort-1 --auto --pos 640x0
+
+  bspc monitor DisplayPort\-1 -d 1 2
+  bspc monitor DisplayPort\-0 -d 3 4 5 6 7 8 9 10
 fi
 
 if [ $COMPUTER_IDENTIFIER = "work-laptop" ]; then
@@ -52,21 +50,23 @@ if [ $COMPUTER_IDENTIFIER = "work-laptop" ]; then
   fi
 fi
 
-bspc config border_width 15
+# bspc config border_width 15
 bspc config window_gap 15
 
 bspc config split_ratio 0.5
 bspc config borderless_monocle true
 bspc config gapless_monocle true
-bspc config focus_follows_pointer true
 bspc config single_monocle true
+bspc config focus_follows_pointer true
 bspc config pointer_follows_monitor true
-bspc config normal_border_color \#2e3440
-bspc config active_border_color \#2e3440
-bspc config focused_border_color \#2e3440
+bspc config pointer_follows_focus true
+# bspc config normal_border_color \#2e3440
+# bspc config active_border_color \#2e3440
+# bspc config focused_border_color \#2e3440
 
 bspc config external_rules_command ~/.config/bspwm/external_rules
 bspc rule -a mpv state=floating border=off
+bspc rule -a MPlayer state=floating border=off
 bspc rule -a qutebrowser border=off
 bspc rule -a Blueman-manager state=floating
 bspc rule -a Alacritty border=off
@@ -79,6 +79,8 @@ bspc rule -a Emacs state=tiled border=off
 setxkbmap -option compose:ralt
 setxkbmap -option caps:escape
 # compton -b --config="$HOME/.config/compton/compton.conf"
+picom --experimental-backends -b
+# deadd-notification-center &
 xscreensaver &
 clipit &
 pasystray &
