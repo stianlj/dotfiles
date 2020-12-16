@@ -6,13 +6,17 @@
 (setenv "SHELL" "/usr/bin/fish")
 (global-evil-quickscope-mode 1)
 
+;; (setq is-work-laptop (string-match-p computer-identifier "work-laptop"))
+;; (defun is-work-laptop ()
+;;   (when (string-match-p computer-identifier "work-laptop") t))
+
 ;; USER
 (setq user-full-name env-user-full-name
       user-mail-address env-user-mail-address)
 
 ;; DOOM CONFIG
 (setq doom-theme 'doom-vibrant)
-(setq doom-font (font-spec :family "JetBrainsMonoMedium Nerd Font Mono" :size 20)
+(setq doom-font (font-spec :family "JetBrainsMonoMedium Nerd Font Mono" :size 18)
       doom-big-font (font-spec :family "JetBrainsMonoMedium Nerd Font Mono" :size 28))
 (after! doom-themes
   (setq doom-themes-enable-bold t
@@ -26,12 +30,14 @@
     (progn
       (display-time-mode 1)
       ))
-;; (display-time-mode 1)
-;; (display-battery-mode 1)
 (setq display-time-24hr-format 1)
+(when (string-match-p computer-identifier "work-laptop") (display-battery-mode 1))
 
 ;; EDITOR
 (setq display-line-numbers-type 'relative)
+(display-fill-column-indicator-mode 1)
+;; (setq display-fill-column-indicator-character '|')
+;; (setq display-fill-column-indicator-column 80)
 
 ;; MAIL
 (after! mu4e
@@ -68,13 +74,16 @@
 ;; PROJECTILE
 ;; (setq projectile-project-search-path '("~/Code/Work/applications"))
 
-;; BINDINGS
+;; Bindings
 (map!
  "C-h" #'evil-window-left
  "C-j" #'evil-window-down
  "C-k" #'evil-window-up
  "C-l" #'evil-window-right
  )
+
+(setq +format-with-lsp nil)
+(setq lsp-intelephense-files-max-size 10000000)
 
 ;; ORG-MODE
 (setq org-agenda-files '("~/org-agenda/" "~/Nextcloud/Agenda/"))
@@ -108,17 +117,17 @@
 ;; (add-hook 'js2-mode-hook 'prettier-js-mode)
 ;; (add-hook 'web-mode-hook 'prettier-js-mode)
 
-(eval-after-load 'js2-mode
-  '(progn
-    (add-hook 'js2-mode-hook #'add-node-modules-path)
-    (add-hook 'js2-mode-hook #'prettier-js-mode)))
+;; (eval-after-load 'js2-mode
+;;   '(progn
+;;     (add-hook 'js2-mode-hook #'add-node-modules-path)
+;;     (add-hook 'js2-mode-hook #'prettier-js-mode)))
 
-(eval-after-load 'web-mode
-  '(progn
-    (add-hook 'web-mode-hook #'add-node-modules-path)
-    (add-hook 'web-mode-hook #'prettier-js-mode)))
+;; (eval-after-load 'web-mode
+;;   '(progn
+;;     (add-hook 'web-mode-hook #'add-node-modules-path)
+;;     (add-hook 'web-mode-hook #'prettier-js-mode)))
 
-(eval-after-load 'typescript-mode
-  '(progn
-    (add-hook 'typescript-mode-hook #'add-node-modules-path)
-    (add-hook 'typescript-mode-hook #'prettier-js-mode)))
+;; (eval-after-load 'typescript-mode
+;;   '(progn
+;;     (add-hook 'typescript-mode-hook #'add-node-modules-path)
+;;     (add-hook 'typescript-mode-hook #'prettier-js-mode)))

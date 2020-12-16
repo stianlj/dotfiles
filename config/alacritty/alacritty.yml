@@ -355,7 +355,7 @@ live_config_reload: true
 #   changing an escape sequence.
 #
 # Values for `action`:
-#   - Paste
+#   - Pastp
 #   - PasteSelection
 #   - Copy
 #   - IncreaseFontSize
