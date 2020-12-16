@@ -2,9 +2,10 @@ ncmpcpp/error.log
 *.log
 config/i3/config
 config/polybar/mounts.ini
-config/vifm/vifminfo
+config/vifm/vifminfo*
 config/vifm/vifm-help.txt
 config/qutebrowser/quickmarks
+config/qutebrowser/autoconfig.yml
 config/qutebrowser/private.py
 config/qutebrowser/bookmarks/
 config/systemd/user/multi-user.target.wants

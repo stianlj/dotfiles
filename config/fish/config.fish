@@ -13,3 +13,5 @@ thefuck --alias | source
 if test "$TERM" = "eterm-color"
     function fish_title; end
 end
+
+starship init fish | source

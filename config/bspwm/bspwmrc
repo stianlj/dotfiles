@@ -27,21 +27,31 @@ if [ $COMPUTER_IDENTIFIER = "work-laptop" ]; then
     # export LEFT_MONITOR="eDP1"
     # export CENTER_MONITOR="DP1-3"
     # export RIGHT_MONITOR="DP1-1"
-    export LEFT_MONITOR="eDP-1-1"
+    export LEFT_MONITOR="DP-1-1-1"
     export CENTER_MONITOR="DP-1-1-3"
-    export RIGHT_MONITOR="DP-1-1-1"
+    export RIGHT_MONITOR="eDP-1-1"
     export CENTER_POLYBAR_BOTTOM="true"
     export EMACS_FONT_SIZE="20"
 
     # bspc monitor eDP1 -d 1 2 3
     # bspc monitor DP1\-3 -d 4 5 6 7
     # bspc monitor DP1\-1 -d 8 9 10
-    bspc monitor eDP\-1\-1 -d 1 2 3
-    bspc monitor DP\-1\-1\-3 -d 4 5 6 7
-    bspc monitor DP\-1\-1\-1 -d 8 9 10
+    bspc monitor DP\-1\-1\-1 -d 1 2 3 4
+    bspc monitor DP\-1\-1\-3 -d 5 6 7 8 9
+    bspc monitor eDP\-1\-1 -d 10
 
     polybar middle-$COMPUTER_IDENTIFIER &
     polybar left &
+    polybar right &
+  elif [ "$numberOfMonitorsConnected" -gt "1" ]; then
+    export RIGHT_MONITOR="eDP-1-1"
+    export CENTER_MONITOR="DP-1-1-3"
+    export CENTER_POLYBAR_BOTTOM="true"
+
+    bspc monitor DP\-1\-1\-3 -d 1 2 3 4 5 6 7 8 9
+    bspc monitor eDP\-1\-1 -d 10
+
+    polybar middle-$COMPUTER_IDENTIFIER &
     polybar right &
   else
     # This should include more. Maybe in sync with udev?
