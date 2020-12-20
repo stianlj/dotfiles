@@ -77,6 +77,9 @@
   (setq projectile-project-search-path '("~/Code/Work/applications"))
   )
 
+;; MAGIT
+;; (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
+
 ;; Bindings
 (map!
  "C-h" #'evil-window-left
