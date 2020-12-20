@@ -15,7 +15,7 @@
       user-mail-address env-user-mail-address)
 
 ;; DOOM CONFIG
-(setq doom-theme 'doom-vibrant)
+(setq doom-theme 'doom-dracula)
 (setq doom-font (font-spec :family "JetBrainsMonoMedium Nerd Font Mono" :size 18)
       doom-big-font (font-spec :family "JetBrainsMonoMedium Nerd Font Mono" :size 28))
 (after! doom-themes
@@ -24,6 +24,9 @@
 (custom-set-faces!
   '(font-lock-comment-face :slant italic)
   '(font-lock-keyword-face :slant italic))
+(map! :leader
+      :desc "Load new theme"
+      "h t" #'counsel-load-theme)
 
 ;; MODELINE
 (display-time-mode 1)
@@ -32,7 +35,7 @@
 
 ;; EDITOR
 (setq display-line-numbers-type 'relative)
-(display-fill-column-indicator-mode 1)
+;; (display-fill-column-indicator-mode 1)
 ;; (setq display-fill-column-indicator-character '|')
 ;; (setq display-fill-column-indicator-column 80)
 (setq evil-split-window-below t
