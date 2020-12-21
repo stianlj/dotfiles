@@ -6,6 +6,14 @@
 (setenv "SHELL" "/usr/bin/fish")
 (global-evil-quickscope-mode 1)
 
+;; https://github.com/PythonNut/quark-emacs
+;; https://github.com/daedreth/UncleDavesEmacs#user-content-ido-and-why-i-started-using-helm
+;; http://pages.sachachua.com/.emacs.d/Sacha.html
+;; https://zzamboni.org/post/my-doom-emacs-configuration-with-commentary/
+;; https://www.masteringemacs.org/
+;; https://tecosaur.github.io/emacs-config/config.html
+;; https://gitlab.com/zzamboni/dot-doom/-/tree/master/splash
+
 ;; (setq is-work-laptop (string-match-p computer-identifier "work-laptop"))
 ;; (defun is-work-laptop ()
 ;;   (when (string-match-p computer-identifier "work-laptop") t))
@@ -27,6 +35,8 @@
 (map! :leader
       :desc "Load new theme"
       "h t" #'counsel-load-theme)
+(setq fancy-splash-image
+      (concat doom-private-dir "splash/doom-emacs-color2.svg"))
 
 ;; MODELINE
 (display-time-mode 1)
@@ -35,9 +45,10 @@
 
 ;; EDITOR
 (setq display-line-numbers-type 'relative)
-;; (display-fill-column-indicator-mode 1)
-;; (setq display-fill-column-indicator-character '|')
-;; (setq display-fill-column-indicator-column 80)
+;; (setq display-fill-column-indicator-character ?│)
+(setq display-fill-column-indicator-character "│")
+(setq fill-column 120)
+
 (setq evil-split-window-below t
       evil-vsplit-window-right t)
 
