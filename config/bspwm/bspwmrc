@@ -84,11 +84,11 @@ bspc rule -a Emacs state=tiled border=off
 
 # autostart
 setxkbmap -option compose:ralt
-setxkbmap -option caps:escape
+setxkbmap -option ctrl:nocaps
 xscreensaver &
 clipit &
 pasystray &
-emacs --daemon &
+emacs --daemon -n &
 
 if [ $COMPUTER_IDENTIFIER = "main-desktop" ]; then
   # dropbox &
