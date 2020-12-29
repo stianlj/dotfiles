@@ -45,9 +45,18 @@
 
 ;; EDITOR
 (setq display-line-numbers-type 'relative)
-;; (setq display-fill-column-indicator-character ?│)
-(setq display-fill-column-indicator-character "│")
-(setq fill-column 120)
+
+(defun slj/set-fill-column ()
+  (setq display-fill-column-indicator-character ?│)
+  ;; (setq display-fill-column-indicator-character "│")
+  (setq fill-column 120))
+
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+              (lambda (frame)
+                (with-selected-frame frame
+                  (slj/set-fill-column))))
+  (slj/set-fill-column))
 
 (setq evil-split-window-below t
       evil-vsplit-window-right t)
@@ -84,12 +93,19 @@
     (mu4e~headers-defun-mark-for spam)
     (define-key mu4e-headers-mode-map (kbd "S") 'mu4e-headers-mark-for-spam)
     )
-  )
+  (after! notmuch
+    (setq +notmuch-sync-backend 'offlineimap)
+  ))
+
+;; MAIL (notmuch)
 
 ;; PROJECTILE
 (when (string-match-p computer-identifier "work-laptop")
-  (setq projectile-project-search-path '("~/Code/Work/applications"))
-  )
+  (setq projectile-project-search-path '("~/Code/Work/applications")))
+
+;; EMACSCLIENT
+;; (after! persp-mode
+;;   (setq persp-emacsclient-init-frame-behaviour-override "main"))
 
 ;; MAGIT
 ;; (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
@@ -106,19 +122,20 @@
 (setq lsp-intelephense-files-max-size 10000000)
 
 ;; ORG-MODE
-(setq org-agenda-files '("~/org-agenda/" "~/Nextcloud/Agenda/"))
-;; (setq org-directory "~/org/")
+;; (setq org-agenda-files '("~/org-agenda/" "~/Nextcloud/Agenda/"))
+(setq org-directory "~/Nextcloud/Documents/Org")
 ;; (if (eq 'computer-identifier "work-laptop")
 ;;       (setq org-agenda-files '("~/org-agenda/" "~/Nextcloud/Agenda/")))
 ;; (if (eq 'computer-identifier "main-desktop")
 ;;       (setq org-agenda-files '("~/Nextcloud/Agenda/")))
+(setq org-roam-directory "~/Nextcloud/Documents/Org/Roam")
 
 ;; JAVASCRIPT/TYPESCRIPT
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
 
 ;; ELFEED
-(setq rmh-elfeed-org-files '("~/Documents/Notes/elfeed.org"))
+(setq rmh-elfeed-org-files '("~/Nextcloud/Documents/Org/elfeed.org"))
 
 ;; (defun setup-tide-mode ()
 ;;   (interactive)
