@@ -118,7 +118,7 @@
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
 
 ;; ELFEED
-(setq rmh-elfeed-org-files '("~/Documents/Notes/elfeed.org"))
+(setq rmh-elfeed-org-files '("~/Nextcloud/Documents/Org/elfeed.org"))
 
 ;; (defun setup-tide-mode ()
 ;;   (interactive)
