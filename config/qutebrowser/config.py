@@ -33,6 +33,7 @@ config.bind(';gy', 'hint links spawn --detach mpv --force-window yes {hint-url}'
 config.bind(';gs', 'spawn --userscript search-site')
 config.bind(';gb', 'spawn buku -a {url}')
 config.bind('xx', 'config-cycle tabs.show multiple switching')
+config.unbind('D', mode='normal')
 
 # Themeing
 config.source('custom-color.py')
