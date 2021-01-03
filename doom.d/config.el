@@ -37,6 +37,12 @@
   '(font-lock-comment-face :slant italic)
   '(font-lock-keyword-face :slant italic))
 
+;; (defun slj/resize-variable-pitch-font()
+;;   (setq doom-variable-pitch-font (font-spec :family "Roboto" :size 29))
+;;   )
+
+;; (add-hook! 'doom-big-font-mode-hook #'slj/resize-variable-pitch-font)
+
 (map! :leader
       :desc "Load new theme"
       "h t" #'counsel-load-theme)
