@@ -1,6 +1,5 @@
 ;; VARIABLES AND ENVIRONMENT
-(setq computer-identifier (getenv "COMPUTER_IDENTIFIER")
-      env-user-full-name (getenv "USER_FULL_NAME")
+(setq env-user-full-name (getenv "USER_FULL_NAME")
       env-user-mail-address (getenv "USER_MAIL_ADDRESS"))
 
 (setenv "SHELL" "/usr/bin/fish")
@@ -14,9 +13,9 @@
 ;; https://tecosaur.github.io/emacs-config/config.html
 ;; https://gitlab.com/zzamboni/dot-doom/-/tree/master/splash
 
-;; (setq is-work-laptop (string-match-p computer-identifier "work-laptop"))
-;; (defun is-work-laptop ()
-;;   (when (string-match-p computer-identifier "work-laptop") t))
+(let ((computer-specific-config (format "~/.doom.d/computers/init.%s.el" (getenv "COMPUTER_IDENTIFIER"))))
+  (when (file-exists-p computer-specific-config)
+    (load-file computer-specific-config)))
 
 ;; USER
 (setq user-full-name env-user-full-name
@@ -47,72 +46,14 @@
 ;; MODELINE
 (display-time-mode 1)
 (setq display-time-24hr-format 1)
-(when (string-match-p computer-identifier "work-laptop") (display-battery-mode 1))
 
 ;; EDITOR
 (setq display-line-numbers-type 'relative)
 (after! git-gutter-fringe
   (fringe-mode '10))
 
-;; (defun slj/set-fill-column ()
-;;   (setq display-fill-column-indicator-character ?│)
-;;   ;; (setq display-fill-column-indicator-character "│")
-;;   (setq fill-column 120))
-
-;; (if (daemonp)
-;;     (add-hook 'after-make-frame-functions
-;;               (lambda (frame)
-;;                 (with-selected-frame frame
-;;                   (slj/set-fill-column))))
-;;   (slj/set-fill-column))
-
 (setq evil-split-window-below t
       evil-vsplit-window-right t)
-
-;; MAIL
-(when (string-match-p computer-identifier "main-desktop")
-  (after! mu4e
-    (setq mu4e-root-maildir (expand-file-name "~/Mail/Main")
-          mu4e-headers-date-format "%d/%m/%Y"
-          mu4e-headers-time-format "%H:%M"
-          mu4e-drafts-folder "/Drafts"
-          mu4e-sent-folder "/Sent"
-          mu4e-trash-folder "/Trash"
-          mu4e-spam-folder "/Spam"
-          mu4e-refile-folder "/Archive")
-
-    (setq! mu4e-get-mail-command "offlineimap")
-
-    (setq mu4e-bookmarks '(("maildir:/INBOX" "Inbox" ?i)
-                           ("maildir:/INBOX AND flag:flagged" "Flagged messages" ?f)
-                           ("maildir:/INBOX AND flag:unread" "Unread messages" ?u)
-                           ("maildir:/INBOX AND date:today..now" "Today's messages" ?t)
-                           ("maildir:/INBOX AND date:7d..now" "Last 7 days" ?w)))
-
-    ;; Mark as read and move to spam
-    (add-to-list 'mu4e-marks
-                 '(spam
-                   :char "S"
-                   :prompt "Spam"
-                   :show-target (lambda (target) mu4e-spam-folder)
-                   :action (lambda (docid msg target)
-                             (mu4e~proc-move docid mu4e-spam-folder "+S-u-N"))))
-
-    (mu4e~headers-defun-mark-for spam)
-    (define-key mu4e-headers-mode-map (kbd "S") 'mu4e-headers-mark-for-spam)
-    )
-  )
-
-;; PROJECTILE
-(when (string-match-p computer-identifier "work-laptop")
-  (setq projectile-project-search-path '("~/Code/Work/applications")))
-
-;; EMACSCLIENT
-;; (after! persp-mode
-;;   (setq persp-emacsclient-init-frame-behaviour-override "main"))
-
-;; MAGIT
-;; (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
 
 ;; Bindings
 (map!
@@ -126,12 +67,7 @@
 (setq lsp-intelephense-files-max-size 10000000)
 
 ;; ORG-MODE
-;; (setq org-agenda-files '("~/org-agenda/" "~/Nextcloud/Agenda/"))
 (setq org-directory "~/Nextcloud/Documents/Org")
-;; (if (eq 'computer-identifier "work-laptop")
-;;       (setq org-agenda-files '("~/org-agenda/" "~/Nextcloud/Agenda/")))
-;; (if (eq 'computer-identifier "main-desktop")
-;;       (setq org-agenda-files '("~/Nextcloud/Agenda/")))
 (setq org-roam-directory "~/Nextcloud/Documents/Org/Roam")
 
 (setq deft-directory "~/Nextcloud/Documents/Org"
@@ -142,7 +78,6 @@
   (setq visual-fill-column-width 120
         display-fill-column-indicator nil)
   (visual-fill-column-mode 1))
-
 
 (add-hook! 'org-mode-hook #'mixed-pitch-mode #'doom-disable-line-numbers-h #'slj/org-mode-visual)
 
@@ -173,35 +108,3 @@
 
 ;; ELFEED
 (setq rmh-elfeed-org-files '("~/Nextcloud/Documents/Org/elfeed.org"))
-
-;; (defun setup-tide-mode ()
-;;   (interactive)
-;;   (tide-setup)
-;;   (flycheck-mode +1)
-;;   (setq flycheck-check-syntax-automatically '(save mode-enabled))
-;;   (eldoc-mode +1)
-;;   (tide-hl-identifier-mode +1)
-;;   (company-mode +1))
-
-;; aligns annotation to the right hand side
-;; (setq company-tooltip-align-annotations t)
-
-;; (add-hook 'typescript-mode-hook #'setup-tide-mode)
-;; (add-hook 'typescript-mode-hook 'prettier-js-mode)
-;; (add-hook 'js2-mode-hook 'prettier-js-mode)
-;; (add-hook 'web-mode-hook 'prettier-js-mode)
-
-;; (eval-after-load 'js2-mode
-;;   '(progn
-;;     (add-hook 'js2-mode-hook #'add-node-modules-path)
-;;     (add-hook 'js2-mode-hook #'prettier-js-mode)))
-
-;; (eval-after-load 'web-mode
-;;   '(progn
-;;     (add-hook 'web-mode-hook #'add-node-modules-path)
-;;     (add-hook 'web-mode-hook #'prettier-js-mode)))
-
-;; (eval-after-load 'typescript-mode
-;;   '(progn
-;;     (add-hook 'typescript-mode-hook #'add-node-modules-path)
-;;     (add-hook 'typescript-mode-hook #'prettier-js-mode)))
