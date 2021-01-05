@@ -88,13 +88,13 @@ setxkbmap -option ctrl:nocaps
 xscreensaver &
 clipit &
 pasystray &
+nextcloud --background &
 emacs --daemon -n &
 
 if [ $COMPUTER_IDENTIFIER = "main-desktop" ]; then
   # dropbox &
   picom --experimental-backends -b
   megasync &
-  nextcloud --background &
   $HOME/.config/polybar/launch.sh
   indicator-kdeconnect &
 fi
