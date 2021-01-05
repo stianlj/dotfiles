@@ -51,3 +51,8 @@ if [ "$instance" = "blueman-manager" ]; then
   popup 50 50 20
   exit 0
 fi
+
+#https://www.reddit.com/r/bspwm/comments/ef2but/need_help_creating_rule_without_wm_class/
+# [ '$(xprop -id "$1" WM_NAME | cut -d\" -f2)' = "doom-capture" ] && echo state=floating
+wmtitle=$(xtitle $wid)
+[[ $wmtitle = "doom-capture" ]] && echo state=floating
