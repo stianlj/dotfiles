@@ -1,27 +1,19 @@
-;; VARIABLES AND ENVIRONMENT
+;; Variables and environment
 (setq env-user-full-name (getenv "USER_FULL_NAME")
       env-user-mail-address (getenv "USER_MAIL_ADDRESS"))
 
 (setenv "SHELL" "/usr/bin/fish")
 (global-evil-quickscope-mode 1)
 
-;; https://github.com/PythonNut/quark-emacs
-;; https://github.com/daedreth/UncleDavesEmacs#user-content-ido-and-why-i-started-using-helm
-;; http://pages.sachachua.com/.emacs.d/Sacha.html
-;; https://zzamboni.org/post/my-doom-emacs-configuration-with-commentary/
-;; https://www.masteringemacs.org/
-;; https://tecosaur.github.io/emacs-config/config.html
-;; https://gitlab.com/zzamboni/dot-doom/-/tree/master/splash
-
 (let ((computer-specific-config (format "~/.doom.d/computers/init.%s.el" (getenv "COMPUTER_IDENTIFIER"))))
   (when (file-exists-p computer-specific-config)
     (load-file computer-specific-config)))
 
-;; USER
+;; User
 (setq user-full-name env-user-full-name
       user-mail-address env-user-mail-address)
 
-;; DOOM CONFIG
+;; Doom config
 (setq doom-theme 'doom-dracula)
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size 18)
       doom-variable-pitch-font (font-spec :family "Roboto" :size 19)
@@ -49,11 +41,11 @@
 (setq fancy-splash-image
       (concat doom-private-dir "splash/doom-emacs-color2.svg"))
 
-;; MODELINE
+;; Modeline
 (display-time-mode 1)
 (setq display-time-24hr-format 1)
 
-;; EDITOR
+;; Editor
 (setq display-line-numbers-type 'relative)
 (after! git-gutter-fringe
   (fringe-mode '10))
@@ -72,7 +64,7 @@
 (setq +format-with-lsp nil)
 (setq lsp-intelephense-files-max-size 10000000)
 
-;; ORG-MODE
+;; Org mode
 (setq org-directory "~/Nextcloud/Documents/Org")
 (setq org-roam-directory "~/Nextcloud/Documents/Org/Roam")
 
@@ -98,19 +90,17 @@
     '(org-level-6 :inherit outline-6 :weight semi-bold :height 1.03)
     '(org-level-7 :inherit outline-7 :weight semi-bold)
     '(org-level-8 :inherit outline-8 :weight semi-bold)
-    ;; Ensure that anything that should be fixed-pitch in org buffers appears that
-    ;; way
     '(org-block nil :foreground nil :inherit 'fixed-pitch)
-    '(org-code nil   :inherit '(shadow fixed-pitch))
-    '(org-table nil   :inherit '(shadow fixed-pitch))
+    '(org-code nil :inherit '(shadow fixed-pitch))
+    '(org-table nil :inherit '(shadow fixed-pitch))
     '(org-verbatim nil :inherit '(shadow fixed-pitch))
     '(org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
     '(org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
     '(org-checkbox nil :inherit 'fixed-pitch)))
 
-;; JAVASCRIPT/TYPESCRIPT
+;; Javascript/Typescript
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
 
-;; ELFEED
+;; Elfeed
 (setq rmh-elfeed-org-files '("~/Nextcloud/Documents/Org/elfeed.org"))
