@@ -99,6 +99,7 @@
   (setq org-agenda-start-with-log-mode t)
   (setq org-log-time 'time)
   (setq org-log-into-drawer t)
+  (setq org-agenda-start-on-weekday 1)
 
   (setq deft-directory "~/Nextcloud/Documents/Org"
         deft-extensions '("org")
