@@ -26,4 +26,10 @@
                            (mu4e~proc-move docid mu4e-spam-folder "+S-u-N"))))
 
   (mu4e~headers-defun-mark-for spam)
-  (define-key mu4e-headers-mode-map (kbd "S") 'mu4e-headers-mark-for-spam))
+  (define-key mu4e-headers-mode-map (kbd "S") 'mu4e-headers-mark-for-spam)
+
+  (setq sendmail-program "/usr/bin/msmtp"
+      send-mail-function 'smtpmail-send-it
+      message-sendmail-f-is-evil t
+      message-sendmail-extra-arguments '("--read-envelope-from")
+      message-send-mail-function 'message-send-mail-with-sendmail))

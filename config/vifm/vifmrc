@@ -152,6 +152,9 @@ command! xmove
       \ :execute '!rsync -avh --info=progress2 --no-perms --no-owner --no-group --no-times %f %D && rm -rf %f'
 command! unzip
       \ :execute '!for f in %"f; do 7z x "${f}" -o"$(dirname "${f}")"; done'
+command! funzip
+      \ :execute '!for f in %"f; do fn=$(basename "${f}"); m="${fn%%%%.*}"; d="$(dirname "${f}")"; mkdir "${d}/${m}"; 7z x "${f}" -o"${d}/${m}"; done;'
+" command! funzip funzip '%d' '%"f'
 command! punzip
       \ :execute '!for f in %"f; do 7z -p%a x "${f}" -o"$(dirname "${f}")"; done'
 command! foldertocbz
