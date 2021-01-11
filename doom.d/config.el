@@ -66,6 +66,9 @@
 
 ;; Org mode
 
+(setq org-directory "~/Nextcloud/Documents/Org")
+(setq org-roam-directory "~/Nextcloud/Documents/Org/Roam")
+
 (defun slj/org-mode-visual()
   (setq visual-fill-column-width 120
         display-fill-column-indicator nil)
@@ -73,6 +76,7 @@
 
 (add-hook! 'org-mode-hook #'mixed-pitch-mode #'doom-disable-line-numbers-h #'slj/org-mode-visual)
 
+(require 'org-habit)
 (after! org
   (custom-set-faces!
     '(org-document-title :height 1.3)
@@ -91,10 +95,6 @@
     '(org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
     '(org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
     '(org-checkbox nil :inherit 'fixed-pitch))
-
-
-  (setq org-directory "~/Nextcloud/Documents/Org")
-  (setq org-roam-directory "~/Nextcloud/Documents/Org/Roam")
 
   (setq org-agenda-start-with-log-mode t)
   (setq org-log-time 'time)
@@ -180,6 +180,9 @@
         `(("t" "Tasks / Projects")
           ("tt" "Task" entry (file+olp "~/Nextcloud/Documents/Org/Tasks.org" "Inbox")
            "* TODO %?\n  %U\n  %a\n  %i" :empty-lines 1)
+
+          ("tn" "Next" entry (file+olp "~/Nextcloud/Documents/Org/Tasks.org" "Inbox")
+           "* NEXT %?\n  %U\n  %a\n  %i" :empty-lines 1)
 
           ("j" "Journal Entries")
           ("jj" "Journal" entry
