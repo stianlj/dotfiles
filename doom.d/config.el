@@ -203,6 +203,8 @@
           ("we" "Checking Email" entry (file+olp+datetree "~/Nextcloud/Documents/Org/Journal.org")
            "* Checking Email :email:\n\n%?" :clock-in :clock-resume :empty-lines 1))))
 
+;; Calendar
+(setq calendar-week-start-day 1)
 
 ;; Javascript/Typescript
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
