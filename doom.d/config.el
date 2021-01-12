@@ -76,7 +76,7 @@
 
 (add-hook! 'org-mode-hook #'mixed-pitch-mode #'doom-disable-line-numbers-h #'slj/org-mode-visual)
 
-(setq org-image-actual-width 800)
+(setq org-image-actual-width 500)
 
 (require 'org-habit)
 (after! org
