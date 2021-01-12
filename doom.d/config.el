@@ -199,6 +199,11 @@
            :clock-in :clock-resume
            :empty-lines 1)
 
+          ("n" "Notes")
+          ("nw" "Web resource" entry
+           (file+olp "~/Nextcloud/Documents/Org/Web-resources.org" "Bookmarks")
+           "** %?\n %U\n %a\n %i" :empty-lines 1)
+
           ("w" "Workflows")
           ("we" "Checking Email" entry (file+olp+datetree "~/Nextcloud/Documents/Org/Journal.org")
            "* Checking Email :email:\n\n%?" :clock-in :clock-resume :empty-lines 1))))
