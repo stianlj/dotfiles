@@ -217,3 +217,6 @@
 
 ;; Elfeed
 (setq rmh-elfeed-org-files '("~/Nextcloud/Documents/Org/elfeed.org"))
+
+;;
+(add-to-list 'auto-mode-alist `(,(rx "sxhkdrc" string-end) . sxhkd-mode))
