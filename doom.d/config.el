@@ -113,7 +113,7 @@
 
   (setq org-todo-keywords
         '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!)")
-          (sequence "BACKLOG(b)" "PLAN(p)" "READY(r)" "ACTIVE(a)" "REVIEW(v)" "WAIT(w@/!)" "HOLD(h)" "|" "COMPLETED(c)" "CANC(k@)")))
+          (sequence "BACKLOG(b)" "PLAN(p)" "READY(r)" "PROJ(a)" "REVIEW(v)" "WAIT(w@/!)" "HOLD(h)" "|" "COMPLETED(c)" "CANC(k@)")))
 
   (setq org-refile-targets
         '(("Archive.org" :maxlevel . 1)
@@ -168,7 +168,7 @@
             (todo "READY"
                   ((org-agenda-overriding-header "Ready for Work")
                    (org-agenda-files org-agenda-files)))
-            (todo "ACTIVE"
+            (todo "PROJ"
                   ((org-agenda-overriding-header "Active Projects")
                    (org-agenda-files org-agenda-files)))
             (todo "COMPLETED"
@@ -218,5 +218,6 @@
 ;; Elfeed
 (setq rmh-elfeed-org-files '("~/Nextcloud/Documents/Org/elfeed.org"))
 
-;;
+;; Etc
 (add-to-list 'auto-mode-alist `(,(rx "sxhkdrc" string-end) . sxhkd-mode))
+(add-to-list 'auto-mode-alist '("\\.env\\..*\\'" . dotenv-mode))
