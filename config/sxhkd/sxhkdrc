@@ -58,6 +58,9 @@ super + e ; q
 super + r
   kitty --name="ranger-popup" ranger
 
+super + u
+  rofimoji --copy-only
+
 # fn-keys
 XF86Audio{Raise,Lower}Volume
   pamixer --{increase,decrease} 5
