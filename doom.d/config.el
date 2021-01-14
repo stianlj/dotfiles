@@ -126,6 +126,7 @@
           (:endgroup)
           ("@home" . ?H)
           ("@work" . ?W)
+          ("@computer" . ?c)
           ("agenda" . ?a)
           ("planning" . ?p)
           ("note" . ?n)
@@ -142,7 +143,7 @@
            ((todo "NEXT"
                   ((org-agenda-overriding-header "Next Tasks")))))
 
-          ("W" "Work Tasks" tags-todo "+work-email")
+          ("h" "Home Tasks" tags-todo "+@home")
 
           ;; Low-effort next actions
           ("e" tags-todo "+TODO=\"NEXT\"+Effort<15&+Effort>0"
@@ -179,34 +180,37 @@
                    (org-agenda-files org-agenda-files)))))))
 
   (setq org-capture-templates
-        `(("t" "Tasks / Projects")
-          ("tt" "Task" entry (file+olp "~/Nextcloud/Documents/Org/Tasks.org" "Inbox")
+        `(("t" "🏢 Tasks")
+          ("tt" "🔨 Task" entry (file+olp "~/Nextcloud/Documents/Org/Tasks.org" "Inbox")
            "* TODO %?\n  %U\n  %a\n  %i" :empty-lines 1)
 
-          ("tn" "Next" entry (file+olp "~/Nextcloud/Documents/Org/Tasks.org" "Inbox")
+          ("tn" "📩 Next" entry (file+olp "~/Nextcloud/Documents/Org/Tasks.org" "Inbox")
            "* NEXT %?\n  %U\n  %a\n  %i" :empty-lines 1)
 
-          ("j" "Journal Entries")
-          ("jj" "Journal" entry
-           (file+olp+datetree "~/Nextcloud/Documents/Org/Journal.org")
-           "\n* %<%I:%M %p> - Journal :journal:\n\n%?\n\n"
-           ;; ,(dw/read-file-as-string "~/Notes/Templates/Daily.org")
-           :clock-in :clock-resume
-           :empty-lines 1)
-          ("jm" "Meeting" entry
-           (file+olp+datetree "~/Nextcloud/Documents/Org/Journal.org")
-           "* %<%I:%M %p> - %a :meetings:\n\n%?\n\n"
-           :clock-in :clock-resume
-           :empty-lines 1)
+          ;; TODO: Add project capture. New org file. Add folder to agenda
 
-          ("n" "Notes")
-          ("nw" "Web resource" entry
+          ;; ("j" "Journal Entries")
+          ;; ("jj" "Journal" entry
+          ;;  (file+olp+datetree "~/Nextcloud/Documents/Org/Journal.org")
+          ;;  "\n* %<%I:%M %p> - Journal :journal:\n\n%?\n\n"
+          ;;  ;; ,(dw/read-file-as-string "~/Notes/Templates/Daily.org")
+          ;;  :clock-in :clock-resume
+          ;;  :empty-lines 1)
+          ;; ("jm" "Meeting" entry
+          ;;  (file+olp+datetree "~/Nextcloud/Documents/Org/Journal.org")
+          ;;  "* %<%I:%M %p> - %a :meetings:\n\n%?\n\n"
+          ;;  :clock-in :clock-resume
+          ;;  :empty-lines 1)
+
+          ("n" "📔 Notes")
+          ("nw" "💨 Web resource" entry
            (file+olp "~/Nextcloud/Documents/Org/Web-resources.org" "Bookmarks")
            "** %(org-cliplink-capture)\n %U\n %a\n %i" :empty-lines 1)
 
-          ("w" "Workflows")
-          ("we" "Checking Email" entry (file+olp+datetree "~/Nextcloud/Documents/Org/Journal.org")
-           "* Checking Email :email:\n\n%?" :clock-in :clock-resume :empty-lines 1))))
+          ;; ("w" "Workflows")
+          ;; ("we" "Checking Email" entry (file+olp+datetree "~/Nextcloud/Documents/Org/Journal.org")
+          ;;  "* Checking Email :email:\n\n%?" :clock-in :clock-resume :empty-lines 1)
+          )))
 
 ;; Calendar
 (setq calendar-week-start-day 1)
