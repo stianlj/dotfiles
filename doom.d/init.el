@@ -79,20 +79,20 @@
        vc                ; version-control and Emacs, sitting in a tree
 
        :term
-       eshell            ; a consistent, cross-platform shell (WIP)
+       ;; eshell            ; a consistent, cross-platform shell (WIP)
        ;;shell             ; a terminal REPL for Emacs
        term              ; terminals in Emacs
        ;;vterm             ; another terminals in Emacs
 
        :checkers
        syntax              ; tasing you for every semicolon you forget
-       (spell
-        +aspell)               ; tasing you for misspelling mispelling
+       ;; (spell
+       ;;  +aspell)               ; tasing you for misspelling mispelling
        ;;grammar           ; tasing grammar mistake every you make
 
        :tools
        ;;ansible
-       ;;debugger          ; FIXME stepping through code, to help you add bugs
+       (debugger +lsp)    ; FIXME stepping through code, to help you add bugs
        ;;direnv
        (docker +lsp)
        editorconfig      ; let someone else argue about tabs vs spaces
@@ -154,7 +154,7 @@
         +pretty
         +dragndrop       ; drag & drop files/images into org buffers
         +pandoc          ; export-with-pandoc support
-        ;;+hugo            ; use Emacs for hugo blogging
+        +hugo            ; use Emacs for hugo blogging
         ;;+jupyter        ; ipython/jupyter support for babel
         ;;+pomodoro        ; be fruitful with the tomato technique
         +present)        ; using org-mode for presentations
