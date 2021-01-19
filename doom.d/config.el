@@ -107,7 +107,8 @@
         deft-extensions '("org")
         deft-recursive t)
   (setq org-agenda-files
-        '("~/Nextcloud/Documents/Org/Tasks.org"
+        '("~/Nextcloud/Documents/Org/Projects/"
+          "~/Nextcloud/Documents/Org/Tasks.org"
           "~/Nextcloud/Documents/Org/Habits.org"))
   (setq org-habit-graph-column 60)
 
