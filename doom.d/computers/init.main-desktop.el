@@ -7,6 +7,7 @@
         mu4e-trash-folder "/Trash"
         mu4e-spam-folder "/Spam"
         mu4e-refile-folder "/Archive"
+        mu4e-compose-format-flowed t
         mu4e-headers-toggle-skip-duplicates nil)
 
   (setq! mu4e-get-mail-command "offlineimap")
