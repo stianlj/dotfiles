@@ -41,7 +41,7 @@ super + Delete ; l
   xscreensaver-command --lock
 
 super + o
-  kitty --name="pass-popup" lpi
+  ~/.emacs.d/bin/org-capture
 
 super + p
   bwmenu -c 30

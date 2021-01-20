@@ -81,7 +81,7 @@ bspc rule -a st border=off
 bspc rule -a jetbrains-idea border=off
 bspc rule -a Surf state=tiled
 bspc rule -a Emacs state=tiled border=off
-bspc rule -a "doom-capture" state=floating
+# bspc rule -a "doom-capture" state=floating
 
 # autostart
 setxkbmap -option compose:ralt

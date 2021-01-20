@@ -3,12 +3,14 @@
 wid=$1
 class=$2
 instance=$3
+title=$(xprop -id "$wid" WM_NAME | perl -ne 'print /"(.*)"/')
 
 current_monitor_id=$(bspc wm -d | jq '.focusedMonitorId')
 current_monitor_name=$(bspc wm -d | jq -r ".monitors[] | select(.id | contains($current_monitor_id)) | .name")
 current_monitor_width=$(xwininfo -name $current_monitor_name | grep 'Width' | cut -d ':' -f2 | sed 's/ //g')
 current_monitor_height=$(xwininfo -name $current_monitor_name | grep 'Height' | cut -d ':' -f2 | sed 's/ //g')
-current_monitor_position_start=$(xwininfo -name $current_monitor_name | grep 'Absolute upper-left X' | cut -d ':' -f2 | sed 's/ //g')
+current_monitor_position_start_from_left=$(xwininfo -name $current_monitor_name | grep 'Absolute upper-left X' | cut -d ':' -f2 | sed 's/ //g')
+current_monitor_position_start_from_top=$(xwininfo -name $current_monitor_name | grep 'Absolute upper-left Y' | cut -d ':' -f2 | sed 's/ //g')
 
 popup() {
   percent_width=$1
@@ -20,7 +22,9 @@ popup() {
 
   xdotool \
     windowsize $wid $width $height \
-    windowmove $wid $((current_monitor_position_start + ((current_monitor_width / 2) - (width / 2)))) $(((current_monitor_height * percent_from_top) / 100)) \
+    windowmove $wid \
+     $((current_monitor_position_start_from_left + ((current_monitor_width / 2) - (width / 2)))) \
+     $((current_monitor_position_start_from_top + ((current_monitor_height * percent_from_top) / 100))) \
     windowactivate $wid
 }
 
@@ -52,7 +56,9 @@ if [ "$instance" = "blueman-manager" ]; then
   exit 0
 fi
 
-#https://www.reddit.com/r/bspwm/comments/ef2but/need_help_creating_rule_without_wm_class/
-# [ '$(xprop -id "$1" WM_NAME | cut -d\" -f2)' = "doom-capture" ] && echo state=floating
-wmtitle=$(xtitle $wid)
-[[ $wmtitle = "doom-capture" ]] && echo state=floating
+if [ "$title" = "doom-capture" ]; then
+ echo "state=floating"
+ echo "focus=on"
+ popup 50 50 20
+ exit 0
+fi
