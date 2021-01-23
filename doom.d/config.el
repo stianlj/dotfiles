@@ -15,7 +15,7 @@
 
 ;; Doom config
 (setq doom-theme 'doom-dracula)
-(setq doom-font (font-spec :family "VictorMono Nerd Font Mono" :weight 'semi-bold :size 18)
+(setq doom-font (font-spec :family "VictorMono Nerd Font Mono" :weight 'semi-bold :size 19)
       doom-variable-pitch-font (font-spec :family "Roboto" :weight 'normal :size 19)
       doom-unicode-font (font-spec :family "Noto Color Emoji" :size 18)
       doom-big-font (font-spec :family "VictorMono Nerd Font Mono" :weight 'semi-bold :size 28))
@@ -61,6 +61,7 @@
             :for nil
             :return nil
             :yield nil)
+(setq prettify-symbols-alist '(("..." . "…")))
 
 ;; Bindings
 (map!
@@ -92,7 +93,6 @@
 ;;     (expand-file-name (format "%s-%s.org"
 ;;                               (format-time-string "%Y")
 ;;                               name) path)))
-
 (require 'org-habit)
 (after! org
   (custom-set-faces!
