@@ -15,17 +15,17 @@
 
 ;; Doom config
 (setq doom-theme 'doom-dracula)
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size 18)
-      doom-variable-pitch-font (font-spec :family "Roboto" :size 19)
+(setq doom-font (font-spec :family "VictorMono Nerd Font Mono" :weight 'semi-bold :size 18)
+      doom-variable-pitch-font (font-spec :family "Roboto" :weight 'normal :size 19)
       doom-unicode-font (font-spec :family "Noto Color Emoji" :size 18)
-      doom-big-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size 28))
+      doom-big-font (font-spec :family "VictorMono Nerd Font Mono" :weight 'semi-bold :size 28))
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
 (setq mixed-pitch-set-height t)
 (set-face-attribute 'variable-pitch nil :height 180)
 (custom-set-faces!
-  '(font-lock-comment-face :slant italic)
+  '(font-lock-comment-face :slant oblique)
   '(font-lock-keyword-face :slant italic))
 
 ;; (defun slj/resize-variable-pitch-font()
@@ -53,6 +53,15 @@
 (setq evil-split-window-below t
       evil-vsplit-window-right t)
 
+(plist-put! +ligatures-extra-symbols
+            :lambda nil
+            :def nil
+            :composition nil
+            :map nil
+            :for nil
+            :return nil
+            :yield nil)
+
 ;; Bindings
 (map!
  "C-h" #'evil-window-left
@@ -77,6 +86,12 @@
 (add-hook! 'org-mode-hook #'mixed-pitch-mode #'doom-disable-line-numbers-h #'slj/org-mode-visual)
 
 (setq org-image-actual-width 500)
+
+;; (defun slj/capture-report-data-file (path)
+;;   (let ((name (read-string "Name: ")))
+;;     (expand-file-name (format "%s-%s.org"
+;;                               (format-time-string "%Y")
+;;                               name) path)))
 
 (require 'org-habit)
 (after! org
@@ -187,6 +202,9 @@
 
           ("tn" "📩 Next" entry (file+olp "~/Nextcloud/Documents/Org/Tasks.org" "Inbox")
            "* NEXT %?\n  %U\n  %a\n  %i" :empty-lines 1)
+
+          ;; ("tp" "🧑‍ New project" entry (slj/capture-report-data-file "~/Nextcloud/Documents/Org/Projects")
+          ;;  "#+TITLE:%?\n %U\n* Notater\n* Møter\n* Oppgaver\n** PROJ %?" :empty-lines 1)
 
           ;; TODO: Add project capture. New org file. Add folder to agenda
 
