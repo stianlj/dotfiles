@@ -53,20 +53,17 @@
 (setq evil-split-window-below t
       evil-vsplit-window-right t)
 
-(after! js2-mode
-  (set-ligatures! 'js2-mode
-    :ellipsis "..."))
-
-(plist-put! +ligatures-extra-symbols
-            :lambda nil
-            :def nil
-            :composition nil
-            :map nil
-            :for nil
-            :return nil
-            :ellipsis "…"
-            :yield nil)
-(setq prettify-symbols-alist '(("..." . "…")))
+(ligature-set-ligatures 'prog-mode '("</" "</>" "/>" "~-" "-~" "~@" "<~" "<~>" "<~~" "~>"
+                                     "~~" "~~>" ">=" "<=" "<!--" "##" "###" "####" "|-"
+                                     "-|" "|->" "<-|" ">-|" "|-<" "|=" "|=>" ">-" "<-"
+                                     "<--" "-->" "->" "-<" ">->" ">>-" "<<-" "<->" "->>"
+                                     "-<<" "<-<" "==>" "=>" "=/=" "!==" "!=" "<=="
+                                     ">>=" "=>>" ">=>" "<=>" "<=<" "<<=" "=<<"
+                                     ".-" ".=" "=:=" "=!=" "==" "===" "::" ":=" ":>"
+                                     ":<" ">:" ";;" "<|" "<|>" "|>" "<>" "<$" "<$>"
+                                     "$>" "<+" "<+>" "+>" "?=" "/=" "/==" "__"
+                                     "&&" "++" "+++"))
+(global-ligature-mode t)
 
 ;; Bindings
 (map!
@@ -80,7 +77,6 @@
 (setq lsp-intelephense-files-max-size 10000000)
 
 ;; Org mode
-
 (setq org-directory "~/Nextcloud/Documents/Org")
 (setq org-roam-directory "~/Nextcloud/Documents/Org/Roam")
 

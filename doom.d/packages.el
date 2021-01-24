@@ -9,3 +9,5 @@
 (package! dotenv-mode)
 (package! sxhkd-mode
   :recipe (:host github :repo "xFA25E/sxhkd-mode"))
+(package! ligature
+  :recipe (:host github :repo "mickeynp/ligature.el"))
