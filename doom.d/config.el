@@ -15,18 +15,39 @@
 
 ;; Doom config
 (setq doom-theme 'doom-dracula)
-(setq doom-font (font-spec :family "VictorMono Nerd Font Mono" :weight 'semi-bold :size 19)
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :weight 'semi-bold :size 19)
       doom-variable-pitch-font (font-spec :family "Roboto" :weight 'normal :size 19)
       doom-unicode-font (font-spec :family "Noto Color Emoji" :size 18)
-      doom-big-font (font-spec :family "VictorMono Nerd Font Mono" :weight 'semi-bold :size 28))
+      doom-big-font (font-spec :family "JetBrainsMono Nerd Font" :weight 'semi-bold :size 28))
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
 (setq mixed-pitch-set-height t)
 (set-face-attribute 'variable-pitch nil :height 180)
+
 (custom-set-faces!
-  '(font-lock-comment-face :slant oblique)
+  '(font-lock-comment-face :slant italic)
+  '(font-lock-constant-face :slant italic :family "VictorMono Nerd Font Mono" :weight bold)
+  '(font-lock-function-name-face :weight bold)
+  '(font-lock-variable-name-face :weight bold)
   '(font-lock-keyword-face :slant italic))
+
+(font-lock-add-keywords 'js2-mode '(("\\<\\(return\\)" 1 '(:slant italic
+                                                           :weight bold
+                                                           :family "VictorMono Nerd Font Mono"
+                                                           :foreground "#ff79c6") t)))
+
+(ligature-set-ligatures 'prog-mode '("</" "</>" "/>" "~-" "-~" "~@" "<~" "<~>" "<~~" "~>"
+                                     "~~" "~~>" ">=" "<=" "<!--" "##" "###" "####" "|-"
+                                     "-|" "|->" "<-|" ">-|" "|-<" "|=" "|=>" ">-" "<-"
+                                     "<--" "-->" "->" "-<" ">->" ">>-" "<<-" "<->" "->>"
+                                     "-<<" "<-<" "==>" "=>" "=/=" "!==" "!=" "<=="
+                                     ">>=" "=>>" ">=>" "<=>" "<=<" "<<=" "=<<"
+                                     ".-" ".=" "=:=" "=!=" "==" "===" "::" ":=" ":>"
+                                     ":<" ">:" ";;" "<|" "<|>" "|>" "<>" "<$" "<$>"
+                                     "$>" "<+" "<+>" "+>" "?=" "/=" "/==" "__"
+                                     "&&" "++" "+++" "\\/" "/\\" "..."))
+(global-ligature-mode t)
 
 ;; (defun slj/resize-variable-pitch-font()
 ;;   (setq doom-variable-pitch-font (font-spec :family "Roboto" :size 29))
@@ -52,18 +73,6 @@
 
 (setq evil-split-window-below t
       evil-vsplit-window-right t)
-
-(ligature-set-ligatures 'prog-mode '("</" "</>" "/>" "~-" "-~" "~@" "<~" "<~>" "<~~" "~>"
-                                     "~~" "~~>" ">=" "<=" "<!--" "##" "###" "####" "|-"
-                                     "-|" "|->" "<-|" ">-|" "|-<" "|=" "|=>" ">-" "<-"
-                                     "<--" "-->" "->" "-<" ">->" ">>-" "<<-" "<->" "->>"
-                                     "-<<" "<-<" "==>" "=>" "=/=" "!==" "!=" "<=="
-                                     ">>=" "=>>" ">=>" "<=>" "<=<" "<<=" "=<<"
-                                     ".-" ".=" "=:=" "=!=" "==" "===" "::" ":=" ":>"
-                                     ":<" ">:" ";;" "<|" "<|>" "|>" "<>" "<$" "<$>"
-                                     "$>" "<+" "<+>" "+>" "?=" "/=" "/==" "__"
-                                     "&&" "++" "+++"))
-(global-ligature-mode t)
 
 ;; Bindings
 (map!
