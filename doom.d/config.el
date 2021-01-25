@@ -35,7 +35,7 @@
 (font-lock-add-keywords 'js2-mode '(("\\<\\(return\\)" 1 '(:slant italic
                                                            :weight bold
                                                            :family "VictorMono Nerd Font Mono"
-                                                           :foreground "#ff79c6") t)))
+                                                           :inherit font-lock-keyword-face) t)))
 
 (ligature-set-ligatures 'prog-mode '("</" "</>" "/>" "~-" "-~" "~@" "<~" "<~>" "<~~" "~>"
                                      "~~" "~~>" ">=" "<=" "<!--" "##" "###" "####" "|-"
