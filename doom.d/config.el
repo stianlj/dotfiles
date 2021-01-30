@@ -37,17 +37,6 @@
                                                            :family "VictorMono Nerd Font Mono"
                                                            :inherit font-lock-keyword-face) t)))
 
-;; (ligature-set-ligatures 'prog-mode '("</" "</>" "/>" "~-" "-~" "~@" "<~" "<~>" "<~~" "~>"
-;;                                      "~~" "~~>" ">=" "<=" "<!--" "##" "###" "####" "|-"
-;;                                      "-|" "|->" "<-|" ">-|" "|-<" "|=" "|=>" ">-" "<-"
-;;                                      "<--" "-->" "->" "-<" ">->" ">>-" "<<-" "<->" "->>"
-;;                                      "-<<" "<-<" "==>" "=>" "=/=" "!==" "!=" "<=="
-;;                                      ">>=" "=>>" ">=>" "<=>" "<=<" "<<=" "=<<"
-;;                                      ".-" ".=" "=:=" "=!=" "==" "===" "::" ":=" ":>"
-;;                                      ":<" ">:" ";;" "<|" "<|>" "|>" "<>" "<$" "<$>"
-;;                                      "$>" "<+" "<+>" "+>" "?=" "/=" "/==" "__"
-;;                                      "&&" "++" "+++" "\\/" "/\\" "..."))
-
 (ligature-set-ligatures 'prog-mode '("--" "---" "==" "===" "!=" "!==" "=!=" "=:="
                                      "=/=" "<=" ">=" "&&" "&&&" "&=" "++" "+++" "***"
                                      ";;" "!!" "??" "?:" "?." "?=" "<:" ":<" ":>"
@@ -100,11 +89,12 @@
  "C-h" #'evil-window-left
  "C-j" #'evil-window-down
  "C-k" #'evil-window-up
- "C-l" #'evil-window-right
- )
+ "C-l" #'evil-window-right)
 
 (setq +format-with-lsp nil)
 (setq lsp-intelephense-files-max-size 10000000)
+(setq read-process-output-max (* 1024 1024))
+(setq lsp-log-io t)
 
 ;; Org mode
 (setq org-directory "~/Nextcloud/Documents/Org")
@@ -255,12 +245,12 @@
           ("n" "📔 Notes")
           ("nw" "💨 Web resource" entry
            (file+olp "~/Nextcloud/Documents/Org/Web-resources.org" "Inbox")
-           "** %(org-cliplink-capture)\n %U\n %a\n %i" :empty-lines 1)
+           "** %(org-cliplink-capture)\n %U\n %a\n %i" :empty-lines 1))))
 
           ;; ("w" "Workflows")
           ;; ("we" "Checking Email" entry (file+olp+datetree "~/Nextcloud/Documents/Org/Journal.org")
           ;;  "* Checking Email :email:\n\n%?" :clock-in :clock-resume :empty-lines 1)
-          )))
+
 
 ;; Calendar
 (setq calendar-week-start-day 1)
