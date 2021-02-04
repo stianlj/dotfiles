@@ -8,10 +8,13 @@ set -gx EDITOR nvim
 bind yy fish_clipboard_copy
 bind p fish_clipboard_paste
 
+alias ls='exa'
+
 thefuck --alias | source
 
-if test "$TERM" = "eterm-color"
-    function fish_title; end
-end
+# if test "$TERM" = "eterm-color"
+#     function fish_title
+#     end
+# end
 
 starship init fish | source
