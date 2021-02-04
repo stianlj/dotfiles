@@ -10,6 +10,7 @@ if os.environ['COMPUTER_IDENTIFIER'] == 'work-laptop':
     defaultZoom = "100%"
 
 # Config
+config.load_autoconfig(False)
 c.url.start_pages = ["https://start.duckduckgo.com"]
 c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}'}
 
