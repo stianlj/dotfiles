@@ -1,0 +1,16 @@
+# The 'e' alias will connect to the already running daemon.
+# A little speedier than the 'emacs' command because the init
+# file has already been loaded.
+
+# The 'e' alias will also start the daemon if it has crashed or failed to start
+
+# Consider that any changes to the emacs init file will not take affect until after the daemon
+# reloads. To kill a running daemon, run 'top', find the process number for the emacs daemon in
+# the first column, and kill it with 'kill 9582' or whatever the number is.
+
+alias e="emacsclient -nw -s /data/data/com.termux/files/usr/var/run/emacs10444/server -a \"\""
+
+# Note: you may have to edit the above alias depending on where emacs stores it's server file.
+# Check the parent directory of 'emacs10444' to get the correct url
+
+# Run `source .profile` to have these changes take effect immediately.
