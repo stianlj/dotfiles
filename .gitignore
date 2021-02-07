@@ -16,3 +16,4 @@ config/systemd/user/multi-user.target.wants
 config/fish/fishd.*
 .idea
 doom.d/*.elc
+termux-emacs.d/variables.el
