@@ -282,3 +282,4 @@
 ;; Etc
 (add-to-list 'auto-mode-alist `(,(rx "sxhkdrc" string-end) . sxhkd-mode))
 (add-to-list 'auto-mode-alist '("\\.env\\..*\\'" . dotenv-mode))
+(add-to-list 'auto-mode-alist '("/PKGBUILD$" . pkgbuild-mode))
