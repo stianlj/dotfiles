@@ -91,7 +91,8 @@
  "C-k" #'evil-window-up
  "C-l" #'evil-window-right)
 
-(setq +format-with-lsp nil)
+;; (setq +format-with-lsp nil)
+(setq-hook! 'js2-mode-hook +format-with-lsp nil)
 (setq lsp-intelephense-files-max-size 10000000)
 (setq read-process-output-max (* 1024 1024))
 (setq lsp-log-io t)
@@ -260,9 +261,20 @@
 ;; Calendar
 (setq calendar-week-start-day 1)
 
-;; Javascript/Typescript
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
+;; Web
+(setq css-indent-offset 2
+      js2-basic-offset 2
+      js-switch-indent-offset 2
+      js-indent-level 2
+      js2-mode-show-parse-errors nil
+      js2-mode-show-strict-warnings nil
+      web-mode-attr-indent-offset 2
+      web-mode-code-indent-offset 2
+      web-mode-css-indent-offset 2
+      web-mode-markup-indent-offset 2
+      web-mode-enable-current-element-highlight t
+      web-mode-enable-current-column-highlight t)
+(setq-default typescript-indent-level 2)
 
 ;; Elfeed
 (setq rmh-elfeed-org-files '("~/Nextcloud/Documents/Org/elfeed.org"))
