@@ -91,8 +91,7 @@
  "C-k" #'evil-window-up
  "C-l" #'evil-window-right)
 
-;; (setq +format-with-lsp nil)
-(setq-hook! 'js2-mode-hook +format-with-lsp nil)
+(setq +format-with-lsp nil)
 (setq lsp-intelephense-files-max-size 10000000)
 (setq read-process-output-max (* 1024 1024))
 (setq lsp-log-io t)
