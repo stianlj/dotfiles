@@ -1,7 +1,7 @@
 {
   "name": "dotfiles",
   "version": "1.0.0",
-  "description": "Dotfiles",
+  "description": "Helper modules for dotfiles (from NPM)",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/stianlj/dotfiles.git"
