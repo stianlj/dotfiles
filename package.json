@@ -1,0 +1,26 @@
+{
+  "name": "dotfiles",
+  "version": "1.0.0",
+  "description": "Dotfiles",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stianlj/dotfiles.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stianlj/dotfiles/issues"
+  },
+  "homepage": "https://github.com/stianlj/dotfiles#readme",
+  "devDependencies": {
+    "eslint": "^7.20.0",
+    "eslint-plugin-unicorn": "^28.0.0",
+    "prettier": "^2.2.1"
+  },
+  "eslintConfig": {
+    "extends": "plugin:unicorn/recommended"
+  },
+  "prettier": {
+    "semi": false
+  }
+}
