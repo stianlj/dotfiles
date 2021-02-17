@@ -21,6 +21,8 @@
     "extends": "plugin:unicorn/recommended"
   },
   "prettier": {
-    "semi": false
+    "printWidth": 100,
+    "semi": false,
+    "singleQuote": true
   }
 }
