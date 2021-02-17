@@ -27,7 +27,7 @@
 
 (custom-set-faces!
   '(font-lock-comment-face :slant italic)
-  '(font-lock-constant-face :slant italic :family "VictorMono Nerd Font Mono" :weight bold)
+  '(font-lock-constant-face :slant italic :family "VictorMono Nerd Font Mono")
   '(font-lock-function-name-face :weight bold)
   '(font-lock-variable-name-face :weight bold)
   '(font-lock-keyword-face :slant italic))
@@ -58,6 +58,12 @@
                                      "/==" "@_" "__" "\\/" "/\\"))
 
 (global-ligature-mode t)
+
+(use-package! tree-sitter
+  :config
+  (require 'tree-sitter-langs)
+  (global-tree-sitter-mode)
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 
 ;; (defun slj/resize-variable-pitch-font()
 ;;   (setq doom-variable-pitch-font (font-spec :family "Roboto" :size 29))

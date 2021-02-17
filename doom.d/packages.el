@@ -9,3 +9,5 @@
 (package! ligature
   :recipe (:host github :repo "mickeynp/ligature.el"))
 (package! pkgbuild-mode)
+(package! tree-sitter)
+(package! tree-sitter-langs)
