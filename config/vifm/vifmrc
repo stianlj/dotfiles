@@ -117,7 +117,7 @@ set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
 
 " :mark mark /full/directory/path [filename]
 
-mark h /home/stianlj
+mark h $HOME
 mark m /mnt/morty/
 
 " ------------------------------------------------------------------------------
@@ -450,8 +450,7 @@ set classify+=' ::*.doc,,*.docx::, ::*.xls,,*.xls[mx]::, ::*.pptx,,*.pp
 " Like in previous versions of vifm
 " set vifminfo=options,filetypes,commands,bookmarks,dhistory,state,cs
 " Like in vi
-set vifminfo=dhistory,savedirs,chistory,state,shistory,
-    \phistory,fhistory,dirstack,registers,bookmarks,bmarks
+set vifminfo=bookmarks,bmarks,tui
 
 " ------------------------------------------------------------------------------
 
