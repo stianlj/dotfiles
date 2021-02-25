@@ -27,10 +27,11 @@
 
 (custom-set-faces!
   '(font-lock-comment-face :slant italic)
-  '(font-lock-constant-face :slant italic :family "VictorMono Nerd Font Mono")
+  ;; '(font-lock-constant-face :slant italic)
   '(font-lock-function-name-face :weight bold)
-  '(font-lock-variable-name-face :weight bold)
-  '(font-lock-keyword-face :slant italic))
+  '(font-lock-variable-name-face :weight bold))
+;; '(font-lock-keyword-face :slant italic)
+
 
 (font-lock-add-keywords 'js2-mode '(("\\<\\(return\\)" 1 '(:slant italic
                                                            :weight bold
