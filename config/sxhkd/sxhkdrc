@@ -28,16 +28,16 @@ super + Escape
 
 # shutdown menu
 
-super + Delete ; s
+super + BackSpace ; s
   systemctl suspend
 
-super + Delete ; S
+super + BackSpace ; S
   systemctl poweroff
 
-super + Delete ; r
+super + BackSpace ; r
   systemctl reboot
 
-super + Delete ; l
+super + backspace ; l
   xscreensaver-command --lock
 
 super + o
@@ -56,10 +56,10 @@ super + e ; q
   emacsclient -e '(kill-emacs)'
 
 super + r
-  kitty --name="ranger-popup" ranger
+  alacritty --class "ranger-popup" -e vifm
 
 super + u
-  rofimoji --copy-only
+  rofimoji -a copy
 
 # fn-keys
 XF86Audio{Raise,Lower}Volume

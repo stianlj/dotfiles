@@ -85,7 +85,6 @@ bspc rule -a Emacs state=tiled border=off
 
 # autostart
 setxkbmap -option compose:ralt
-setxkbmap -option ctrl:nocaps
 xscreensaver &
 clipit &
 pasystray &
