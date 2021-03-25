@@ -71,6 +71,8 @@ bspc config focus_follows_pointer true
 bspc config pointer_follows_monitor true
 bspc config pointer_follows_focus true
 
+bsp-layout set even
+
 bspc config external_rules_command ~/.config/bspwm/external_rules
 bspc rule -a mpv state=floating border=off
 bspc rule -a MPlayer state=floating border=off
