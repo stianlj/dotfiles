@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-  WINIT_HIDPI_FACTOR=1.0 alacritty -e fish
+  alacritty -e fish
 # super + Return
 #  alacritty -e fish
 # super + Return
