@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-bsp-layout set even
-
 padding () {
     desktopId=$1
     top=$2
@@ -24,10 +22,13 @@ bspc subscribe node_add node_remove | while read -r line; do
         if [ $numberOfNodes == "1" ]; then
             padding $desktopId 30 1300 30 1300
         elif [ $numberOfNodes == "2" ]; then
+            bsp-layout set even
             padding $desktopId 30 500 30 500
         elif [ $numberOfNodes == "3" ]; then
+            bsp-layout set even
             padding $desktopId 30 30 30 30
         elif [ $numberOfNodes == "4" ]; then
+            bsp-layout set even
             padding $desktopId 0 0 0 0
         fi
     fi
