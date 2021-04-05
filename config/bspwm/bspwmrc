@@ -1,12 +1,14 @@
 #!/bin/dash
 
 if [ $COMPUTER_IDENTIFIER = "main-desktop" ]; then
+  export ULTRA_WIDE_MONITOR="DisplayPort-3"
   xrandr \
     --output DisplayPort-3 --mode 5120x1440 --rate 59.98 --primary --pos 0x2160 \
     --output DisplayPort-2 --auto --pos 640x0
 
   bspc monitor DisplayPort\-3 -d 1 2 3 4 5 6 7 8
   bspc monitor DisplayPort\-2 -d 9 10
+  bspc wm -O DisplayPort\-3 DisplayPort\-2
 fi
 
 if [ $COMPUTER_IDENTIFIER = "work-laptop" ]; then
@@ -45,9 +47,10 @@ if [ $COMPUTER_IDENTIFIER = "work-laptop" ]; then
     export RIGHT_MONITOR="eDP-1-1"
     export CENTER_MONITOR="DP-1-1-1"
     export CENTER_POLYBAR_BOTTOM="true"
+    export ULTRA_WIDE_MONITOR=$CENTER_MONITOR
 
-    bspc monitor DP\-1\-1\-1 -d 1 2 3 4 5 6 7 8 9
-    bspc monitor eDP\-1\-1 -d 10
+    bspc monitor DP\-1\-1\-1 -d 1 2 3 4 5 6 7 8
+    bspc monitor eDP\-1\-1 -d 9 10
 
     polybar middle-$COMPUTER_IDENTIFIER &
     polybar right &
@@ -71,8 +74,6 @@ bspc config focus_follows_pointer true
 bspc config pointer_follows_monitor true
 bspc config pointer_follows_focus true
 
-bsp-layout set even
-
 bspc config external_rules_command ~/.config/bspwm/external_rules
 bspc rule -a mpv state=floating border=off
 bspc rule -a MPlayer state=floating border=off
@@ -92,9 +93,11 @@ clipit &
 pasystray &
 nextcloud --background &
 emacs --daemon -n &
+flameshot &
 
 if [ $COMPUTER_IDENTIFIER = "main-desktop" ]; then
   # dropbox &
+  $HOME/.config/bspwm/layout.sh &
   picom --experimental-backends -b
   megasync &
   $HOME/.config/polybar/launch.sh
@@ -105,7 +108,6 @@ if [ $COMPUTER_IDENTIFIER = "work-laptop" ]; then
   # conky -c ~/.config/conky/conky.conf &
   nm-applet &
   # systemctl --user start mopidy
-  # hamster &
 fi
 
 feh --bg-fill $WALLPAPER

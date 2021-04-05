@@ -44,7 +44,7 @@ super + o
   ~/.emacs.d/bin/org-capture
 
 super + p
-  bwmenu -c 30
+  flameshot gui
 
 super + e ; m
   emacsclient -c -a '' --eval '(mu4e)'

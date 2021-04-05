@@ -17,7 +17,7 @@ bspc subscribe node_add node_remove | while read -r line; do
     desktopId=$(echo "$line" | awk '{print $3}')
     monitorId=$(echo "$line" | awk '{print $2}')
     monitorName=$(bspc query -T -m $monitorId | jq -r .name)
-    if [ "$monitorName" == "DisplayPort-3" ]; then
+    if [ "$monitorName" == "$ULTRA_WIDE_MONITOR" ]; then
         numberOfNodes=$(bspc query -N -n .local.tiled | wc -l)
         if [ $numberOfNodes == "1" ]; then
             padding $desktopId 30 1300 30 1300
