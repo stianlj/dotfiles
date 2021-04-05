@@ -29,8 +29,11 @@ c.fonts.completion.entry = defaultFont
 
 c.content.notifications = False
 
+c.colors.webpage.preferred_color_scheme = 'dark'
+
 # Bindings
 config.bind(';gy', 'hint links spawn --detach mpv --force-window yes {hint-url}')
+config.bind(';gw', 'hint links spawn --output-messages bash -c "wget \'{hint-url}\' -O /tmp/wally.hex && wally-cli /tmp/wally.hex && rm /tmp/wally.hex"')
 config.bind(';gs', 'spawn --userscript search-site')
 config.bind(';gb', 'spawn buku -a {url}')
 config.bind('xx', 'config-cycle tabs.show multiple switching')
