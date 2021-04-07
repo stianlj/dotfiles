@@ -8,7 +8,7 @@ set -gx EDITOR nvim
 bind yy fish_clipboard_copy
 bind p fish_clipboard_paste
 
-alias ls='exa'
+alias ls='exa --git --extended --octal-permissions'
 
 thefuck --alias | source
 
