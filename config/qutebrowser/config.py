@@ -27,7 +27,7 @@ c.statusbar.padding = defaultPadding
 c.fonts.completion.category = defaultFont
 c.fonts.completion.entry = defaultFont
 
-c.content.notifications = False
+c.content.notifications.enabled = False
 
 c.colors.webpage.preferred_color_scheme = 'dark'
 
