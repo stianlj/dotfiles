@@ -88,7 +88,6 @@ bspc rule -a Emacs state=tiled border=off
 
 # autostart
 setxkbmap -option compose:ralt
-xscreensaver &
 clipit &
 pasystray &
 nextcloud --background &
