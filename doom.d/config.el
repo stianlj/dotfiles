@@ -101,7 +101,7 @@
 (setq +format-with-lsp nil)
 (setq lsp-intelephense-files-max-size 10000000)
 (setq read-process-output-max (* 1024 1024))
-(setq lsp-log-io t)
+(setq lsp-log-io nil)
 
 ;; Org mode
 (setq org-directory "~/Nextcloud/Documents/Org")
