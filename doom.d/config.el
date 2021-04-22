@@ -103,6 +103,9 @@
 (setq read-process-output-max (* 1024 1024))
 (setq lsp-log-io nil)
 
+(setq company-idle-delay 0.1
+      company-minimum-prefix-length 3)
+
 ;; Org mode
 (setq org-directory "~/Nextcloud/Documents/Org")
 (setq org-roam-directory "~/Nextcloud/Documents/Org/Roam")
