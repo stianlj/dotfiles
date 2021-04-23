@@ -89,7 +89,6 @@ bspc rule -a "Microsoft Teams - Insiders" state=floating
 
 # autostart
 setxkbmap -option compose:ralt
-xscreensaver &
 clipit &
 pasystray &
 nextcloud --background &

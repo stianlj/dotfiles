@@ -18,11 +18,29 @@
     "prettier": "^2.2.1"
   },
   "eslintConfig": {
-    "extends": "plugin:unicorn/recommended"
+    "extends": "plugin:unicorn/recommended",
+    "rules": {
+      "unicorn/prevent-abbreviations": [
+        "error",
+        {
+          "replacements": {
+            "args": {
+              "arguments": false
+            },
+            "fn": {
+              "function": false
+            }
+          }
+        }
+      ]
+    }
   },
   "prettier": {
     "printWidth": 100,
     "semi": false,
     "singleQuote": true
+  },
+  "dependencies": {
+    "node-html-parser": "^3.1.5"
   }
 }

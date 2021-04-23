@@ -101,7 +101,10 @@
 (setq +format-with-lsp nil)
 (setq lsp-intelephense-files-max-size 10000000)
 (setq read-process-output-max (* 1024 1024))
-(setq lsp-log-io t)
+(setq lsp-log-io nil)
+
+(setq company-idle-delay 0.1
+      company-minimum-prefix-length 3)
 
 ;; Org mode
 (setq org-directory "~/Nextcloud/Documents/Org")
@@ -231,24 +234,6 @@
           ("tn" "📩 Next" entry (file+olp "~/Nextcloud/Documents/Org/Tasks.org" "Inbox")
            "* NEXT %?\n  %U\n  %a\n  %i" :empty-lines 1)
 
-          ;; ("tp" "🧑‍ New project" entry (slj/capture-report-data-file "~/Nextcloud/Documents/Org/Projects")
-          ;;  "#+TITLE:%?\n %U\n* Notater\n* Møter\n* Oppgaver\n** PROJ %?" :empty-lines 1)
-
-          ;; TODO: Add project capture. New org file. Add folder to agenda
-
-          ;; ("j" "Journal Entries")
-          ;; ("jj" "Journal" entry
-          ;;  (file+olp+datetree "~/Nextcloud/Documents/Org/Journal.org")
-          ;;  "\n* %<%I:%M %p> - Journal :journal:\n\n%?\n\n"
-          ;;  ;; ,(dw/read-file-as-string "~/Notes/Templates/Daily.org")
-          ;;  :clock-in :clock-resume
-          ;;  :empty-lines 1)
-          ;; ("jm" "Meeting" entry
-          ;;  (file+olp+datetree "~/Nextcloud/Documents/Org/Journal.org")
-          ;;  "* %<%I:%M %p> - %a :meetings:\n\n%?\n\n"
-          ;;  :clock-in :clock-resume
-          ;;  :empty-lines 1)
-
           ("n" "📔 Notes")
 
           ("nl" "🎁 Wishlist" entry
@@ -257,12 +242,11 @@
 
           ("nw" "💨 Web resource" entry
            (file+olp "~/Nextcloud/Documents/Org/Web-resources.org" "Inbox")
-           "** %(org-cliplink-capture)\n %U\n %a\n %i" :empty-lines 1))))
+           "** %(org-cliplink-capture)\n %U\n %a\n %i" :empty-lines 1)
 
-;; ("w" "Workflows")
-;; ("we" "Checking Email" entry (file+olp+datetree "~/Nextcloud/Documents/Org/Journal.org")
-;;  "* Checking Email :email:\n\n%?" :clock-in :clock-resume :empty-lines 1)
-
+          ("np" "🎵 Playlist item" entry
+           (file+olp "~/Nextcloud/Documents/Org/Playlists.org" "Inbox")
+           "** %i\n %U\n %a" :empty-lines 1))))
 
 ;; Calendar
 (setq calendar-week-start-day 1)
