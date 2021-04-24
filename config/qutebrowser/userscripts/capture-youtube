@@ -11,8 +11,8 @@ const q = url.parse(QUTE_URL, true)
 const { v: videoId } = q.query
 
 if (QUTE_MODE === 'hints') {
-  const parsedHtml = parseHtml(QUTE_SELECTED_HTML)
-  const description = parsedHtml.querySelector('#video-title').textContent.trim()
+  const root = parseHtml(QUTE_SELECTED_HTML)
+  const description = root.querySelector('#video-title').textContent.trim()
   capture(`[[yt:${videoId}][${description}]]`)
 } else {
   capture(`[[yt:${videoId}][${QUTE_TITLE.replace(/ - YouTube/g, '')}]]`)
