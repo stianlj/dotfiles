@@ -2,7 +2,7 @@
 
 const url = require('url')
 const { spawn } = require('child_process')
-const { homedir } = require('os')
+const os = require('os')
 const { parse: parseHtml } = require('node-html-parser')
 
 const { QUTE_URL, QUTE_TITLE, QUTE_MODE, QUTE_SELECTED_HTML } = process.env
@@ -19,7 +19,7 @@ if (QUTE_MODE === 'hints') {
 }
 
 function capture(string) {
-  detachableCommand(`${homedir()}/.emacs.d/bin/org-capture`, ['-k', 'np', string])
+  detachableCommand(`${os.homedir()}/.emacs.d/bin/org-capture`, ['-k', 'np', string])
 }
 
 function detachableCommand(...args) {
