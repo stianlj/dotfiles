@@ -93,6 +93,7 @@
 
 ;; Bindings
 (map!
+ "C-SPC" #'company-complete
  "C-h" #'evil-window-left
  "C-j" #'evil-window-down
  "C-k" #'evil-window-up
@@ -103,8 +104,7 @@
 (setq read-process-output-max (* 1024 1024))
 (setq lsp-log-io nil)
 
-(setq company-idle-delay 0.1
-      company-minimum-prefix-length 3)
+(setq company-idle-delay nil)
 
 ;; Org mode
 (setq org-directory "~/Nextcloud/Documents/Org")
