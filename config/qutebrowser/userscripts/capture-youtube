@@ -2,7 +2,7 @@
 
 const url = require('url')
 const { spawn } = require('child_process')
-const { homedir } = require('os')
+const os = require('os')
 const { parse: parseHtml } = require('node-html-parser')
 
 const { QUTE_URL, QUTE_TITLE, QUTE_MODE, QUTE_SELECTED_HTML } = process.env
@@ -11,15 +11,15 @@ const q = url.parse(QUTE_URL, true)
 const { v: videoId } = q.query
 
 if (QUTE_MODE === 'hints') {
-  const parsedHtml = parseHtml(QUTE_SELECTED_HTML)
-  const description = parsedHtml.querySelector('#video-title').textContent.trim()
+  const root = parseHtml(QUTE_SELECTED_HTML)
+  const description = root.querySelector('#video-title').textContent.trim()
   capture(`[[yt:${videoId}][${description}]]`)
 } else {
   capture(`[[yt:${videoId}][${QUTE_TITLE.replace(/ - YouTube/g, '')}]]`)
 }
 
 function capture(string) {
-  detachableCommand(`${homedir()}/.emacs.d/bin/org-capture`, ['-k', 'np', string])
+  detachableCommand(`${os.homedir()}/.emacs.d/bin/org-capture`, ['-k', 'np', string])
 }
 
 function detachableCommand(...args) {
