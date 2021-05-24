@@ -1,4 +1,9 @@
+from qutebrowser.config.configfiles import ConfigAPI
+from qutebrowser.config.config import ConfigContainer
 import os
+
+config: ConfigAPI = config
+c: ConfigContainer = c
 
 # Variables
 defaultFont = "14px JetBrainsMonoMedium Nerd Font Mono"
