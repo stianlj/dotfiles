@@ -1,5 +1,6 @@
 #!/bin/bash
 
 FILES="$1"
+EXTENSION="$2"
 
-ffmpeg -i concat:"${FILES// /|}" -c copy output.mpeg
+ffmpeg -i concat:"${FILES// /|}" -c copy "output.$EXTENSION"

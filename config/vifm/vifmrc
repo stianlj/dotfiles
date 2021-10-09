@@ -161,7 +161,8 @@ command! foldertocbz
       \ :execute '!for f in %f; do 7z a "%D/${f}".cbz "${f}/*" && rm -rf "${f}"; done'
 command! xdelete rm -rf %f
 command! dush du -sh %c %m 2> /dev/null
-command! concatvob ffmpeg_concat '%f'
+command! concatvob ffmpeg_concat '%f' 'mpeg'
+command! concatavi ffmpeg_concat '%f' 'avi'
 command! mi mediainfo %c %m 2> /dev/null
 command! translate
       \ :execute '!mv %c "$(trans -brief ru:en \"%c\") (%c)"'
