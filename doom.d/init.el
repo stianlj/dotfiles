@@ -64,7 +64,7 @@
        lispy             ; vim for lisp, for people who don't like vim
        multiple-cursors  ; editing in many places at once
        ;;objed             ; text object editing for the innocent
-       parinfer          ; turn lisp into python, sort of
+       (parinfer +rust)          ; turn lisp into python, sort of
        rotate-text       ; cycle region at point between text candidates
        snippets          ; my elves. They type so I don't have to
        ;;word-wrap         ; soft wrapping with language-aware indent
@@ -145,7 +145,7 @@
        ;;lean
        ;;factor
        ;;ledger            ; an accounting system in Emacs
-       ;;lua               ; one-based indices? one-based indices
+       (lua +lsp)               ; one-based indices? one-based indices
        markdown          ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
@@ -155,6 +155,7 @@
         +dragndrop       ; drag & drop files/images into org buffers
         +pandoc          ; export-with-pandoc support
         +hugo            ; use Emacs for hugo blogging
+        +roam2
         ;;+jupyter        ; ipython/jupyter support for babel
         ;;+pomodoro        ; be fruitful with the tomato technique
         +present)        ; using org-mode for presentations

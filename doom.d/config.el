@@ -66,11 +66,20 @@
   (global-tree-sitter-mode)
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 
-;; (defun slj/resize-variable-pitch-font()
-;;   (setq doom-variable-pitch-font (font-spec :family "Roboto" :size 29))
-;;   )
+(defvar emojify-disabled-emojis
+  '(;; Org
+    "◼" "☑" "☸" "⚙" "⏩" "⏪" "⬆" "⬇" "❓"
+    ;; Terminal powerline
+    "✔"
+    ;; Box drawing
+    "▶" "◀")
+  "Characters that should never be affected by `emojify-mode'.")
 
-;; (add-hook! 'doom-big-font-mode-hook #'slj/resize-variable-pitch-font)
+(defadvice! emojify-delete-from-data ()
+  "Ensure `emojify-disabled-emojis' don't appear in `emojify-emojis'."
+  :after #'emojify-set-emoji-data
+  (dolist (emoji emojify-disabled-emojis)
+    (remhash emoji emojify-emojis)))
 
 (map! :leader
       :desc "Load new theme"
@@ -249,7 +258,14 @@
 
           ("np" "🎵 Playlist item" entry
            (file+olp "~/Nextcloud/Documents/Org/Playlists.org" "Inbox")
-           "** %i\n %U\n %a" :empty-lines 1))))
+           "** %i\n %U\n %a" :empty-lines 1)
+
+          ("g" "😞 Generic")
+
+          ("gw" "Web resource" entry
+           (file+olp "~/Nextcloud/Documents/Org/Web-resources.org" "Inbox")
+           "%i" :empty-lines 1 :immediate-finish 1))))
+
 
 ;; Calendar
 (setq calendar-week-start-day 1)

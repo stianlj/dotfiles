@@ -11,6 +11,10 @@
         mu4e-headers-toggle-skip-duplicates nil)
 
   (setq! mu4e-get-mail-command "offlineimap")
+  (setq mu4e-alert-interesting-mail-query
+        (concat
+         "flag:unread"
+         " AND maildir:\"/INBOX\""))
 
   (setq mu4e-bookmarks '(("maildir:/INBOX" "Inbox" ?i)
                          ("maildir:/INBOX AND flag:flagged" "Flagged messages" ?f)
@@ -31,7 +35,7 @@
   (define-key mu4e-headers-mode-map (kbd "S") 'mu4e-headers-mark-for-spam)
 
   (setq sendmail-program "/usr/bin/msmtp"
-      send-mail-function 'smtpmail-send-it
-      message-sendmail-f-is-evil t
-      message-sendmail-extra-arguments '("--read-envelope-from")
-      message-send-mail-function 'message-send-mail-with-sendmail))
+        send-mail-function 'smtpmail-send-it
+        message-sendmail-f-is-evil t
+        message-sendmail-extra-arguments '("--read-envelope-from")
+        message-send-mail-function 'message-send-mail-with-sendmail))
