@@ -29,6 +29,17 @@ return require('packer').startup(function()
     end
   }
   use {
+    'nvim-lualine/lualine.nvim',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true},
+    config = function()
+      require('lualine').setup({
+        options = {
+          theme = 'material-nvim'
+        }
+      })
+    end
+  }
+  use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
     config = function()
