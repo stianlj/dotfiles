@@ -1,5 +1,4 @@
 -- TODO
--- * LSP things
 -- * Prettier and other good formatting
 -- * Telescope and file things
 -- * Git, GitSigns and NeoGit
@@ -49,4 +48,17 @@ return require('packer').startup(function(use)
     'williamboman/nvim-lsp-installer',
     config = function() require('plugins/lspconfig') end
   }
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      'L3MON4D3/LuaSnip',
+      'onsails/lspkind-nvim',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-nvim-lua',
+      'hrsh7th/cmp-path'
+    },
+    config = function() require('plugins/cmp') end
+  }
+  use 'saadparwaiz1/cmp_luasnip'
 end)
