@@ -10,6 +10,9 @@ cmp.setup({
     { name = 'path' },
     { name = 'buffer', keyword_length = 5 },
   }),
+  completion = {
+    keyword_length = 3,
+  },
   mapping = {
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
     ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
