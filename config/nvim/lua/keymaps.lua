@@ -17,3 +17,7 @@ map('n', '<C-h>', '<C-w>h', default_opts)
 map('n', '<C-j>', '<C-w>j', default_opts)
 map('n', '<C-k>', '<C-w>k', default_opts)
 map('n', '<C-l>', '<C-w>l', default_opts)
+
+map('n', '<leader><Space>', '<cmd>Telescope find_files<CR>', default_opts)
+map('n', '<leader>bb', '<cmd>Telescope buffers<CR>', default_opts)
+map('n', '<leader>gs', '<cmd>Telescope git_status<CR>', default_opts)
