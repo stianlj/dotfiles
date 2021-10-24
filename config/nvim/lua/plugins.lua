@@ -7,7 +7,9 @@
 -- + https://github.com/nvim-treesitter/nvim-treesitter/wiki/Extra-modules-and-plugins
 -- + https://github.com/nicknisi/dotfiles/blob/master/config/nvim/lua/plugins/treesitter.lua
 
-vim.cmd([[
+local cmd = vim.cmd
+
+cmd([[
   augroup packer_user_config
     autocmd!
     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
@@ -50,7 +52,7 @@ return require('packer').startup(function(use)
       lsp_installer.on_server_ready(function(server)
         local opts = {}
         server:setup(opts)
-        vim.cmd [[ do User LspAttachBuffers ]]
+        cmd([[ do User LspAttachBuffers ]])
       end)
     end
   }
