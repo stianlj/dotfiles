@@ -61,4 +61,18 @@ return require('packer').startup(function(use)
     config = function() require('plugins/cmp') end
   }
   use 'saadparwaiz1/cmp_luasnip'
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+    config = function()
+      require('gitsigns').setup({
+        current_line_blame = true,
+        current_line_blame_formatter_opts = {
+          relative_time = true,
+        }
+      })
+    end
+}
 end)
