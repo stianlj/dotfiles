@@ -47,13 +47,6 @@ return require('packer').startup(function(use)
   use {
     'neovim/nvim-lspconfig',
     'williamboman/nvim-lsp-installer',
-    config = function()
-      local lsp_installer = require('nvim-lsp-installer')
-      lsp_installer.on_server_ready(function(server)
-        local opts = {}
-        server:setup(opts)
-        cmd([[ do User LspAttachBuffers ]])
-      end)
-    end
+    config = function() require('plugins/lspconfig') end
   }
 end)
