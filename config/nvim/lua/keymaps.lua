@@ -32,3 +32,6 @@ map('n', '<leader>xl', '<cmd>TroubleToggle loclist<CR>', default_opts)
 map('n', 'gR', '<cmd>TroubleToggle lsp_references<CR>', default_opts)
 
 map('n', '<leader>cr', '<cmd>lua vim.lsp.buf.rename()<CR>', default_opts)
+
+-- Since NeoGit doesn't seem to cut it just yet
+map('n', '<leader>gg', '<cmd>term emacsclient -nw -e "(magit-status)"<CR>', {noremap = true})
