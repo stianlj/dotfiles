@@ -1,6 +1,5 @@
 -- TODO
 -- * Prettier and other good formatting
--- * Telescope and file things
 -- * Git, GitSigns and NeoGit
 -- Some inspirations for now:
 -- + https://github.com/nvim-treesitter/nvim-treesitter/wiki/Extra-modules-and-plugins
