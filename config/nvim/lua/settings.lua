@@ -13,6 +13,7 @@ opt.relativenumber = true
 opt.mouse = 'a'
 opt.splitbelow = true
 opt.splitright = true
+opt.termguicolors = true
 
 cmd([[ autocmd BufRead * if getline(1) == '#!/bin/dash' | set filetype=sh | endif ]])
 
