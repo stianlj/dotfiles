@@ -15,6 +15,8 @@ opt.splitbelow = true
 opt.splitright = true
 opt.termguicolors = true
 
+cmd([[ autocmd BufRead * if getline(1) == '#!/bin/dash' | set filetype=sh | endif ]])
+
 local lsp_installer = require('nvim-lsp-installer')
 lsp_installer.on_server_ready(function(server)
   server:setup()

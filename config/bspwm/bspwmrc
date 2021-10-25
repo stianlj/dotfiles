@@ -99,7 +99,6 @@ flameshot &
 picom --experimental-backends -b
 
 if [ $COMPUTER_IDENTIFIER = "main-desktop" ]; then
-  megasync &
   $HOME/.config/polybar/launch.sh
   indicator-kdeconnect &
 fi
