@@ -13,6 +13,7 @@ opt.relativenumber = true
 opt.mouse = 'a'
 opt.splitbelow = true
 opt.splitright = true
+opt.termguicolors = true
 
 local lsp_installer = require('nvim-lsp-installer')
 lsp_installer.on_server_ready(function(server)
