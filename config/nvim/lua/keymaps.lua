@@ -24,3 +24,10 @@ map('n', '<leader>gs', '<cmd>Telescope git_status<CR>', default_opts)
 map('n', '<leader>/', '<cmd>Telescope live_grep<CR>', default_opts)
 
 map('n', '<leader>op', '<cmd>NvimTreeToggle<CR>', default_opts)
+
+map('n', '<leader>xx', '<cmd>TroubleToggle<CR>', default_opts)
+map('n', '<leader>xw', '<cmd>TroubleToggle lsp_workspace_diagnostics<CR>', default_opts)
+map('n', '<leader>xd', '<cmd>TroubleToggle lsp_document_diagnostics<CR>', default_opts)
+map('n', '<leader>xq', '<cmd>TroubleToggle quickfix<CR>', default_opts)
+map('n', '<leader>xl', '<cmd>TroubleToggle loclist<CR>', default_opts)
+map('n', 'gR', '<cmd>TroubleToggle lsp_references<CR>', default_opts)

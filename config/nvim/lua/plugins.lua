@@ -89,4 +89,9 @@ return require('packer').startup(function(use)
     requires = 'kyazdani42/nvim-web-devicons',
     config = function() require('nvim-tree').setup({}) end
   }
+  use {
+    'folke/trouble.nvim',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function() require('trouble').setup({}) end
+  }
 end)
