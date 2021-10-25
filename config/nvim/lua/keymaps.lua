@@ -18,9 +18,12 @@ map('n', '<C-k>', '<C-w>k', default_opts)
 map('n', '<C-l>', '<C-w>l', default_opts)
 
 map('n', '<leader><Space>', '<cmd>Telescope find_files<CR>', default_opts)
+map('n', '<leader>.', '<cmd>Telescope file_browser<CR>', default_opts)
 map('n', '<leader>bb', '<cmd>Telescope buffers<CR>', default_opts)
 map('n', '<leader>gs', '<cmd>Telescope git_status<CR>', default_opts)
 map('n', '<leader>/', '<cmd>Telescope live_grep<CR>', default_opts)
+-- A poor mans meta-x in Vim
+map('n', '<M-x>', '<cmd>Telescope commands<CR>', default_opts)
 
 map('n', '<leader>op', '<cmd>NvimTreeToggle<CR>', default_opts)
 
