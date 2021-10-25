@@ -14,6 +14,7 @@ opt.mouse = 'a'
 opt.splitbelow = true
 opt.splitright = true
 opt.termguicolors = true
+opt.hidden = true
 
 cmd([[ autocmd BufRead * if getline(1) == '#!/bin/dash' | set filetype=sh | endif ]])
 
