@@ -80,4 +80,8 @@ return require('packer').startup(function(use)
       'nvim-lua/plenary.nvim'
     }
   }
+  use {
+    'windwp/nvim-autopairs',
+    config = function() require('nvim-autopairs').setup({}) end
+  }
 end)
