@@ -31,3 +31,5 @@ map('n', '<leader>xd', '<cmd>TroubleToggle lsp_document_diagnostics<CR>', defaul
 map('n', '<leader>xq', '<cmd>TroubleToggle quickfix<CR>', default_opts)
 map('n', '<leader>xl', '<cmd>TroubleToggle loclist<CR>', default_opts)
 map('n', 'gR', '<cmd>TroubleToggle lsp_references<CR>', default_opts)
+
+map('n', '<leader>cr', '<cmd>lua vim.lsp.buf.rename()<CR>', default_opts)
