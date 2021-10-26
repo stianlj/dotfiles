@@ -98,4 +98,8 @@ return require('packer').startup(function(use)
     requires = 'kyazdani42/nvim-web-devicons',
     config = function() require('trouble').setup({}) end
   }
+  use {
+    'folke/which-key.nvim',
+    config = function() require('which-key').setup({}) end
+  }
 end)
