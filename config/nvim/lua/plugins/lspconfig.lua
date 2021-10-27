@@ -1,17 +1,17 @@
 local cmd = vim.cmd
 
-local lsp_installer = require('nvim-lsp-installer')
+local lsp_installer = require("nvim-lsp-installer")
 lsp_installer.on_server_ready(function(server)
   server:setup()
   cmd([[ do User LspAttachBuffers ]])
 end)
 
-local lspconfig = require('lspconfig')
+local lspconfig = require("lspconfig")
 
 local default_opts = {
   flags = {
-    debounce_text_changes = 150
-  }
+    debounce_text_changes = 150,
+  },
 }
 lspconfig.tsserver.setup(default_opts)
 lspconfig.eslint.setup(default_opts)
@@ -79,11 +79,11 @@ lspconfig.intelephense.setup({
         "wordpress-globals",
         "wp-cli",
         "genesis",
-        "polylang"
+        "polylang",
       },
       files = {
-        maxSize = 5000000
-      };
-    };
+        maxSize = 5000000,
+      },
+    },
   },
 })

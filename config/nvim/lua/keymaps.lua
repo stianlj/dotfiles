@@ -1,66 +1,71 @@
 local map = vim.api.nvim_set_keymap
-local default_opts = {noremap = true, silent = true}
-local whichKey = require('which-key')
+local default_opts = { noremap = true, silent = true }
+local whichKey = require("which-key")
 
 whichKey.register({
-  ['<Space>'] = { '<cmd>Telescope find_files<CR>', 'Find file' },
-  ['.'] = { '<cmd>Telescope file_browser<CR>', 'Open filebrowser' },
-  ['/'] = { '<cmd>Telescope live_grep<CR>', 'Search in files' },
-  s = { ':w<CR>', 'Save buffer' },
+  ["<Space>"] = { "<cmd>Telescope find_files<CR>", "Find file" },
+  ["."] = { "<cmd>Telescope file_browser<CR>", "Open filebrowser" },
+  ["/"] = { "<cmd>Telescope live_grep<CR>", "Search in files" },
+  s = { ":w<CR>", "Save buffer" },
   b = {
-    name = 'Buffers',
-    b = { '<cmd>Telescope buffers<CR>', 'Switch buffers' },
-    d = { '<cmd>bd!<CR>', 'Kill buffer' },
+    name = "Buffers",
+    b = { "<cmd>Telescope buffers<CR>", "Switch buffers" },
+    d = { "<cmd>bd!<CR>", "Kill buffer" },
   },
   c = {
-    name = 'Code',
-    r = { '<cmd>lua vim.lsp.buf.rename()<CR>', 'LSP rename' },
-    x = { '<cmd>TroubleToggle<CR>', 'LSP project diagnostics' }
+    name = "Code",
+    r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "LSP rename" },
+    x = { "<cmd>TroubleToggle<CR>", "LSP project diagnostics" },
   },
   g = {
-    name = 'Git',
+    name = "Git",
     -- Since NeoGit doesn't seem to cut it just yet
-    g = { '<cmd>term emacsclient -nw -e "(magit-status)"<CR>', 'Magit status' },
-    s = { '<cmd>lua require"gitsigns".stage_hunk()<CR>', 'Stage hunk' },
-    u = { '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>', 'Undo stage hunk' },
-    r = { '<cmd>lua require"gitsigns".reset_hunk()<CR>', 'Reset hunk' },
-    R = { '<cmd>lua require"gitsigns".reset_buffer()<CR>', 'Reset buffer' },
-    p = { '<cmd>lua require"gitsigns".preview_hunk()<CR>', 'Preview hunk' },
-    S = { '<cmd>lua require"gitsigns".stage_buffer()<CR>', 'Stage buffer' },
-    U = { '<cmd>lua require"gitsigns".reset_buffer_index()<CR>', 'Reset buffer index' },
+    g = { '<cmd>term emacsclient -nw -e "(magit-status)"<CR>', "Magit status" },
+    s = { '<cmd>lua require"gitsigns".stage_hunk()<CR>', "Stage hunk" },
+    u = { '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>', "Undo stage hunk" },
+    r = { '<cmd>lua require"gitsigns".reset_hunk()<CR>', "Reset hunk" },
+    R = { '<cmd>lua require"gitsigns".reset_buffer()<CR>', "Reset buffer" },
+    p = { '<cmd>lua require"gitsigns".preview_hunk()<CR>', "Preview hunk" },
+    S = { '<cmd>lua require"gitsigns".stage_buffer()<CR>', "Stage buffer" },
+    U = { '<cmd>lua require"gitsigns".reset_buffer_index()<CR>', "Reset buffer index" },
   },
   o = {
-    name = 'Open',
-    p = { '<cmd>NvimTreeToggle<CR>', 'Project sidebar' },
+    name = "Open",
+    p = { "<cmd>NvimTreeToggle<CR>", "Project sidebar" },
   },
-}, { prefix = '<leader>' })
+}, {
+  prefix = "<leader>",
+})
 
 -- Own register for visual mode keymaps, since some of the mappings is the same as in normal mode
 whichKey.register({
   g = {
-    name = 'Git',
-    s = { '<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', 'Stage hunk (visual)' },
-    r = { '<cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', 'Reset hunk (visual)' },
+    name = "Git",
+    s = { '<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', "Stage hunk (visual)" },
+    r = { '<cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', "Reset hunk (visual)" },
   },
-}, { prefix = '<leader>', mode = 'v'})
+}, {
+  prefix = "<leader>",
+  mode = "v",
+})
 
 -- don't use arrow keys
-map('', '<up>', '<nop>', {noremap = true})
-map('', '<down>', '<nop>', {noremap = true})
-map('', '<left>', '<nop>', {noremap = true})
-map('', '<right>', '<nop>', {noremap = true})
+map("", "<up>", "<nop>", { noremap = true })
+map("", "<down>", "<nop>", { noremap = true })
+map("", "<left>", "<nop>", { noremap = true })
+map("", "<right>", "<nop>", { noremap = true })
 
 -- move around splits using Ctrl + {h,j,k,l}
-map('n', '<C-h>', '<C-w>h', default_opts)
-map('n', '<C-j>', '<C-w>j', default_opts)
-map('n', '<C-k>', '<C-w>k', default_opts)
-map('n', '<C-l>', '<C-w>l', default_opts)
+map("n", "<C-h>", "<C-w>h", default_opts)
+map("n", "<C-j>", "<C-w>j", default_opts)
+map("n", "<C-k>", "<C-w>k", default_opts)
+map("n", "<C-l>", "<C-w>l", default_opts)
 
 -- A poor mans meta-x in Vim
-map('n', '<M-x>', '<cmd>Telescope commands<CR>', default_opts)
+map("n", "<M-x>", "<cmd>Telescope commands<CR>", default_opts)
 
-map('n', '<leader>xw', '<cmd>TroubleToggle lsp_workspace_diagnostics<CR>', default_opts)
-map('n', '<leader>xd', '<cmd>TroubleToggle lsp_document_diagnostics<CR>', default_opts)
-map('n', '<leader>xq', '<cmd>TroubleToggle quickfix<CR>', default_opts)
-map('n', '<leader>xl', '<cmd>TroubleToggle loclist<CR>', default_opts)
-map('n', 'gR', '<cmd>TroubleToggle lsp_references<CR>', default_opts)
+map("n", "<leader>xw", "<cmd>TroubleToggle lsp_workspace_diagnostics<CR>", default_opts)
+map("n", "<leader>xd", "<cmd>TroubleToggle lsp_document_diagnostics<CR>", default_opts)
+map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<CR>", default_opts)
+map("n", "<leader>xl", "<cmd>TroubleToggle loclist<CR>", default_opts)
+map("n", "gR", "<cmd>TroubleToggle lsp_references<CR>", default_opts)
