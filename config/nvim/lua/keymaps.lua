@@ -21,13 +21,28 @@ whichKey.register({
     name = 'Git',
     -- Since NeoGit doesn't seem to cut it just yet
     g = { '<cmd>term emacsclient -nw -e "(magit-status)"<CR>', 'Magit status' },
-    s = { '<cmd>Telescope git_status<CR>', 'Git status' },
+    s = { '<cmd>lua require"gitsigns".stage_hunk()<CR>', 'Stage hunk' },
+    u = { '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>', 'Undo stage hunk' },
+    r = { '<cmd>lua require"gitsigns".reset_hunk()<CR>', 'Reset hunk' },
+    R = { '<cmd>lua require"gitsigns".reset_buffer()<CR>', 'Reset buffer' },
+    p = { '<cmd>lua require"gitsigns".preview_hunk()<CR>', 'Preview hunk' },
+    S = { '<cmd>lua require"gitsigns".stage_buffer()<CR>', 'Stage buffer' },
+    U = { '<cmd>lua require"gitsigns".reset_buffer_index()<CR>', 'Reset buffer index' },
   },
   o = {
     name = 'Open',
     p = { '<cmd>NvimTreeToggle<CR>', 'Project sidebar' },
   },
 }, { prefix = '<leader>' })
+
+-- Own register for visual mode keymaps, since some of the mappings is the same as in normal mode
+whichKey.register({
+  g = {
+    name = 'Git',
+    s = { '<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', 'Stage hunk (visual)' },
+    r = { '<cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', 'Reset hunk (visual)' },
+  },
+}, { prefix = '<leader>', mode = 'v'})
 
 -- don't use arrow keys
 map('', '<up>', '<nop>', {noremap = true})
