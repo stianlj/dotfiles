@@ -13,6 +13,7 @@ alias zz='z -c'
 alias zi='z -i'
 alias zf='z -I'
 alias zb='z -b'
+alias vi='nvim'
 
 thefuck --alias | source
 
