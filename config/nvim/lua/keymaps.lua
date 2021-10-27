@@ -10,6 +10,7 @@ whichKey.register({
   b = {
     name = 'Buffers',
     b = { '<cmd>Telescope buffers<CR>', 'Switch buffers' },
+    d = { '<cmd>bd!<CR>', 'Kill buffer' },
   },
   c = {
     name = 'Code',
