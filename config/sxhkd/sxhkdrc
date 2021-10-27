@@ -3,12 +3,10 @@
 #
 
 # terminal emulator
+# super + Return
+#   wezterm
 super + Return
-  wezterm
-# super + Return
-#  alacritty -e fish
-# super + Return
-#   urxvt -e fish
+  kitty fish
 
 super + d
   rofi -show drun

@@ -81,6 +81,7 @@ bspc rule -a qutebrowser border=off
 bspc rule -a Blueman-manager state=floating
 bspc rule -a Alacritty border=off
 bspc rule -a "org.wezfurlong.wezterm" border=off
+bspc rule -a kitty border=off
 bspc rule -a st border=off
 bspc rule -a jetbrains-idea border=off
 bspc rule -a Surf state=tiled
@@ -95,11 +96,11 @@ pasystray &
 nextcloud --background &
 emacs --daemon -n &
 flameshot &
-# $HOME/.config/bspwm/layout.sh &
 picom --experimental-backends -b
 
 if [ $COMPUTER_IDENTIFIER = "main-desktop" ]; then
   $HOME/.config/polybar/launch.sh
+  $HOME/.config/bspwm/layout.sh &
   indicator-kdeconnect &
 fi
 
