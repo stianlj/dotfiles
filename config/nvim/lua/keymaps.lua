@@ -14,6 +14,7 @@ whichKey.register({
   },
   c = {
     name = "Code",
+    a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "LSP code actions" },
     r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "LSP rename" },
     x = { "<cmd>TroubleToggle<CR>", "LSP project diagnostics" },
   },
