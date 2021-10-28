@@ -16,7 +16,7 @@ return require("packer").startup(function(use)
   use({
     "marko-cerovac/material.nvim",
     config = function()
-      require("plugins/material")
+      require("plugins/material-config")
     end,
   })
   use({
@@ -34,7 +34,7 @@ return require("packer").startup(function(use)
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
     config = function()
-      require("plugins/treesitter")
+      require("plugins/treesitter-config")
     end,
   })
   use("nvim-treesitter/playground")
@@ -54,7 +54,7 @@ return require("packer").startup(function(use)
       "hrsh7th/cmp-path",
     },
     config = function()
-      require("plugins/cmp")
+      require("plugins/cmp-config")
     end,
   })
   use("saadparwaiz1/cmp_luasnip")
@@ -117,7 +117,7 @@ return require("packer").startup(function(use)
   use({
     "mhartington/formatter.nvim",
     config = function()
-      require("plugins/formatter")
+      require("plugins/formatter-config")
     end,
   })
 end)

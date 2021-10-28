@@ -18,4 +18,4 @@ opt.hidden = true
 
 cmd([[ autocmd BufRead * if getline(1) == '#!/bin/dash' | set filetype=sh | endif ]])
 
-require("plugins/lspconfig")
+require("plugins/lsp-config")
