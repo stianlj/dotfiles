@@ -21,13 +21,16 @@ whichKey.register({
   g = {
     name = "Git",
     -- Since NeoGit doesn't seem to cut it just yet
+    c = { "<cmd>Git commit<CR>", "Commit" },
+    F = { "<cmd>Git pull<CR>", "Pull" },
     g = { '<cmd>term emacsclient -nw -e "(magit-status)"<CR>', "Magit status" },
-    s = { '<cmd>lua require"gitsigns".stage_hunk()<CR>', "Stage hunk" },
-    u = { '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>', "Undo stage hunk" },
+    p = { '<cmd>lua require"gitsigns".preview_hunk()<CR>', "Preview hunk" },
+    P = { "<cmd>Git push<CR>", "Push" },
     r = { '<cmd>lua require"gitsigns".reset_hunk()<CR>', "Reset hunk" },
     R = { '<cmd>lua require"gitsigns".reset_buffer()<CR>', "Reset buffer" },
-    p = { '<cmd>lua require"gitsigns".preview_hunk()<CR>', "Preview hunk" },
+    s = { '<cmd>lua require"gitsigns".stage_hunk()<CR>', "Stage hunk" },
     S = { '<cmd>lua require"gitsigns".stage_buffer()<CR>', "Stage buffer" },
+    u = { '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>', "Undo stage hunk" },
     U = { '<cmd>lua require"gitsigns".reset_buffer_index()<CR>', "Reset buffer index" },
   },
   o = {
