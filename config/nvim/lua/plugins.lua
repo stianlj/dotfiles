@@ -83,13 +83,6 @@ return require("packer").startup(function(use)
     end,
   })
   use({
-    "TimUntersberger/neogit",
-    requires = "nvim-lua/plenary.nvim",
-    config = function()
-      require("neogit").setup({})
-    end,
-  })
-  use({
     "nvim-telescope/telescope.nvim",
     requires = {
       "nvim-lua/plenary.nvim",
