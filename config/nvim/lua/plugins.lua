@@ -65,6 +65,7 @@ return require("packer").startup(function(use)
     end,
   })
   use("saadparwaiz1/cmp_luasnip")
+  use("tpope/vim-fugitive")
   use({
     "lewis6991/gitsigns.nvim",
     requires = {
