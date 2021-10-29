@@ -42,6 +42,7 @@ return require("packer").startup(function(use)
   use({
     "neovim/nvim-lspconfig",
     "williamboman/nvim-lsp-installer",
+    "tami5/lspsaga.nvim",
   })
   use({
     "hrsh7th/nvim-cmp",

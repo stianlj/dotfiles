@@ -14,8 +14,8 @@ whichKey.register({
   },
   c = {
     name = "Code",
-    a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "LSP code actions" },
-    r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "LSP rename" },
+    a = { "<cmd>Lspsaga code_action<CR>", "LSP code actions" },
+    r = { "<cmd>Lspsaga rename<CR>", "LSP rename" },
     x = { "<cmd>TroubleToggle<CR>", "LSP project diagnostics" },
   },
   g = {
@@ -43,6 +43,9 @@ whichKey.register({
 
 -- Own register for visual mode keymaps, since some of the mappings is the same as in normal mode
 whichKey.register({
+  c = {
+    a = { "<cmd>Lspsaga range_code_action<CR>", "LSP code actions (visual)" },
+  },
   g = {
     name = "Git",
     s = { '<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', "Stage hunk (visual)" },
