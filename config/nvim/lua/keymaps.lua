@@ -23,7 +23,7 @@ whichKey.register({
     -- Since NeoGit doesn't seem to cut it just yet
     c = { "<cmd>Git commit<CR>", "Commit" },
     F = { "<cmd>Git pull<CR>", "Pull" },
-    g = { '<cmd>term emacsclient -nw -e "(magit-status)"<CR>', "Magit status" },
+    g = { "<cmd>!tmux neww -n magit 'emacsclient -nw -e \"(magit-status)\"'<CR>", "Magit status" },
     p = { '<cmd>lua require"gitsigns".preview_hunk()<CR>', "Preview hunk" },
     P = { "<cmd>Git push<CR>", "Push" },
     r = { '<cmd>lua require"gitsigns".reset_hunk()<CR>', "Reset hunk" },
