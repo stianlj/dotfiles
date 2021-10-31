@@ -1,3 +1,8 @@
+-- TODO
+-- https://github.com/svermeulen/vim-subversive
+-- https://github.com/svermeulen/vim-yoink
+-- https://github.com/svermeulen/vim-cutlass
+
 local cmd = vim.cmd
 
 cmd([[
