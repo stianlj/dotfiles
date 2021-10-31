@@ -12,6 +12,7 @@ return require("packer").startup(function(use)
   use("JoosepAlviste/nvim-ts-context-commentstring")
   use("tpope/vim-commentary")
   use("tpope/vim-surround")
+  use("tpope/vim-repeat")
   use("lukas-reineke/indent-blankline.nvim")
   use({
     "marko-cerovac/material.nvim",
