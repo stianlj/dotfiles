@@ -5,6 +5,8 @@ set fish_greeting ""
 set -gx LIBVIRT_DEFAULT_URI qemu:///system
 set -gx EDITOR nvim
 
+test -d "$HOME/.local/bin"; and set PATH "$HOME/.local/bin" $PATH
+
 bind yy fish_clipboard_copy
 bind p fish_clipboard_paste
 
