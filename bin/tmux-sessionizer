@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
-session=$(find ~/Code -mindepth 1 -maxdepth 1 -type d,l | fzf)
+if [ -n "$1" ]; then
+  session=$1
+else
+  session=$(find ~/Code/Work/applications ~/Code/Work/modules -mindepth 1 -maxdepth 1 -type d,l | fzf)
+fi
+
 session_name=$(basename "$session")
 
 echo "session $session_name"
