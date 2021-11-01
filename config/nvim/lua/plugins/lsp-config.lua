@@ -2,7 +2,7 @@ local cmd = vim.cmd
 
 local lsp_installer = require("nvim-lsp-installer")
 lsp_installer.on_server_ready(function(server)
-  server:setup()
+  server:setup({})
   cmd([[ do User LspAttachBuffers ]])
 end)
 
