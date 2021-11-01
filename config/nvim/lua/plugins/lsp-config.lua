@@ -16,6 +16,7 @@ local default_opts = {
 lspconfig.tsserver.setup(default_opts)
 lspconfig.eslint.setup(default_opts)
 lspconfig.sumneko_lua.setup(default_opts)
+lspconfig.bashls.setup(default_opts)
 lspconfig.intelephense.setup({
   settings = {
     intelephense = {

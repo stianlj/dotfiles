@@ -29,5 +29,14 @@ require("formatter").setup({
         }
       end,
     },
+    sh = {
+      function()
+        return {
+          exe = "shfmt",
+          args = { "-i", 2 },
+          stdin = true,
+        }
+      end,
+    },
   },
 })
