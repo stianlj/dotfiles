@@ -11,17 +11,13 @@ bind yy fish_clipboard_copy
 bind p fish_clipboard_paste
 
 alias ls='exa --git --extended --octal-permissions'
-alias zz='z -c'
-alias zi='z -i'
-alias zf='z -I'
-alias zb='z -b'
-alias vi='nvim'
+
+abbr --add zz 'z -c'
+abbr --add zi 'z -i'
+abbr --add zf 'z -I'
+abbr --add zb 'z -b'
+abbr --add vi 'nvim'
+abbr --add cat 'bat'
 
 thefuck --alias | source
-
-# if test "$TERM" = "eterm-color"
-#     function fish_title
-#     end
-# end
-
 starship init fish | source
