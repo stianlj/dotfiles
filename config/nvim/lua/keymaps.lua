@@ -73,6 +73,8 @@ map("n", "<M-k>", ":m .-2<CR>==", default_opts)
 map("v", "<M-j>", ":m '>+1<CR>gv=gv", default_opts)
 map("v", "<M-k>", ":m '<-2<CR>gv=gv", default_opts)
 
+map("v", "<leader>y", '"+y', default_opts)
+
 -- A poor mans meta-x in Vim
 map("n", "<M-x>", "<cmd>Telescope commands<CR>", default_opts)
 
