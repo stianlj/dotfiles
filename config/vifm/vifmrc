@@ -150,6 +150,10 @@ command! xcopy
       \ :execute '!rsync -avh --info=progress2 --no-perms --no-owner --no-group --no-times %f %D'
 command! xmove
       \ :execute '!rsync -avh --info=progress2 --no-perms --no-owner --no-group --no-times %f %D && rm -rf %f'
+command! xsyncdel
+      \ :execute '!rsync -avh --info=progress2 --ignore-existing --no-perms --no-owner --no-group --no-times %f %D && rm -rf %f'
+command! xsync
+      \ :execute '!rsync -avh --info=progress2 --ignore-existing --no-perms --no-owner --no-group --no-times %f %D'
 command! unzip
       \ :execute '!for f in %"f; do 7z x "${f}" -o"$(dirname "${f}")"; done'
 command! funzip
