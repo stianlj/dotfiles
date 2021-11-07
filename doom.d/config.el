@@ -108,16 +108,6 @@
  "C-k" #'evil-window-up
  "C-l" #'evil-window-right)
 
-;; LSP
-(setq +format-with-lsp nil)
-(setq lsp-intelephense-files-max-size 10000000)
-(setq read-process-output-max (* 1024 1024))
-(setq lsp-log-io nil)
-(setq company-idle-delay nil)
-(setq lsp-ui-sideline-enable nil)
-(setq lsp-signature-auto-activate nil)
-(setq lsp-enable-symbol-highlighting nil)
-
 ;; Org mode
 (setq org-directory "~/Nextcloud/Documents/Org")
 (setq org-roam-directory "~/Nextcloud/Documents/Org/Roam")
@@ -270,25 +260,5 @@
 ;; Calendar
 (setq calendar-week-start-day 1)
 
-;; Web
-(setq css-indent-offset 2
-      js2-basic-offset 2
-      js-switch-indent-offset 2
-      js-indent-level 2
-      js2-mode-show-parse-errors nil
-      js2-mode-show-strict-warnings nil
-      web-mode-attr-indent-offset 2
-      web-mode-code-indent-offset 2
-      web-mode-css-indent-offset 2
-      web-mode-markup-indent-offset 2
-      web-mode-enable-current-element-highlight t
-      web-mode-enable-current-column-highlight t)
-(setq-default typescript-indent-level 2)
-
 ;; Elfeed
 (setq rmh-elfeed-org-files '("~/Nextcloud/Documents/Org/elfeed.org"))
-
-;; Etc
-(add-to-list 'auto-mode-alist `(,(rx "sxhkdrc" string-end) . sxhkd-mode))
-(add-to-list 'auto-mode-alist '("\\.env\\..*\\'" . dotenv-mode))
-(add-to-list 'auto-mode-alist '("/PKGBUILD$" . pkgbuild-mode))

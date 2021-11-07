@@ -92,9 +92,9 @@
 
        :tools
        ;;ansible
-       (debugger +lsp)    ; FIXME stepping through code, to help you add bugs
+       ;; (debugger +lsp)    ; FIXME stepping through code, to help you add bugs
        ;;direnv
-       (docker +lsp)
+       ;; (docker +lsp)
        editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
@@ -128,7 +128,7 @@
        emacs-lisp        ; drown in parentheses
        (emoji +unicode +ascii +github)
        ;;erlang            ; an elegant language for a more civilized age
-       (ess +lsp)               ; emacs speaks statistics
+       ;; (ess +lsp)               ; emacs speaks statistics
        ;;faust             ; dsp, but you get to keep your soul
        ;;fsharp           ; ML stands for Microsoft's Language
        ;;fstar             ; (dependent) types and (monadic) effects and Z3
@@ -137,15 +137,15 @@
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ;
        ;;(java +meghanada) ; the poster child for carpal tunnel syndrome
-       (javascript +lsp)        ; all(hope(abandon(ye(who(enter(here))))))
-       (json +lsp)
+       ;; (javascript +lsp)        ; all(hope(abandon(ye(who(enter(here))))))
+       ;; (json +lsp)
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
        ;;latex             ; writing papers in Emacs has never been so fun
        ;;lean
        ;;factor
        ;;ledger            ; an accounting system in Emacs
-       (lua +lsp)               ; one-based indices? one-based indices
+       ;; (lua +lsp)               ; one-based indices? one-based indices
        markdown          ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
@@ -160,24 +160,24 @@
         ;;+pomodoro        ; be fruitful with the tomato technique
         +present)        ; using org-mode for presentations
        ;;perl              ; write code no one else can comprehend
-       (php +lsp)               ; perl's insecure younger brother
+       ;; (php +lsp)               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
-       (python +lsp)           ; beautiful is better than ugly
+       ;; (python +lsp)           ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        rest              ; Emacs as a REST client
        ;;rst               ; ReST in peace
-       ruby              ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
-       rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+       ;; ruby              ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
+       ;; rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala             ; java, but good
        ;;scheme            ; a fully conniving family of lisps
-       (sh +lsp +fish)                ; she sells {ba,z,fi}sh shells on the C xor
+       ;; (sh +lsp +fish)                ; she sells {ba,z,fi}sh shells on the C xor
        ;;solidity          ; do you need a blockchain? No.
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
-       (web +lsp)               ; the tubes
-       (yaml +lsp)
+       ;; (web +lsp)               ; the tubes
+       ;; (yaml +lsp)
 
        :email
        (mu4e +gmail)
