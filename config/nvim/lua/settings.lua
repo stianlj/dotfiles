@@ -4,6 +4,7 @@ local cmd = vim.cmd
 
 g.mapleader = " "
 
+opt.colorcolumn = '100'
 opt.expandtab = true
 opt.shiftwidth = 2
 opt.smartindent = true
