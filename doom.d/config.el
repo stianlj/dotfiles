@@ -15,10 +15,10 @@
 
 ;; Doom config
 (setq doom-theme 'doom-dracula)
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :weight 'semi-bold :size 19)
+(setq doom-font (font-spec :family "MonoLisa" :weight 'semi-bold :size 19)
       doom-variable-pitch-font (font-spec :family "Roboto" :weight 'normal :size 19)
       doom-unicode-font (font-spec :family "Noto Color Emoji" :size 18)
-      doom-big-font (font-spec :family "JetBrainsMono Nerd Font" :weight 'semi-bold :size 28))
+      doom-big-font (font-spec :family "MonoLisa" :weight 'semi-bold :size 28))
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
@@ -27,10 +27,10 @@
 
 (custom-set-faces!
   '(font-lock-comment-face :slant italic)
-  ;; '(font-lock-constant-face :slant italic)
+  '(font-lock-constant-face :slant italic)
+  '(font-lock-keyword-face :slant italic)
   '(font-lock-function-name-face :weight bold)
   '(font-lock-variable-name-face :weight bold))
-;; '(font-lock-keyword-face :slant italic)
 
 
 (font-lock-add-keywords 'js2-mode '(("\\<\\(return\\)" 1 '(:slant italic
