@@ -4,6 +4,9 @@
 -- https://github.com/svermeulen/vim-cutlass
 
 local cmd = vim.cmd
+local packer = require("packer")
+
+require("packer_compiled")
 
 cmd([[
   augroup packer_user_config
@@ -12,7 +15,14 @@ cmd([[
   augroup end
 ]])
 
-return require("packer").startup(function(use)
+packer.reset()
+packer.init({
+  compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
+})
+
+return packer.startup(function(use)
+  use("lewis6991/impatient.nvim")
+  use("dstein64/vim-startuptime")
   use("wbthomason/packer.nvim")
   use("JoosepAlviste/nvim-ts-context-commentstring")
   use("tpope/vim-commentary")
