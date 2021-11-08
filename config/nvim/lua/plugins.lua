@@ -66,6 +66,12 @@ return require("packer").startup(function(use)
     end,
   })
   use("saadparwaiz1/cmp_luasnip")
+  use({
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup()
+    end,
+  })
   use("tpope/vim-fugitive")
   use({
     "lewis6991/gitsigns.nvim",
