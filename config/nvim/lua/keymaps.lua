@@ -16,6 +16,8 @@ whichKey.register({
     name = "Code",
     a = { "<cmd>Lspsaga code_action<CR>", "LSP code actions" },
     r = { "<cmd>Lspsaga rename<CR>", "LSP rename" },
+    h = { "<cmd>Lspsaga hover_doc<CR>", "LSP hover doc" },
+    p = { "<cmd>Lspsaga preview_definition<CR>", "LSP preview definition" },
     x = { "<cmd>TroubleToggle<CR>", "LSP project diagnostics" },
   },
   g = {
@@ -80,6 +82,12 @@ map("n", "N", "Nzzzv", default_opts)
 
 -- A poor mans meta-x in Vim
 map("n", "<M-x>", "<cmd>Telescope commands<CR>", default_opts)
+
+map("n", "<C-f", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)", { noremap = true })
+map("n", "<C-b", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)", { noremap = true })
+-- nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
+-- scroll up hover doc
+-- nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
 
 map("n", "<leader>xw", "<cmd>TroubleToggle lsp_workspace_diagnostics<CR>", default_opts)
 map("n", "<leader>xd", "<cmd>TroubleToggle lsp_document_diagnostics<CR>", default_opts)
