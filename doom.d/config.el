@@ -14,7 +14,7 @@
       user-mail-address env-user-mail-address)
 
 ;; Doom config
-(setq doom-theme 'doom-dracula)
+(setq doom-theme 'doom-material)
 (setq doom-font (font-spec :family "MonoLisa" :weight 'semi-bold :size 19)
       doom-variable-pitch-font (font-spec :family "Roboto" :weight 'normal :size 19)
       doom-unicode-font (font-spec :family "Noto Color Emoji" :size 18)
