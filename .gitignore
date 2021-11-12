@@ -19,3 +19,5 @@ doom.d/*.elc
 termux-emacs.d/variables.el
 package-lock.json
 node_modules
+Session.vim
+config/nvim/lua/packer_compiled.lua
