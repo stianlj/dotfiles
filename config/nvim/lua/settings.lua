@@ -21,7 +21,7 @@ opt.wrap = false
 cmd([[
   augroup configgrp
     autocmd BufRead * if getline(1) == '#!/bin/dash' | set filetype=sh | endif 
-    autocmd BufRead,BufNewFile PKGBUILD set filetype=PKGBUILD 
+    autocmd BufRead,BufNewFile *.PKGBUILD,PKGBUILD set filetype=PKGBUILD 
   augroup END
 ]])
 
