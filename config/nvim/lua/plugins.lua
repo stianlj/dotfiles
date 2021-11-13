@@ -29,6 +29,7 @@ return packer.startup(function(use)
   use("tpope/vim-surround")
   use("tpope/vim-repeat")
   use("tpope/vim-obsession")
+  use("baskerville/vim-sxhkdrc")
   use("lukas-reineke/indent-blankline.nvim")
   use({
     "marko-cerovac/material.nvim",
