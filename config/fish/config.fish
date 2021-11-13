@@ -19,5 +19,6 @@ abbr --add zb 'z -b'
 abbr --add vi 'nvim'
 abbr --add cat 'bat'
 
+source ~/.local/share/nvim/site/pack/packer/start/tokyonight.nvim/extras/fish_tokyonight_storm.fish
 thefuck --alias | source
 starship init fish | source

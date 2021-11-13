@@ -32,9 +32,9 @@ return packer.startup(function(use)
   use("baskerville/vim-sxhkdrc")
   use("lukas-reineke/indent-blankline.nvim")
   use({
-    "marko-cerovac/material.nvim",
+    "folke/tokyonight.nvim",
     config = function()
-      require("plugins/material-config")
+      require("plugins/tokyonight-config")
     end,
   })
   use({
@@ -43,7 +43,7 @@ return packer.startup(function(use)
     config = function()
       require("lualine").setup({
         options = {
-          theme = "material-nvim",
+          theme = "tokyonight",
         },
       })
     end,
