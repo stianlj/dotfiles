@@ -45,6 +45,8 @@ return packer.startup(function(use)
       require("lualine").setup({
         options = {
           theme = "tokyonight",
+          section_separators = { left = "", right = "" },
+          component_separators = {},
         },
       })
     end,
