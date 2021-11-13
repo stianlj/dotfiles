@@ -18,6 +18,11 @@ opt.termguicolors = true
 opt.hidden = true
 opt.wrap = false
 
-cmd([[ autocmd BufRead * if getline(1) == '#!/bin/dash' | set filetype=sh | endif ]])
+cmd([[
+  augroup configgrp
+    autocmd BufRead * if getline(1) == '#!/bin/dash' | set filetype=sh | endif 
+    autocmd BufRead,BufNewFile PKGBUILD set filetype=PKGBUILD 
+  augroup END
+]])
 
 require("plugins/lsp-config")
