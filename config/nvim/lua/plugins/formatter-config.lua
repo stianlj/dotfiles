@@ -2,7 +2,7 @@ vim.api.nvim_exec(
   [[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *.lua,*.js,*.mjs FormatWrite
+  autocmd BufWritePost *.lua,*.js,*.mjs,*.yaml,*.yml FormatWrite
 augroup END
 ]],
   true
@@ -20,6 +20,16 @@ require("formatter").setup({
       end,
     },
     javascript = {
+      logging = false,
+      function()
+        return {
+          exe = "prettierd",
+          args = { vim.api.nvim_buf_get_name(0) },
+          stdin = true,
+        }
+      end,
+    },
+    yaml = {
       logging = false,
       function()
         return {
