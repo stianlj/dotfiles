@@ -11,6 +11,7 @@ bind yy fish_clipboard_copy
 bind p fish_clipboard_paste
 
 alias ls='exa --git --extended --octal-permissions'
+alias ssh='kitty +kitten ssh'
 
 abbr --add zz 'z -c'
 abbr --add zi 'z -i'
