@@ -4,6 +4,8 @@ local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local cmp = require("cmp")
 local lspkind = require("lspkind")
 
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
+
 cmp.setup({
   sources = cmp.config.sources({
     { name = "nvim_lua" },
@@ -41,5 +43,3 @@ cmp.setup({
     ghost_text = true,
   },
 })
-
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
