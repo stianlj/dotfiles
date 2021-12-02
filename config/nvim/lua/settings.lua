@@ -17,6 +17,7 @@ opt.splitright = true
 opt.termguicolors = true
 opt.hidden = true
 opt.wrap = false
+opt.cursorline = true
 
 cmd([[
   augroup configgrp
