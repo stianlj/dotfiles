@@ -25,7 +25,12 @@ return packer.startup(function(use)
   use("dstein64/vim-startuptime")
   use("wbthomason/packer.nvim")
   use("JoosepAlviste/nvim-ts-context-commentstring")
-  use("tpope/vim-commentary")
+  use({
+    "numToStr/Comment.nvim",
+    config = function()
+      require("plugins/comment-config")
+    end,
+  })
   use("tpope/vim-surround")
   use("tpope/vim-repeat")
   use("tpope/vim-obsession")
