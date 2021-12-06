@@ -18,6 +18,18 @@ lsp_installer.on_server_ready(function(server)
     }
   end
 
+  if server.name == "yamlls" then
+    opts.settings = {
+      yaml = {
+        validate = true,
+        schemas = {
+          ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+          ["kubernetes"] = "/.kubernetes/*.yaml",
+        },
+      },
+    }
+  end
+
   if server.name == "intelephense" then
     opts.settings = {
       intelephense = {
