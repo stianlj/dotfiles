@@ -79,6 +79,12 @@ return packer.startup(function(use)
       require("plugins/cmp-config")
     end,
   })
+  use({
+    "rafamadriz/friendly-snippets",
+    config = function()
+      require("luasnip/loaders/from_vscode").lazy_load()
+    end,
+  })
   use("saadparwaiz1/cmp_luasnip")
   use({
     "norcalli/nvim-colorizer.lua",

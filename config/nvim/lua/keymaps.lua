@@ -80,6 +80,12 @@ map("v", "<leader>y", '"+y', default_opts)
 map("n", "n", "nzzzv", default_opts)
 map("n", "N", "Nzzzv", default_opts)
 
+-- Cycle through selection fields in snippets
+map("s", "<Tab>", "<cmd>lua require('luasnip').jump(1)<CR>", default_opts)
+map("s", "<S-Tab>", "<cmd>lua require('luasnip').jump(-1)<CR>", default_opts)
+map("i", "<Tab>", "<cmd>lua require('luasnip').jump(1)<CR>", { noremap = false, silent = true })
+map("i", "<S-Tab>", "<cmd>lua require('luasnip').jump(-1)<CR>", default_opts)
+
 -- A poor mans meta-x in Vim
 map("n", "<M-x>", "<cmd>Telescope commands<CR>", default_opts)
 

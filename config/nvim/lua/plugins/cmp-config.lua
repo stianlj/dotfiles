@@ -12,7 +12,7 @@ cmp.setup({
     { name = "nvim_lua" },
     { name = "nvim_lsp" },
     { name = "path" },
-    { name = "luasnip" },
+    { name = "luasnip", keyword_length = 1 },
     { name = "buffer", keyword_length = 5 },
   }),
   completion = {
