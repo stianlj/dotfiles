@@ -14,7 +14,7 @@ cmp.setup({
     { name = "buffer", keyword_length = 5 },
   }),
   completion = {
-    keyword_length = 3,
+    keyword_length = 2,
   },
   mapping = {
     ["<CR>"] = cmp.mapping.confirm({ select = true }),
