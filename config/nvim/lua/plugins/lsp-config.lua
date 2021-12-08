@@ -14,6 +14,10 @@ local builtin_lsp_servers = {
   "eslint",
   "jsonls",
 }
+
+lsp.handlers["textDocument/hover"] = lsp.with(lsp.handlers.hover, { border = "rounded" })
+lsp.handlers["textDocument/signatureHelp"] = lsp.with(lsp.handlers.signature_help, { border = "rounded" })
+
 lsp_installer.on_server_ready(function(server)
   local opts = {
     capabilities = cmp_nvim_lsp.update_capabilities(lsp.protocol.make_client_capabilities()),

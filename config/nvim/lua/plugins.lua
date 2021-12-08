@@ -38,6 +38,7 @@ return packer.startup(function(use)
   use("github/copilot.vim")
   use("fladson/vim-kitty")
   use("baskerville/vim-sxhkdrc")
+  use("stevearc/dressing.nvim")
   use("lukas-reineke/indent-blankline.nvim")
   use({
     "folke/tokyonight.nvim",
