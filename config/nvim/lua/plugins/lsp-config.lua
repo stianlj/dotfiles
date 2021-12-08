@@ -44,6 +44,19 @@ lsp_installer.on_server_ready(function(server)
     }
   end
 
+  if server.name == "jsonls" then
+    opts.settings = {
+      json = {
+        schemas = {
+          {
+            fileMatch = { "package.json" },
+            url = "https://json.schemastore.org/package.json",
+          },
+        },
+      },
+    }
+  end
+
   if server.name == "intelephense" then
     opts.settings = {
       intelephense = {
