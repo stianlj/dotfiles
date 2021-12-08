@@ -1,10 +1,22 @@
-local cmd = vim.cmd
-
 local lsp_installer = require("nvim-lsp-installer")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
+
+local cmd = vim.cmd
+local lsp = vim.lsp
+
+local builtin_lsp_servers = {
+  "bashls",
+  "pyright",
+  "sumneko_lua",
+  "intelephense",
+  "yamlls",
+  "tsserver",
+  "eslint",
+  "jsonls",
+}
 lsp_installer.on_server_ready(function(server)
   local opts = {
-    capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    capabilities = cmp_nvim_lsp.update_capabilities(lsp.protocol.make_client_capabilities()),
     flags = {
       debounce_text_changes = 150,
     },
@@ -106,3 +118,12 @@ lsp_installer.on_server_ready(function(server)
   server:setup(opts)
   cmd([[ do User LspAttachBuffers ]])
 end)
+
+for _, lsp_name in ipairs(builtin_lsp_servers) do
+  local ok, _lsp = require("nvim-lsp-installer.servers").get_server(lsp_name)
+  if ok and not _lsp:is_installed() then
+    vim.defer_fn(function()
+      lsp_installer.install(lsp_name)
+    end, 0)
+  end
+end
