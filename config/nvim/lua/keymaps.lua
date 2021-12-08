@@ -14,10 +14,13 @@ whichKey.register({
   },
   c = {
     name = "Code",
-    a = { "<cmd>Lspsaga code_action<CR>", "LSP code actions" },
-    r = { "<cmd>Lspsaga rename<CR>", "LSP rename" },
-    h = { "<cmd>Lspsaga hover_doc<CR>", "LSP hover doc" },
-    p = { "<cmd>Lspsaga preview_definition<CR>", "LSP preview definition" },
+    d = { "<cmd>Telescope lsp_definitions<CR>", "LSP definitions" },
+    R = { "<cmd>Telescope lsp_references<CR>", "LSP references" },
+    i = { "<cmd>Telescope lsp_implementations<CR>", "LSP implementations" },
+    D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "LSP declarations" },
+    a = { "<cmd>lua vim.lsp.buf.code_action<CR>", "LSP code actions" },
+    r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "LSP rename" },
+    h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "LSP hover doc" },
     x = { "<cmd>TroubleToggle<CR>", "LSP project diagnostics" },
   },
   g = {
@@ -46,7 +49,7 @@ whichKey.register({
 -- Own register for visual mode keymaps, since some of the mappings is the same as in normal mode
 whichKey.register({
   c = {
-    a = { "<cmd>Lspsaga range_code_action<CR>", "LSP code actions (visual)" },
+    a = { "<cmd>lua vim.lsp.buf.range_code_action()<CR>", "LSP code actions (visual)" },
   },
   g = {
     name = "Git",
@@ -88,12 +91,6 @@ map("i", "<S-Tab>", "<cmd>lua require('luasnip').jump(-1)<CR>", default_opts)
 
 -- A poor mans meta-x in Vim
 map("n", "<M-x>", "<cmd>Telescope commands<CR>", default_opts)
-
-map("n", "<C-f", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)", { noremap = true })
-map("n", "<C-b", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)", { noremap = true })
--- nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
--- scroll up hover doc
--- nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
 
 map("n", "<leader>xw", "<cmd>TroubleToggle lsp_workspace_diagnostics<CR>", default_opts)
 map("n", "<leader>xd", "<cmd>TroubleToggle lsp_document_diagnostics<CR>", default_opts)
