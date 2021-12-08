@@ -137,8 +137,8 @@ lsp_installer.on_server_ready(function(server)
 end)
 
 for _, lsp_name in ipairs(builtin_lsp_servers) do
-  local ok, _lsp = require("nvim-lsp-installer.servers").get_server(lsp_name)
-  if ok and not _lsp:is_installed() then
+  local ok, lsp_server = require("nvim-lsp-installer.servers").get_server(lsp_name)
+  if ok and not lsp_server:is_installed() then
     vim.defer_fn(function()
       lsp_installer.install(lsp_name)
     end, 0)
