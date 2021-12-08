@@ -18,7 +18,7 @@ whichKey.register({
     R = { "<cmd>Telescope lsp_references<CR>", "LSP references" },
     i = { "<cmd>Telescope lsp_implementations<CR>", "LSP implementations" },
     D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "LSP declarations" },
-    a = { "<cmd>lua vim.lsp.buf.code_action<CR>", "LSP code actions" },
+    a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "LSP code actions" },
     r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "LSP rename" },
     h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "LSP hover doc" },
     x = { "<cmd>TroubleToggle<CR>", "LSP project diagnostics" },
