@@ -60,6 +60,7 @@ return packer.startup(function(use)
       require("plugins/treesitter-config")
     end,
   })
+  use("nvim-treesitter/nvim-treesitter-textobjects")
   use("nvim-treesitter/playground")
   use("p00f/nvim-ts-rainbow")
   use({

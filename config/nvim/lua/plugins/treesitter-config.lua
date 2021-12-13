@@ -16,7 +16,6 @@ require("nvim-treesitter.configs").setup({
   indent = {
     enable = true,
   },
-  -- The following does not work, since a is already assigned. TODO
   textobjects = {
     select = {
       enable = true,
