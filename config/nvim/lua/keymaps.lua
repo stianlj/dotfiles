@@ -61,6 +61,25 @@ whichKey.register({
   mode = "v",
 })
 
+-- Register for mappings from other plugins that just need explaining
+local textObjects = {
+  i = {
+    f = "inner function",
+    c = "inner class",
+  },
+  a = {
+    f = "around function",
+    c = "around class",
+  },
+}
+
+whichKey.register({
+  c = textObjects,
+  y = textObjects,
+  v = textObjects,
+  d = textObjects,
+})
+
 -- don't use arrow keys
 map("", "<up>", "<nop>", { noremap = true })
 map("", "<down>", "<nop>", { noremap = true })
