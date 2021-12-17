@@ -3,6 +3,7 @@ local g = vim.g
 local cmd = vim.cmd
 
 g.mapleader = " "
+g.cursorhold_updatetime = 200
 
 opt.colorcolumn = "100"
 opt.expandtab = true

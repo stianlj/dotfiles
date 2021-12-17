@@ -24,6 +24,8 @@ return packer.startup(function(use)
   use("lewis6991/impatient.nvim")
   use("dstein64/vim-startuptime")
   use("wbthomason/packer.nvim")
+  -- https://github.com/neovim/neovim/issues/12587
+  use("antoinemadec/FixCursorHold.nvim")
   use("JoosepAlviste/nvim-ts-context-commentstring")
   use({
     "numToStr/Comment.nvim",
