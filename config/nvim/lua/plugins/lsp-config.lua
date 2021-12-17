@@ -11,15 +11,33 @@ local builtin_lsp_servers = {
   "intelephense",
   "yamlls",
   "tsserver",
+  "svelte",
   "eslint",
   "jsonls",
 }
 
+local function lsp_highlight_document(client)
+  if client.resolved_capabilities.document_highlight then
+    cmd([[
+      augroup lsp_document_highlight
+        autocmd! * <buffer>
+        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+      augroup END
+    ]])
+  end
+end
+
 lsp.handlers["textDocument/hover"] = lsp.with(lsp.handlers.hover, { border = "rounded" })
 lsp.handlers["textDocument/signatureHelp"] = lsp.with(lsp.handlers.signature_help, { border = "rounded" })
 
+local on_attach = function(client)
+  lsp_highlight_document(client)
+end
+
 lsp_installer.on_server_ready(function(server)
   local opts = {
+    on_attach = on_attach,
     capabilities = cmp_nvim_lsp.update_capabilities(lsp.protocol.make_client_capabilities()),
     flags = {
       debounce_text_changes = 150,
