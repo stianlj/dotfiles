@@ -11,6 +11,7 @@ local builtin_lsp_servers = {
   "intelephense",
   "yamlls",
   "tsserver",
+  "svelte",
   "eslint",
   "jsonls",
 }
