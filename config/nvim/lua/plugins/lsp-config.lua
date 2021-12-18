@@ -1,7 +1,6 @@
 local lsp_installer = require("nvim-lsp-installer")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-local cmd = vim.cmd
 local lsp = vim.lsp
 
 local builtin_lsp_servers = {
@@ -18,7 +17,7 @@ local builtin_lsp_servers = {
 
 local function lsp_highlight_document(client)
   if client.resolved_capabilities.document_highlight then
-    cmd([[
+    vim.cmd([[
       augroup lsp_document_highlight
         autocmd! * <buffer>
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
@@ -151,7 +150,7 @@ lsp_installer.on_server_ready(function(server)
     }
   end
   server:setup(opts)
-  cmd([[ do User LspAttachBuffers ]])
+  vim.cmd([[ do User LspAttachBuffers ]])
 end)
 
 for _, lsp_name in ipairs(builtin_lsp_servers) do

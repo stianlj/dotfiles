@@ -1,6 +1,5 @@
 local opt = vim.opt
 local g = vim.g
-local cmd = vim.cmd
 
 g.mapleader = " "
 g.cursorhold_updatetime = 200
@@ -20,7 +19,7 @@ opt.hidden = true
 opt.wrap = false
 opt.cursorline = true
 
-cmd([[
+vim.cmd([[
   augroup configgrp
     autocmd BufRead * if getline(1) == '#!/bin/dash' | set filetype=sh | endif 
     autocmd BufRead,BufNewFile *.PKGBUILD,PKGBUILD set filetype=PKGBUILD 

@@ -3,12 +3,11 @@
 -- https://github.com/svermeulen/vim-yoink
 -- https://github.com/svermeulen/vim-cutlass
 
-local cmd = vim.cmd
 local packer = require("packer")
 
 require("packer_compiled")
 
-cmd([[
+vim.cmd([[
   augroup packer_user_config
     autocmd!
     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
