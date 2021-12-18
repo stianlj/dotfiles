@@ -176,6 +176,16 @@ return packer.startup(function(use)
     end,
   })
   use({
+    "TimUntersberger/neogit",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+    },
+    config = function()
+      require("plugins/neogit-config")
+    end,
+  })
+  use({
     "jose-elias-alvarez/null-ls.nvim",
     requires = {
       "nvim-lua/plenary.nvim",
