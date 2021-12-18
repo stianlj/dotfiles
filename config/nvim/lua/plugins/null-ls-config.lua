@@ -11,5 +11,6 @@ null_ls.setup({
     null_ls.builtins.formatting.prettierd,
     null_ls.builtins.formatting.trim_newlines,
     null_ls.builtins.formatting.trim_whitespace,
+    null_ls.builtins.formatting.shellharden,
   },
 })
