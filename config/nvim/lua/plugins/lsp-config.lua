@@ -44,13 +44,10 @@ lsp_installer.on_server_ready(function(server)
   }
 
   if server.name == "sumneko_lua" then
-    opts.settings = {
-      Lua = {
-        diagnostics = {
-          globals = { "vim" },
-        },
-      },
-    }
+    local luadev = require("lua-dev").setup({
+      lspconfig = opts,
+    })
+    opts = luadev
   end
 
   if server.name == "tsserver" then
