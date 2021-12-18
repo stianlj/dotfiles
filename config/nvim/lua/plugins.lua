@@ -162,9 +162,12 @@ return packer.startup(function(use)
     end,
   })
   use({
-    "mhartington/formatter.nvim",
+    "jose-elias-alvarez/null-ls.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+    },
     config = function()
-      require("plugins/formatter-config")
+      require("plugins/null-ls-config")
     end,
   })
 end)
