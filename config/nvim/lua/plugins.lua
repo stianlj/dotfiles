@@ -1,7 +1,6 @@
--- TODO
--- https://github.com/svermeulen/vim-subversive
--- https://github.com/svermeulen/vim-yoink
--- https://github.com/svermeulen/vim-cutlass
+-- TODO: https://github.com/svermeulen/vim-subversive
+-- TODO: https://github.com/svermeulen/vim-yoink
+-- TODO: https://github.com/svermeulen/vim-cutlass
 
 local packer = require("packer")
 
@@ -23,7 +22,7 @@ return packer.startup(function(use)
   use("lewis6991/impatient.nvim")
   use("dstein64/vim-startuptime")
   use("wbthomason/packer.nvim")
-  -- https://github.com/neovim/neovim/issues/12587
+  -- HACK: Fix slowdowns in CursorHold. See https://github.com/neovim/neovim/issues/12587
   use("antoinemadec/FixCursorHold.nvim")
   use("JoosepAlviste/nvim-ts-context-commentstring")
   use({
@@ -154,6 +153,13 @@ return packer.startup(function(use)
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
       require("nvim-tree").setup({})
+    end,
+  })
+  use({
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("todo-comments").setup({})
     end,
   })
   use({
