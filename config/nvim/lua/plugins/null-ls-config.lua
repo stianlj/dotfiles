@@ -11,6 +11,9 @@ null_ls.setup({
     null_ls.builtins.formatting.prettierd,
     null_ls.builtins.formatting.trim_newlines,
     null_ls.builtins.formatting.trim_whitespace,
+    null_ls.builtins.formatting.shfmt.with({
+      extra_args = { "-i", "2", "-ci" },
+    }),
     null_ls.builtins.formatting.shellharden,
     null_ls.builtins.code_actions.gitsigns,
   },
