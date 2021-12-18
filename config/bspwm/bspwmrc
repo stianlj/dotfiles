@@ -1,6 +1,6 @@
 #!/bin/dash
 
-if [ $COMPUTER_IDENTIFIER = "main-desktop" ]; then
+if [ "$COMPUTER_IDENTIFIER" = "main-desktop" ]; then
   export ULTRA_WIDE_MONITOR="DisplayPort-3"
   xrandr \
     --output DisplayPort-3 --mode 5120x1440 --rate 59.98 --primary --pos 0x2160 \
@@ -11,7 +11,7 @@ if [ $COMPUTER_IDENTIFIER = "main-desktop" ]; then
   bspc wm -O DisplayPort\-3 DisplayPort\-2
 fi
 
-if [ $COMPUTER_IDENTIFIER = "work-laptop" ]; then
+if [ "$COMPUTER_IDENTIFIER" = "work-laptop" ]; then
   numberOfMonitorsConnected=$(xrandr -d :0 -q | grep ' connected' | wc -l)
 
   if [ "$numberOfMonitorsConnected" -gt "2" ]; then
@@ -40,7 +40,7 @@ if [ $COMPUTER_IDENTIFIER = "work-laptop" ]; then
     bspc monitor DP\-1\-1\-3 -d 2 3 4 5 6
     bspc monitor eDP\-1\-1 -d 1
 
-    polybar middle-$COMPUTER_IDENTIFIER &
+    polybar middle-"$COMPUTER_IDENTIFIER" &
     polybar left &
     polybar right &
   elif [ "$numberOfMonitorsConnected" -gt "1" ]; then
@@ -52,13 +52,13 @@ if [ $COMPUTER_IDENTIFIER = "work-laptop" ]; then
     bspc monitor DP\-1\-1 -d 1 2 3 4 5 6 7 8
     bspc monitor eDP\-1\-1 -d 9 10
 
-    polybar middle-$COMPUTER_IDENTIFIER &
+    polybar middle-"$COMPUTER_IDENTIFIER" &
     polybar right &
   else
     # This should include more. Maybe in sync with udev?
     export CENTER_MONITOR="eDP-1-1"
     bspc monitor -d 1 2 3 4 5 6 7 8 9 10
-    polybar middle-$COMPUTER_IDENTIFIER-hidpi &
+    polybar middle-"$COMPUTER_IDENTIFIER"-hidpi &
     export EMACS_FONT_SIZE="28"
   fi
 fi
@@ -99,16 +99,16 @@ emacs --daemon -n &
 flameshot &
 picom --experimental-backends -b
 
-if [ $COMPUTER_IDENTIFIER = "main-desktop" ]; then
-  $HOME/.config/polybar/launch.sh
-  $HOME/.config/bspwm/layout.sh &
+if [ "$COMPUTER_IDENTIFIER" = "main-desktop" ]; then
+  "$HOME"/.config/polybar/launch.sh
+  "$HOME"/.config/bspwm/layout.sh &
   indicator-kdeconnect &
 fi
 
-if [ $COMPUTER_IDENTIFIER = "work-laptop" ]; then
+if [ "$COMPUTER_IDENTIFIER" = "work-laptop" ]; then
   # conky -c ~/.config/conky/conky.conf &
   nm-applet &
   # systemctl --user start mopidy
 fi
 
-feh --bg-fill $WALLPAPER
+feh --bg-fill "$WALLPAPER"
