@@ -3,20 +3,20 @@ local default_opts = { noremap = true, silent = true }
 local whichKey = require("which-key")
 
 whichKey.register({
-  ["<Space>"] = { "<cmd>Telescope find_files<CR>", "Find file" },
-  ["."] = { "<cmd>Telescope file_browser<CR>", "Open filebrowser" },
-  ["/"] = { "<cmd>Telescope live_grep<CR>", "Search in files" },
+  ["<Space>"] = { "<cmd>Telescope find_files theme=ivy<CR>", "Find file" },
+  ["."] = { "<cmd>Telescope file_browser theme=ivy<CR>", "Open filebrowser" },
+  ["/"] = { "<cmd>Telescope live_grep theme=ivy<CR>", "Search in files" },
   s = { ":w<CR>", "Save buffer" },
   b = {
     name = "Buffers",
-    b = { "<cmd>Telescope buffers<CR>", "Switch buffers" },
+    b = { "<cmd>Telescope buffers theme=ivy<CR>", "Switch buffers" },
     d = { "<cmd>bd!<CR>", "Kill buffer" },
   },
   c = {
     name = "Code",
-    d = { "<cmd>Telescope lsp_definitions<CR>", "LSP definitions" },
-    R = { "<cmd>Telescope lsp_references<CR>", "LSP references" },
-    i = { "<cmd>Telescope lsp_implementations<CR>", "LSP implementations" },
+    d = { "<cmd>Telescope lsp_definitions theme=ivy<CR>", "LSP definitions" },
+    R = { "<cmd>Telescope lsp_references theme=ivy<CR>", "LSP references" },
+    i = { "<cmd>Telescope lsp_implementations theme=ivy<CR>", "LSP implementations" },
     D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "LSP declarations" },
     a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "LSP code actions" },
     r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "LSP rename" },
@@ -109,7 +109,7 @@ map("i", "<Tab>", "<cmd>lua require('luasnip').jump(1)<CR>", { noremap = false, 
 map("i", "<S-Tab>", "<cmd>lua require('luasnip').jump(-1)<CR>", default_opts)
 
 -- A poor mans meta-x in Vim
-map("n", "<M-x>", "<cmd>Telescope commands<CR>", default_opts)
+map("n", "<M-x>", "<cmd>Telescope commands theme=ivy<CR>", default_opts)
 
 map("n", "<leader>xw", "<cmd>TroubleToggle lsp_workspace_diagnostics<CR>", default_opts)
 map("n", "<leader>xd", "<cmd>TroubleToggle lsp_document_diagnostics<CR>", default_opts)
