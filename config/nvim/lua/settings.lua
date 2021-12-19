@@ -1,23 +1,23 @@
-local opt = vim.opt
+local o = vim.opt
 local g = vim.g
 
 g.mapleader = " "
 g.cursorhold_updatetime = 200
 
-opt.colorcolumn = "100"
-opt.expandtab = true
-opt.shiftwidth = 2
-opt.smartindent = true
-opt.tabstop = 2
-opt.number = true
-opt.relativenumber = true
-opt.mouse = "a"
-opt.splitbelow = true
-opt.splitright = true
-opt.termguicolors = true
-opt.hidden = true
-opt.wrap = false
-opt.cursorline = true
+o.colorcolumn = "100"
+o.expandtab = true
+o.shiftwidth = 2
+o.smartindent = true
+o.tabstop = 2
+o.number = true
+o.relativenumber = true
+o.mouse = "a"
+o.splitbelow = true
+o.splitright = true
+o.termguicolors = true
+o.hidden = true
+o.wrap = false
+o.cursorline = true
 
 vim.cmd([[
   augroup configgrp
