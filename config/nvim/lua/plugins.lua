@@ -28,7 +28,7 @@ return packer.startup(function(use)
   use({
     "numToStr/Comment.nvim",
     config = function()
-      require("plugins/comment-config")
+      require("plugins.comment-config")
     end,
   })
   use("tpope/vim-surround")
@@ -43,7 +43,7 @@ return packer.startup(function(use)
   use({
     "folke/tokyonight.nvim",
     config = function()
-      require("plugins/tokyonight-config")
+      require("plugins.tokyonight-config")
     end,
   })
   use({
@@ -57,14 +57,14 @@ return packer.startup(function(use)
     "nvim-lualine/lualine.nvim",
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
     config = function()
-      require("plugins/lualine-config")
+      require("plugins.lualine-config")
     end,
   })
   use({
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
     config = function()
-      require("plugins/treesitter-config")
+      require("plugins.treesitter-config")
     end,
   })
   use("nvim-treesitter/nvim-treesitter-textobjects")
@@ -86,7 +86,7 @@ return packer.startup(function(use)
       "hrsh7th/cmp-path",
     },
     config = function()
-      require("plugins/cmp-config")
+      require("plugins.cmp-config")
     end,
   })
   use({
@@ -172,7 +172,7 @@ return packer.startup(function(use)
   use({
     "folke/which-key.nvim",
     config = function()
-      require("plugins/which-key-config")
+      require("plugins.which-key-config")
     end,
   })
   use({
@@ -182,7 +182,7 @@ return packer.startup(function(use)
       "sindrets/diffview.nvim",
     },
     config = function()
-      require("plugins/neogit-config")
+      require("plugins.neogit-config")
     end,
   })
   use({
@@ -191,7 +191,7 @@ return packer.startup(function(use)
       "nvim-lua/plenary.nvim",
     },
     config = function()
-      require("plugins/null-ls-config")
+      require("plugins.null-ls-config")
     end,
   })
 end)
