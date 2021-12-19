@@ -135,6 +135,7 @@ return packer.startup(function(use)
       require("plugins.telescope-config")
     end,
   })
+  use("nvim-telescope/telescope-ui-select.nvim")
   use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
   use({
     "windwp/nvim-autopairs",
