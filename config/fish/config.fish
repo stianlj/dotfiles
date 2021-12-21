@@ -13,10 +13,6 @@ bind p fish_clipboard_paste
 alias ls='exa --git --extended --octal-permissions'
 alias ssh='kitty +kitten ssh'
 
-abbr --add zz 'z -c'
-abbr --add zi 'z -i'
-abbr --add zf 'z -I'
-abbr --add zb 'z -b'
 abbr --add vi 'nvim'
 abbr --add cat 'bat'
 
