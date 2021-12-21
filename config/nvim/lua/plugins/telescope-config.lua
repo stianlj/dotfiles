@@ -5,6 +5,9 @@ telescope.setup({
     buffers = {
       previewer = false,
     },
+    find_files = {
+      find_command = { "rg", "--files", "--iglob", "!.git", "--hidden" },
+    },
   },
   extensions = {
     ["ui-select"] = {
