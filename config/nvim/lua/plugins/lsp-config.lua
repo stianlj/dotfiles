@@ -54,11 +54,6 @@ local on_attach = function(client)
   lsp_highlight_document(client)
 end
 
-local merge_lsp_opts = function(server_name, opts)
-  local external_opts = require("plugins.lsp-servers." .. server_name)
-  return vim.tbl_deep_extend("force", external_opts, opts)
-end
-
 lsp_installer.on_server_ready(function(server)
   local opts = {
     on_attach = on_attach,
@@ -76,7 +71,8 @@ lsp_installer.on_server_ready(function(server)
   end
 
   if vim.tbl_contains(external_opt_lsp, server.name) then
-    opts = merge_lsp_opts(server.name, opts)
+    local local_opts = require("plugins.lsp-servers." .. server.name)
+    opts = vim.tbl_deep_extend("force", local_opts, opts)
   end
 
   server:setup(opts)
