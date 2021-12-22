@@ -13,12 +13,8 @@ bind p fish_clipboard_paste
 alias ls='exa --git --extended --octal-permissions'
 alias ssh='kitty +kitten ssh'
 
-abbr --add zz 'z -c'
-abbr --add zi 'z -i'
-abbr --add zf 'z -I'
-abbr --add zb 'z -b'
-abbr --add vi 'nvim'
-abbr --add cat 'bat'
+abbr --add --global vi 'nvim'
+abbr --add --global cat 'bat'
 
 source ~/.local/share/nvim/site/pack/packer/start/tokyonight.nvim/extras/fish_tokyonight_night.fish
 thefuck --alias | source
