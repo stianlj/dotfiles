@@ -3,33 +3,41 @@ local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 local lsp = vim.lsp
 
--- TODO: Make this a multidimensional table with some attributes, instead of three tables
--- TODO: Check out vim.tbl_map and vim.tbl_filter
-
 local builtin_lsp_servers = {
-  "bashls",
-  "pyright",
-  "sumneko_lua",
-  "intelephense",
-  "yamlls",
-  "tsserver",
-  "svelte",
-  "eslint",
-  "jsonls",
+  bashls = {},
+  pyright = {},
+  sumneko_lua = {},
+  intelephense = {
+    disable_format = true,
+    require_opts = true,
+  },
+  yamlls = {
+    require_opts = true,
+  },
+  tsserver = {
+    disable_format = true,
+  },
+  svelte = {
+    disable_format = true,
+  },
+  eslint = {},
+  jsonls = {
+    disable_format = true,
+    require_opts = true,
+  },
 }
 
-local disabled_formatting = {
-  "tsserver",
-  "jsonls",
-  "svelte",
-  "intelephense",
-}
+local disabled_formatting = vim.tbl_filter(function(client)
+  if builtin_lsp_servers[client].disable_format then
+    return true
+  end
+end, vim.tbl_keys(builtin_lsp_servers))
 
-local external_opt_lsp = {
-  "yamlls",
-  "jsonls",
-  "intelephense",
-}
+local external_opt_lsp = vim.tbl_filter(function(client)
+  if builtin_lsp_servers[client].require_opts then
+    return true
+  end
+end, vim.tbl_keys(builtin_lsp_servers))
 
 local function lsp_highlight_document(client)
   if client.resolved_capabilities.document_highlight then
@@ -79,7 +87,7 @@ lsp_installer.on_server_ready(function(server)
   vim.cmd([[ do User LspAttachBuffers ]])
 end)
 
-for _, lsp_name in ipairs(builtin_lsp_servers) do
+for _, lsp_name in ipairs(vim.tbl_keys(builtin_lsp_servers)) do
   local ok, lsp_server = require("nvim-lsp-installer.servers").get_server(lsp_name)
   if ok and not lsp_server:is_installed() then
     vim.defer_fn(function()
