@@ -6,7 +6,9 @@ local lsp = vim.lsp
 local builtin_lsp_servers = {
   bashls = {},
   pyright = {},
-  sumneko_lua = {},
+  sumneko_lua = {
+    require_opts = true,
+  },
   intelephense = {
     disable_format = true,
     require_opts = true,
@@ -71,16 +73,13 @@ lsp_installer.on_server_ready(function(server)
     },
   }
 
-  if server.name == "sumneko_lua" then
-    local luadev = require("lua-dev").setup({
-      lspconfig = opts,
-    })
-    opts = luadev
-  end
-
   if vim.tbl_contains(external_opt_lsp, server.name) then
-    local local_opts = require("plugins.lsp-servers." .. server.name)
-    opts = vim.tbl_deep_extend("force", local_opts, opts)
+    local o = require("plugins.lsp-servers." .. server.name)
+    if o["setup"] ~= nil then
+      opts = vim.tbl_deep_extend("force", o.setup({ opts }), opts)
+    else
+      opts = vim.tbl_deep_extend("force", o, opts)
+    end
   end
 
   server:setup(opts)
