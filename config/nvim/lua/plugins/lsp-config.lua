@@ -1,8 +1,10 @@
 local lsp_installer = require("nvim-lsp-installer")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
+local fns = require("functions")
 
 local lsp = vim.lsp
 
+-- TODO: Make this a multidimensional table with some attributes, instead of three tables
 local builtin_lsp_servers = {
   "bashls",
   "pyright",
@@ -13,6 +15,18 @@ local builtin_lsp_servers = {
   "svelte",
   "eslint",
   "jsonls",
+}
+
+local disabled_formatting = {
+  "tsserver",
+  "jsonls",
+  "svelte",
+}
+
+local external_opt_lsp = {
+  "yamlls",
+  "jsonls",
+  "intelephense",
 }
 
 local function lsp_highlight_document(client)
@@ -31,7 +45,16 @@ lsp.handlers["textDocument/hover"] = lsp.with(lsp.handlers.hover, { border = "ro
 lsp.handlers["textDocument/signatureHelp"] = lsp.with(lsp.handlers.signature_help, { border = "rounded" })
 
 local on_attach = function(client)
+  if fns.has_value(disabled_formatting, client.name) then
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
+  end
   lsp_highlight_document(client)
+end
+
+local merge_lsp_opts = function(server_name, opts)
+  local external_opts = require("plugins.lsp-servers." .. server_name)
+  return vim.tbl_deep_extend("force", external_opts, opts)
 end
 
 lsp_installer.on_server_ready(function(server)
@@ -50,126 +73,10 @@ lsp_installer.on_server_ready(function(server)
     opts = luadev
   end
 
-  if server.name == "tsserver" then
-    opts.on_attach = function(client)
-      client.resolved_capabilities.document_formatting = false
-      client.resolved_capabilities.document_range_formatting = false
-      on_attach(client)
-    end
+  if fns.has_value(external_opt_lsp, server.name) then
+    opts = merge_lsp_opts(server.name, opts)
   end
 
-  if server.name == "jsonls" then
-    opts.on_attach = function(client)
-      client.resolved_capabilities.document_formatting = false
-      client.resolved_capabilities.document_range_formatting = false
-      on_attach(client)
-    end
-  end
-
-  if server.name == "svelte" then
-    opts.on_attach = function(client)
-      client.resolved_capabilities.document_formatting = false
-      client.resolved_capabilities.document_range_formatting = false
-      on_attach(client)
-    end
-  end
-
-  if server.name == "yamlls" then
-    opts.settings = {
-      yaml = {
-        validate = true,
-        schemas = {
-          ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-          ["kubernetes"] = "/.kubernetes/*.yaml",
-        },
-      },
-    }
-  end
-
-  if server.name == "jsonls" then
-    opts.settings = {
-      json = {
-        schemas = {
-          {
-            fileMatch = { "package.json" },
-            url = "https://json.schemastore.org/package.json",
-          },
-        },
-      },
-    }
-  end
-
-  if server.name == "intelephense" then
-    opts.settings = {
-      intelephense = {
-        stubs = {
-          "bcmath",
-          "bz2",
-          "calendar",
-          "Core",
-          "curl",
-          "date",
-          "dba",
-          "dom",
-          "enchant",
-          "fileinfo",
-          "filter",
-          "ftp",
-          "gd",
-          "gettext",
-          "hash",
-          "iconv",
-          "imap",
-          "intl",
-          "json",
-          "ldap",
-          "libxml",
-          "mbstring",
-          "mcrypt",
-          "mysql",
-          "mysqli",
-          "password",
-          "pcntl",
-          "pcre",
-          "PDO",
-          "pdo_mysql",
-          "Phar",
-          "readline",
-          "recode",
-          "Reflection",
-          "regex",
-          "session",
-          "SimpleXML",
-          "soap",
-          "sockets",
-          "sodium",
-          "SPL",
-          "standard",
-          "superglobals",
-          "sysvsem",
-          "sysvshm",
-          "tokenizer",
-          "xml",
-          "xdebug",
-          "xmlreader",
-          "xmlwriter",
-          "yaml",
-          "zip",
-          "zlib",
-          "wordpress",
-          "woocommerce",
-          "acf-pro",
-          "wordpress-globals",
-          "wp-cli",
-          "genesis",
-          "polylang",
-        },
-        files = {
-          maxSize = 5000000,
-        },
-      },
-    }
-  end
   server:setup(opts)
   vim.cmd([[ do User LspAttachBuffers ]])
 end)
