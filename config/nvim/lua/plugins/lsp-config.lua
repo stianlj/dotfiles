@@ -1,10 +1,11 @@
 local lsp_installer = require("nvim-lsp-installer")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
-local fns = require("functions")
 
 local lsp = vim.lsp
 
 -- TODO: Make this a multidimensional table with some attributes, instead of three tables
+-- TODO: Check out vim.tbl_map and vim.tbl_filter
+
 local builtin_lsp_servers = {
   "bashls",
   "pyright",
@@ -46,7 +47,7 @@ lsp.handlers["textDocument/hover"] = lsp.with(lsp.handlers.hover, { border = "ro
 lsp.handlers["textDocument/signatureHelp"] = lsp.with(lsp.handlers.signature_help, { border = "rounded" })
 
 local on_attach = function(client)
-  if fns.has_value(disabled_formatting, client.name) then
+  if vim.tbl_contains(disabled_formatting, client.name) then
     client.resolved_capabilities.document_formatting = false
     client.resolved_capabilities.document_range_formatting = false
   end
@@ -74,7 +75,7 @@ lsp_installer.on_server_ready(function(server)
     opts = luadev
   end
 
-  if fns.has_value(external_opt_lsp, server.name) then
+  if vim.tbl_contains(external_opt_lsp, server.name) then
     opts = merge_lsp_opts(server.name, opts)
   end
 
