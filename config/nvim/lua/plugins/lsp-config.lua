@@ -21,6 +21,7 @@ local disabled_formatting = {
   "tsserver",
   "jsonls",
   "svelte",
+  "intelephense",
 }
 
 local external_opt_lsp = {
