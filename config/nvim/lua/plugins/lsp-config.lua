@@ -1,6 +1,7 @@
 local lsp_installer = require("nvim-lsp-installer")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
+-- NOTE: https://github.com/williamboman/nvim-lsp-installer/blob/main/CUSTOM_SERVERS.md
 require("plugins.lsp-servers.custom.home-assistant")
 
 local lsp = vim.lsp
