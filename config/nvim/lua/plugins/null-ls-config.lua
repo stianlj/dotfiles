@@ -8,7 +8,24 @@ null_ls.setup({
   end,
   sources = {
     null_ls.builtins.formatting.stylua,
-    null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.formatting.prettierd.with({
+      filetypes = {
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "css",
+        "scss",
+        "less",
+        "html",
+        "json",
+        "yaml",
+        "markdown",
+        "graphql",
+        "svelte",
+        "vue",
+      },
+    }),
     null_ls.builtins.formatting.trim_newlines,
     null_ls.builtins.formatting.trim_whitespace,
     null_ls.builtins.formatting.shfmt.with({
