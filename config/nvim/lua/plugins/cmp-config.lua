@@ -34,9 +34,9 @@ cmp.setup({
     format = lspkind.cmp_format({
       with_text = true,
       menu = {
-        buffer = "[buf]",
         nvim_lsp = "[LSP]",
         nvim_lua = "[api]",
+        buffer = "[buf]",
         path = "[path]",
         luasnip = "[snip]",
       },
