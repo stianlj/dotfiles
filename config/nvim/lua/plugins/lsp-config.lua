@@ -22,7 +22,10 @@ local builtin_lsp_servers = {
   svelte = {
     disable_format = true,
   },
-  eslint = {},
+  eslint = {
+    disable_format = true,
+    require_opts = true,
+  },
   jsonls = {
     disable_format = true,
     require_opts = true,
