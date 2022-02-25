@@ -1,0 +1,7 @@
+profile single {
+    output eDP-1 enable scale 1.8
+}
+profile dual {
+    output eDP-1 enable mode 3840x2160 scale 2 position 0,0
+    output DP-1 enable mode 2560x1440 position 1920,0
+}
