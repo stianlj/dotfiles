@@ -4,7 +4,6 @@ local g = vim.g
 g.mapleader = " "
 g.cursorhold_updatetime = 200
 g.nvim_tree_highlight_opened_files = 1
-g.nvim_tree_quit_on_open = 1
 g.nvim_tree_icons = {
   default = "",
   git = {
