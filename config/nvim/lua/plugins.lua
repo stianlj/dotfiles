@@ -40,7 +40,12 @@ return packer.startup(function(use)
   use("fladson/vim-kitty")
   use("baskerville/vim-sxhkdrc")
   use("stevearc/dressing.nvim")
-  use("lukas-reineke/indent-blankline.nvim")
+  use({
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("plugins.indent-blankline-config")
+    end,
+  })
   use({
     "folke/tokyonight.nvim",
     config = function()
