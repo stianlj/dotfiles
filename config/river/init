@@ -4,14 +4,15 @@
 eval "$(gnome-keyring-daemon --start)"
 export SSH_AUTH_SOCK
 
-riverctl spawn "gsettings set org.gnome.desktop.interface gtk-theme 'Vimix-Dark-Doder'"
-riverctl spawn "gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'"
-
 if [ "$COMPUTER_IDENTIFIER" = "main-desktop" ]; then
+  riverctl spawn "gsettings set org.gnome.desktop.interface gtk-theme 'Vimix-Dark-Doder'"
+  riverctl spawn "gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'"
   riverctl spawn "wlr-randr --output DP-4 --on --custom-mode 5120x1440@60Hz"
   riverctl spawn "kanshi -c /home/stianlj/.config/kanshi/config-main-desktop"
   riverctl spawn "waybar -c /home/stianlj/.config/waybar/config-main-desktop"
 elif [ "$COMPUTER_IDENTIFIER" = "work-laptop" ]; then
+  riverctl spawn "gsettings set org.gnome.desktop.interface gtk-theme 'Materia-dark-compact'"
+  riverctl spawn "gsettings set org.gnome.desktop.interface icon-theme 'Paper'"
   riverctl spawn "kanshi -c /home/stianlj/.config/kanshi/config"
   riverctl spawn "waybar -c /home/stianlj/.config/waybar/config-work-laptop"
 fi
@@ -106,9 +107,6 @@ riverctl map normal Super Left send-layout-cmd rivercarro "main-location left"
 # Various media key mapping examples for both normal and locked mode which do
 # not have a modifier
 for mode in normal locked; do
-  # Eject the optical drive (well if you still have one that is)
-  riverctl map $mode None XF86Eject spawn 'eject -T'
-
   # Control pulse audio volume with pamixer (https://github.com/cdemoulins/pamixer)
   riverctl map $mode None XF86AudioRaiseVolume spawn 'pamixer -i 5'
   riverctl map $mode None XF86AudioLowerVolume spawn 'pamixer -d 5'
