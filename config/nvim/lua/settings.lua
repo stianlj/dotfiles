@@ -3,8 +3,9 @@ local g = vim.g
 
 g.mapleader = " "
 g.cursorhold_updatetime = 200
+g.indent_blankline_use_tresitter = true
+g.indent_blankline_context_highlight_list = {'class', 'function', 'method'}
 g.nvim_tree_highlight_opened_files = 1
-g.nvim_tree_quit_on_open = 1
 g.nvim_tree_icons = {
   default = "",
   git = {
