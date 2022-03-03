@@ -19,6 +19,7 @@ null_ls.setup({
         "less",
         "html",
         "json",
+        "jsonc",
         "yaml",
         "markdown",
         "graphql",

@@ -45,5 +45,6 @@
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
-    },
+    }
 }
+// vim: filetype=jsonc
