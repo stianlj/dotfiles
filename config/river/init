@@ -17,7 +17,7 @@ elif [ "$COMPUTER_IDENTIFIER" = "work-laptop" ]; then
   riverctl spawn "waybar -c /home/stianlj/.config/waybar/config-work-laptop"
 fi
 riverctl spawn "swaybg -m fit -i $WALLPAPER"
-riverctl spawn "rivercarro -main-ratio 0.5"
+riverctl spawn "rivercarro -no-smart-gaps -main-ratio 0.5"
 
 riverctl default-layout rivercarro
 
