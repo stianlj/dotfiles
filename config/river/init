@@ -4,6 +4,8 @@
 eval "$(gnome-keyring-daemon --start)"
 export SSH_AUTH_SOCK
 
+# for screen sharing: https://wiki.archlinux.org/title/PipeWire#WebRTC_screen_sharing
+
 if [ "$COMPUTER_IDENTIFIER" = "main-desktop" ]; then
   riverctl spawn "gsettings set org.gnome.desktop.interface gtk-theme 'Vimix-Dark-Doder'"
   riverctl spawn "gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'"
@@ -11,8 +13,10 @@ if [ "$COMPUTER_IDENTIFIER" = "main-desktop" ]; then
   riverctl spawn "kanshi -c /home/stianlj/.config/kanshi/config-main-desktop"
   riverctl spawn "waybar -c /home/stianlj/.config/waybar/config-main-desktop"
 elif [ "$COMPUTER_IDENTIFIER" = "work-laptop" ]; then
-  riverctl spawn "gsettings set org.gnome.desktop.interface gtk-theme 'Materia-dark-compact'"
+  riverctl spawn "gsettings set org.gnome.desktop.interface gtk-theme 'Catppuccin-pink'"
+  riverctl spawn "gsettings set org.gnome.desktop.interface cursor-theme 'Catppuccin Blue'"
   riverctl spawn "gsettings set org.gnome.desktop.interface icon-theme 'Paper'"
+  riverctl xcursor-theme 'Catppuccin Blue'
   riverctl spawn "kanshi -c /home/stianlj/.config/kanshi/config"
   riverctl spawn "waybar -c /home/stianlj/.config/waybar/config-work-laptop"
 fi
@@ -24,7 +28,7 @@ riverctl default-layout rivercarro
 riverctl map normal Super w close
 
 riverctl map normal Super Return spawn "kitty fish"
-riverctl map normal Super d spawn "wofi --show drun"
+riverctl map normal Super d spawn "wofi --show drun --allow-images"
 
 riverctl map normal Control+Alt H spawn "clipman pick -t wofi"
 
