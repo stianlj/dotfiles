@@ -15,7 +15,7 @@ if [ "$COMPUTER_IDENTIFIER" = "main-desktop" ]; then
 elif [ "$COMPUTER_IDENTIFIER" = "work-laptop" ]; then
   riverctl spawn "gsettings set org.gnome.desktop.interface gtk-theme 'Catppuccin-pink'"
   riverctl spawn "gsettings set org.gnome.desktop.interface cursor-theme 'Catppuccin Blue'"
-  riverctl spawn "gsettings set org.gnome.desktop.interface icon-theme 'Paper'"
+  riverctl spawn "gsettings set org.gnome.desktop.interface icon-theme 'Papirus'"
   riverctl xcursor-theme 'Catppuccin Blue'
   riverctl spawn "kanshi -c /home/stianlj/.config/kanshi/config"
   riverctl spawn "waybar -c /home/stianlj/.config/waybar/config-work-laptop"
