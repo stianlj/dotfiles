@@ -1,15 +1,13 @@
 * {
   /* `otf-font-awesome` is required to be installed for icons */
-  font-family: Roboto, Helvetica, Arial, sans-serif;
-  font-size: 13px;
+  font-family: MonoLisa, Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
 }
 
 window#waybar {
-  background-color: rgba(43, 48, 59, 0.5);
-  border-bottom: 3px solid rgba(100, 114, 125, 0.5);
-  color: #ffffff;
-  transition-property: background-color;
-  transition-duration: 0.5s;
+  /* background-color: rgba(22, 19, 32, 0); */
+  background-color: transparent;
+  color: #d9e0ee;
 }
 
 window#waybar.hidden {
@@ -25,19 +23,25 @@ window#waybar.solo {
 }
 */
 
-window#waybar.termite {
-  background-color: #3f3f3f;
-}
+/* window#waybar.termite { */
+/*   background-color: #3f3f3f; */
+/* } */
+/**/
+/* window#waybar.chromium { */
+/*   background-color: #000000; */
+/*   border: none; */
+/* } */
 
-window#waybar.chromium {
-  background-color: #000000;
-  border: none;
+#tags {
+  background-color: #161320;
+  border-radius: 5px;
+  padding: 3px;
 }
 
 #tags button {
   padding: 0 5px;
   background-color: transparent;
-  color: #ffffff;
+  color: #d9e0ee;
   /* Use box-shadow instead of border so the text isn't offset */
   box-shadow: inset 0 -3px transparent;
   /* Avoid rounded borders under each workspace name */
@@ -48,21 +52,19 @@ window#waybar.chromium {
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #tags button:hover {
   background: rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0 -3px #ffffff;
 }
 
 #tags button.occupied {
-  background-color: #333333;
-  box-shadow: inset 0 -3px #ffffff;
+  background-color: #302d41;
 }
 
+#tags button:hover,
 #tags button.focused {
-  background-color: #64727d;
-  box-shadow: inset 0 -3px #ffffff;
+  background-color: #6e6c7e;
 }
 
 #tags button.urgent {
-  background-color: #eb4d4b;
+  background-color: #f28fad;
 }
 
 #mode {
@@ -85,37 +87,46 @@ window#waybar.chromium {
 #idle_inhibitor,
 #mpd {
   padding: 0 10px;
-  color: #ffffff;
+  color: #d9e0ee;
 }
 
-#window,
-#tags {
-  margin: 0 4px;
+#window {
+  margin: 5px;
 }
+
+/* #window, */
+/* #tags { */
+/*   margin: 0 4px; */
+/* } */
 
 /* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #tags {
-  margin-left: 0;
-}
+/* .modules-left > widget:first-child > #tags { */
+/*   margin-left: 0; */
+/* } */
 
 /* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #tags {
-  margin-right: 0;
+/* .modules-right > widget:last-child > #tags { */
+/*   margin-right: 0; */
+/* } */
+
+.modules-right {
+  padding: 3px;
+  border-radius: 5px;
+  background-color: #161320;
 }
 
 #clock {
-  background-color: #64727d;
+  /* background-color: #64727d; */
 }
 
-#battery {
-  background-color: #ffffff;
-  color: #000000;
-}
+/* #battery { */
+/*   background-color: #ffffff; */
+/*   color: #000000; */
+/* } */
 
 #battery.charging,
 #battery.plugged {
-  color: #ffffff;
-  background-color: #26a65b;
+  color: #abe9b3;
 }
 
 @keyframes blink {
@@ -152,26 +163,26 @@ label:focus {
   background-color: #964b00;
 }
 
-#backlight {
-  background-color: #90b1b1;
-}
+/* #backlight { */
+/*   background-color: #90b1b1; */
+/* } */
 
-#network {
-  background-color: #2980b9;
-}
+/* #network { */
+/*   background-color: #2980b9; */
+/* } */
 
 #network.disconnected {
   background-color: #f53c3c;
 }
 
 #pulseaudio {
-  background-color: #f1c40f;
-  color: #000000;
+  background-color: #fae3b0;
+  color: #161320;
 }
 
 #pulseaudio.muted {
-  background-color: #90b1b1;
-  color: #2a5c45;
+  background-color: #c3bac6;
+  color: #575268;
 }
 
 #custom-media {
@@ -197,7 +208,7 @@ label:focus {
 }
 
 #tray {
-  background-color: #2980b9;
+  /* background-color: #2980b9; */
 }
 
 #tray > .passive {

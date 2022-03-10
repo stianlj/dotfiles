@@ -78,7 +78,7 @@ riverctl map-pointer normal Super BTN_LEFT move-view
 # Super + Right Mouse Button to resize views
 riverctl map-pointer normal Super BTN_RIGHT resize-view
 
-for i in {1..9}; do
+for i in {1..5}; do
   tags=$((1 << ($i - 1)))
   riverctl map normal Super $i set-focused-tags $tags
   riverctl map normal Super+Shift $i set-view-tags $tags
@@ -88,7 +88,7 @@ done
 
 # Super+0 to focus all tags
 # Super+Shift+0 to tag focused view with all tags
-all_tags=$(((1 << 9) - 1))
+all_tags=$(((1 << 5) - 1))
 riverctl map normal Super 0 set-focused-tags $all_tags
 riverctl map normal Super+Shift 0 set-view-tags $all_tags
 
