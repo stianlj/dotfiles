@@ -29,18 +29,19 @@ riverctl map normal Super w close
 
 riverctl map normal Super Return spawn "kitty fish"
 riverctl map normal Super d spawn "wofi --show drun --allow-images"
+riverctl map normal Super Backspace spawn "wlogout --buttons-per-row 2 --column-spacing 20 --row-spacing 20 -p layer-shell"
 
 riverctl map normal Control+Alt H spawn "clipman pick -t wofi"
 
 riverctl map normal Super+Shift E exit
 
-riverctl map normal Super J focus-view next
-riverctl map normal Super K focus-view previous
+riverctl map normal Super L focus-view next
+riverctl map normal Super H focus-view previous
 
 # Super+Shift+J and Super+Shift+K to swap the focused view with the next/previous
 # view in the layout stack
-riverctl map normal Super+Shift J swap next
-riverctl map normal Super+Shift K swap previous
+riverctl map normal Super+Shift L swap next
+riverctl map normal Super+Shift H swap previous
 
 # Super+Period and Super+Comma to focus the next/previous output
 riverctl map normal Super Period focus-output next
@@ -51,12 +52,12 @@ riverctl map normal Super+Shift Period send-to-output next
 riverctl map normal Super+Shift Comma send-to-output previous
 
 # Super+H and Super+L to decrease/increase the main ratio of rivercarro(1)
-riverctl map normal Super H send-layout-cmd rivercarro "main-ratio -0.05"
-riverctl map normal Super L send-layout-cmd rivercarro "main-ratio +0.05"
+riverctl map normal Super J send-layout-cmd rivercarro "main-ratio -0.05"
+riverctl map normal Super K send-layout-cmd rivercarro "main-ratio +0.05"
 
 # Super+Shift+H and Super+Shift+L to increment/decrement the main count of rivercarro(1)
-riverctl map normal Super+Shift H send-layout-cmd rivercarro "main-count +1"
-riverctl map normal Super+Shift L send-layout-cmd rivercarro "main-count -1"
+riverctl map normal Super+Shift J send-layout-cmd rivercarro "main-count +1"
+riverctl map normal Super+Shift K send-layout-cmd rivercarro "main-count -1"
 
 # Super+Alt+{H,J,K,L} to move views
 riverctl map normal Super+Alt H move left 100
@@ -97,7 +98,7 @@ riverctl map normal Super 0 set-focused-tags $all_tags
 riverctl map normal Super+Shift 0 set-view-tags $all_tags
 
 # Super+Space to toggle float
-riverctl map normal Super Space toggle-float
+riverctl map normal Super S toggle-float
 
 # Super+F to toggle fullscreen
 riverctl map normal Super F toggle-fullscreen
@@ -143,6 +144,8 @@ riverctl float-filter-add title "popup title with spaces"
 riverctl spawn "wl-paste -pw wl-copy"
 riverctl spawn "wl-paste -p -t text --watch clipman store -P --histpath=\"~/.local/share/clipman-primary.json\""
 riverctl spawn "sleep 1; nextcloud --logfile /tmp/nextcloud.log --background"
+# riverctl spawn "swhks &"
+# riverctl spawn "pkexec swhkd"
 
 if [ "$COMPUTER_IDENTIFIER" = "work-laptop" ]; then
   riverctl spawn "sleep 1; /usr/bin/nm-applet --indicator"
