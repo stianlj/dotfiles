@@ -28,7 +28,7 @@ riverctl default-layout rivercarro
 riverctl map normal Super w close
 
 riverctl map normal Super Return spawn "kitty fish"
-riverctl map normal Super d spawn "wofi --show drun --allow-images"
+riverctl map normal Super d spawn "wofi --show drun --allow-images --no-actions"
 riverctl map normal Super Backspace spawn "wlogout --buttons-per-row 2 --column-spacing 20 --row-spacing 20 -p layer-shell"
 
 riverctl map normal Control+Alt H spawn "clipman pick -t wofi"
