@@ -16,6 +16,5 @@ alias ssh='kitty +kitten ssh'
 abbr --add --global vi 'nvim'
 abbr --add --global cat 'bat'
 
-source ~/.local/share/nvim/site/pack/packer/start/tokyonight.nvim/extras/fish_tokyonight_night.fish
 thefuck --alias | source
 starship init fish | source
