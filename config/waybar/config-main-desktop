@@ -1,50 +1,54 @@
-{
-    "position": "bottom",
-    "height": 30,
-    "spacing": 4,
-    "modules-left": ["river/tags"],
-    "modules-right": ["pulseaudio", "network", "cpu", "memory", "clock", "tray"],
-    "river/tags": {},
-    "tray": {
-        "icon-size": 21,
-        "spacing": 10
-    },
-    "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
-    },
-    "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
-    },
-    "memory": {
-        "format": "{}% "
-    },
-    "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    },
-    "pulseaudio": {
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
+[
+    {
+        "position": "bottom",
+        "height": 39, // Waybar height (to be removed for auto height)
+        "margin-top": 0,
+        "margin-right": 5,
+        "margin-bottom": 5,
+        "margin-left": 5,
+        "output": "DP-4",
+        "modules-left": ["river/tags"],
+        "modules-right": ["pulseaudio", "memory", "clock", "tray"],
+        "river/tags": {
+            "num-tags": 5
         },
-        "on-click": "pavucontrol"
+        "tray": {
+            "spacing": 10
+        },
+        "clock": {
+            "format": "{:%d/%m %H:%M}",
+            "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        },
+        "memory": {
+            "format": "{}% "
+        },
+        "pulseaudio": {
+            "format": "{volume}% {icon}",
+            "format-muted": "",
+            "format-icons": {
+                "headphone": "",
+                "hands-free": "",
+                "headset": "",
+                "phone": "",
+                "portable": "",
+                "car": "",
+                "default": ["", "", ""]
+            },
+            "on-click": "pavucontrol"
+        }
+    },
+    {
+        "position": "bottom",
+        "height": 39, // Waybar height (to be removed for auto height)
+        "margin-top": 0,
+        "margin-right": 5,
+        "margin-bottom": 5,
+        "margin-left": 5,
+        "output": "DP-3",
+        "modules-center": ["river/tags"],
+        "river/tags": {
+            "num-tags": 5
+        }
     }
-}
+]
 // vim: filetype=jsonc
