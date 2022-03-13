@@ -1,7 +1,7 @@
 profile {
-    output DP-3 enable mode 3840x2160 scale 1.8
+    output DP-3 enable mode 3840x2160 scale 1.4
 }
 profile {
-    output DP-3 enable mode 3840x2160 scale 1.8 position 1018,0
-    output DP-4 enable mode 5120x1440@60 position 0,1199
+    output DP-4 enable mode 5120x1440@60 scale 1.4 position 499,1545
+    output DP-3 enable mode 3840x2160 scale 1.4 position 1018,0
 }
