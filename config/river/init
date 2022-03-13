@@ -134,6 +134,7 @@ riverctl set-cursor-warp on-output-change
 # Make certain views start floating
 riverctl float-filter-add app-id float
 riverctl float-filter-add app-id mpv
+riverctl float-filter-add app-id imv
 riverctl float-filter-add title "popup title with spaces"
 
 riverctl spawn "wl-paste -pw wl-copy"
