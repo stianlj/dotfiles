@@ -6,21 +6,20 @@ export SSH_AUTH_SOCK
 
 # for screen sharing: https://wiki.archlinux.org/title/PipeWire#WebRTC_screen_sharing
 
+riverctl spawn "gsettings set org.gnome.desktop.interface gtk-theme 'Catppuccin-pink'"
+riverctl spawn "gsettings set org.gnome.desktop.interface cursor-theme 'Catppuccin Blue'"
+riverctl spawn "gsettings set org.gnome.desktop.interface icon-theme 'Papirus'"
+riverctl xcursor-theme 'Catppuccin Blue'
+
 if [ "$COMPUTER_IDENTIFIER" = "main-desktop" ]; then
-  riverctl spawn "gsettings set org.gnome.desktop.interface gtk-theme 'Vimix-Dark-Doder'"
-  riverctl spawn "gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'"
   riverctl spawn "wlr-randr --output DP-4 --on --custom-mode 5120x1440@60Hz"
   riverctl spawn "kanshi -c /home/stianlj/.config/kanshi/config-main-desktop"
   riverctl spawn "waybar -c /home/stianlj/.config/waybar/config-main-desktop"
 elif [ "$COMPUTER_IDENTIFIER" = "work-laptop" ]; then
-  riverctl spawn "gsettings set org.gnome.desktop.interface gtk-theme 'Catppuccin-pink'"
-  riverctl spawn "gsettings set org.gnome.desktop.interface cursor-theme 'Catppuccin Blue'"
-  riverctl spawn "gsettings set org.gnome.desktop.interface icon-theme 'Papirus'"
-  riverctl xcursor-theme 'Catppuccin Blue'
   riverctl spawn "kanshi -c /home/stianlj/.config/kanshi/config"
   riverctl spawn "waybar -c /home/stianlj/.config/waybar/config-work-laptop"
 fi
-riverctl spawn "swaybg -m fit -i $WALLPAPER"
+riverctl spawn "swaybg -m fill -i $WALLPAPER"
 riverctl spawn "rivercarro -no-smart-gaps -main-ratio 0.5"
 
 riverctl default-layout rivercarro
