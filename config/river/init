@@ -1,10 +1,10 @@
 #!/bin/sh
 
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-eval "$(gnome-keyring-daemon --start)"
-export SSH_AUTH_SOCK
-
-# for screen sharing: https://wiki.archlinux.org/title/PipeWire#WebRTC_screen_sharing
+riverctl spawn "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP"
+riverctl spawn "dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP"
+riverctl spawn "/usr/lib/xdg-desktop-portal-wlr"
+riverctl spawn "/usr/lib/xdg-desktop-portal-gtk"
+riverctl spawn "/usr/lib/xdg-desktop-portal"
 
 riverctl spawn "gsettings set org.gnome.desktop.interface gtk-theme 'Catppuccin-pink'"
 riverctl spawn "gsettings set org.gnome.desktop.interface cursor-theme 'Catppuccin Blue'"
