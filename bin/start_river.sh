@@ -8,4 +8,4 @@ export GDK_BACKEND=wayland
 export XKB_DEFAULT_OPTIONS=compose:ralt
 
 timestamp=$(date +%F-%R)
-exec dbus-run-session river -log-level debug >/tmp/river-"$timestamp".log 2>&1
+exec river -log-level debug >/tmp/river-"$timestamp".log 2>&1
