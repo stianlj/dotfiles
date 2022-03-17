@@ -10,3 +10,7 @@ profile triple {
     output DP-6 enable mode 2560x1440 scale 1.4 position 1920,0
     output DP-4 enable mode 1920x1200 scale 1.18 position 3751,0
 }
+profile dual-projector {
+    output eDP-1 enable mode 3840x2160 scale 2 position 0,0
+    output DP-3 enable mode 1920x1080 position 1920,0
+}
