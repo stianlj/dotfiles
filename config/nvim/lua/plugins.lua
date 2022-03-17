@@ -31,6 +31,13 @@ return packer.startup(function(use)
       require("plugins.comment-config")
     end,
   })
+  use({
+    "phaazon/hop.nvim",
+    branch = "v1",
+    config = function()
+      require("plugins.hop-config")
+    end,
+  })
   use("tpope/vim-surround")
   use("tpope/vim-repeat")
   use("tpope/vim-obsession")

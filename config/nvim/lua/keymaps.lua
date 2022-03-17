@@ -108,6 +108,9 @@ map("s", "<S-Tab>", "<cmd>lua require('luasnip').jump(-1)<CR>", default_opts)
 map("i", "<Tab>", "<cmd>lua require('luasnip').jump(1)<CR>", { noremap = false, silent = true })
 map("i", "<S-Tab>", "<cmd>lua require('luasnip').jump(-1)<CR>", default_opts)
 
+-- Hop keys
+map("n", "s", "<cmd>lua require('hop').hint_words()<CR>", default_opts)
+
 -- A poor mans meta-x in Vim
 map("n", "<M-x>", "<cmd>Telescope commands theme=ivy<CR>", default_opts)
 
