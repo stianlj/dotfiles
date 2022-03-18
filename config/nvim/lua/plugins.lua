@@ -38,6 +38,13 @@ return packer.startup(function(use)
       require("plugins.hop-config")
     end,
   })
+  use({
+    "akinsho/bufferline.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("plugins.bufferline-config")
+    end,
+  })
   use("tpope/vim-surround")
   use("tpope/vim-repeat")
   use("tpope/vim-obsession")
