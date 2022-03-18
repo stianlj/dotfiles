@@ -1,6 +1,5 @@
 local g = vim.g
 
-g.tokyonight_transparent = true
-g.tokyonight_style = "night"
+g.tokyonight_style = "storm"
 
 vim.cmd([[colorscheme tokyonight]])
