@@ -1,18 +1,13 @@
 from qutebrowser.config.configfiles import ConfigAPI
 from qutebrowser.config.config import ConfigContainer
-import os
 
 config: ConfigAPI = config
 c: ConfigContainer = c
 
 # Variables
-defaultFont = "14px JetBrainsMonoMedium Nerd Font Mono"
+defaultFont = "14px MonoLisa"
 defaultZoom = "100%"
 defaultPadding = {"top": 10, "bottom": 10, "left": 10, "right": 10}
-
-if os.environ['COMPUTER_IDENTIFIER'] == 'work-laptop':
-    defaultFont = "15px Hack Nerd Font"
-    defaultZoom = "100%"
 
 # Config
 config.load_autoconfig(False)
