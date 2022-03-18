@@ -49,4 +49,4 @@ config.bind('xx', 'config-cycle tabs.show multiple switching')
 config.unbind('D', mode='normal')
 
 # Themeing
-config.source('custom-color.py')
+config.source('custom-catppuccin-color.py')
