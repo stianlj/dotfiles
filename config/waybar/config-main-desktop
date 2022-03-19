@@ -7,7 +7,8 @@
         "margin-bottom": 5,
         "margin-left": 5,
         "output": "DP-4",
-        "modules-left": ["river/tags"],
+        "modules-left": ["custom/media"],
+        "modules-center": ["river/tags"],
         "modules-right": ["pulseaudio", "memory", "clock", "tray"],
         "river/tags": {
             "num-tags": 5
@@ -17,7 +18,7 @@
         },
         "clock": {
             "format": "{:%d/%m %H:%M}",
-            "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+            "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
         },
         "memory": {
             "format": "{}% "
@@ -35,6 +36,14 @@
                 "default": ["", "", ""]
             },
             "on-click": "pavucontrol"
+        },
+        "custom/media": {
+            "format": "Playing: {}",
+            "return-type": "json",
+            "max-length": 100,
+            "escape": true,
+            "exec": "$HOME/.config/waybar/custom_modules/mediaplayer.py 2> /dev/null",
+            "on-click": "playerctl play-pause"
         }
     },
     {
