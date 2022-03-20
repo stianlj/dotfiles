@@ -12,7 +12,6 @@ riverctl spawn "gsettings set org.gnome.desktop.interface icon-theme 'Papirus'"
 riverctl xcursor-theme 'Catppuccin Blue'
 
 if [ "$COMPUTER_IDENTIFIER" = "main-desktop" ]; then
-  riverctl spawn "wlr-randr --output DP-4 --on --custom-mode 5120x1440@60Hz"
   riverctl spawn "kanshi -c /home/stianlj/.config/kanshi/config-main-desktop"
   riverctl spawn "waybar -c /home/stianlj/.config/waybar/config-main-desktop"
 elif [ "$COMPUTER_IDENTIFIER" = "work-laptop" ]; then
