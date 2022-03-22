@@ -11,6 +11,7 @@ gsettings set org.gnome.desktop.interface cursor-theme 'Catppuccin Blue'
 gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
 
 kanshi -c /home/stianlj/.config/kanshi/config-main-desktop &
+waybar -c /home/stianlj/.config/waybar/config-main-desktop &
 swaybg -m fill -i "$WALLPAPER" &
 
 wl-paste -pw wl-copy &

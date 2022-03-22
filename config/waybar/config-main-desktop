@@ -6,6 +6,9 @@
         "margin-right": 5,
         "margin-bottom": 5,
         "margin-left": 5,
+        "mode": "overlay",
+        "passthrough": true,
+        "gtk-layer-shaell": true,
         "output": "DP-4",
         "modules-left": ["custom/media"],
         "modules-center": ["river/tags"],
@@ -45,19 +48,20 @@
             "exec": "$HOME/.config/waybar/custom_modules/mediaplayer.py 2> /dev/null",
             "on-click": "playerctl play-pause"
         }
-    },
-    {
-        "position": "bottom",
-        "height": 39, // Waybar height (to be removed for auto height)
-        "margin-top": 0,
-        "margin-right": 5,
-        "margin-bottom": 5,
-        "margin-left": 5,
-        "output": "DP-3",
-        "modules-center": ["river/tags"],
-        "river/tags": {
-            "num-tags": 5
-        }
     }
+    // {
+    //     "position": "bottom",
+    //     "height": 39, // Waybar height (to be removed for auto height)
+    //     "margin-top": 0,
+    //     "margin-right": 5,
+    //     "margin-bottom": 5,
+    //     "margin-left": 5,
+    //     "mode": "overlay",
+    //     "output": "DP-3",
+    //     "modules-center": ["river/tags"],
+    //     "river/tags": {
+    //         "num-tags": 5
+    //     }
+    // }
 ]
 // vim: filetype=jsonc

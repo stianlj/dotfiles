@@ -87,10 +87,36 @@ layouts = [
     ),
 ]
 
+catppuccinPalette = {
+    'rosewater': '#F5E0DC',
+    'flamingo': '#F2CDCD',
+    'mauve': '#DDB6F2',
+    'pink': '#F5C2E7',
+    'maroon': '#E8A2AF',
+    'red': '#F28FAD',
+    'peach': '#F8BD96',
+    'yellow': '#FAE3B0',
+    'green': '#ABE9B3',
+    'teal': '#B5E8E0',
+    'blue': '#96CDFB',
+    'sky': '#89DCEB',
+    'lavender': '#C9CBFF',
+    'black0': '#161320',
+    'black1': '#1A1826',
+    'black2': '#1E1E2E',
+    'black3': '#302D41',
+    'black4': '#575268',
+    'gray0': '#6E6C7E',
+    'gray1': '#988BA2',
+    'gray2': '#C3BAC6',
+    'white': '#D9E0EE'
+}
+
 widget_defaults = dict(
     font="MonoLisa",
     fontsize=15,
     padding=10,
+    foreground=catppuccinPalette['white'],
 )
 extension_defaults = widget_defaults.copy()
 
@@ -98,27 +124,54 @@ screens = [
     Screen(
         bottom=bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.GroupBox(visible_groups=['1', '2', '3', '4', '5', '6']),
-                widget.WindowName(),
-                widget.Clock(format="%d/%m %H:%M"),
-                # StatusNotifier(),
-                widget.StatusNotifier(),
+                widget.Spacer(),
+                widget.GroupBox(
+                    visible_groups=['1', '2', '3', '4', '5', '6'],
+                    use_mouse_wheel=False,
+                    background=catppuccinPalette['black2'],
+                    active=catppuccinPalette['white'],
+                    inactive=catppuccinPalette['black4'],
+                    padding_y=3,
+                    margin_y=3,
+                    highlight_color=[catppuccinPalette['white'], catppuccinPalette['teal']],
+                    this_current_screen_border=catppuccinPalette['rosewater'],
+                    this_screen_border=catppuccinPalette['black4'],
+                    urgent_border=catppuccinPalette['red'],
+                    urgent_text=catppuccinPalette['red'],
+                ),
+                # widget.WindowName(for_current_screen=True),
+                widget.Spacer(),
             ],
-            30,
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            35,
+            background='#00000000',
+            border_width=[5, 0, 5, 0],  # Draw top and bottom borders
+            border_color='#00000000'  # Borders are magenta
         ),
     ),
     Screen(
         bottom=bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.GroupBox(visible_groups=['7', '8', '9']),
+                widget.Spacer(),
+                widget.GroupBox(
+                    visible_groups=['7', '8', '9'],
+                    use_mouse_wheel=False,
+                    background=catppuccinPalette['black2'],
+                    active=catppuccinPalette['white'],
+                    inactive=catppuccinPalette['black4'],
+                    padding_y=3,
+                    margin_y=3,
+                    highlight_color=[catppuccinPalette['white'], catppuccinPalette['teal']],
+                    this_current_screen_border=catppuccinPalette['rosewater'],
+                    this_screen_border=catppuccinPalette['black4'],
+                    urgent_border=catppuccinPalette['red'],
+                    urgent_text=catppuccinPalette['red'],
+                ),
+                widget.Spacer(),
             ],
-            24,
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            35,
+            background='#00000000',
+            border_width=[5, 0, 5, 0],  # Draw top and bottom borders
+            border_color='#00000000'  # Borders are magenta
         ),
     ),
 ]
@@ -139,14 +192,14 @@ floating_layout = layout.Floating(
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
-        Match(wm_class="confirmreset"),  # gitk
-        Match(wm_class="makebranch"),  # gitk
-        Match(wm_class="maketag"),  # gitk
-        Match(wm_class="ssh-askpass"),  # ssh-askpass
-        Match(title="branchdialog"),  # gitk
-        Match(wm_class="mpv"),  # gitk
-        Match(title="imv"),  # gitk
-        Match(title="pinentry"),  # GPG key password entry
+        Match(wm_class="confirmreset"),
+        Match(wm_class="makebranch"),
+        Match(wm_class="maketag"),
+        Match(wm_class="ssh-askpass"),
+        Match(wm_class="mpv"),
+        Match(wm_class="imv"),
+        Match(title="branchdialog"),
+        Match(title="pinentry"),
     ]
 )
 
