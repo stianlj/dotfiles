@@ -1,14 +1,39 @@
 import os
 import subprocess
-from libqtile import bar, layout, widget, hook
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from typing import Callable, List
+
+from libqtile import bar, hook, layout, widget
+from libqtile.backend.wayland import InputConfig
+from libqtile.config import (Click, Drag, DropDown, Group, Key, Match,
+                             ScratchPad, Screen)
 from libqtile.core.manager import Qtile
 from libqtile.lazy import lazy
-from typing import Callable
-from libqtile.backend.wayland import InputConfig
-# from qtile_extras.widget import StatusNotifier
 
 mod = "mod4"
+catppuccinPalette = {
+    'rosewater': '#F5E0DC',
+    'flamingo': '#F2CDCD',
+    'mauve': '#DDB6F2',
+    'pink': '#F5C2E7',
+    'maroon': '#E8A2AF',
+    'red': '#F28FAD',
+    'peach': '#F8BD96',
+    'yellow': '#FAE3B0',
+    'green': '#ABE9B3',
+    'teal': '#B5E8E0',
+    'blue': '#96CDFB',
+    'sky': '#89DCEB',
+    'lavender': '#C9CBFF',
+    'black0': '#161320',
+    'black1': '#1A1826',
+    'black2': '#1E1E2E',
+    'black3': '#302D41',
+    'black4': '#575268',
+    'gray0': '#6E6C7E',
+    'gray1': '#988BA2',
+    'gray2': '#C3BAC6',
+    'white': '#D9E0EE'
+}
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -58,9 +83,22 @@ keys = [
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    Key([mod], "t", lazy.group['scratchpad'].dropdown_toggle('term'), desc="Toggle terminal"),
 ]
 
-groups = [Group(i) for i in "123456789"]
+# groups = [Group(i) for i in "123456789"]
+groups: List[Group] = [
+    Group("1"),
+    Group("2"),
+    Group("3"),
+    Group("4"),
+    Group("5"),
+    Group("6"),
+    Group("7", layout='tile'),
+    Group("8", layout='tile'),
+    Group("9", layout='tile'),
+    Group("0", layout='tile'),
+]
 
 def go_to_group(name: str) -> Callable:
     def _inner(qtile: Qtile) -> None:
@@ -68,7 +106,7 @@ def go_to_group(name: str) -> Callable:
             qtile.groups_map[name].cmd_toscreen()
             return
 
-        if name in '789':
+        if name in '7890':
             qtile.focus_screen(1)
             qtile.groups_map[name].cmd_toscreen()
         else:
@@ -79,38 +117,31 @@ def go_to_group(name: str) -> Callable:
 for i in groups:
     keys.append(Key([mod], i.name, lazy.function(go_to_group(i.name))))
 
+groups.append(
+    ScratchPad('scratchpad', [
+                   DropDown('term', 'kitty fish', width=0.4, x=0.3, y=0.1, height=0.7, opacity=1),
+               ])
+)
+
 layouts = [
     layout.MonadThreeCol(
         single_margin = [5, 800, 5, 800],
         margin = 5,
-        border_width = 0
+        border_width = 2,
+        border_focus = catppuccinPalette['peach'],
+        border_normal = catppuccinPalette['black1'],
+        single_border_width = 0,
+    ),
+    layout.Tile(
+        ratio=0.5,
+        margin=5,
+        border_on_single=False,
+        border_width = 2,
+        border_focus = catppuccinPalette['peach'],
+        border_normal = catppuccinPalette['black1'],
+        single_border_width = 0,
     ),
 ]
-
-catppuccinPalette = {
-    'rosewater': '#F5E0DC',
-    'flamingo': '#F2CDCD',
-    'mauve': '#DDB6F2',
-    'pink': '#F5C2E7',
-    'maroon': '#E8A2AF',
-    'red': '#F28FAD',
-    'peach': '#F8BD96',
-    'yellow': '#FAE3B0',
-    'green': '#ABE9B3',
-    'teal': '#B5E8E0',
-    'blue': '#96CDFB',
-    'sky': '#89DCEB',
-    'lavender': '#C9CBFF',
-    'black0': '#161320',
-    'black1': '#1A1826',
-    'black2': '#1E1E2E',
-    'black3': '#302D41',
-    'black4': '#575268',
-    'gray0': '#6E6C7E',
-    'gray1': '#988BA2',
-    'gray2': '#C3BAC6',
-    'white': '#D9E0EE'
-}
 
 widget_defaults = dict(
     font="MonoLisa",
@@ -200,7 +231,10 @@ floating_layout = layout.Floating(
         Match(wm_class="imv"),
         Match(title="branchdialog"),
         Match(title="pinentry"),
-    ]
+    ],
+    border_width = 2,
+    border_focus = catppuccinPalette['peach'],
+    border_normal = catppuccinPalette['black1'],
 )
 
 @hook.subscribe.startup_once
