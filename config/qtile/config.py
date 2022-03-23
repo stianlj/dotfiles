@@ -11,28 +11,28 @@ from libqtile.lazy import lazy
 
 mod = "mod4"
 catppuccinPalette = {
-    'rosewater': '#F5E0DC',
-    'flamingo': '#F2CDCD',
-    'mauve': '#DDB6F2',
-    'pink': '#F5C2E7',
-    'maroon': '#E8A2AF',
-    'red': '#F28FAD',
-    'peach': '#F8BD96',
-    'yellow': '#FAE3B0',
-    'green': '#ABE9B3',
-    'teal': '#B5E8E0',
-    'blue': '#96CDFB',
-    'sky': '#89DCEB',
-    'lavender': '#C9CBFF',
-    'black0': '#161320',
-    'black1': '#1A1826',
-    'black2': '#1E1E2E',
-    'black3': '#302D41',
-    'black4': '#575268',
-    'gray0': '#6E6C7E',
-    'gray1': '#988BA2',
-    'gray2': '#C3BAC6',
-    'white': '#D9E0EE'
+    "rosewater": "#F5E0DC",
+    "flamingo": "#F2CDCD",
+    "mauve": "#DDB6F2",
+    "pink": "#F5C2E7",
+    "maroon": "#E8A2AF",
+    "red": "#F28FAD",
+    "peach": "#F8BD96",
+    "yellow": "#FAE3B0",
+    "green": "#ABE9B3",
+    "teal": "#B5E8E0",
+    "blue": "#96CDFB",
+    "sky": "#89DCEB",
+    "lavender": "#C9CBFF",
+    "black0": "#161320",
+    "black1": "#1A1826",
+    "black2": "#1E1E2E",
+    "black3": "#302D41",
+    "black4": "#575268",
+    "gray0": "#6E6C7E",
+    "gray1": "#988BA2",
+    "gray2": "#C3BAC6",
+    "white": "#D9E0EE",
 }
 
 keys = [
@@ -43,42 +43,30 @@ keys = [
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod],
-        "space",
-        lazy.layout.next(),
-        desc="Move window focus to other window"),
+    Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
-    Key([mod, "shift"],
-        "h",
-        lazy.layout.shuffle_left(),
-        desc="Move window to the left"),
-    Key([mod, "shift"],
+    Key(
+        [mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"
+    ),
+    Key(
+        [mod, "shift"],
         "l",
         lazy.layout.shuffle_right(),
-        desc="Move window to the right"),
-    Key([mod, "shift"],
-        "j",
-        lazy.layout.shuffle_down(),
-        desc="Move window down"),
+        desc="Move window to the right",
+    ),
+    Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
-    Key([mod, "control"],
-        "h",
-        lazy.layout.grow_left(),
-        desc="Grow window to the left"),
-    Key([mod, "control"],
-        "l",
-        lazy.layout.grow_right(),
-        desc="Grow window to the right"),
-    Key([mod, "control"],
-        "j",
-        lazy.layout.grow_down(),
-        desc="Grow window down"),
+    Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
+    Key(
+        [mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"
+    ),
+    Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
-    Key([mod], 's', lazy.window.toggle_floating(), desc="Toggle floating"),
+    Key([mod], "s", lazy.window.toggle_floating(), desc="Toggle floating"),
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
@@ -90,49 +78,31 @@ keys = [
         desc="Toggle between split and unsplit sides of stack",
     ),
     # Use swhkd for these
-    Key([mod], "Return", lazy.spawn('kitty fish'), desc="Launch terminal"),
-    Key([mod],
+    Key([mod], "Return", lazy.spawn("kitty fish"), desc="Launch terminal"),
+    Key(
+        [mod],
         "d",
-        lazy.spawn('wofi --show drun --allow-images --no-actions'),
-        desc="Application launcher"),
-    Key([],
-        "XF86AudioRaiseVolume",
-        lazy.spawn('pamixer -i 5'),
-        desc="Raise volume"),
-    Key([],
-        "XF86AudioLowerVolume",
-        lazy.spawn('pamixer -d 5'),
-        desc="Lower volume"),
-    Key([],
-        "XF86AudioMute",
-        lazy.spawn('pamixer --toggle-mute'),
-        desc="Toggle mute"),
-    Key([],
-        "XF86AudioMedia",
-        lazy.spawn('playerctl play-pause'),
-        desc="Toggle play"),
-    Key([],
-        "XF86AudioPlay",
-        lazy.spawn('playerctl play-pause'),
-        desc="Toggle play"),
-    Key([],
-        "XF86AudioPrev",
-        lazy.spawn('playerctl previous'),
-        desc="Skip to previous"),
-    Key([], "XF86AudioNext", lazy.spawn('playerctl next'),
-        desc="Skip to next"),
+        lazy.spawn("wofi --show drun --allow-images --no-actions"),
+        desc="Application launcher",
+    ),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("pamixer -i 5"), desc="Raise volume"),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("pamixer -d 5"), desc="Lower volume"),
+    Key([], "XF86AudioMute", lazy.spawn("pamixer --toggle-mute"), desc="Toggle mute"),
+    Key([], "XF86AudioMedia", lazy.spawn("playerctl play-pause"), desc="Toggle play"),
+    Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause"), desc="Toggle play"),
+    Key([], "XF86AudioPrev", lazy.spawn("playerctl previous"), desc="Skip to previous"),
+    Key([], "XF86AudioNext", lazy.spawn("playerctl next"), desc="Skip to next"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
-    Key([mod],
-        "r",
-        lazy.spawncmd(),
-        desc="Spawn a command using a prompt widget"),
-    Key([mod],
+    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    Key(
+        [mod],
         "t",
-        lazy.group['scratchpad'].dropdown_toggle('term'),
-        desc="Toggle terminal"),
+        lazy.group["scratchpad"].dropdown_toggle("term"),
+        desc="Toggle terminal",
+    ),
 ]
 
 # groups = [Group(i) for i in "123456789"]
@@ -143,21 +113,20 @@ groups: List[Group] = [
     Group("4"),
     Group("5"),
     Group("6"),
-    Group("7", layout='tile'),
-    Group("8", layout='tile'),
-    Group("9", layout='tile'),
-    Group("0", layout='tile'),
+    Group("7", layout="tile"),
+    Group("8", layout="tile"),
+    Group("9", layout="tile"),
+    Group("0", layout="tile"),
 ]
 
 
 def go_to_group(name: str) -> Callable:
-
     def _inner(qtile: Qtile) -> None:
         if len(qtile.screens) == 1:
             qtile.groups_map[name].cmd_toscreen()
             return
 
-        if name in '7890':
+        if name in "7890":
             qtile.focus_screen(1)
             qtile.groups_map[name].cmd_toscreen()
         else:
@@ -171,23 +140,23 @@ for i in groups:
     keys.append(Key([mod], i.name, lazy.function(go_to_group(i.name))))
 
 groups.append(
-    ScratchPad('scratchpad', [
-        DropDown('term',
-                 'kitty fish',
-                 width=0.4,
-                 x=0.3,
-                 y=0.1,
-                 height=0.7,
-                 opacity=1),
-    ]))
+    ScratchPad(
+        "scratchpad",
+        [
+            DropDown(
+                "term", "kitty fish", width=0.4, x=0.3, y=0.1, height=0.7, opacity=1
+            ),
+        ],
+    )
+)
 
 layouts = [
     layout.MonadThreeCol(
         single_margin=[5, 800, 5, 800],
         margin=5,
         border_width=2,
-        border_focus=catppuccinPalette['peach'],
-        border_normal=catppuccinPalette['black1'],
+        border_focus=catppuccinPalette["peach"],
+        border_normal=catppuccinPalette["black1"],
         single_border_width=0,
     ),
     layout.Tile(
@@ -195,8 +164,8 @@ layouts = [
         margin=5,
         border_on_single=False,
         border_width=2,
-        border_focus=catppuccinPalette['peach'],
-        border_normal=catppuccinPalette['black1'],
+        border_focus=catppuccinPalette["peach"],
+        border_normal=catppuccinPalette["black1"],
         single_border_width=0,
     ),
 ]
@@ -205,7 +174,7 @@ widget_defaults = dict(
     font="MonoLisa",
     fontsize=15,
     padding=10,
-    foreground=catppuccinPalette['white'],
+    foreground=catppuccinPalette["white"],
 )
 extension_defaults = widget_defaults.copy()
 
@@ -215,68 +184,73 @@ screens = [
             [
                 widget.Spacer(),
                 widget.GroupBox(
-                    visible_groups=['1', '2', '3', '4', '5', '6'],
+                    visible_groups=["1", "2", "3", "4", "5", "6"],
                     use_mouse_wheel=False,
-                    background=catppuccinPalette['black2'],
-                    active=catppuccinPalette['white'],
-                    inactive=catppuccinPalette['black4'],
+                    background=catppuccinPalette["black2"],
+                    active=catppuccinPalette["white"],
+                    inactive=catppuccinPalette["black4"],
                     padding_y=3,
                     margin_y=3,
                     highlight_color=[
-                        catppuccinPalette['white'], catppuccinPalette['teal']
+                        catppuccinPalette["white"],
+                        catppuccinPalette["teal"],
                     ],
-                    this_current_screen_border=catppuccinPalette['rosewater'],
-                    this_screen_border=catppuccinPalette['black4'],
-                    urgent_border=catppuccinPalette['red'],
-                    urgent_text=catppuccinPalette['red'],
+                    this_current_screen_border=catppuccinPalette["rosewater"],
+                    this_screen_border=catppuccinPalette["black4"],
+                    urgent_border=catppuccinPalette["red"],
+                    urgent_text=catppuccinPalette["red"],
                 ),
                 # widget.WindowName(for_current_screen=True),
                 widget.Spacer(),
             ],
             35,
-            background='#00000000',
+            background="#00000000",
             border_width=[5, 0, 5, 0],  # Draw top and bottom borders
-            border_color='#00000000'  # Borders are magenta
-        ), ),
+            border_color="#00000000",  # Borders are magenta
+        ),
+    ),
     Screen(
         bottom=bar.Bar(
             [
                 widget.Spacer(),
                 widget.GroupBox(
-                    visible_groups=['7', '8', '9'],
+                    visible_groups=["7", "8", "9"],
                     use_mouse_wheel=False,
-                    background=catppuccinPalette['black2'],
-                    active=catppuccinPalette['white'],
-                    inactive=catppuccinPalette['black4'],
+                    background=catppuccinPalette["black2"],
+                    active=catppuccinPalette["white"],
+                    inactive=catppuccinPalette["black4"],
                     padding_y=3,
                     margin_y=3,
                     highlight_color=[
-                        catppuccinPalette['white'], catppuccinPalette['teal']
+                        catppuccinPalette["white"],
+                        catppuccinPalette["teal"],
                     ],
-                    this_current_screen_border=catppuccinPalette['rosewater'],
-                    this_screen_border=catppuccinPalette['black4'],
-                    urgent_border=catppuccinPalette['red'],
-                    urgent_text=catppuccinPalette['red'],
+                    this_current_screen_border=catppuccinPalette["rosewater"],
+                    this_screen_border=catppuccinPalette["black4"],
+                    urgent_border=catppuccinPalette["red"],
+                    urgent_text=catppuccinPalette["red"],
                 ),
                 widget.Spacer(),
             ],
             35,
-            background='#00000000',
+            background="#00000000",
             border_width=[5, 0, 5, 0],  # Draw top and bottom borders
-            border_color='#00000000'  # Borders are magenta
-        ), ),
+            border_color="#00000000",  # Borders are magenta
+        ),
+    ),
 ]
 
 # Drag floating layouts.
 mouse = [
-    Drag([mod],
-         "Button1",
-         lazy.window.set_position_floating(),
-         start=lazy.window.get_position()),
-    Drag([mod],
-         "Button3",
-         lazy.window.set_size_floating(),
-         start=lazy.window.get_size()),
+    Drag(
+        [mod],
+        "Button1",
+        lazy.window.set_position_floating(),
+        start=lazy.window.get_position(),
+    ),
+    Drag(
+        [mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()
+    ),
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
@@ -299,15 +273,15 @@ floating_layout = layout.Floating(
         Match(title="pinentry"),
     ],
     border_width=2,
-    border_focus=catppuccinPalette['peach'],
-    border_normal=catppuccinPalette['black1'],
+    border_focus=catppuccinPalette["peach"],
+    border_normal=catppuccinPalette["black1"],
 )
 
 
 @hook.subscribe.startup_once
 def autostart():
-    home = os.path.expanduser('~')
-    subprocess.Popen([home + '/.config/qtile/autostart.sh'])
+    home = os.path.expanduser("~")
+    subprocess.Popen([home + "/.config/qtile/autostart.sh"])
 
 
 auto_fullscreen = True
@@ -319,9 +293,7 @@ reconfigure_screens = True
 auto_minimize = True
 
 # When using the Wayland backend, this can be used to configure input devices.
-wl_input_rules = {
-    "type:keyboard": InputConfig(kb_repeat_rate=50, kb_repeat_delay=300)
-}
+wl_input_rules = {"type:keyboard": InputConfig(kb_repeat_rate=50, kb_repeat_delay=300)}
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
