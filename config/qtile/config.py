@@ -12,7 +12,7 @@ from libqtile.config import (Click, Drag, DropDown, Group, Key, Match,
 from libqtile.core.manager import Qtile
 from libqtile.lazy import lazy
 
-isMainDesktop = os.getenv("COMPUTER_IDENTIFIER") == "main-desktop"
+is_main_desktop = os.getenv("COMPUTER_IDENTIFIER") == "main-desktop"
 
 mod = "mod4"
 catppuccinPalette = {
@@ -119,7 +119,7 @@ keys = [
     ),
 ]
 
-layout1to6 = "monadthreecol" if isMainDesktop else "tile"
+layout1to6 = "monadthreecol" if is_main_desktop else "tile"
 
 groups: List[Group] = [
     Group("1", layout=layout1to6),
@@ -164,7 +164,7 @@ groups.append(
     )
 )
 
-threeCol = MonadThreeCol(
+three_col = MonadThreeCol(
     single_margin=[5, 800, 5, 800],
     margin=5,
     border_width=2,
@@ -182,7 +182,7 @@ tile = Tile(
     single_border_width=0,
 )
 
-layouts = [threeCol, tile]
+layouts = [three_col, tile]
 
 widget_defaults = dict(
     font="MonoLisa",
@@ -192,7 +192,7 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-def getBar(visible_groups):
+def get_bar(visible_groups):
     return bar.Bar(
         [
             widget.Spacer(),
@@ -221,22 +221,22 @@ def getBar(visible_groups):
         border_color="#00000000",  # Borders are magenta
     )
 
-workLaptopScreens = [
+work_laptop_screens = [
     Screen(
-        top=getBar(["1", "2", "3", "4", "5", "6"])
+        top=get_bar(["1", "2", "3", "4", "5", "6"])
     )
 ]
 
-mainDesktopScreens = [
+main_desktop_screens = [
     Screen(
-        bottom=getBar(["1", "2", "3", "4", "5", "6"]),
+        bottom=get_bar(["1", "2", "3", "4", "5", "6"]),
     ),
     Screen(
-        bottom=getBar(["7", "8", "9"]),
+        bottom=get_bar(["7", "8", "9"]),
     ),
 ]
 
-screens = mainDesktopScreens if isMainDesktop else workLaptopScreens
+screens = main_desktop_screens if is_main_desktop else work_laptop_screens
 
 # Drag floating layouts.
 mouse = [
