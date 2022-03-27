@@ -7,8 +7,7 @@ from libqtile.layout.xmonad import MonadThreeCol
 from libqtile.layout.tile import Tile
 from libqtile.layout.floating import Floating
 from libqtile.backend.wayland.inputs import InputConfig
-from libqtile.config import (Click, Drag, DropDown, Group, Key, Match,
-                             ScratchPad, Screen)
+from libqtile.config import Click, Drag, DropDown, Group, Key, Match, ScratchPad, Screen
 from libqtile.core.manager import Qtile
 from libqtile.lazy import lazy
 
@@ -95,7 +94,7 @@ keys = [
         [mod],
         "Backspace",
         lazy.spawn("wlogout --buttons-per-row 2 --row-spacing 20 -p layer-shell"),
-        desc="Spawn logout menu"
+        desc="Spawn logout menu",
     ),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("pamixer -i 5"), desc="Raise volume"),
     Key([], "XF86AudioLowerVolume", lazy.spawn("pamixer -d 5"), desc="Lower volume"),
@@ -104,8 +103,15 @@ keys = [
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause"), desc="Toggle play"),
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous"), desc="Skip to previous"),
     Key([], "XF86AudioNext", lazy.spawn("playerctl next"), desc="Skip to next"),
-    Key([], "XF86MonBrightnessUp", lazy.spawn("light -A 5"), desc="Increase brightness"),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("light -U 5"), desc="Decrease brightness"),
+    Key(
+        [], "XF86MonBrightnessUp", lazy.spawn("light -A 5"), desc="Increase brightness"
+    ),
+    Key(
+        [],
+        "XF86MonBrightnessDown",
+        lazy.spawn("light -U 5"),
+        desc="Decrease brightness",
+    ),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
@@ -134,6 +140,7 @@ groups: List[Group] = [
     Group("0", layout="tile"),
 ]
 
+
 def go_to_group(name: str) -> Callable:
     def _inner(qtile: Qtile) -> None:
         if len(qtile.screens) == 1:
@@ -153,13 +160,29 @@ def go_to_group(name: str) -> Callable:
 for i in groups:
     keys.append(Key([mod], i.name, lazy.function(go_to_group(i.name))))
 
+main_desktop_scratchpad_size = {
+    "width": 0.4,
+    "x": 0.3,
+    "y": 0.1,
+    "height": 0.7,
+    "opacity": 1,
+}
+work_laptop_scratchpad_size = {
+    "width": 0.7,
+    "x": 0.15,
+    "y": 0.1,
+    "height": 0.7,
+    "opacity": 1,
+}
+scratchpad_size = (
+    main_desktop_scratchpad_size if is_main_desktop else work_laptop_scratchpad_size
+)
+
 groups.append(
     ScratchPad(
         "scratchpad",
         [
-            DropDown(
-                "term", "kitty fish", width=0.4, x=0.3, y=0.1, height=0.7, opacity=1
-            ),
+            DropDown("term", "kitty fish", **scratchpad_size),
         ],
     )
 )
@@ -192,6 +215,7 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+
 def get_bar(visible_groups):
     return bar.Bar(
         [
@@ -221,11 +245,8 @@ def get_bar(visible_groups):
         border_color="#00000000",  # Borders are magenta
     )
 
-work_laptop_screens = [
-    Screen(
-        top=get_bar(["1", "2", "3", "4", "5", "6"])
-    )
-]
+
+work_laptop_screens = [Screen(top=get_bar(["1", "2", "3", "4", "5", "6"]))]
 
 main_desktop_screens = [
     Screen(
