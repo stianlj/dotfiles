@@ -2,12 +2,17 @@ import os
 import subprocess
 from typing import Callable, List
 
-from libqtile import bar, hook, layout, widget
-from libqtile.backend.wayland import InputConfig
+from libqtile import bar, hook, widget
+from libqtile.layout.xmonad import MonadThreeCol
+from libqtile.layout.tile import Tile
+from libqtile.layout.floating import Floating
+from libqtile.backend.wayland.inputs import InputConfig
 from libqtile.config import (Click, Drag, DropDown, Group, Key, Match,
                              ScratchPad, Screen)
 from libqtile.core.manager import Qtile
 from libqtile.lazy import lazy
+
+isMainDesktop = os.getenv("COMPUTER_IDENTIFIER") == "main-desktop"
 
 mod = "mod4"
 catppuccinPalette = {
@@ -67,6 +72,7 @@ keys = [
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     Key([mod], "s", lazy.window.toggle_floating(), desc="Toggle floating"),
+    Key([mod], "f", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen"),
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
@@ -85,6 +91,12 @@ keys = [
         lazy.spawn("wofi --show drun --allow-images --no-actions"),
         desc="Application launcher",
     ),
+    Key(
+        [mod],
+        "Backspace",
+        lazy.spawn("wlogout --buttons-per-row 2 --row-spacing 20 -p layer-shell"),
+        desc="Spawn logout menu"
+    ),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("pamixer -i 5"), desc="Raise volume"),
     Key([], "XF86AudioLowerVolume", lazy.spawn("pamixer -d 5"), desc="Lower volume"),
     Key([], "XF86AudioMute", lazy.spawn("pamixer --toggle-mute"), desc="Toggle mute"),
@@ -92,6 +104,8 @@ keys = [
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause"), desc="Toggle play"),
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous"), desc="Skip to previous"),
     Key([], "XF86AudioNext", lazy.spawn("playerctl next"), desc="Skip to next"),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("light -A 5"), desc="Increase brightness"),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("light -U 5"), desc="Decrease brightness"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
@@ -105,20 +119,20 @@ keys = [
     ),
 ]
 
-# groups = [Group(i) for i in "123456789"]
+layout1to6 = "monadthreecol" if isMainDesktop else "tile"
+
 groups: List[Group] = [
-    Group("1"),
-    Group("2"),
-    Group("3"),
-    Group("4"),
-    Group("5"),
-    Group("6"),
+    Group("1", layout=layout1to6),
+    Group("2", layout=layout1to6),
+    Group("3", layout=layout1to6),
+    Group("4", layout=layout1to6),
+    Group("5", layout=layout1to6),
+    Group("6", layout=layout1to6),
     Group("7", layout="tile"),
     Group("8", layout="tile"),
     Group("9", layout="tile"),
     Group("0", layout="tile"),
 ]
-
 
 def go_to_group(name: str) -> Callable:
     def _inner(qtile: Qtile) -> None:
@@ -150,25 +164,25 @@ groups.append(
     )
 )
 
-layouts = [
-    layout.MonadThreeCol(
-        single_margin=[5, 800, 5, 800],
-        margin=5,
-        border_width=2,
-        border_focus=catppuccinPalette["peach"],
-        border_normal=catppuccinPalette["black1"],
-        single_border_width=0,
-    ),
-    layout.Tile(
-        ratio=0.5,
-        margin=5,
-        border_on_single=False,
-        border_width=2,
-        border_focus=catppuccinPalette["peach"],
-        border_normal=catppuccinPalette["black1"],
-        single_border_width=0,
-    ),
-]
+threeCol = MonadThreeCol(
+    single_margin=[5, 800, 5, 800],
+    margin=5,
+    border_width=2,
+    border_focus=catppuccinPalette["peach"],
+    border_normal=catppuccinPalette["black1"],
+    single_border_width=0,
+)
+tile = Tile(
+    ratio=0.5,
+    margin=5,
+    border_on_single=False,
+    border_width=2,
+    border_focus=catppuccinPalette["peach"],
+    border_normal=catppuccinPalette["black1"],
+    single_border_width=0,
+)
+
+layouts = [threeCol, tile]
 
 widget_defaults = dict(
     font="MonoLisa",
@@ -178,67 +192,51 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-screens = [
+def getBar(visible_groups):
+    return bar.Bar(
+        [
+            widget.Spacer(),
+            widget.GroupBox(
+                visible_groups=visible_groups,
+                use_mouse_wheel=False,
+                background=catppuccinPalette["black2"],
+                active=catppuccinPalette["white"],
+                inactive=catppuccinPalette["black4"],
+                padding_y=3,
+                margin_y=3,
+                highlight_color=[
+                    catppuccinPalette["white"],
+                    catppuccinPalette["teal"],
+                ],
+                this_current_screen_border=catppuccinPalette["rosewater"],
+                this_screen_border=catppuccinPalette["black4"],
+                urgent_border=catppuccinPalette["red"],
+                urgent_text=catppuccinPalette["red"],
+            ),
+            widget.Spacer(),
+        ],
+        35,
+        background="#00000000",
+        border_width=[5, 0, 5, 0],  # Draw top and bottom borders
+        border_color="#00000000",  # Borders are magenta
+    )
+
+workLaptopScreens = [
     Screen(
-        bottom=bar.Bar(
-            [
-                widget.Spacer(),
-                widget.GroupBox(
-                    visible_groups=["1", "2", "3", "4", "5", "6"],
-                    use_mouse_wheel=False,
-                    background=catppuccinPalette["black2"],
-                    active=catppuccinPalette["white"],
-                    inactive=catppuccinPalette["black4"],
-                    padding_y=3,
-                    margin_y=3,
-                    highlight_color=[
-                        catppuccinPalette["white"],
-                        catppuccinPalette["teal"],
-                    ],
-                    this_current_screen_border=catppuccinPalette["rosewater"],
-                    this_screen_border=catppuccinPalette["black4"],
-                    urgent_border=catppuccinPalette["red"],
-                    urgent_text=catppuccinPalette["red"],
-                ),
-                # widget.WindowName(for_current_screen=True),
-                widget.Spacer(),
-            ],
-            35,
-            background="#00000000",
-            border_width=[5, 0, 5, 0],  # Draw top and bottom borders
-            border_color="#00000000",  # Borders are magenta
-        ),
+        top=getBar(["1", "2", "3", "4", "5", "6"])
+    )
+]
+
+mainDesktopScreens = [
+    Screen(
+        bottom=getBar(["1", "2", "3", "4", "5", "6"]),
     ),
     Screen(
-        bottom=bar.Bar(
-            [
-                widget.Spacer(),
-                widget.GroupBox(
-                    visible_groups=["7", "8", "9"],
-                    use_mouse_wheel=False,
-                    background=catppuccinPalette["black2"],
-                    active=catppuccinPalette["white"],
-                    inactive=catppuccinPalette["black4"],
-                    padding_y=3,
-                    margin_y=3,
-                    highlight_color=[
-                        catppuccinPalette["white"],
-                        catppuccinPalette["teal"],
-                    ],
-                    this_current_screen_border=catppuccinPalette["rosewater"],
-                    this_screen_border=catppuccinPalette["black4"],
-                    urgent_border=catppuccinPalette["red"],
-                    urgent_text=catppuccinPalette["red"],
-                ),
-                widget.Spacer(),
-            ],
-            35,
-            background="#00000000",
-            border_width=[5, 0, 5, 0],  # Draw top and bottom borders
-            border_color="#00000000",  # Borders are magenta
-        ),
+        bottom=getBar(["7", "8", "9"]),
     ),
 ]
+
+screens = mainDesktopScreens if isMainDesktop else workLaptopScreens
 
 # Drag floating layouts.
 mouse = [
@@ -259,10 +257,10 @@ dgroups_app_rules = []  # type: list
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = True
-floating_layout = layout.Floating(
+floating_layout = Floating(
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
-        *layout.Floating.default_float_rules,
+        *Floating.default_float_rules,
         Match(wm_class="confirmreset"),
         Match(wm_class="makebranch"),
         Match(wm_class="maketag"),
