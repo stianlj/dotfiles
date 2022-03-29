@@ -16,5 +16,4 @@ alias ssh='kitty +kitten ssh'
 abbr --add --global vi 'nvim'
 abbr --add --global cat 'bat'
 
-thefuck --alias | source
 starship init fish | source
