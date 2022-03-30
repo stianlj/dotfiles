@@ -143,18 +143,33 @@ groups: List[Group] = [
 ]
 
 
+numberOfConnectScreens = 1
+
+
 def go_to_group(name: str) -> Callable:
     def _inner(qtile: Qtile) -> None:
+        # if numberOfConnectScreens == 1:
         if len(qtile.screens) == 1:
             qtile.groups_map[name].cmd_toscreen()
             return
 
-        if name in "7890":
-            qtile.focus_screen(1)
-            qtile.groups_map[name].cmd_toscreen()
+        if is_main_desktop:
+            if name in "7890":
+                qtile.focus_screen(1)
+                qtile.groups_map[name].cmd_toscreen()
+            else:
+                qtile.focus_screen(0)
+                qtile.groups_map[name].cmd_toscreen()
         else:
-            qtile.focus_screen(0)
-            qtile.groups_map[name].cmd_toscreen()
+            if name in "890":
+                qtile.focus_screen(0)
+                qtile.groups_map[name].cmd_toscreen()
+            elif name in "1234":
+                qtile.focus_screen(1)
+                qtile.groups_map[name].cmd_toscreen()
+            else:
+                qtile.focus_screen(2)
+                qtile.groups_map[name].cmd_toscreen()
 
     return _inner
 
@@ -248,7 +263,22 @@ def get_bar(visible_groups):
     )
 
 
-work_laptop_screens = [Screen(top=get_bar(["1", "2", "3", "4", "5", "6"]))]
+if numberOfConnectScreens > 1:
+    work_laptop_screens = [
+        Screen(bottom=get_bar(["8", "9", "0"])),
+        Screen(bottom=get_bar(["1", "2", "3", "4"])),
+        Screen(
+            bottom=get_bar(
+                [
+                    "5",
+                    "6",
+                    "7",
+                ]
+            )
+        ),
+    ]
+else:
+    work_laptop_screens = [Screen(left=bar.Bar([], 48))]
 
 main_desktop_screens = [
     Screen(
@@ -279,7 +309,7 @@ dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
 follow_mouse_focus = True
 bring_front_click = False
-cursor_warp = True
+cursor_warp = False
 floating_layout = Floating(
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
