@@ -3,12 +3,13 @@ import subprocess
 from typing import Callable, List
 
 from libqtile import bar, hook, widget
-from libqtile.layout.xmonad import MonadThreeCol
-from libqtile.layout.tile import Tile
-from libqtile.layout.floating import Floating
 from libqtile.backend.wayland.inputs import InputConfig
-from libqtile.config import Click, Drag, DropDown, Group, Key, Match, ScratchPad, Screen
+from libqtile.config import (Click, Drag, DropDown, Group, Key, Match,
+                             ScratchPad, Screen)
 from libqtile.core.manager import Qtile
+from libqtile.layout.floating import Floating
+from libqtile.layout.tile import Tile
+from libqtile.layout.xmonad import MonadThreeCol
 from libqtile.lazy import lazy
 
 is_main_desktop = os.getenv("COMPUTER_IDENTIFIER") == "main-desktop"
