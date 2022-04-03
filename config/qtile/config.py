@@ -50,10 +50,10 @@ keys = [
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "tab", lazy.layout.next(), desc="Move window focus to next window"),
+    Key([mod], "Tab", lazy.layout.next(), desc="Move window focus to next window"),
     Key(
         [mod, "shift"],
-        "tab",
+        "Tab",
         lazy.layout.previous(),
         desc="Move window focus to previous window",
     ),
@@ -102,10 +102,11 @@ keys = [
     ),
     Key(
         [mod],
-        "Backspace",
+        "BackSpace",
         lazy.spawn("wlogout --buttons-per-row 2 --row-spacing 20 -p layer-shell"),
         desc="Spawn logout menu",
     ),
+    Key([mod], "Escape", lazy.next_layout(), desc="Toggle between layouts"),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("pamixer -i 5"), desc="Raise volume"),
     Key([], "XF86AudioLowerVolume", lazy.spawn("pamixer -d 5"), desc="Lower volume"),
     Key([], "XF86AudioMute", lazy.spawn("pamixer --toggle-mute"), desc="Toggle mute"),
@@ -183,6 +184,14 @@ def go_to_group(name: str) -> Callable:
 
 for i in groups:
     keys.append(Key([mod], i.name, lazy.function(go_to_group(i.name))))
+    keys.append(
+        Key(
+            [mod, "shift"],
+            i.name,
+            lazy.window.togroup(i.name),
+            desc="Move to group",
+        )
+    )
 
 main_desktop_scratchpad_size = {
     "width": 0.4,
