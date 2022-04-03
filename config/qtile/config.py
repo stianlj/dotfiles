@@ -1,14 +1,17 @@
 import os
+# import re
 import subprocess
 from typing import Callable, List
 
-from libqtile import bar, hook, widget
-from libqtile.layout.xmonad import MonadThreeCol
-from libqtile.layout.tile import Tile
-from libqtile.layout.floating import Floating
+from libqtile import bar, hook, qtile, widget
 from libqtile.backend.wayland.inputs import InputConfig
-from libqtile.config import Click, Drag, DropDown, Group, Key, Match, ScratchPad, Screen
+from libqtile.config import (Click, Drag, DropDown, Group, Key, Match,
+                             ScratchPad, Screen)
 from libqtile.core.manager import Qtile
+from libqtile.layout.floating import Floating
+from libqtile.layout.max import Max
+from libqtile.layout.tile import Tile
+from libqtile.layout.xmonad import MonadThreeCol
 from libqtile.lazy import lazy
 
 is_main_desktop = os.getenv("COMPUTER_IDENTIFIER") == "main-desktop"
@@ -47,10 +50,10 @@ keys = [
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "tab", lazy.layout.next(), desc="Move window focus to next window"),
+    Key([mod], "Tab", lazy.layout.next(), desc="Move window focus to next window"),
     Key(
         [mod, "shift"],
-        "tab",
+        "Tab",
         lazy.layout.previous(),
         desc="Move window focus to previous window",
     ),
@@ -78,6 +81,7 @@ keys = [
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     Key([mod], "s", lazy.window.toggle_floating(), desc="Toggle floating"),
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen"),
+    Key([mod], "z", lazy.spawn("eww open --toggle bar"), desc="Toggle eww bar"),
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
@@ -98,10 +102,11 @@ keys = [
     ),
     Key(
         [mod],
-        "Backspace",
+        "BackSpace",
         lazy.spawn("wlogout --buttons-per-row 2 --row-spacing 20 -p layer-shell"),
         desc="Spawn logout menu",
     ),
+    Key([mod], "Escape", lazy.next_layout(), desc="Toggle between layouts"),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("pamixer -i 5"), desc="Raise volume"),
     Key([], "XF86AudioLowerVolume", lazy.spawn("pamixer -d 5"), desc="Lower volume"),
     Key([], "XF86AudioMute", lazy.spawn("pamixer --toggle-mute"), desc="Toggle mute"),
@@ -130,7 +135,15 @@ keys = [
     ),
 ]
 
-layout1to6 = "monadthreecol" if is_main_desktop else "tile"
+number_of_connected_outputs = 1
+
+if is_main_desktop:
+    layout1to6 = "monadthreecol"
+else:
+    if number_of_connected_outputs > 1:
+        layout1to6 = "tile"
+    else:
+        layout1to6 = "max"
 
 groups: List[Group] = [
     Group("1", layout=layout1to6),
@@ -148,22 +161,42 @@ groups: List[Group] = [
 
 def go_to_group(name: str) -> Callable:
     def _inner(qtile: Qtile) -> None:
+        # if numberOfConnectScreens == 1:
         if len(qtile.screens) == 1:
             qtile.groups_map[name].cmd_toscreen()
             return
 
-        if name in "7890":
-            qtile.focus_screen(1)
-            qtile.groups_map[name].cmd_toscreen()
+        if is_main_desktop:
+            if name in "7890":
+                qtile.focus_screen(1)
+                qtile.groups_map[name].cmd_toscreen()
+            else:
+                qtile.focus_screen(0)
+                qtile.groups_map[name].cmd_toscreen()
         else:
-            qtile.focus_screen(0)
-            qtile.groups_map[name].cmd_toscreen()
+            if name in "890":
+                qtile.focus_screen(0)
+                qtile.groups_map[name].cmd_toscreen()
+            elif name in "1234":
+                qtile.focus_screen(1)
+                qtile.groups_map[name].cmd_toscreen()
+            else:
+                qtile.focus_screen(2)
+                qtile.groups_map[name].cmd_toscreen()
 
     return _inner
 
 
 for i in groups:
     keys.append(Key([mod], i.name, lazy.function(go_to_group(i.name))))
+    keys.append(
+        Key(
+            [mod, "shift"],
+            i.name,
+            lazy.window.togroup(i.name),
+            desc="Move to group",
+        )
+    )
 
 main_desktop_scratchpad_size = {
     "width": 0.4,
@@ -209,8 +242,11 @@ tile = Tile(
     border_normal=catppuccinPalette["black1"],
     single_border_width=0,
 )
+max = Max(
+    margin=0,
+)
 
-layouts = [three_col, tile]
+layouts = [three_col, tile, max]
 
 widget_defaults = dict(
     font="MonoLisa",
@@ -251,7 +287,22 @@ def get_bar(visible_groups):
     )
 
 
-work_laptop_screens = [Screen(top=get_bar(["1", "2", "3", "4", "5", "6"]))]
+if number_of_connected_outputs > 1:
+    work_laptop_screens = [
+        Screen(bottom=get_bar(["8", "9", "0"])),
+        Screen(bottom=get_bar(["1", "2", "3", "4"])),
+        Screen(
+            bottom=get_bar(
+                [
+                    "5",
+                    "6",
+                    "7",
+                ]
+            )
+        ),
+    ]
+else:
+    work_laptop_screens = [Screen(left=bar.Bar([], 47))]
 
 main_desktop_screens = [
     Screen(
@@ -296,10 +347,31 @@ floating_layout = Floating(
         Match(title="branchdialog"),
         Match(title="pinentry"),
     ],
-    border_width=2,
-    border_focus=catppuccinPalette["peach"],
-    border_normal=catppuccinPalette["black1"],
+    border_width=0,
 )
+
+
+@hook.subscribe.focus_change
+def group_change():
+    eww_vars = []
+    for group in qtile.groups:
+        group_info = group.info()
+        group_name = group_info["name"]
+        # TODO: use `eww state` to check if workspace exists
+        if group_name in "123456":
+            current_variable = "ws" + group_name + "current="
+            occupied_variable = "ws" + group_name + "occupied="
+            if group_info["screen"] != None:
+                eww_vars.append(current_variable + "true")
+            else:
+                eww_vars.append(current_variable + "false")
+
+            if len(group_info["windows"]) > 0:
+                eww_vars.append(occupied_variable + "true")
+            else:
+                eww_vars.append(occupied_variable + "false")
+
+    subprocess.Popen(["eww", "update", *eww_vars])
 
 
 @hook.subscribe.startup_once
@@ -309,7 +381,7 @@ def autostart():
 
 
 auto_fullscreen = True
-focus_on_window_activation = "smart"
+focus_on_window_activation = "never"
 reconfigure_screens = True
 
 # If things like steam games want to auto-minimize themselves when losing

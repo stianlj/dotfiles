@@ -20,7 +20,8 @@ elif [ "$COMPUTER_IDENTIFIER" = "work-laptop" ]; then
   if [ "$numberOfOutputsConnected" -gt "2" ]; then
     waybar -c /home/stianlj/.config/waybar/config-work-laptop-triple &
   else
-    waybar -c /home/stianlj/.config/waybar/config-work-laptop &
+    eww daemon
+    eww open bar
   fi
 fi
 swaybg -m fill -i "$WALLPAPER" &
@@ -30,5 +31,6 @@ wl-paste -p -t text --watch clipman store -P --histpath=\"~/.local/share/clipman
 sleep 1
 nextcloud --logfile /tmp/nextcloud.log --background &
 if [ "$COMPUTER_IDENTIFIER" = "work-laptop" ]; then
-  sleep 1; /usr/bin/nm-applet --indicator &
+  sleep 1
+  /usr/bin/nm-applet --indicator &
 fi

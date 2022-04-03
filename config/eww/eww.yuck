@@ -1,0 +1,224 @@
+;; put path to aesthetic bar config files here ;;
+(defvar eww "/usr/bin/eww -c $HOME/.config/eww")
+
+;; Launcher Widgets ;;
+; (defwidget launcher []
+;   (box :orientation "v"
+;    :space-evenly "false"
+;    :spacing -15
+;     (button :class "launcher_icon"
+;       :onclick "scripts/popup launcher"  "")))
+
+; ;; Workspaces Widgets ;;
+(defvar ws1current true)
+(defvar ws1occupied false)
+(defvar ws2current false)
+(defvar ws2occupied false)
+(defvar ws3current false)
+(defvar ws3occupied false)
+(defvar ws4current false)
+(defvar ws4occupied false)
+(defvar ws5current false)
+(defvar ws5occupied false)
+(defvar ws6current false)
+(defvar ws6occupied false)
+(defwidget workspaces []
+  (box
+    :class "works"
+    :orientation "v"
+    :halign "center"
+    :valign "start"
+    :space-evenly "false"
+    :spacing "-5"
+    (button
+      :onclick "qtile cmd-obj -o group 1 -f toscreen"
+      :timeout "1s"
+      :class "01 ${ws1current ? 'current' : ''} ${ws1occupied ? 'occupied' : ''}" "")
+    (button
+      :onclick "qtile cmd-obj -o group 2 -f toscreen"
+      :timeout "1s"
+      :class "02 ${ws2current ? 'current' : ''} ${ws2occupied ? 'occupied' : ''}" "")
+    (button
+      :onclick "qtile cmd-obj -o group 3 -f toscreen"
+      :timeout "1s"
+      :class "03 ${ws3current ? 'current' : ''} ${ws3occupied ? 'occupied' : ''}" "")
+    (button
+      :onclick "qtile cmd-obj -o group 4 -f toscreen"
+      :timeout "1s"
+      :class "04 ${ws4current ? 'current' : ''} ${ws4occupied ? 'occupied' : ''}" "")
+    (button
+      :onclick "qtile cmd-obj -o group 5 -f toscreen"
+      :timeout "1s"
+      :class "05 ${ws5current ? 'current' : ''} ${ws5occupied ? 'occupied' : ''}" "")
+    (button
+      :onclick "qtile cmd-obj -o group 6 -f toscreen"
+      :timeout "1s"
+      :class "06 ${ws6current ? 'current' : ''} ${ws6occupied ? 'occupied' : ''}" "")))
+
+
+;; Battery Widgets ;;
+(defwidget bat []
+  (box  :orientation "v"
+   :space-evenly "false"
+   (label  :class "bat"
+    :halign "end"
+    :text battery
+    :tooltip "Battery: ${battery-cappacity}%")))
+(defpoll battery :interval "1s"  "scripts/battery icon")
+(defpoll battery-cappacity  :interval "1s"  "scripts/battery percent")
+
+;; Wifi Widgets ;;
+(defwidget wifi []
+  (box    :orientation "v"
+     :tooltip wifi-name
+   (button    :onclick "scripts/popup wifi"
+      :class "wifi-icon" wifi-icon)))
+(defpoll wifi-icon :interval "1s" "scripts/wifi icon")
+(defpoll wifi-name :interval "1s" "scripts/wifi name")
+
+;; Brightness Widgets ;;
+(defwidget bright []
+  (eventbox :onhover "${eww} update bright=true"
+        :onhoverlost "${eww} update bright=false"
+        (box    :orientation "v"
+         :space-evenly "false"
+         :spacing 2
+         (revealer :transition "slideup"
+          :reveal bright
+          :duration "550ms"
+          (scale :class "bribar"
+           :value current-brightness
+           :tooltip "Brightness: ${current-brightness}%"
+           :onchange "light -S {}"
+           :orientation "v"
+           :flipped true
+           :max 101
+           :min 0))
+         (label :class "brightness-icon"
+          :text ""))))
+(defpoll current-brightness :interval "1s" "light -G")
+(defvar bright false)
+
+;; Volume Widgets ;;
+(defwidget volum []
+  (eventbox :onhover "${eww} update volum=true"
+     :onhoverlost "${eww} update volum=false"
+   (box      :orientation "v"
+      :space-evenly "false"
+      :spacing "2"
+    (revealer :transition "slideup"
+       :reveal volum
+       :duration "550ms"
+     (scale    :class "volbar"
+        :value current-volume
+        :orientation "v"
+        :flipped true
+        :tooltip "Volume: ${current-volume}%"
+        :max 101
+        :min 0
+        :onchange "pamixer --set-volume $(awk -v x=\"{}\" 'BEGIN{ printf \"%d\", x }')"))
+    (button   :onclick "scripts/popup audio"   :class "volume-icon" ""))))
+(defpoll current-volume :interval "1s" "pamixer --get-volume")
+(defvar volum false)
+
+;; Control Panel Widgets ;;
+(defwidget control []
+  (box :orientation "v"
+   :space-evenly false
+   :class "control"
+   (bat)
+   (wifi)
+   (bright)
+   (volum)))
+
+;; Clock Widgets ;;
+(defwidget time []
+  (box  :orientation "v"
+   :class "time"
+   :valign "end"
+   (button  :onclick "scripts/popup calendar"
+    :class "time-hour" hour)
+   (button  :onclick "scripts/popup calendar"
+    :class "time-min"  min)))
+(defpoll hour  :interval "1s"  "date '+%H'")
+(defpoll min  :interval "1s"  "date '+%M'")
+
+;; Calendar Widgets ;;
+; (defwidget cal []
+;   (box :class "cal-box"
+;    :orientation "v"
+;    (box :class "cal-inner-box"
+;     (calendar :class "cal"
+;        :day calendar_day
+;        :month calendar_month
+;        :year calendar_year))))
+; (defpoll calendar_day :interval "10h"
+;     "date '+%d'")
+; (defpoll calendar_month :interval "10h"
+;     "scripts/calendar")
+; (defpoll calendar_year :interval "10h"
+;     "date '+%Y'")
+;
+; ;; Powermenu Widgets ;;
+;
+; ;; Top Widgets ;;
+(defwidget top []
+  (box  :orientation "v"
+   :space-evenly "false"
+   :valign "start"
+   (workspaces)))
+
+;; Bottom Widgets ;;
+(defwidget bottom []
+  (box  :orientation "v"
+   :space-evenly false
+   (time)))
+
+
+;; End Widgets ;;
+(defwidget end []
+  (box :orientation "v"
+   :space-evenly "false"
+   :valign "end"
+   :spacing 5
+   (control)
+   (bottom)))
+
+;; Bar Widgets ;;
+(defwidget bar []
+  (box :class "eww_bar"
+   :orientation "v"
+   :vexpand "false"
+   :hexpand "false"
+   (top)
+   (end)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;							Window Section's							 ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Bar Windows ;;
+(defwindow bar
+  :geometry (geometry :x "0"
+             :y "0"
+             :height "100%"
+             :anchor "top left"
+             :width "47px")
+
+  ; :reserve (struts :distance "35px"
+  ;           :side "left")
+  :monitor 0
+  :exclusive true
+  :stacking "fg"
+  :focusable false
+  :hexpand "false"
+  :vexpand "false"
+ (bar))
+
+;; Calendar Windows ;;
+; (defwindow calendar
+;   :geometry (geometry :x "70px"
+;              :y "65%"
+;              :width "270px"
+;              :height "60px")
+;  (cal))
