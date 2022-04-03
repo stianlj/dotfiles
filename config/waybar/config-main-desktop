@@ -8,7 +8,7 @@
         "margin-left": 5,
         "mode": "overlay",
         "passthrough": true,
-        "gtk-layer-shaell": true,
+        "gtk-layer-shell": true,
         "output": "DP-4",
         "modules-left": ["custom/media"],
         "modules-center": ["river/tags"],

@@ -6,6 +6,9 @@
     "margin-right": 5,
     "margin-bottom": 0,
     "margin-left": 5,
+    // "mode": "overlay",
+    "passthrough": true,
+    "gtk-layer-shell": true,
     "modules-left": ["river/tags"],
     "modules-right": ["pulseaudio", "backlight", "battery", "clock", "tray"],
     "river/tags": {

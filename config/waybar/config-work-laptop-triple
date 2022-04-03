@@ -8,6 +8,9 @@
         "margin-bottom": 5,
         "margin-left": 5,
         "output": "DP-6",
+        "mode": "overlay",
+        "passthrough": true,
+        "gtk-layer-shell": true,
         "modules-left": ["river/tags"],
         "modules-right": ["pulseaudio", "backlight", "battery", "clock", "tray"],
         "river/tags": {
@@ -70,34 +73,6 @@
             "escape": true,
             "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
             // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-        }
-    },
-    {
-        // "layer": "top", // Waybar at top layer
-        "position": "bottom", // Waybar position (top|bottom|left|right)
-        "height": 39, // Waybar height (to be removed for auto height)
-        "margin-top": 0,
-        "margin-right": 5,
-        "margin-bottom": 5,
-        "margin-left": 5,
-        "output": "eDP-1",
-        "modules-right": ["river/tags"],
-        "river/tags": {
-            "num-tags": 5
-        }
-    },
-    {
-        // "layer": "top", // Waybar at top layer
-        "position": "bottom", // Waybar position (top|bottom|left|right)
-        "height": 39, // Waybar height (to be removed for auto height)
-        "margin-top": 0,
-        "margin-right": 5,
-        "margin-bottom": 5,
-        "margin-left": 5,
-        "output": "DP-4",
-        "modules-left": ["river/tags"],
-        "river/tags": {
-            "num-tags": 5
         }
     }
 ]
