@@ -1,13 +1,15 @@
 import os
+# import re
 import subprocess
 from typing import Callable, List
 
-from libqtile import bar, hook, widget
+from libqtile import bar, hook, qtile, widget
 from libqtile.backend.wayland.inputs import InputConfig
 from libqtile.config import (Click, Drag, DropDown, Group, Key, Match,
                              ScratchPad, Screen)
 from libqtile.core.manager import Qtile
 from libqtile.layout.floating import Floating
+from libqtile.layout.max import Max
 from libqtile.layout.tile import Tile
 from libqtile.layout.xmonad import MonadThreeCol
 from libqtile.lazy import lazy
@@ -283,7 +285,7 @@ if numberOfConnectScreens > 1:
         ),
     ]
 else:
-    work_laptop_screens = [Screen(left=bar.Bar([], 48))]
+    work_laptop_screens = [Screen(left=bar.Bar([], 47))]
 
 main_desktop_screens = [
     Screen(
@@ -328,10 +330,31 @@ floating_layout = Floating(
         Match(title="branchdialog"),
         Match(title="pinentry"),
     ],
-    border_width=2,
-    border_focus=catppuccinPalette["peach"],
-    border_normal=catppuccinPalette["black1"],
+    border_width=0,
 )
+
+
+@hook.subscribe.focus_change
+def group_change():
+    eww_vars = []
+    for group in qtile.groups:
+        group_info = group.info()
+        group_name = group_info["name"]
+        # TODO: use `eww state` to check if workspace exists
+        if group_name in "123456":
+            current_variable = "ws" + group_name + "current="
+            occupied_variable = "ws" + group_name + "occupied="
+            if group_info["screen"] != None:
+                eww_vars.append(current_variable + "true")
+            else:
+                eww_vars.append(current_variable + "false")
+
+            if len(group_info["windows"]) > 0:
+                eww_vars.append(occupied_variable + "true")
+            else:
+                eww_vars.append(occupied_variable + "false")
+
+    subprocess.Popen(["eww", "update", *eww_vars])
 
 
 @hook.subscribe.startup_once
