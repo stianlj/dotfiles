@@ -51,6 +51,13 @@ return packer.startup(function(use)
   use("tpope/vim-eunuch")
   use("tpope/vim-sleuth")
   use("github/copilot.vim")
+  use({
+    "michaelb/sniprun",
+    run = "bash ./install.sh",
+    config = function()
+      require("plugins.sniprun-config")
+    end,
+  })
   use("fladson/vim-kitty")
   use("baskerville/vim-sxhkdrc")
   use("stevearc/dressing.nvim")
