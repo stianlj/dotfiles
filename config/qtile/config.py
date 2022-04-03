@@ -226,25 +226,32 @@ groups.append(
 )
 
 three_col = MonadThreeCol(
-    single_margin=[5, 800, 5, 800],
-    margin=5,
+    single_margin=[15, 800, 15, 800],
+    margin=10,
     border_width=2,
     border_focus=catppuccinPalette["peach"],
     border_normal=catppuccinPalette["black1"],
     single_border_width=0,
 )
+# TODO: Tile should only be used on work laptop if there is more than one screen
 tile = Tile(
     ratio=0.5,
-    margin=5,
+    margin=10,
     border_on_single=False,
     border_width=2,
     border_focus=catppuccinPalette["peach"],
     border_normal=catppuccinPalette["black1"],
     single_border_width=0,
 )
-max = Max(
-    margin=0,
-)
+if is_main_desktop:
+    max = Max(
+        margin=[15, 800, 15, 800],
+    )
+else:
+    max = Max(
+        margin=0,
+    )
+
 
 layouts = [three_col, tile, max]
 
@@ -302,14 +309,11 @@ if number_of_connected_outputs > 1:
         ),
     ]
 else:
-    work_laptop_screens = [Screen(left=bar.Bar([], 47))]
+    work_laptop_screens = [Screen(left=bar.Gap(47))]
 
 main_desktop_screens = [
     Screen(
-        bottom=get_bar(["1", "2", "3", "4", "5", "6"]),
-    ),
-    Screen(
-        bottom=get_bar(["7", "8", "9"]),
+        right=bar.Gap(48),
     ),
 ]
 
@@ -358,7 +362,7 @@ def group_change():
         group_info = group.info()
         group_name = group_info["name"]
         # TODO: use `eww state` to check if workspace exists
-        if group_name in "123456":
+        if group_name in "123456789":
             current_variable = "ws" + group_name + "current="
             occupied_variable = "ws" + group_name + "occupied="
             if group_info["screen"] != None:

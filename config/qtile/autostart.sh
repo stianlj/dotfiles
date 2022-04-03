@@ -12,7 +12,8 @@ gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
 
 if [ "$COMPUTER_IDENTIFIER" = "main-desktop" ]; then
   kanshi -c /home/stianlj/.config/kanshi/config-main-desktop &
-  waybar -c /home/stianlj/.config/waybar/config-main-desktop &
+  eww daemon
+  eww open bar-ultrawide
 elif [ "$COMPUTER_IDENTIFIER" = "work-laptop" ]; then
   kanshi -c /home/stianlj/.config/kanshi/config &
   # TODO: I think there is a better way to do this in waybar itself, but for now this works
