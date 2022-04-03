@@ -135,7 +135,15 @@ keys = [
     ),
 ]
 
-layout1to6 = "monadthreecol" if is_main_desktop else "tile"
+number_of_connected_outputs = 1
+
+if is_main_desktop:
+    layout1to6 = "monadthreecol"
+else:
+    if number_of_connected_outputs > 1:
+        layout1to6 = "tile"
+    else:
+        layout1to6 = "max"
 
 groups: List[Group] = [
     Group("1", layout=layout1to6),
@@ -149,9 +157,6 @@ groups: List[Group] = [
     Group("9", layout="tile"),
     Group("0", layout="tile"),
 ]
-
-
-numberOfConnectScreens = 1
 
 
 def go_to_group(name: str) -> Callable:
@@ -237,8 +242,11 @@ tile = Tile(
     border_normal=catppuccinPalette["black1"],
     single_border_width=0,
 )
+max = Max(
+    margin=0,
+)
 
-layouts = [three_col, tile]
+layouts = [three_col, tile, max]
 
 widget_defaults = dict(
     font="MonoLisa",
@@ -279,7 +287,7 @@ def get_bar(visible_groups):
     )
 
 
-if numberOfConnectScreens > 1:
+if number_of_connected_outputs > 1:
     work_laptop_screens = [
         Screen(bottom=get_bar(["8", "9", "0"])),
         Screen(bottom=get_bar(["1", "2", "3", "4"])),
