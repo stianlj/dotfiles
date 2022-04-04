@@ -13,13 +13,12 @@ gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
 if [ "$COMPUTER_IDENTIFIER" = "main-desktop" ]; then
   kanshi -c /home/stianlj/.config/kanshi/config-main-desktop &
   eww daemon
-  eww open bar-ultrawide
+  eww open "bar-ultrawide"
 elif [ "$COMPUTER_IDENTIFIER" = "work-laptop" ]; then
   kanshi -c /home/stianlj/.config/kanshi/config &
-  # TODO: I think there is a better way to do this in waybar itself, but for now this works
-  numberOfOutputsConnected=$(wlr-randr | grep "Enabled: yes" | wc -l)
-  if [ "$numberOfOutputsConnected" -gt "2" ]; then
-    waybar -c /home/stianlj/.config/waybar/config-work-laptop-triple &
+  if [ "$NO_OF_OUTPUTS" -gt "2" ]; then
+    eww daemon
+    eww open "bar-triple"
   else
     eww daemon
     eww open bar
