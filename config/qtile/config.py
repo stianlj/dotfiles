@@ -15,6 +15,7 @@ from libqtile.layout.xmonad import MonadThreeCol
 from libqtile.lazy import lazy
 
 is_main_desktop = os.getenv("COMPUTER_IDENTIFIER") == "main-desktop"
+number_of_connected_outputs = int(os.getenv("NO_OF_OUTPUTS", 1))
 
 mod = "mod4"
 catppuccinPalette = {
@@ -135,8 +136,6 @@ keys = [
     ),
 ]
 
-number_of_connected_outputs = 1
-
 if is_main_desktop:
     layout1to6 = "monadthreecol"
 else:
@@ -227,9 +226,9 @@ groups.append(
 
 three_col = MonadThreeCol(
     single_margin=[15, 800, 15, 800],
-    margin=10,
-    border_width=2,
-    border_focus=catppuccinPalette["peach"],
+    margin=0,
+    border_width=1,
+    border_focus=catppuccinPalette["black4"],
     border_normal=catppuccinPalette["black1"],
     single_border_width=0,
 )
@@ -238,8 +237,8 @@ tile = Tile(
     ratio=0.5,
     margin=10,
     border_on_single=False,
-    border_width=2,
-    border_focus=catppuccinPalette["peach"],
+    border_width=1,
+    border_focus=catppuccinPalette["black4"],
     border_normal=catppuccinPalette["black1"],
     single_border_width=0,
 )
@@ -313,8 +312,9 @@ else:
 
 main_desktop_screens = [
     Screen(
-        right=bar.Gap(48),
+        right=bar.Gap(46),
     ),
+    Screen(),
 ]
 
 screens = main_desktop_screens if is_main_desktop else work_laptop_screens
