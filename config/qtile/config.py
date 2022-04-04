@@ -256,7 +256,7 @@ layouts = [three_col, tile, max]
 if number_of_connected_outputs > 1:
     work_laptop_screens = [
         Screen(),
-        Screen(left=bar.Gap(47)),
+        Screen(left=bar.Gap(48)),
         Screen(),
     ]
 else:

@@ -345,7 +345,7 @@
              :y "0"
              :height "100%"
              :anchor "top left"
-             :width "47px")
+             :width "48px")
 
   :monitor 2
   :stacking "bg"
