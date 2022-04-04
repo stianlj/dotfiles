@@ -28,8 +28,7 @@
     :orientation "v"
     :halign "center"
     :valign "start"
-    :space-evenly "false"
-    :spacing "-5"
+    :space-evenly "true"
     (button
       :onclick "qtile cmd-obj -o group 1 -f toscreen"
       :timeout "1s"
@@ -252,6 +251,14 @@
    :space-evenly "false"
    :valign "end"
    :spacing 5
+   (control)
+   (bottom)))
+
+(defwidget end-ultrawide []
+  (box :orientation "v"
+   :space-evenly "false"
+   :valign "end"
+   :spacing 5
    (control-ultrawide)
    (bottom)))
 
@@ -270,7 +277,7 @@
    :vexpand "false"
    :hexpand "false"
    (top-ultrawide)
-   (end)))
+   (end-ultrawide)))
 
 
 
