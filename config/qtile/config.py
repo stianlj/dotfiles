@@ -3,7 +3,7 @@ import os
 import subprocess
 from typing import Callable, List
 
-from libqtile import bar, hook, qtile, widget
+from libqtile import bar, hook, qtile
 from libqtile.backend.wayland.inputs import InputConfig
 from libqtile.config import (Click, Drag, DropDown, Group, Key, Match,
                              ScratchPad, Screen)
@@ -160,7 +160,6 @@ groups: List[Group] = [
 
 def go_to_group(name: str) -> Callable:
     def _inner(qtile: Qtile) -> None:
-        # if numberOfConnectScreens == 1:
         if len(qtile.screens) == 1:
             qtile.groups_map[name].cmd_toscreen()
             return
@@ -173,10 +172,10 @@ def go_to_group(name: str) -> Callable:
                 qtile.focus_screen(0)
                 qtile.groups_map[name].cmd_toscreen()
         else:
-            if name in "890":
+            if name in "123":
                 qtile.focus_screen(0)
                 qtile.groups_map[name].cmd_toscreen()
-            elif name in "1234":
+            elif name in "4567":
                 qtile.focus_screen(1)
                 qtile.groups_map[name].cmd_toscreen()
             else:
@@ -235,7 +234,7 @@ three_col = MonadThreeCol(
 # TODO: Tile should only be used on work laptop if there is more than one screen
 tile = Tile(
     ratio=0.5,
-    margin=10,
+    margin=0,
     border_on_single=False,
     border_width=1,
     border_focus=catppuccinPalette["black4"],
@@ -254,66 +253,17 @@ else:
 
 layouts = [three_col, tile, max]
 
-widget_defaults = dict(
-    font="MonoLisa",
-    fontsize=15,
-    padding=10,
-    foreground=catppuccinPalette["white"],
-)
-extension_defaults = widget_defaults.copy()
-
-
-def get_bar(visible_groups):
-    return bar.Bar(
-        [
-            widget.Spacer(),
-            widget.GroupBox(
-                visible_groups=visible_groups,
-                use_mouse_wheel=False,
-                background=catppuccinPalette["black2"],
-                active=catppuccinPalette["white"],
-                inactive=catppuccinPalette["black4"],
-                padding_y=3,
-                margin_y=3,
-                highlight_color=[
-                    catppuccinPalette["white"],
-                    catppuccinPalette["teal"],
-                ],
-                this_current_screen_border=catppuccinPalette["rosewater"],
-                this_screen_border=catppuccinPalette["black4"],
-                urgent_border=catppuccinPalette["red"],
-                urgent_text=catppuccinPalette["red"],
-            ),
-            widget.Spacer(),
-        ],
-        35,
-        background="#00000000",
-        border_width=[5, 0, 5, 0],  # Draw top and bottom borders
-        border_color="#00000000",  # Borders are magenta
-    )
-
-
 if number_of_connected_outputs > 1:
     work_laptop_screens = [
-        Screen(bottom=get_bar(["8", "9", "0"])),
-        Screen(bottom=get_bar(["1", "2", "3", "4"])),
-        Screen(
-            bottom=get_bar(
-                [
-                    "5",
-                    "6",
-                    "7",
-                ]
-            )
-        ),
+        Screen(),
+        Screen(left=bar.Gap(47)),
+        Screen(),
     ]
 else:
     work_laptop_screens = [Screen(left=bar.Gap(47))]
 
 main_desktop_screens = [
-    Screen(
-        right=bar.Gap(46),
-    ),
+    Screen(right=bar.Gap(46)),
     Screen(),
 ]
 
@@ -362,7 +312,7 @@ def group_change():
         group_info = group.info()
         group_name = group_info["name"]
         # TODO: use `eww state` to check if workspace exists
-        if group_name in "123456789":
+        if group_name in "1234567890":
             current_variable = "ws" + group_name + "current="
             occupied_variable = "ws" + group_name + "occupied="
             if group_info["screen"] != None:

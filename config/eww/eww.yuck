@@ -1,14 +1,6 @@
 ;; put path to aesthetic bar config files here ;;
 (defvar eww "/usr/bin/eww -c $HOME/.config/eww")
 
-;; Launcher Widgets ;;
-; (defwidget launcher []
-;   (box :orientation "v"
-;    :space-evenly "false"
-;    :spacing -15
-;     (button :class "launcher_icon"
-;       :onclick "scripts/popup launcher"  "")))
-
 ; ;; Workspaces Widgets ;;
 (defvar ws1current true)
 (defvar ws1occupied false)
@@ -22,9 +14,17 @@
 (defvar ws5occupied false)
 (defvar ws6current false)
 (defvar ws6occupied false)
+(defvar ws7current false)
+(defvar ws7occupied false)
+(defvar ws8current false)
+(defvar ws8occupied false)
+(defvar ws9current false)
+(defvar ws9occupied false)
+(defvar ws0current false)
+(defvar ws0occupied false)
 (defwidget workspaces []
   (box
-    :class "works"
+    :class "workspaces"
     :orientation "v"
     :halign "center"
     :valign "start"
@@ -54,12 +54,6 @@
       :timeout "1s"
       :class "workspace 06 ${ws6current ? 'current' : ''} ${ws6occupied ? 'occupied' : ''}" "")))
 
-(defvar ws7current false)
-(defvar ws7occupied false)
-(defvar ws8current false)
-(defvar ws8occupied false)
-(defvar ws9current false)
-(defvar ws9occupied false)
 (defwidget workspaces-ultrawide-top []
   (box
     :class "workspaces"
@@ -68,28 +62,16 @@
     :valign "start"
     :space-evenly "true"
     (button
-      ; :onclick "qtile cmd-obj -o group 1 -f toscreen"
-      :timeout "1s"
       :class "workspace 01 ${ws1current ? 'current' : ''} ${ws1occupied ? 'occupied' : ''}" "")
     (button
-      ; :onclick "qtile cmd-obj -o group 2 -f toscreen"
-      :timeout "1s"
       :class "workspace 02 ${ws2current ? 'current' : ''} ${ws2occupied ? 'occupied' : ''}" "")
     (button
-      ; :onclick "qtile cmd-obj -o group 3 -f toscreen"
-      :timeout "1s"
       :class "workspace 03 ${ws3current ? 'current' : ''} ${ws3occupied ? 'occupied' : ''}" "")
     (button
-      ; :onclick "qtile cmd-obj -o group 4 -f toscreen"
-      :timeout "1s"
       :class "workspace 04 ${ws4current ? 'current' : ''} ${ws4occupied ? 'occupied' : ''}" "")
     (button
-      ; :onclick "qtile cmd-obj -o group 5 -f toscreen"
-      :timeout "1s"
       :class "workspace 05 ${ws5current ? 'current' : ''} ${ws5occupied ? 'occupied' : ''}" "")
     (button
-      ; :onclick "qtile cmd-obj -o group 6 -f toscreen"
-      :timeout "1s"
       :class "workspace 06 ${ws6current ? 'current' : ''} ${ws6occupied ? 'occupied' : ''}" "")))
 (defwidget workspaces-ultrawide-bottom []
   (box
@@ -99,17 +81,55 @@
     :valign "start"
     :space-evenly "true"
     (button
-      ; :onclick "qtile cmd-obj -o group 7 -f toscreen"
-      :timeout "1s"
       :class "workspace 07 ${ws7current ? 'current' : ''} ${ws7occupied ? 'occupied' : ''}" "")
     (button
-      ; :onclick "qtile cmd-obj -o group 8 -f toscreen"
-      :timeout "1s"
       :class "workspace 08 ${ws8current ? 'current' : ''} ${ws8occupied ? 'occupied' : ''}" "")
     (button
-      ; :onclick "qtile cmd-obj -o group 9 -f toscreen"
-      :timeout "1s"
       :class "workspace 09 ${ws9current ? 'current' : ''} ${ws9occupied ? 'occupied' : ''}" "")))
+
+(defwidget workspaces-triple-top []
+  (box
+    :class "workspaces"
+    :orientation "v"
+    :halign "center"
+    :valign "start"
+    :space-evenly "true"
+    (button
+      :class "workspace 01 ${ws1current ? 'current' : ''} ${ws1occupied ? 'occupied' : ''}" "")
+    (button
+      :class "workspace 02 ${ws2current ? 'current' : ''} ${ws2occupied ? 'occupied' : ''}" "")
+    (button
+      :class "workspace 03 ${ws3current ? 'current' : ''} ${ws3occupied ? 'occupied' : ''}" "")))
+
+(defwidget workspaces-triple-middle []
+  (box
+    :class "workspaces"
+    :orientation "v"
+    :halign "center"
+    :valign "start"
+    :space-evenly "true"
+    (button
+      :class "workspace 04 ${ws4current ? 'current' : ''} ${ws4occupied ? 'occupied' : ''}" "")
+    (button
+      :class "workspace 05 ${ws5current ? 'current' : ''} ${ws5occupied ? 'occupied' : ''}" "")
+    (button
+      :class "workspace 06 ${ws6current ? 'current' : ''} ${ws6occupied ? 'occupied' : ''}" "")
+    (button
+      :class "workspace 07 ${ws7current ? 'current' : ''} ${ws7occupied ? 'occupied' : ''}" "")))
+
+(defwidget workspaces-triple-bottom []
+  (box
+    :class "workspaces"
+    :orientation "v"
+    :halign "center"
+    :valign "start"
+    :space-evenly "true"
+    (button
+      :class "workspace 08 ${ws8current ? 'current' : ''} ${ws8occupied ? 'occupied' : ''}" "")
+    (button
+      :class "workspace 09 ${ws9current ? 'current' : ''} ${ws9occupied ? 'occupied' : ''}" "")
+    (button
+      :class "workspace 00 ${ws0current ? 'current' : ''} ${ws0occupied ? 'occupied' : ''}" "")))
 
 ;; Battery Widgets ;;
 (defwidget bat []
@@ -238,6 +258,15 @@
    (workspaces-ultrawide-top)
    (workspaces-ultrawide-bottom)))
 
+; ;; Top Widgets ;;
+(defwidget top-triple []
+  (box  :orientation "v"
+   :space-evenly "false"
+   :valign "start"
+   (workspaces-triple-top)
+   (workspaces-triple-middle)
+   (workspaces-triple-bottom)))
+
 ;; Bottom Widgets ;;
 (defwidget bottom []
   (box  :orientation "v"
@@ -271,6 +300,15 @@
    (top)
    (end)))
 
+;; Bar Widgets ;;
+(defwidget bar-triple []
+  (box :class "eww_bar"
+   :orientation "v"
+   :vexpand "false"
+   :hexpand "false"
+   (top-triple)
+   (end)))
+
 (defwidget bar-ultrawide []
   (box :class "eww_bar"
    :orientation "v"
@@ -296,12 +334,25 @@
   ; :reserve (struts :distance "35px"
   ;           :side "left")
   :monitor 0
-  :exclusive true
-  :stacking "fg"
-  :focusable false
+  :stacking "bg"
+  :focusable true
   :hexpand "false"
   :vexpand "false"
  (bar))
+
+(defwindow bar-triple
+  :geometry (geometry :x "0"
+             :y "0"
+             :height "100%"
+             :anchor "top left"
+             :width "47px")
+
+  :monitor 2
+  :stacking "bg"
+  :focusable true
+  :hexpand "false"
+  :vexpand "false"
+ (bar-triple))
 
 ;; Bar Windows ;;
 (defwindow bar-ultrawide
@@ -311,12 +362,9 @@
              :anchor "top right"
              :width "48px")
 
-  ; :reserve (struts :distance "35px"
-  ;           :side "left")
   :monitor 1
-  :exclusive true
   :stacking "bg"
-  :focusable false
+  :focusable true
   :hexpand "false"
   :vexpand "false"
  (bar-ultrawide))
