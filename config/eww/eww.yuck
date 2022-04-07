@@ -1,6 +1,12 @@
 ;; put path to aesthetic bar config files here ;;
 (defvar eww "/usr/bin/eww -c $HOME/.config/eww")
 
+(defvar icon_slack "")
+(defvar icon_firefox "")
+(defvar icon_browser "")
+(defvar icon_mail "")
+(defvar icon_ghost "")
+
 ; ;; Workspaces Widgets ;;
 (defvar ws1current true)
 (defvar ws1occupied false)
@@ -62,7 +68,7 @@
     :valign "start"
     :space-evenly "true"
     (button
-      :class "workspace 01 ${ws1current ? 'current' : ''} ${ws1occupied ? 'occupied' : ''}" "")
+      :class "workspace 01 ${ws1current ? 'current' : ''} ${ws1occupied ? 'occupied' : ''}" icon_ghost)
     (button
       :class "workspace 02 ${ws2current ? 'current' : ''} ${ws2occupied ? 'occupied' : ''}" "")
     (button
@@ -72,7 +78,7 @@
     (button
       :class "workspace 05 ${ws5current ? 'current' : ''} ${ws5occupied ? 'occupied' : ''}" "")
     (button
-      :class "workspace 06 ${ws6current ? 'current' : ''} ${ws6occupied ? 'occupied' : ''}" "")))
+      :class "workspace 06 ${ws6current ? 'current' : ''} ${ws6occupied ? 'occupied' : ''}" icon_firefox)))
 (defwidget workspaces-ultrawide-bottom []
   (box
     :class "workspaces"
