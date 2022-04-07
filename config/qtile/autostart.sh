@@ -12,10 +12,16 @@ gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
 
 if [ "$COMPUTER_IDENTIFIER" = "main-desktop" ]; then
   kanshi -c /home/stianlj/.config/kanshi/config-main-desktop &
+elif [ "$COMPUTER_IDENTIFIER" = "work-laptop" ]; then
+  kanshi -c /home/stianlj/.config/kanshi/config &
+fi
+
+swaybg -m fill -i "$WALLPAPER" &
+
+if [ "$COMPUTER_IDENTIFIER" = "main-desktop" ]; then
   eww daemon
   eww open "bar-ultrawide"
 elif [ "$COMPUTER_IDENTIFIER" = "work-laptop" ]; then
-  kanshi -c /home/stianlj/.config/kanshi/config &
   if [ "$NO_OF_OUTPUTS" -gt "2" ]; then
     eww daemon
     eww open "bar-triple"
@@ -24,13 +30,7 @@ elif [ "$COMPUTER_IDENTIFIER" = "work-laptop" ]; then
     eww open bar
   fi
 fi
-swaybg -m fill -i "$WALLPAPER" &
 
-wl-paste -pw wl-copy &
-wl-paste -p -t text --watch clipman store -P --histpath=\"~/.local/share/clipman-primary.json\" &
-sleep 1
+# wl-paste -pw wl-copy &
+# wl-paste -p -t text --watch clipman store -P --histpath=\"~/.local/share/clipman-primary.json\" &
 nextcloud --logfile /tmp/nextcloud.log --background &
-if [ "$COMPUTER_IDENTIFIER" = "work-laptop" ]; then
-  sleep 1
-  /usr/bin/nm-applet --indicator &
-fi
