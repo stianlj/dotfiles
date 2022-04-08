@@ -92,6 +92,10 @@ map("n", "<C-j>", "<C-w>j", default_opts)
 map("n", "<C-k>", "<C-w>k", default_opts)
 map("n", "<C-l>", "<C-w>l", default_opts)
 
+for i = 1, 9 do
+  map("n", "<M-" .. i .. ">", "<cmd>BufferLineGoToBuffer " .. i .. "<CR>", default_opts)
+end
+
 map("n", "<M-j>", ":m .+1<CR>==", default_opts)
 map("n", "<M-k>", ":m .-2<CR>==", default_opts)
 map("v", "<M-j>", ":m '>+1<CR>gv=gv", default_opts)
