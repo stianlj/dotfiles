@@ -13,6 +13,10 @@
 
 [delta]
     navigate = true  # use n and N to move between diff sections
+    side-by-side = true
+    line-numbers = true
+    line-numbers-left-format = ""
+    line-numbers-right-format = "│ "
 
 [merge]
     conflictstyle = diff3
