@@ -1,3 +1,10 @@
+[user]
+	email = stian@lundjohansen.no
+	name = Stian Lund Johansen
+
+[init]
+	defaultBranch = main
+
 [core]
     pager = delta
 
