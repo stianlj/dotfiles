@@ -29,6 +29,7 @@ whichKey.register({
     F = { "<cmd>Git pull<CR>", "Pull" },
     g = { "<cmd>Neogit<CR>", "Neogit status" },
     m = { "<cmd>!tmux neww -n magit 'emacsclient -nw -e \"(magit-status)\"'<CR>", "Magit status" },
+    l = { "<cmd>!tmux neww -n lazygit 'lazygit'<CR>", "Lazygit status" },
     p = { '<cmd>lua require"gitsigns".preview_hunk()<CR>', "Preview hunk" },
     P = { "<cmd>Git push<CR>", "Push" },
     r = { '<cmd>lua require"gitsigns".reset_hunk()<CR>', "Reset hunk" },
