@@ -16,6 +16,25 @@ require("nvim-treesitter.configs").setup({
   indent = {
     enable = true,
   },
+  refactor = {
+    highlight_definitions = {
+      enable = true,
+      clear_on_cursor_move = true,
+    },
+    navigation = {
+      enable = true,
+      keymaps = {
+        goto_next_usage = "<leader>cn",
+        goto_previous_usage = "<leader>cp",
+      },
+    },
+    smart_rename = {
+      enable = true,
+      keymaps = {
+        smart_rename = "<leader>cr",
+      },
+    },
+  },
   textobjects = {
     select = {
       enable = true,
