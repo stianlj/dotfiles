@@ -3,7 +3,7 @@ require("nvim-treesitter.configs").setup({
   highlight = {
     enable = true,
     use_languagetree = true,
-    additional_vim_regex_highlighting = true,
+    additional_vim_regex_highlighting = false,
   },
   rainbow = {
     enable = true,
@@ -15,6 +15,25 @@ require("nvim-treesitter.configs").setup({
   },
   indent = {
     enable = true,
+  },
+  refactor = {
+    highlight_definitions = {
+      enable = true,
+      clear_on_cursor_move = true,
+    },
+    navigation = {
+      enable = true,
+      keymaps = {
+        goto_next_usage = "<leader>cn",
+        goto_previous_usage = "<leader>cp",
+      },
+    },
+    smart_rename = {
+      enable = true,
+      keymaps = {
+        smart_rename = "<leader>cr",
+      },
+    },
   },
   textobjects = {
     select = {

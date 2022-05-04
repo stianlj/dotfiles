@@ -14,14 +14,20 @@ whichKey.register({
   },
   c = {
     name = "Code",
-    d = { "<cmd>Telescope lsp_definitions theme=ivy<CR>", "LSP definitions" },
-    R = { "<cmd>Telescope lsp_references theme=ivy<CR>", "LSP references" },
-    i = { "<cmd>Telescope lsp_implementations theme=ivy<CR>", "LSP implementations" },
-    a = { "<cmd>Telescope lsp_code_actions theme=cursor<CR>", "LSP code actions" },
-    D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "LSP declarations" },
-    r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "LSP rename" },
-    h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "LSP hover doc" },
-    x = { "<cmd>TroubleToggle<CR>", "LSP project diagnostics" },
+    d = { "<cmd>Telescope lsp_definitions theme=ivy<CR>", "Definitions" },
+    R = { "<cmd>Telescope lsp_references theme=ivy<CR>", "References" },
+    i = { "<cmd>Telescope lsp_implementations theme=ivy<CR>", "Implementations" },
+    a = { "<cmd>Telescope lsp_code_actions theme=cursor<CR>", "Code actions" },
+    D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Declarations" },
+    l = {
+      name = "LSP",
+      r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
+    },
+    r = "Rename",
+    n = "Next usage",
+    p = "Previous usage",
+    h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Documentaion" },
+    x = { "<cmd>TroubleToggle<CR>", "Project diagnostics" },
   },
   g = {
     name = "Git",
@@ -50,7 +56,7 @@ whichKey.register({
 -- Own register for visual mode keymaps, since some of the mappings is the same as in normal mode
 whichKey.register({
   c = {
-    a = { "<cmd>lua vim.lsp.buf.range_code_action()<CR>", "LSP code actions (visual)" },
+    a = { "<cmd>lua vim.lsp.buf.range_code_action()<CR>", "Code actions (visual)" },
   },
   g = {
     name = "Git",

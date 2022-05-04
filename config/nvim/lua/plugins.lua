@@ -77,6 +77,10 @@ return packer.startup(function(use)
     end,
   })
   use({
+    "nvim-treesitter/nvim-treesitter-refactor",
+    requires = "nvim-treesitter/nvim-treesitter",
+  })
+  use({
     "SmiteshP/nvim-gps",
     requires = "nvim-treesitter/nvim-treesitter",
     config = function()

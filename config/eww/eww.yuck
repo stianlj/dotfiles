@@ -102,9 +102,9 @@
     :valign "start"
     :space-evenly "true"
     (button
-      :class "workspace 01 ${ws1current ? 'current' : ''} ${ws1occupied ? 'occupied' : ''}" "")
+      :class "workspace 01 ${ws1current ? 'current' : ''} ${ws1occupied ? 'occupied' : ''}" icon_mail)
     (button
-      :class "workspace 02 ${ws2current ? 'current' : ''} ${ws2occupied ? 'occupied' : ''}" "")
+      :class "workspace 02 ${ws2current ? 'current' : ''} ${ws2occupied ? 'occupied' : ''}" icon_slack)
     (button
       :class "workspace 03 ${ws3current ? 'current' : ''} ${ws3occupied ? 'occupied' : ''}" "")))
 
