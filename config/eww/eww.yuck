@@ -10,34 +10,25 @@
 ; ;; Workspaces Widgets ;;
 (defvar ws1current true)
 (defvar ws1occupied false)
-(defvar ws1amount 2)
 (defvar ws2current false)
 (defvar ws2occupied false)
-(defvar ws2amount 0)
 (defvar ws3current false)
 (defvar ws3occupied false)
-(defvar ws3amount 0)
 (defvar ws4current false)
 (defvar ws4occupied false)
-(defvar ws4amount 0)
 (defvar ws5current false)
 (defvar ws5occupied false)
-(defvar ws5amount 0)
 (defvar ws6current false)
 (defvar ws6occupied false)
-(defvar ws6amount 1)
 (defvar ws7current false)
 (defvar ws7occupied false)
-(defvar ws7amount 0)
 (defvar ws8current false)
 (defvar ws8occupied false)
-(defvar ws8amount 0)
 (defvar ws9current false)
 (defvar ws9occupied false)
-(defvar ws9amount 0)
 (defvar ws0current false)
 (defvar ws0occupied false)
-(defvar ws0amount 0)
+(defvar currentwsamount 2)
 (defwidget workspaces []
   (box
     :class "workspaces"
@@ -74,31 +65,11 @@
   (box
     :class "workspaces"
     :orientation "v"
+    :halign "center"
+    :valign "start"
     :space-evenly "true"
-    :width "50px"
-    :height "50px"
-    (box
-      :class "workspace-group 01 ${ws1current ? 'current' : ''} ${ws1occupied ? 'occupied' : ''}"
-      :width "50px"
-      :height "50px"
-      (button
-        :x "10px"
-        :y "10px"
-        :width "25px"
-        :height "25px"
-        icon_ghost)
-      (box
-        :class "amount"
-        :x "-10px"
-        :y "-10px"
-        :width "25px"
-        :height "25px"
-        ws1amount))
-    ; (button
-    ;   :class "workspace 01 ${ws1current ? 'current' : ''} ${ws1occupied ? 'occupied' : ''}" icon_ghost)
-    ; (label
-    ;   :class "amount"
-    ;   :text ws1amount)
+    (button
+      :class "workspace 01 ${ws1current ? 'current' : ''} ${ws1occupied ? 'occupied' : ''}" icon_ghost)
     (button
       :class "workspace 02 ${ws2current ? 'current' : ''} ${ws2occupied ? 'occupied' : ''}" "")
     (button
@@ -242,6 +213,12 @@
    (bright)
    (volum)))
 
+(defwidget workspace-amount []
+  (box :orientation "v"
+   :space-evenly "true"
+   :class "workspace-amount"
+   currentwsamount))
+
 ;; Control Panel Widgets ;;
 (defwidget control-ultrawide []
   (box :orientation "v"
@@ -292,7 +269,8 @@
    :space-evenly "false"
    :valign "start"
    (workspaces-ultrawide-top)
-   (workspaces-ultrawide-bottom)))
+   (workspaces-ultrawide-bottom)
+   (workspace-amount)))
 
 ; ;; Top Widgets ;;
 (defwidget top-triple []
