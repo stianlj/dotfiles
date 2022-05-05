@@ -172,10 +172,10 @@ def go_to_group(name: str) -> Callable:
                 qtile.focus_screen(0)
                 qtile.groups_map[name].cmd_toscreen()
         else:
-            if name in "123":
+            if name in "12":
                 qtile.focus_screen(0)
                 qtile.groups_map[name].cmd_toscreen()
-            elif name in "4567":
+            elif name in "3456":
                 qtile.focus_screen(1)
                 qtile.groups_map[name].cmd_toscreen()
             else:
