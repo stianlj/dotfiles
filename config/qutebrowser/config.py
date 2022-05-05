@@ -1,5 +1,5 @@
-from qutebrowser.config.configfiles import ConfigAPI
 from qutebrowser.config.config import ConfigContainer
+from qutebrowser.config.configfiles import ConfigAPI
 
 config: ConfigAPI = config
 c: ConfigContainer = c
@@ -34,9 +34,16 @@ c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.darkmode.policy.images = 'never'
 
 # Bindings
-config.bind(';gy', 'hint links spawn --detach mpv --force-window yes {hint-url}')
-config.bind(';gb', 'hint links spawn --detach mpvpaper -o "--scripts=/etc/mpv/scripts/mpris.so" --fork DP-3 {hint-url}')
-config.bind(';gw', 'hint links spawn --output-messages bash -c "wget \'{hint-url}\' -O /tmp/wally.hex && wally-cli /tmp/wally.hex && rm /tmp/wally.hex"')
+config.bind(';gy',
+            'hint links spawn --detach mpv --force-window yes {hint-url}')
+config.bind(
+    ';gb',
+    'hint links spawn --detach mpvpaper -o "--scripts=/etc/mpv/scripts/mpris.so" --fork DP-3 {hint-url}'
+)
+config.bind(
+    ';gw',
+    'hint links spawn --output-messages bash -c "wget \'{hint-url}\' -O /tmp/wally.hex && wally-cli /tmp/wally.hex && rm /tmp/wally.hex"'
+)
 config.bind(';gp', 'spawn --userscript capture-youtube')
 config.bind(';gh', 'hint links userscript capture-youtube')
 config.bind(';gs', 'spawn --userscript search-site')
