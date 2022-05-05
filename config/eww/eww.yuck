@@ -6,6 +6,9 @@
 (defvar icon_browser "")
 (defvar icon_mail "")
 (defvar icon_ghost "")
+(defvar icon_todo "")
+(defvar icon_code "")
+(defvar icon_music "")
 
 ; ;; Workspaces Widgets ;;
 (defvar ws1current true)
@@ -36,10 +39,21 @@
     :halign "center"
     :valign "start"
     :space-evenly "true"
+    ; (box
+    ;   :class "workspace-group 01 ${ws1current ? 'current' : ''} ${ws1occupied ? 'occupied' : ''}"
+    ;   (button
+    ;     :x "10px"
+    ;     :y "10px"
+    ;     icon_ghost)
+    ;   (box
+    ;     :class "amount"
+    ;     :x "-10px"
+    ;     :y "-10px"
+    ;     ws1amount))
     (button
       :onclick "qtile cmd-obj -o group 1 -f toscreen"
       :timeout "1s"
-      :class "workspace 01 ${ws1current ? 'current' : ''} ${ws1occupied ? 'occupied' : ''}" "")
+      :class "workspace 01 ${ws1current ? 'current' : ''} ${ws1occupied ? 'occupied' : ''}" icon_ghost)
     (button
       :onclick "qtile cmd-obj -o group 2 -f toscreen"
       :timeout "1s"
@@ -51,7 +65,7 @@
     (button
       :onclick "qtile cmd-obj -o group 4 -f toscreen"
       :timeout "1s"
-      :class "workspace 04 ${ws4current ? 'current' : ''} ${ws4occupied ? 'occupied' : ''}" "")
+      :class "workspace 04 ${ws4current ? 'current' : ''} ${ws4occupied ? 'occupied' : ''}" icon_todo)
     (button
       :onclick "qtile cmd-obj -o group 5 -f toscreen"
       :timeout "1s"
@@ -104,9 +118,7 @@
     (button
       :class "workspace 01 ${ws1current ? 'current' : ''} ${ws1occupied ? 'occupied' : ''}" icon_mail)
     (button
-      :class "workspace 02 ${ws2current ? 'current' : ''} ${ws2occupied ? 'occupied' : ''}" icon_slack)
-    (button
-      :class "workspace 03 ${ws3current ? 'current' : ''} ${ws3occupied ? 'occupied' : ''}" "")))
+      :class "workspace 02 ${ws2current ? 'current' : ''} ${ws2occupied ? 'occupied' : ''}" icon_slack)))
 
 (defwidget workspaces-triple-middle []
   (box
@@ -116,13 +128,13 @@
     :valign "start"
     :space-evenly "true"
     (button
-      :class "workspace 04 ${ws4current ? 'current' : ''} ${ws4occupied ? 'occupied' : ''}" "")
+      :class "workspace 03 ${ws3current ? 'current' : ''} ${ws3occupied ? 'occupied' : ''}" icon_code)
+    (button
+      :class "workspace 04 ${ws4current ? 'current' : ''} ${ws4occupied ? 'occupied' : ''}" icon_todo)
     (button
       :class "workspace 05 ${ws5current ? 'current' : ''} ${ws5occupied ? 'occupied' : ''}" "")
     (button
-      :class "workspace 06 ${ws6current ? 'current' : ''} ${ws6occupied ? 'occupied' : ''}" "")
-    (button
-      :class "workspace 07 ${ws7current ? 'current' : ''} ${ws7occupied ? 'occupied' : ''}" "")))
+      :class "workspace 06 ${ws6current ? 'current' : ''} ${ws6occupied ? 'occupied' : ''}" "")))
 
 (defwidget workspaces-triple-bottom []
   (box
@@ -132,11 +144,13 @@
     :valign "start"
     :space-evenly "true"
     (button
+      :class "workspace 07 ${ws7current ? 'current' : ''} ${ws7occupied ? 'occupied' : ''}" "")
+    (button
       :class "workspace 08 ${ws8current ? 'current' : ''} ${ws8occupied ? 'occupied' : ''}" "")
     (button
       :class "workspace 09 ${ws9current ? 'current' : ''} ${ws9occupied ? 'occupied' : ''}" "")
     (button
-      :class "workspace 00 ${ws0current ? 'current' : ''} ${ws0occupied ? 'occupied' : ''}" "")))
+      :class "workspace 00 ${ws0current ? 'current' : ''} ${ws0occupied ? 'occupied' : ''}" icon_music)))
 
 ;; Battery Widgets ;;
 (defwidget bat []

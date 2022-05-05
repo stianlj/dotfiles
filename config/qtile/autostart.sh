@@ -34,3 +34,4 @@ fi
 # wl-paste -pw wl-copy &
 # wl-paste -p -t text --watch clipman store -P --histpath=\"~/.local/share/clipman-primary.json\" &
 nextcloud --logfile /tmp/nextcloud.log --background &
+emacs &

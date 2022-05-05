@@ -5,7 +5,7 @@ from typing import Callable, List
 
 from libqtile import bar, hook, qtile
 from libqtile.backend.wayland.inputs import InputConfig
-from libqtile.config import (Click, Drag, DropDown, Group, Key, Match,
+from libqtile.config import (Click, Drag, DropDown, Group, Key, Match, Rule,
                              ScratchPad, Screen)
 from libqtile.core.manager import Qtile
 from libqtile.layout.floating import Floating
@@ -16,6 +16,36 @@ from libqtile.lazy import lazy
 
 is_main_desktop = os.getenv("COMPUTER_IDENTIFIER") == "main-desktop"
 number_of_connected_outputs = int(os.getenv("NO_OF_OUTPUTS", 1))
+
+emacs_group = "4"
+
+
+def go_to_group(name: str) -> Callable:
+    def _inner(qtile: Qtile) -> None:
+        if len(qtile.screens) == 1:
+            qtile.groups_map[name].cmd_toscreen()
+            return
+
+        if is_main_desktop:
+            if name in "7890":
+                qtile.focus_screen(1)
+                qtile.groups_map[name].cmd_toscreen()
+            else:
+                qtile.focus_screen(0)
+                qtile.groups_map[name].cmd_toscreen()
+        else:
+            if name in "12":
+                qtile.focus_screen(0)
+                qtile.groups_map[name].cmd_toscreen()
+            elif name in "3456":
+                qtile.focus_screen(1)
+                qtile.groups_map[name].cmd_toscreen()
+            else:
+                qtile.focus_screen(2)
+                qtile.groups_map[name].cmd_toscreen()
+
+    return _inner
+
 
 mod = "mod4"
 catppuccinPalette = {
@@ -95,7 +125,7 @@ keys = [
     ),
     # Use swhkd for these
     Key([mod], "Return", lazy.spawn("kitty fish"), desc="Launch terminal"),
-    Key([mod], "e", lazy.spawn("emacs"), desc="Launch emacs"),
+    Key([mod], "e", lazy.function(go_to_group(emacs_group)), desc="Go to emacs group"),
     Key(
         [mod],
         "d",
@@ -168,33 +198,6 @@ groups: List[Group] = [
     Group("9", layout="tile"),
     Group("0", layout="tile"),
 ]
-
-
-def go_to_group(name: str) -> Callable:
-    def _inner(qtile: Qtile) -> None:
-        if len(qtile.screens) == 1:
-            qtile.groups_map[name].cmd_toscreen()
-            return
-
-        if is_main_desktop:
-            if name in "7890":
-                qtile.focus_screen(1)
-                qtile.groups_map[name].cmd_toscreen()
-            else:
-                qtile.focus_screen(0)
-                qtile.groups_map[name].cmd_toscreen()
-        else:
-            if name in "123":
-                qtile.focus_screen(0)
-                qtile.groups_map[name].cmd_toscreen()
-            elif name in "4567":
-                qtile.focus_screen(1)
-                qtile.groups_map[name].cmd_toscreen()
-            else:
-                qtile.focus_screen(2)
-                qtile.groups_map[name].cmd_toscreen()
-
-    return _inner
 
 
 for i in groups:
@@ -306,7 +309,7 @@ mouse = [
 ]
 
 dgroups_key_binder = None
-dgroups_app_rules = []  # type: list
+dgroups_app_rules = [Rule(Match(wm_class=["emacs"]), group=emacs_group)]  # type: list
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = True
