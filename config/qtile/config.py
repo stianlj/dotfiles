@@ -95,6 +95,7 @@ keys = [
     ),
     # Use swhkd for these
     Key([mod], "Return", lazy.spawn("kitty fish"), desc="Launch terminal"),
+    Key([mod], "e", lazy.spawn("emacs"), desc="Launch emacs"),
     Key(
         [mod],
         "d",
@@ -127,12 +128,23 @@ keys = [
     # Toggle between different layouts as defined below
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key(
         [mod],
         "t",
         lazy.group["scratchpad"].dropdown_toggle("term"),
         desc="Toggle terminal",
+    ),
+    Key(
+        [mod],
+        "r",
+        lazy.group["scratchpad"].dropdown_toggle("emacs-org-roam-find"),
+        desc="Toggle org-roam-find",
+    ),
+    Key(
+        [mod],
+        "o",
+        lazy.group["scratchpad"].dropdown_toggle("emacs-org-capture"),
+        desc="Toggle org-capture",
     ),
 ]
 
@@ -219,6 +231,16 @@ groups.append(
         "scratchpad",
         [
             DropDown("term", "kitty fish", **scratchpad_size),
+            DropDown(
+                "emacs-org-capture",
+                "kitty emacsclient -nw -e '(org-capture)'",
+                **scratchpad_size
+            ),
+            DropDown(
+                "emacs-org-roam-find",
+                "kitty emacsclient -nw -e '(org-roam-node-find)'",
+                **scratchpad_size
+            ),
         ],
     )
 )

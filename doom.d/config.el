@@ -15,9 +15,9 @@
 
 ;; Doom config
 (setq doom-theme 'doom-tokyo-night)
-(setq doom-font (font-spec :family "MonoLisa" :weight 'semi-bold :size 19)
-      doom-variable-pitch-font (font-spec :family "Roboto" :weight 'normal :size 19)
-      doom-unicode-font (font-spec :family "Noto Color Emoji" :size 18)
+(setq doom-font (font-spec :family "MonoLisa" :weight 'semi-bold :size 15)
+      doom-variable-pitch-font (font-spec :family "Roboto" :weight 'normal :size 15)
+      doom-unicode-font (font-spec :family "Noto Color Emoji" :size 14)
       doom-big-font (font-spec :family "MonoLisa" :weight 'semi-bold :size 28))
 (after! doom-themes
   (setq doom-themes-enable-bold t
@@ -110,7 +110,7 @@
 
 ;; Org mode
 (setq org-directory "~/Nextcloud/Documents/Org")
-(setq org-roam-directory "~/Nextcloud/Documents/Org/Roam")
+(setq org-roam-directory "~/Nextcloud/Documents/Zettelkasten")
 
 (defun slj/org-mode-visual()
   (setq visual-fill-column-width 120
