@@ -128,6 +128,12 @@ keys = [
     Key([mod], "e", lazy.function(go_to_group(emacs_group)), desc="Go to emacs group"),
     Key(
         [mod],
+        "u",
+        lazy.spawn("rofimoji --selector wofi --clipboarder wl-copy --action copy"),
+        desc="Choose a unicode",
+    ),
+    Key(
+        [mod],
         "d",
         lazy.spawn("wofi --show drun --allow-images --no-actions"),
         desc="Application launcher",
