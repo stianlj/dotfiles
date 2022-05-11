@@ -1,5 +1,5 @@
 require("nvim-treesitter.configs").setup({
-  ensure_installed = "maintained",
+  ensure_installed = "all", -- TODO: Change to specific languages
   highlight = {
     enable = true,
     use_languagetree = true,
