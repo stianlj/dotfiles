@@ -1,4 +1,6 @@
-local lsp_installer = require("nvim-lsp-installer")
+-- local lsp_installer = require("nvim-lsp-installer")
+require("nvim-lsp-installer").setup({})
+local lspconfig = require("lspconfig")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 local lsp = vim.lsp
@@ -67,7 +69,7 @@ local on_attach = function(client)
   lsp_highlight_document(client)
 end
 
-lsp_installer.on_server_ready(function(server)
+for _, lsp_name in ipairs(vim.tbl_keys(builtin_lsp_servers)) do
   local opts = {
     on_attach = on_attach,
     capabilities = cmp_nvim_lsp.update_capabilities(lsp.protocol.make_client_capabilities()),
@@ -76,8 +78,10 @@ lsp_installer.on_server_ready(function(server)
     },
   }
 
-  if vim.tbl_contains(external_opt_lsp, server.name) then
-    local o = require("plugins.lsp-servers." .. server.name)
+  opts = {}
+
+  if vim.tbl_contains(external_opt_lsp, lsp_name) then
+    local o = require("plugins.lsp-servers." .. lsp_name)
     if o["setup"] ~= nil then
       opts = vim.tbl_deep_extend("force", o.setup({ opts }), opts)
     else
@@ -85,15 +89,14 @@ lsp_installer.on_server_ready(function(server)
     end
   end
 
-  server:setup(opts)
-  vim.cmd([[ do User LspAttachBuffers ]])
-end)
+  lspconfig[lsp_name].setup(opts)
 
-for _, lsp_name in ipairs(vim.tbl_keys(builtin_lsp_servers)) do
   local ok, lsp_server = require("nvim-lsp-installer.servers").get_server(lsp_name)
+  local lsp_installer = require("nvim-lsp-installer")
   if ok and not lsp_server:is_installed() then
     vim.defer_fn(function()
       lsp_installer.install(lsp_name)
     end, 0)
   end
 end
+vim.cmd([[ do User LspAttachBuffers ]])
