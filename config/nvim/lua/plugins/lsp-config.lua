@@ -78,8 +78,6 @@ for _, lsp_name in ipairs(vim.tbl_keys(builtin_lsp_servers)) do
     },
   }
 
-  opts = {}
-
   if vim.tbl_contains(external_opt_lsp, lsp_name) then
     local o = require("plugins.lsp-servers." .. lsp_name)
     if o["setup"] ~= nil then
