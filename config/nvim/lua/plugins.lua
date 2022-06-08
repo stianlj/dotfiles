@@ -103,6 +103,7 @@ return packer.startup(function(use)
   })
   use("nvim-treesitter/nvim-treesitter-textobjects")
   use("nvim-treesitter/playground")
+  use("nvim-treesitter/nvim-treesitter-context")
   use("p00f/nvim-ts-rainbow")
   use({
     "neovim/nvim-lspconfig",
