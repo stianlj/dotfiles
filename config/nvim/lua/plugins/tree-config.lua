@@ -10,4 +10,15 @@ require("nvim-tree").setup({
   filters = {
     custom = { ".git", "node_modules" },
   },
+  renderer = {
+    highlight_opened_files = "icon",
+    icons = {
+      glyphs = {
+        default = "",
+        git = {
+          ignored = "◌",
+        },
+      },
+    },
+  },
 })

@@ -3,13 +3,6 @@ local g = vim.g
 
 g.mapleader = " "
 g.cursorhold_updatetime = 200
-g.nvim_tree_highlight_opened_files = 1
-g.nvim_tree_icons = {
-  default = "",
-  git = {
-    ignored = "◌",
-  },
-}
 
 o.colorcolumn = "100"
 o.expandtab = true
