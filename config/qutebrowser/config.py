@@ -1,3 +1,5 @@
+import os
+
 from qutebrowser.config.config import ConfigContainer
 from qutebrowser.config.configfiles import ConfigAPI
 
@@ -8,11 +10,13 @@ c: ConfigContainer = c
 defaultFont = "14px MonoLisa"
 defaultZoom = "100%"
 defaultPadding = {"top": 10, "bottom": 10, "left": 10, "right": 10}
+startpageUrl = os.getenv("DEFAULT_STARTPAGE", "https://start.duckduckgo.com/")
+searchEngineUrl = os.getenv("DEFAULT_SEARCH_ENGINE", "https://duckduckgo.com/")
 
 # Config
 config.load_autoconfig(False)
-c.url.start_pages = ["https://start.duckduckgo.com"]
-c.url.searchengines = {"DEFAULT": "https://duckduckgo.com/?q={}"}
+c.url.start_pages = [startpageUrl]
+c.url.searchengines = {"DEFAULT": searchEngineUrl + "?q={}"}
 
 c.zoom.default = defaultZoom
 
@@ -39,7 +43,7 @@ c.colors.webpage.darkmode.policy.images = "never"
 config.bind(";gy", "hint links spawn --detach mpv --force-window yes {hint-url}")
 config.bind(
     ";gb",
-    'hint links spawn --detach mpvpaper -o "--scripts=/etc/mpv/scripts/mpris.so" --fork DP-3 {hint-url}',
+    'hint links spawn --detach mpvpaper -o "--scripts=/etc/mpv/scripts/mpris.so" --fork HDMI-A-1 {hint-url}',
 )
 config.bind(
     ";gw",
