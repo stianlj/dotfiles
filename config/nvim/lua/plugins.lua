@@ -175,6 +175,12 @@ return packer.startup(function(use)
       require("plugins.telescope-config")
     end,
   })
+  use({
+    "nvim-telescope/telescope-file-browser.nvim",
+    requires = {
+      "nvim-telescope/telescope.nvim",
+    },
+  })
   use("evanleck/vim-svelte")
   use("nvim-telescope/telescope-ui-select.nvim")
   use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
