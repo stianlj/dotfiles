@@ -22,6 +22,7 @@ o.list = true
 o.listchars:append("space:⋅")
 o.listchars:append("eol:↴")
 
+-- TODO: Use neovim built-in API instead of this
 vim.cmd([[
   augroup configgrp
     autocmd BufRead * if getline(1) == '#!/bin/dash' | set filetype=sh | endif
