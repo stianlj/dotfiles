@@ -30,6 +30,7 @@ null_ls.setup({
     null_ls.builtins.formatting.trim_newlines,
     null_ls.builtins.formatting.black,
     null_ls.builtins.formatting.isort,
+    null_ls.builtins.formatting.gofmt,
     null_ls.builtins.formatting.trim_whitespace,
     null_ls.builtins.formatting.shfmt.with({
       extra_args = { "-i", "2", "-ci" },

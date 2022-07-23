@@ -9,6 +9,7 @@ local builtin_lsp_servers = {
   bashls = {},
   pyright = {},
   sumneko_lua = {
+    disable_format = true,
     require_opts = true,
   },
   intelephense = {
@@ -31,6 +32,12 @@ local builtin_lsp_servers = {
   jsonls = {
     disable_format = true,
     require_opts = true,
+  },
+  gopls = {
+    disable_format = true,
+  },
+  golangci_lint_ls = {
+    disable_format = true,
   },
 }
 
