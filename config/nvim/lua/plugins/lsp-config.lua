@@ -8,6 +8,7 @@ local lsp = vim.lsp
 local builtin_lsp_servers = {
   bashls = {},
   pyright = {},
+  emmet_ls = {},
   sumneko_lua = {
     disable_format = true,
     require_opts = true,
