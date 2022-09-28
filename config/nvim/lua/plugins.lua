@@ -53,7 +53,7 @@ return packer.startup(function(use)
   use("tpope/vim-sleuth")
   use("elkowar/yuck.vim")
   use("gpanders/nvim-parinfer")
-  use("github/copilot.vim")
+  -- use("github/copilot.vim")
   use({
     "michaelb/sniprun",
     run = "bash ./install.sh",
