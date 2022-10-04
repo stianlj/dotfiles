@@ -1,6 +1,9 @@
--- TODO: https://github.com/svermeulen/vim-subversive
--- TODO: https://github.com/svermeulen/vim-yoink
--- TODO: https://github.com/svermeulen/vim-cutlass
+-- TODO: For better yanking:
+-- TODO: https://github.com/gbprod/yanky.nvim
+--
+-- TODO: Check why sumneko_lua and luadev doesn't (seemingly) cooperate
+--
+-- TODO: Check if CursorHold can be removed. It looks like it is fixed
 
 local packer = require("packer")
 
