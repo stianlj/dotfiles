@@ -1,108 +1,162 @@
--- local lsp_installer = require("nvim-lsp-installer")
-require("nvim-lsp-installer").setup({})
-local lspconfig = require("lspconfig")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
+require("mason").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = {
+    "bashls",
+    "pyright",
+    "emmet_ls",
+    "sumneko_lua",
+    "intelephense",
+    "yamlls",
+    "tsserver",
+    "svelte",
+    "eslint",
+    "jsonls",
+    "gopls",
+    "golangci_lint_ls",
+  },
+})
 
-local lsp = vim.lsp
+local capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-local builtin_lsp_servers = {
-  bashls = {},
-  pyright = {},
-  emmet_ls = {},
-  sumneko_lua = {
-    disable_format = true,
-    require_opts = true,
-  },
-  intelephense = {
-    disable_format = true,
-    require_opts = true,
-  },
-  yamlls = {
-    require_opts = true,
-  },
-  tsserver = {
-    disable_format = true,
-  },
-  svelte = {
-    disable_format = true,
-  },
-  eslint = {
-    disable_format = true,
-    require_opts = true,
-  },
-  jsonls = {
-    disable_format = true,
-    require_opts = true,
-  },
-  gopls = {
-    disable_format = true,
-  },
-  golangci_lint_ls = {
-    disable_format = true,
-  },
-}
-
-local disabled_formatting = vim.tbl_filter(function(client)
-  if builtin_lsp_servers[client].disable_format then
-    return true
+local lsp_config = require("lspconfig")
+lsp_config.bashls.setup({
+  capabilities = capabilities,
+})
+lsp_config.pyright.setup({
+  capabilities = capabilities,
+})
+lsp_config.emmet_ls.setup({
+  capabilities = capabilities,
+})
+lsp_config.tsserver.setup({
+  capabilities = capabilities,
+})
+lsp_config.svelte.setup({
+  capabilities = capabilities,
+})
+lsp_config.gopls.setup({
+  capabilities = capabilities,
+})
+lsp_config.golangci_lint_ls.setup({
+  capabilities = capabilities,
+})
+lsp_config.sumneko_lua.setup({
+  capabilities = capabilities,
+  setup = function(config)
+    local luadev = require("lua-dev").setup({
+      lspconfig = config.opts
+    })
+    return luadev
   end
-end, vim.tbl_keys(builtin_lsp_servers))
-
-local external_opt_lsp = vim.tbl_filter(function(client)
-  if builtin_lsp_servers[client].require_opts then
-    return true
-  end
-end, vim.tbl_keys(builtin_lsp_servers))
-
-local function lsp_highlight_document(client)
-  if client.resolved_capabilities.document_highlight then
-    vim.cmd([[
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]])
-  end
-end
-
-lsp.handlers["textDocument/hover"] = lsp.with(lsp.handlers.hover, { border = "rounded" })
-lsp.handlers["textDocument/signatureHelp"] = lsp.with(lsp.handlers.signature_help, { border = "rounded" })
-
-local on_attach = function(client)
-  if vim.tbl_contains(disabled_formatting, client.name) then
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
-  end
-  lsp_highlight_document(client)
-end
-
-for _, lsp_name in ipairs(vim.tbl_keys(builtin_lsp_servers)) do
-  local opts = {
-    on_attach = on_attach,
-    capabilities = cmp_nvim_lsp.update_capabilities(lsp.protocol.make_client_capabilities()),
-    flags = {
-      debounce_text_changes = 150,
+})
+lsp_config.jsonls.setup({
+  capabilities = capabilities,
+  settings = {
+    json = {
+      schemas = {
+        {
+          fileMatch = { "package.json" },
+          url = "https://json.schemastore.org/package.json",
+        },
+      },
     },
   }
-
-  if vim.tbl_contains(external_opt_lsp, lsp_name) then
-    local o = require("plugins.lsp-servers." .. lsp_name)
-    if o["setup"] ~= nil then
-      opts = vim.tbl_deep_extend("force", o.setup({ opts }), opts)
-    else
-      opts = vim.tbl_deep_extend("force", o, opts)
-    end
-  end
-
-  lspconfig[lsp_name].setup(opts)
-
-  local ok, lsp_server = require("nvim-lsp-installer.servers").get_server(lsp_name)
-  local lsp_installer = require("nvim-lsp-installer")
-  if ok and not lsp_server:is_installed() then
-    vim.defer_fn(function()
-      lsp_installer.install(lsp_name)
-    end, 0)
-  end
-end
-vim.cmd([[ do User LspAttachBuffers ]])
+})
+lsp_config.eslint.setup({
+  capabilities = capabilities,
+  filetypes = {
+    "javascript",
+    "javascriptreact",
+    "javascript.jsx",
+    "typescript",
+    "typescriptreact",
+    "typescript.tsx",
+    "vue",
+    "svelte",
+  }
+})
+lsp_config.intelephense.setup({
+  capabilities = capabilities,
+  settings = {
+    intelephense = {
+      stubs = {
+        "bcmath",
+        "bz2",
+        "calendar",
+        "Core",
+        "curl",
+        "date",
+        "dba",
+        "dom",
+        "enchant",
+        "fileinfo",
+        "filter",
+        "ftp",
+        "gd",
+        "gettext",
+        "hash",
+        "iconv",
+        "imap",
+        "intl",
+        "json",
+        "ldap",
+        "libxml",
+        "mbstring",
+        "mcrypt",
+        "mysql",
+        "mysqli",
+        "password",
+        "pcntl",
+        "pcre",
+        "PDO",
+        "pdo_mysql",
+        "Phar",
+        "readline",
+        "recode",
+        "Reflection",
+        "regex",
+        "session",
+        "SimpleXML",
+        "soap",
+        "sockets",
+        "sodium",
+        "SPL",
+        "standard",
+        "superglobals",
+        "sysvsem",
+        "sysvshm",
+        "tokenizer",
+        "xml",
+        "xdebug",
+        "xmlreader",
+        "xmlwriter",
+        "yaml",
+        "zip",
+        "zlib",
+        "wordpress",
+        "woocommerce",
+        "acf-pro",
+        "wordpress-globals",
+        "wp-cli",
+        "genesis",
+        "polylang",
+      },
+      files = {
+        maxSize = 5000000,
+      },
+    },
+  }
+})
+lsp_config.yamlls.setup({
+  capabilities = capabilities,
+  settings = {
+    yaml = {
+      validate = true,
+      schemas = {
+        ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+        ["kubernetes"] = "/.kubernetes/*.yaml",
+      },
+    },
+  }
+})

@@ -110,11 +110,12 @@ return packer.startup(function(use)
     end,
   })
   use("p00f/nvim-ts-rainbow")
-  use({
+  use {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
-    "williamboman/nvim-lsp-installer",
     "folke/lua-dev.nvim",
-  })
+  }
   use({
     "hrsh7th/nvim-cmp",
     requires = {
