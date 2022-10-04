@@ -4,6 +4,8 @@
 -- TODO: Check why sumneko_lua and luadev doesn't (seemingly) cooperate
 --
 -- TODO: Check if CursorHold can be removed. It looks like it is fixed
+--
+-- TODO: WIP; Add nvim-dap. Testing node/javascript for now
 
 local packer = require("packer")
 
@@ -119,6 +121,13 @@ return packer.startup(function(use)
     "neovim/nvim-lspconfig",
     "folke/lua-dev.nvim",
   }
+  use({
+    "rcarriga/nvim-dap-ui",
+    requires = "mfussenegger/nvim-dap",
+    config = function()
+      require("plugins.dap-config")
+    end
+  })
   use({
     "hrsh7th/nvim-cmp",
     requires = {
