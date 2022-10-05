@@ -1,8 +1,6 @@
 -- TODO: For better yanking:
 -- TODO: https://github.com/gbprod/yanky.nvim
 --
--- TODO: Check if CursorHold can be removed. It looks like it is fixed
---
 -- TODO: WIP; Add nvim-dap. Testing node/javascript for now
 
 local packer = require("packer")
@@ -25,8 +23,6 @@ return packer.startup(function(use)
   use("lewis6991/impatient.nvim")
   use("dstein64/vim-startuptime")
   use("wbthomason/packer.nvim")
-  -- HACK: Fix slowdowns in CursorHold. See https://github.com/neovim/neovim/issues/12587
-  use("antoinemadec/FixCursorHold.nvim")
   use("JoosepAlviste/nvim-ts-context-commentstring")
   use({
     "numToStr/Comment.nvim",
