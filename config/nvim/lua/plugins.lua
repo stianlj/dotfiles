@@ -1,8 +1,6 @@
 -- TODO: For better yanking:
 -- TODO: https://github.com/gbprod/yanky.nvim
 --
--- TODO: Check why sumneko_lua and luadev doesn't (seemingly) cooperate
---
 -- TODO: Check if CursorHold can be removed. It looks like it is fixed
 --
 -- TODO: WIP; Add nvim-dap. Testing node/javascript for now

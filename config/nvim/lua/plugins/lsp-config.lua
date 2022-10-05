@@ -17,6 +17,7 @@ require("mason-lspconfig").setup({
   },
 })
 
+require("lua-dev").setup({})
 local capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local lsp_config = require("lspconfig")
@@ -43,12 +44,13 @@ lsp_config.golangci_lint_ls.setup({
 })
 lsp_config.sumneko_lua.setup({
   capabilities = capabilities,
-  setup = function(config)
-    local luadev = require("lua-dev").setup({
-      lspconfig = config.opts
-    })
-    return luadev
-  end
+  settings = {
+    Lua = {
+      completion = {
+        callSnippet = "Replace"
+      }
+    }
+  }
 })
 lsp_config.jsonls.setup({
   capabilities = capabilities,
