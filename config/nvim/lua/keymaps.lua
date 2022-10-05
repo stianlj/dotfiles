@@ -29,6 +29,14 @@ whichKey.register({
     h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Documentaion" },
     x = { "<cmd>TroubleToggle<CR>", "Project diagnostics" },
   },
+  d = {
+    name = "DAP (debug)",
+    b = { "<cmd>lua require'dap'.toggle_breakpoint()<CR>", "Toggle breakpoint" },
+    u = { '<cmd>lua require("dapui").toggle()<CR>', "Toggle DAP-UI" },
+    c = { '<cmd>lua require("dap").continue()<CR>', "Continue" },
+    i = { '<cmd>lua require("dap").step_into()<CR>', "Step into" },
+    o = { '<cmd>lua require("dap").step_over()<CR>', "Step over" },
+  },
   g = {
     name = "Git",
     c = { "<cmd>Git commit<CR>", "Commit" },
