@@ -13,7 +13,7 @@ null_ls.setup({
             bufnr = bufnr,
             filter = function(c)
               return c.name == "null-ls"
-            end
+            end,
           })
         end,
       })

@@ -113,18 +113,18 @@ return packer.startup(function(use)
     end,
   })
   use("p00f/nvim-ts-rainbow")
-  use {
+  use({
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
     "folke/lua-dev.nvim",
-  }
+  })
   use({
     "rcarriga/nvim-dap-ui",
     requires = "mfussenegger/nvim-dap",
     config = function()
       require("plugins.dap-config")
-    end
+    end,
   })
   use({
     "hrsh7th/nvim-cmp",
