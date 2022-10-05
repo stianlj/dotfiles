@@ -19,6 +19,20 @@ cmp.setup({
     keyword_length = 2,
   },
   mapping = {
+    ["<Tab>"] = function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      else
+        fallback()
+      end
+    end,
+    ["<S-Tab>"] = function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      else
+        fallback()
+      end
+    end,
     ["<CR>"] = cmp.mapping.confirm({ select = true }),
     ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
     ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
