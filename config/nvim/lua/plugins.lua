@@ -1,7 +1,7 @@
 -- TODO: For better yanking:
 -- TODO: https://github.com/gbprod/yanky.nvim
 --
--- TODO: WIP; Add nvim-dap. Testing node/javascript for now
+-- TODO: 👷 Add nvim-dap. Testing node/javascript for now
 
 local packer = require("packer")
 
@@ -131,6 +131,7 @@ return packer.startup(function(use)
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-path",
+      "hrsh7th/cmp-emoji",
     },
     config = function()
       require("plugins.cmp-config")

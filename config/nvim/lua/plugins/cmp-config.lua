@@ -14,6 +14,7 @@ cmp.setup({
     { name = "path" },
     { name = "luasnip", keyword_length = 1 },
     { name = "buffer", keyword_length = 5 },
+    { name = "emoji" },
   }),
   completion = {
     keyword_length = 2,
