@@ -115,6 +115,7 @@ return packer.startup(function(use)
     "neovim/nvim-lspconfig",
     "folke/lua-dev.nvim",
   })
+  use("jbyuki/one-small-step-for-vimkind")
   use({
     "rcarriga/nvim-dap-ui",
     requires = "mfussenegger/nvim-dap",

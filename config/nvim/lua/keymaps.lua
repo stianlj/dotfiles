@@ -36,6 +36,7 @@ whichKey.register({
     c = { '<cmd>lua require("dap").continue()<CR>', "Continue" },
     i = { '<cmd>lua require("dap").step_into()<CR>', "Step into" },
     o = { '<cmd>lua require("dap").step_over()<CR>', "Step over" },
+    n = { '<cmd>lua require("osv").launch({port = 8086})<CR>', "Run Neovim debugger" },
   },
   g = {
     name = "Git",
