@@ -2,6 +2,9 @@ local map = vim.api.nvim_set_keymap
 local default_opts = { noremap = true, silent = true }
 local whichKey = require("which-key")
 
+-- TODO: use `vim.keymap.set` instead of `vim.api.nvim_set_keymap`
+-- TODO: https://github.com/neovim/neovim/commit/6d41f65aa45f10a93ad476db01413abaac21f27d
+
 whichKey.register({
   ["<Space>"] = { "<cmd>Telescope find_files theme=ivy<CR>", "Find file" },
   ["."] = { "<cmd>Telescope file_browser theme=ivy<CR>", "Open filebrowser" },
@@ -95,6 +98,14 @@ whichKey.register({
   v = textObjects,
   d = textObjects,
 })
+
+vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+vim.keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
+vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
+vim.keymap.set("n", "<c-n>", "<Plug>(YankyCycleForward)")
+vim.keymap.set("n", "<c-p>", "<Plug>(YankyCycleBackward)")
 
 -- don't use arrow keys
 map("", "<up>", "<nop>", { noremap = true })

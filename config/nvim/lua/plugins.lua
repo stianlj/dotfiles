@@ -1,8 +1,3 @@
--- TODO: For better yanking:
--- TODO: https://github.com/gbprod/yanky.nvim
---
--- TODO: 👷 Add nvim-dap. Testing node/javascript for now
-
 local packer = require("packer")
 
 require("packer_compiled")
@@ -53,6 +48,17 @@ return packer.startup(function(use)
   use("elkowar/yuck.vim")
   use("gpanders/nvim-parinfer")
   -- use("github/copilot.vim")
+  use({
+    "gbprod/yanky.nvim",
+    requires = { "kkharji/sqlite.lua" },
+    config = function()
+      require("yanky").setup({
+        ring = {
+          storage = "sqlite",
+        },
+      })
+    end,
+  })
   use({
     "michaelb/sniprun",
     run = "bash ./install.sh",
