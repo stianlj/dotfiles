@@ -1,10 +1,9 @@
 vim.g.catppuccin_flavour = "mocha"
+local colors = require("catppuccin.palettes").get_palette()
 
 require("catppuccin").setup({
-  transparent_background = false,
-  dim_inactive = {
-    enabled = true,
-    percentage = 0.5,
+  custom_highlights = {
+    IndentBlanklineContextChar = { fg = colors.yellow },
   },
 })
 

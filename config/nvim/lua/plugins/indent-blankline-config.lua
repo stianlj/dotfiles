@@ -1,5 +1,3 @@
-vim.cmd([[highlight IndentBlanklineContextChar guifg=#e0af68 gui=nocombine]])
-
 require("indent_blankline").setup({
   use_treesitter = true,
   space_char_blankline = " ",
