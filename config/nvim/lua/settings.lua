@@ -19,6 +19,7 @@ o.hidden = true
 o.wrap = false
 o.cursorline = true
 o.list = true
+o.cmdheight = 0
 o.listchars:append("space:⋅")
 o.listchars:append("eol:↴")
 
