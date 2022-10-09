@@ -40,6 +40,7 @@ return packer.startup(function(use)
       require("plugins.bufferline-config")
     end,
   })
+  use("wakatime/vim-wakatime")
   use("tpope/vim-surround")
   use("tpope/vim-repeat")
   use("tpope/vim-obsession")
