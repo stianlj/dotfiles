@@ -153,7 +153,7 @@ keys = [
         desc="Toggle between split and unsplit sides of stack",
     ),
     # Use swhkd for these
-    Key([mod], "Return", lazy.spawn("kitty fish"), desc="Launch terminal"),
+    Key([mod], "Return", lazy.spawn("kitty"), desc="Launch terminal"),
     Key([mod], "e", lazy.function(go_to_group(emacs_group)), desc="Go to emacs group"),
     Key(
         [mod],
