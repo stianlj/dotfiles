@@ -61,6 +61,7 @@ whichKey.register({
     name = "Open",
     p = { "<cmd>NvimTreeToggle<CR>", "Project sidebar" },
   },
+  p = { "<Plug>(YankyRingHistory)", "Yank ring history" },
 }, {
   prefix = "<leader>",
 })
