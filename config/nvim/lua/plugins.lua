@@ -122,7 +122,7 @@ return packer.startup(function(use)
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
-    "folke/lua-dev.nvim",
+    "folke/neodev.nvim",
   })
   use("jbyuki/one-small-step-for-vimkind")
   use({

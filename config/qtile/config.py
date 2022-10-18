@@ -1,6 +1,7 @@
 import os
 # import re
 import subprocess
+import time
 from typing import Callable, List
 
 from libqtile import bar, hook, qtile
@@ -13,11 +14,22 @@ from libqtile.layout.max import Max
 from libqtile.layout.tile import Tile
 from libqtile.layout.xmonad import MonadThreeCol
 from libqtile.lazy import lazy
+from libqtile.log_utils import logger
 
 is_main_desktop = os.getenv("COMPUTER_IDENTIFIER") == "main-desktop"
 number_of_connected_outputs = int(os.getenv("NO_OF_OUTPUTS", 1))
 
 emacs_group = "4"
+current_scale = "1.4"
+
+
+def scale(new_scale):
+    logger.info("New scale " + new_scale)
+    subprocess.Popen(["wlr-randr", "--output=DP-1", "--scale=" + new_scale])
+    time.sleep(0.2)
+    subprocess.Popen(["eww", "close", "bar-ultrawide"])
+    time.sleep(0.2)
+    subprocess.Popen(["eww", "open", "bar-ultrawide"])
 
 
 def go_to_group(name: str) -> Callable:
@@ -36,10 +48,27 @@ def go_to_group(name: str) -> Callable:
             return
 
         if is_main_desktop:
-            if name in "7890":
+            global current_scale
+            if name in "789":
+                if current_scale == "1":
+                    current_scale = "1.4"
+                    scale("1.4")
                 qtile.focus_screen(1)
                 qtile.groups_map[name].cmd_toscreen()
+            elif name in "0":
+                # Special group for looking glass client
+                # Since looking glass doesn't work very well with scaling, set it to 1 when
+                # in this group
+
+                if current_scale == "1.4":
+                    current_scale = "1"
+                    scale("1")
+                qtile.focus_screen(0)
+                qtile.groups_map[name].cmd_toscreen()
             else:
+                if current_scale == "1":
+                    current_scale = "1.4"
+                    scale("1.4")
                 qtile.focus_screen(0)
                 qtile.groups_map[name].cmd_toscreen()
         else:
@@ -338,8 +367,18 @@ floating_layout = Floating(
         Match(wm_class="ssh-askpass"),
         Match(wm_class="mpv"),
         Match(wm_class="imv"),
+        Match(wm_class="utility"),
+        Match(wm_class="notification"),
+        Match(wm_class="toolbar"),
+        Match(wm_class="splash"),
+        Match(wm_class="Pinentry-gtk-2"),
+        Match(wm_class="qt5ct"),
+        Match(wm_class="download"),
+        Match(wm_class="error"),
+        Match(wm_type="dialog"),
         Match(title="branchdialog"),
         Match(title="pinentry"),
+        Match(title="Open File"),
     ],
     border_width=0,
 )

@@ -17,8 +17,8 @@ require("mason-lspconfig").setup({
   },
 })
 
-require("lua-dev").setup({})
-local capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+require("neodev").setup({})
+local capabilities = cmp_nvim_lsp.default_capabilities()
 
 local lsp_config = require("lspconfig")
 lsp_config.bashls.setup({
@@ -47,10 +47,10 @@ lsp_config.sumneko_lua.setup({
   settings = {
     Lua = {
       completion = {
-        callSnippet = "Replace"
-      }
-    }
-  }
+        callSnippet = "Replace",
+      },
+    },
+  },
 })
 lsp_config.jsonls.setup({
   capabilities = capabilities,
@@ -63,7 +63,7 @@ lsp_config.jsonls.setup({
         },
       },
     },
-  }
+  },
 })
 lsp_config.eslint.setup({
   capabilities = capabilities,
@@ -76,7 +76,7 @@ lsp_config.eslint.setup({
     "typescript.tsx",
     "vue",
     "svelte",
-  }
+  },
 })
 lsp_config.intelephense.setup({
   capabilities = capabilities,
@@ -148,7 +148,7 @@ lsp_config.intelephense.setup({
         maxSize = 5000000,
       },
     },
-  }
+  },
 })
 lsp_config.yamlls.setup({
   capabilities = capabilities,
@@ -160,5 +160,5 @@ lsp_config.yamlls.setup({
         ["kubernetes"] = "/.kubernetes/*.yaml",
       },
     },
-  }
+  },
 })
