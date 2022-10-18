@@ -26,6 +26,15 @@ def go_to_group(name: str) -> Callable:
             qtile.groups_map[name].cmd_toscreen()
             return
 
+        if len(qtile.screens) == 2 and not is_main_desktop:
+            if name in "12":
+                qtile.focus_screen(0)
+                qtile.groups_map[name].cmd_toscreen()
+            else:
+                qtile.focus_screen(1)
+                qtile.groups_map[name].cmd_toscreen()
+            return
+
         if is_main_desktop:
             if name in "7890":
                 qtile.focus_screen(1)
