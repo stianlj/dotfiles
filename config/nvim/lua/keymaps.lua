@@ -20,7 +20,7 @@ whichKey.register({
     d = { "<cmd>Telescope lsp_definitions theme=ivy<CR>", "Definitions" },
     R = { "<cmd>Telescope lsp_references theme=ivy<CR>", "References" },
     i = { "<cmd>Telescope lsp_implementations theme=ivy<CR>", "Implementations" },
-    a = { "<cmd>Telescope lsp_code_actions theme=cursor<CR>", "Code actions" },
+    a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code actions" },
     D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Declarations" },
     l = {
       name = "LSP",
