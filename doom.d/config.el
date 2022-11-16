@@ -151,6 +151,8 @@
   (setq org-log-into-drawer t)
   (setq org-agenda-start-on-weekday 1)
 
+  (setq org-logseq-dir "~/Sync/Logseq")
+
   (setq deft-directory "~/Nextcloud/Documents/Org"
         deft-extensions '("org")
         deft-recursive t)
