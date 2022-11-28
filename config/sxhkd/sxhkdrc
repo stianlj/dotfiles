@@ -3,8 +3,6 @@
 #
 
 # terminal emulator
-# super + Return
-#   wezterm
 super + Return
   kitty fish
 

@@ -25,12 +25,14 @@ o.listchars:append("eol:↴")
 --[[ o.spell = true ]]
 o.spelllang = { "en", "nb" }
 
--- TODO: Use neovim built-in API instead of this.
+-- TODO: Use neovim built-in API instead of this
+-- OR https://github.com/neovim/neovim/pull/16600#issuecomment-990409210
 vim.cmd([[
   augroup configgrp
     autocmd BufRead * if getline(1) == '#!/bin/dash' | set filetype=sh | endif
     autocmd BufRead,BufNewFile *.PKGBUILD,PKGBUILD set filetype=PKGBUILD
     autocmd BufRead,BufNewFile swhkdrc set filetype=sxhkdrc
+    autocmd BufRead,BufNewFile *.hurl set filetype=hurl
   augroup END
 ]])
 

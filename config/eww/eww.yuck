@@ -435,7 +435,7 @@
              :anchor "top right"
              :width "48px")
 
-  :monitor 1
+  :monitor 0
   :stacking "bg"
   :focusable true
   :hexpand "false"
