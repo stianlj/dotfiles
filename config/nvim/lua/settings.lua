@@ -22,8 +22,10 @@ o.list = true
 o.cmdheight = 0
 o.listchars:append("space:⋅")
 o.listchars:append("eol:↴")
+--[[ o.spell = true ]]
+o.spelllang = { "en", "nb" }
 
--- TODO: Use neovim built-in API instead of this
+-- TODO: Use neovim built-in API instead of this.
 vim.cmd([[
   augroup configgrp
     autocmd BufRead * if getline(1) == '#!/bin/dash' | set filetype=sh | endif
