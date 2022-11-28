@@ -18,15 +18,15 @@ fi
 
 swaybg -m fill -i "$WALLPAPER" &
 
+eww daemon
 if [ "$COMPUTER_IDENTIFIER" = "main-desktop" ]; then
-  eww daemon
   eww open "bar-ultrawide"
 elif [ "$COMPUTER_IDENTIFIER" = "work-laptop" ]; then
-  if [ "$NO_OF_OUTPUTS" -gt "2" ]; then
-    eww daemon
+  if [ "$NO_OF_OUTPUTS" -gt "1" ] && [ "$NO_OF_OUTPUTS" -lt "3"]; then
+    eww open "bar-dual-ultrawide"
+  elif [ "$NO_OF_OUTPUTS" -gt "2" ]; then
     eww open "bar-triple"
   else
-    eww daemon
     eww open bar
   fi
 fi
