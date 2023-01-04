@@ -1,4 +1,6 @@
 local packer = require("packer")
+-- TODO: Use https://github.com/m4xshen/autoclose.nvim
+-- and https://github.com/folke/lazy.nvim as package manager
 
 require("packer_compiled")
 
