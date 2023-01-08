@@ -119,7 +119,7 @@ return packer.startup(function(use)
       require("plugins.treesitter-context-config")
     end,
   })
-  use("p00f/nvim-ts-rainbow")
+  use("mrjones2014/nvim-ts-rainbow")
   use({
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
