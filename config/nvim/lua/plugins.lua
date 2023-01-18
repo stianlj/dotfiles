@@ -1,4 +1,6 @@
 local packer = require("packer")
+-- TODO: Use https://github.com/m4xshen/autoclose.nvim
+-- and https://github.com/folke/lazy.nvim as package manager
 
 require("packer_compiled")
 
@@ -118,7 +120,7 @@ return packer.startup(function(use)
       require("plugins.treesitter-context-config")
     end,
   })
-  use("p00f/nvim-ts-rainbow")
+  use("mrjones2014/nvim-ts-rainbow")
   use({
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",

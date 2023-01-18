@@ -1,4 +1,9 @@
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
+
+vim.diagnostic.config({
+  virtual_text = false,
+})
+
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = {
@@ -18,32 +23,40 @@ require("mason-lspconfig").setup({
 })
 
 require("neodev").setup({})
-local capabilities = cmp_nvim_lsp.default_capabilities()
+
+-- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#customizing-how-diagnostics-are-displayed
+local default_on_attach = function(_, bufnr)
+  vim.api.nvim_create_autocmd("CursorHold", {
+    buffer = bufnr,
+    callback = function()
+      local opts = {
+        focusable = false,
+        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+        border = "rounded",
+        source = "always",
+        prefix = " ",
+        scope = "cursor",
+      }
+      vim.diagnostic.open_float(nil, opts)
+    end,
+  })
+end
 
 local lsp_config = require("lspconfig")
-lsp_config.bashls.setup({
-  capabilities = capabilities,
+
+lsp_config.util.default_config = vim.tbl_extend("force", lsp_config.util.default_config, {
+  on_attach = default_on_attach,
+  capabilities = cmp_nvim_lsp.default_capabilities(),
 })
-lsp_config.pyright.setup({
-  capabilities = capabilities,
-})
-lsp_config.emmet_ls.setup({
-  capabilities = capabilities,
-})
-lsp_config.tsserver.setup({
-  capabilities = capabilities,
-})
-lsp_config.svelte.setup({
-  capabilities = capabilities,
-})
-lsp_config.gopls.setup({
-  capabilities = capabilities,
-})
-lsp_config.golangci_lint_ls.setup({
-  capabilities = capabilities,
-})
+
+lsp_config.bashls.setup({})
+lsp_config.pyright.setup({})
+lsp_config.emmet_ls.setup({})
+lsp_config.tsserver.setup({})
+lsp_config.svelte.setup({})
+lsp_config.gopls.setup({})
+lsp_config.golangci_lint_ls.setup({})
 lsp_config.sumneko_lua.setup({
-  capabilities = capabilities,
   settings = {
     Lua = {
       completion = {
@@ -53,7 +66,6 @@ lsp_config.sumneko_lua.setup({
   },
 })
 lsp_config.jsonls.setup({
-  capabilities = capabilities,
   settings = {
     json = {
       schemas = {
@@ -66,7 +78,6 @@ lsp_config.jsonls.setup({
   },
 })
 lsp_config.eslint.setup({
-  capabilities = capabilities,
   filetypes = {
     "javascript",
     "javascriptreact",
@@ -79,7 +90,6 @@ lsp_config.eslint.setup({
   },
 })
 lsp_config.intelephense.setup({
-  capabilities = capabilities,
   settings = {
     intelephense = {
       stubs = {
@@ -151,7 +161,6 @@ lsp_config.intelephense.setup({
   },
 })
 lsp_config.yamlls.setup({
-  capabilities = capabilities,
   settings = {
     yaml = {
       validate = true,
