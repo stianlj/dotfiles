@@ -48,6 +48,7 @@ return packer.startup(function(use)
   use("tpope/vim-sleuth")
   use("elkowar/yuck.vim")
   use("gpanders/nvim-parinfer")
+  --[[ use("kamykn/spelunker.vim") ]]
   -- use("github/copilot.vim")
   use({
     "gbprod/yanky.nvim",
