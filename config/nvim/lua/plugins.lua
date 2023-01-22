@@ -1,6 +1,9 @@
 local packer = require("packer")
 -- TODO: Use https://github.com/m4xshen/autoclose.nvim
+-- https://github.com/barrett-ruth/import-cost.nvim
+-- https://github.com/danymat/neogen - JSDoc and such
 -- and https://github.com/folke/lazy.nvim as package manager
+-- https://www.youtube.com/watch?v=aqlxqpHs-aQ
 
 require("packer_compiled")
 
