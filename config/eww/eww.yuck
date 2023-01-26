@@ -136,6 +136,22 @@
     (button
       :class "workspace 06 ${ws6current ? 'current' : ''} ${ws6occupied ? 'occupied' : ''}" "")))
 
+(defwidget workspaces-dual-end []
+  (box
+    :class "workspaces"
+    :orientation "v"
+    :halign "center"
+    :valign "start"
+    :space-evenly "true"
+    (button
+      :class "workspace 03 ${ws3current ? 'current' : ''} ${ws3occupied ? 'occupied' : ''}" icon_code)
+    (button
+      :class "workspace 04 ${ws4current ? 'current' : ''} ${ws4occupied ? 'occupied' : ''}" icon_todo)
+    (button
+      :class "workspace 05 ${ws5current ? 'current' : ''} ${ws5occupied ? 'occupied' : ''}" "")
+    (button
+      :class "workspace 06 ${ws6current ? 'current' : ''} ${ws6occupied ? 'occupied' : ''}" "")))
+
 (defwidget workspaces-triple-bottom []
   (box
     :class "workspaces"
@@ -295,6 +311,13 @@
    (workspaces-triple-middle)
    (workspaces-triple-bottom)))
 
+(defwidget top-dual []
+  (box  :orientation "v"
+   :space-evenly "false"
+   :valign "start"
+   (workspaces-triple-top)
+   (workspaces-dual-end)))
+
 ;; Bottom Widgets ;;
 (defwidget bottom []
   (box  :orientation "v"
@@ -337,6 +360,14 @@
    (top-triple)
    (end)))
 
+(defwidget bar-dual-ultrawide []
+  (box :class "eww_bar"
+   :orientation "v"
+   :vexpand "false"
+   :hexpand "false"
+   (top-dual)
+   (end)))
+
 (defwidget bar-ultrawide []
   (box :class "eww_bar"
    :orientation "v"
@@ -375,12 +406,26 @@
              :anchor "top left"
              :width "48px")
 
-  :monitor 2
+  :monitor 1
   :stacking "bg"
   :focusable true
   :hexpand "false"
   :vexpand "false"
  (bar-triple))
+
+(defwindow bar-dual-ultrawide
+  :geometry (geometry :x "0"
+             :y "0"
+             :height "100%"
+             :anchor "top left"
+             :width "48px")
+
+  :monitor 1
+  :stacking "bg"
+  :focusable true
+  :hexpand "false"
+  :vexpand "false"
+ (bar-dual-ultrawide))
 
 ;; Bar Windows ;;
 (defwindow bar-ultrawide

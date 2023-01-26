@@ -22,6 +22,8 @@ o.list = true
 o.cmdheight = 0
 o.listchars:append("space:⋅")
 o.listchars:append("eol:↴")
+--[[ o.spell = true ]]
+o.spelllang = { "en", "nb" }
 
 -- TODO: Use neovim built-in API instead of this
 -- OR https://github.com/neovim/neovim/pull/16600#issuecomment-990409210
