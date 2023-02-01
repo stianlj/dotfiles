@@ -4,11 +4,21 @@ local action = wezterm.action
 -- TODO: https://github.com/prabirshrestha/dotfiles/blob/main/.config/wezterm/wezterm.lua
 return {
   font = wezterm.font({
-    -- INFO: Read https://wezfurlong.org/wezterm/config/font-shaping.html for more advanced font shaping
-    -- And https://www.monolisa.dev/faq#how-to-enable-stylistic-sets-for-the-kitty-terminal
     family = "MonoLisa",
     harfbuzz_features = { "ss02=1" },
   }),
+  font_rules = {
+    {
+      intensity = "Bold",
+      italic = true,
+      font = wezterm.font({
+        family = "MonoLisa",
+        italic = true,
+        weight = "Bold",
+        harfbuzz_features = { "ss02=0" },
+      }),
+    },
+  },
   default_prog = { "/usr/bin/fish", "-l" },
   font_size = 12.0,
   use_fancy_tab_bar = false,
