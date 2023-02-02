@@ -5,6 +5,20 @@ require("catppuccin").setup({
   dim_inactive = {
     enabled = true,
   },
+  styles = {
+    comments = { "bold", "italic" },
+    conditionals = { "italic" },
+    loops = {},
+    functions = {},
+    keywords = { "italic" },
+    strings = {},
+    variables = {},
+    numbers = {},
+    booleans = {},
+    properties = {},
+    types = {},
+    operators = {},
+  },
   custom_highlights = {
     IndentBlanklineContextChar = { fg = colors.yellow },
   },
