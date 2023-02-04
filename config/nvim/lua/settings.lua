@@ -21,6 +21,7 @@ o.rtp:prepend(lazypath)
 
 g.mapleader = " "
 g.localleader = " "
+o.termguicolors = true
 
 require("lazy").setup("plugins")
 
@@ -36,7 +37,6 @@ o.relativenumber = true
 o.mouse = "a"
 o.splitbelow = true
 o.splitright = true
-o.termguicolors = true
 o.hidden = true
 o.wrap = false
 o.cursorline = true
