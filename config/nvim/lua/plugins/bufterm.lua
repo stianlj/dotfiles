@@ -5,7 +5,6 @@ return {
     local Terminal = require("bufterm.terminal").Terminal
     local ui = require("bufterm.ui")
     local term = Terminal:new({
-      cmd = "/usr/bin/fish",
       buflisted = false,
       termlisted = false,
     })
