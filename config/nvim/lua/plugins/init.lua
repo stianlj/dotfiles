@@ -24,7 +24,6 @@ return {
     end,
   },
   "wakatime/vim-wakatime",
-  "tpope/vim-surround",
   "tpope/vim-repeat",
   "tpope/vim-obsession",
   "tpope/vim-eunuch",
