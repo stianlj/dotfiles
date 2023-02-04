@@ -18,6 +18,15 @@ return {
         harfbuzz_features = { "ss02=0" },
       }),
     },
+    {
+      italic = true,
+      reverse = true,
+      font = wezterm.font({
+        family = "MonoLisa",
+        italic = true,
+        harfbuzz_features = { "ss02=0" },
+      }),
+    },
   },
   default_prog = { "/usr/bin/fish", "-l" },
   font_size = 12.0,

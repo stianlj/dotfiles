@@ -156,6 +156,7 @@
         +pandoc          ; export-with-pandoc support
         +hugo            ; use Emacs for hugo blogging
         +roam2
+        ;; +journal
         ;;+jupyter        ; ipython/jupyter support for babel
         ;;+pomodoro        ; be fruitful with the tomato technique
         +present)        ; using org-mode for presentations

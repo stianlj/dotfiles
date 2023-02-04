@@ -2,27 +2,12 @@ import os
 # import re
 import subprocess
 import time
-import typing
+from typing import Callable, List
 
-import bar
-import Callable
-import Click
-import Drag
-import DropDown
-import Group
-import hook
-import import
-import InputConfig
-import Key
-import libqtile
-import libqtile.backend.wayland.inputs
-import libqtile.config
-import List
-import Match
-import qtile
-import Rule
-import ScratchPad
-import Screen
+from libqtile import bar, hook, qtile
+from libqtile.backend.wayland.inputs import InputConfig
+from libqtile.config import (Click, Drag, DropDown, Group, Key, Match, Rule,
+                             ScratchPad, Screen)
 from libqtile.core.manager import Qtile
 from libqtile.layout.floating import Floating
 from libqtile.layout.max import Max

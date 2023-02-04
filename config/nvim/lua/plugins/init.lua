@@ -51,6 +51,7 @@ return {
   --[[ }, ]]
   "fladson/vim-kitty",
   "baskerville/vim-sxhkdrc",
+  "theRealCarneiro/hyprland-vim-syntax",
   "stevearc/dressing.nvim",
   {
     "lukas-reineke/indent-blankline.nvim",
