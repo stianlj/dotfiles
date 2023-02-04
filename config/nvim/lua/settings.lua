@@ -35,5 +35,3 @@ vim.cmd([[
     autocmd BufRead,BufNewFile *.hurl set filetype=hurl
   augroup END
 ]])
-
-require("plugins/lsp-config")
