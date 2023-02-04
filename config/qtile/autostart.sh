@@ -2,9 +2,16 @@
 
 systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP XDG_ACTIVATION_TOKEN
 dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP XDG_ACTIVATION_TOKEN
-/usr/lib/xdg-desktop-portal-wlr &
-/usr/lib/xdg-desktop-portal-gtk &
-/usr/lib/xdg-desktop-portal &
+# /usr/libexec/xdg-desktop-portal-hyprland &
+# sleep 2
+# /usr/lib/xdg-desktop-portal &
+# sleep 1
+# killall xdg-desktop-portal-hyprland
+# killall xdg-desktop-portal-wlr
+# killall xdg-desktop-portal
+# /usr/libexec/xdg-desktop-portal-hyprland &
+# sleep 2
+# /usr/lib/xdg-desktop-portal &
 
 gsettings set org.gnome.desktop.interface gtk-theme 'Catppuccin-pink'
 gsettings set org.gnome.desktop.interface cursor-theme 'Catppuccin Blue'

@@ -1,6 +1,6 @@
 {
     "label" : "lock",
-    "action" : "swaylock",
+    "action" : "swaylock --color 1a1b26",
     "text" : "Lock",
     "keybind" : "l"
 }
