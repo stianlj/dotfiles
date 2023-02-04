@@ -29,11 +29,6 @@ return {
   "tpope/vim-obsession",
   "tpope/vim-eunuch",
   "tpope/vim-sleuth",
-  {
-    "barrett-ruth/import-cost.nvim",
-    build = "sh install.sh npm",
-    config = true,
-  },
   "elkowar/yuck.vim",
   "gpanders/nvim-parinfer",
   {
