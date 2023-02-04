@@ -1,5 +1,5 @@
 require("settings")
 require("plugins")
 require("impatient")
-require("plugins/lsp-config")
+require("plugins-legacy/lsp-config")
 require("keymaps")
