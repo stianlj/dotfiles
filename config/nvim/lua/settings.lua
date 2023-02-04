@@ -28,6 +28,7 @@ require("lazy").setup("plugins")
 g.cursorhold_updatetime = 200
 
 o.colorcolumn = "100"
+o.shell = "/usr/bin/fish"
 o.expandtab = true
 o.shiftwidth = 2
 o.smartindent = true
