@@ -1,7 +1,30 @@
 local o = vim.opt
 local g = vim.g
 
+-- TODO: Use https://github.com/m4xshen/autoclose.nvim
+-- https://github.com/barrett-ruth/import-cost.nvim
+-- https://github.com/danymat/neogen - JSDoc and such
+-- https://www.youtube.com/watch?v=aqlxqpHs-aQ
+
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+o.rtp:prepend(lazypath)
+
 g.mapleader = " "
+g.localleader = " "
+o.termguicolors = true
+
+require("lazy").setup("plugins")
+
 g.cursorhold_updatetime = 200
 
 o.colorcolumn = "100"
@@ -14,7 +37,6 @@ o.relativenumber = true
 o.mouse = "a"
 o.splitbelow = true
 o.splitright = true
-o.termguicolors = true
 o.hidden = true
 o.wrap = false
 o.cursorline = true
@@ -35,5 +57,3 @@ vim.cmd([[
     autocmd BufRead,BufNewFile *.hurl set filetype=hurl
   augroup END
 ]])
-
-require("plugins/lsp-config")
