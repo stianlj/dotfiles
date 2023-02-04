@@ -25,15 +25,14 @@ if [ "$COMPUTER_IDENTIFIER" = "main-desktop" ]; then
 elif [ "$COMPUTER_IDENTIFIER" = "work-laptop" ]; then
   if [ -d "/sys/class/drm/card1-DP-1" ]; then
     NO_OF_OUTPUTS=$(cat /sys/class/drm/card1-*/status | grep -w "connected" | wc -l)
-    OUTPUT_CENTER="DP-3"
   else
     NO_OF_OUTPUTS=$(cat /sys/class/drm/card0-*/status | grep -w "connected" | wc -l)
-    OUTPUT_CENTER="DP-2"
   fi
   # if [ "$NO_OF_OUTPUTS" -gt "1" ] && [ "$NO_OF_OUTPUTS" -lt "3"]; then
   #   eww open "bar-dual-ultrawide"
   if [ "$NO_OF_OUTPUTS" -gt "2" ]; then
     OUTPUT_LEFT="eDP-1"
+    OUTPUT_CENTER="DP-2"
     OUTPUT_RIGHT="DP-5"
     CONFIG=(
       "keyword monitor $OUTPUT_CENTER,addreserved,0,0,47,0"
