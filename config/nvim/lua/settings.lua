@@ -23,10 +23,7 @@ g.mapleader = " "
 g.localleader = " "
 o.termguicolors = true
 
-require("lazy").setup("plugins")
-
 g.cursorhold_updatetime = 200
-
 o.colorcolumn = "100"
 o.shell = "/usr/bin/fish"
 o.expandtab = true
@@ -47,6 +44,8 @@ o.listchars:append("space:⋅")
 o.listchars:append("eol:↴")
 --[[ o.spell = true ]]
 o.spelllang = { "en", "nb" }
+
+require("lazy").setup("plugins")
 
 -- TODO: Use neovim built-in API instead of this
 -- OR https://github.com/neovim/neovim/pull/16600#issuecomment-990409210
