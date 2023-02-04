@@ -197,13 +197,6 @@ return {
     end,
   },
   {
-    "kyazdani42/nvim-tree.lua",
-    dependencies = "kyazdani42/nvim-web-devicons",
-    config = function()
-      require("plugins-legacy.tree-config")
-    end,
-  },
-  {
     "folke/todo-comments.nvim",
     dependencies = "nvim-lua/plenary.nvim",
     config = function()
