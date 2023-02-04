@@ -217,16 +217,6 @@ return {
     end,
   },
   {
-    "TimUntersberger/neogit",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "sindrets/diffview.nvim",
-    },
-    config = function()
-      require("plugins-legacy.neogit-config")
-    end,
-  },
-  {
     "jose-elias-alvarez/null-ls.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
