@@ -25,7 +25,6 @@ return {
   },
   "wakatime/vim-wakatime",
   "tpope/vim-repeat",
-  "tpope/vim-obsession",
   "tpope/vim-eunuch",
   "tpope/vim-sleuth",
   "elkowar/yuck.vim",
