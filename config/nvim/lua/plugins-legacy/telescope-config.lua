@@ -8,6 +8,9 @@ telescope.setup({
     find_files = {
       find_command = { "rg", "--files", "--iglob", "!.git", "--hidden" },
     },
+    file_browser = {
+      hijack_netrw = true,
+    },
   },
   extensions = {
     ["ui-select"] = {
