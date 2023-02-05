@@ -24,16 +24,9 @@ return {
     end,
   },
   "wakatime/vim-wakatime",
-  "tpope/vim-surround",
   "tpope/vim-repeat",
-  "tpope/vim-obsession",
   "tpope/vim-eunuch",
   "tpope/vim-sleuth",
-  {
-    "barrett-ruth/import-cost.nvim",
-    build = "sh install.sh npm",
-    config = true,
-  },
   "elkowar/yuck.vim",
   "gpanders/nvim-parinfer",
   {
@@ -220,16 +213,6 @@ return {
     "folke/which-key.nvim",
     config = function()
       require("plugins-legacy.which-key-config")
-    end,
-  },
-  {
-    "TimUntersberger/neogit",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "sindrets/diffview.nvim",
-    },
-    config = function()
-      require("plugins-legacy.neogit-config")
     end,
   },
   {
