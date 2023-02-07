@@ -1,7 +1,7 @@
 return {
   "jedrzejboczar/possession.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
-  config = {
+  opts = {
     autosave = {
       current = true,
       tmp = true,

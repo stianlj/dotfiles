@@ -17,7 +17,7 @@ return {
   },
   {
     "akinsho/bufferline.nvim",
-    dependencies = "kyazdani42/nvim-web-devicons",
+    dependencies = "nvim-tree/nvim-web-devicons",
     version = "*",
     config = function()
       require("plugins-legacy.bufferline-config")
@@ -78,7 +78,7 @@ return {
   },
   {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "kyazdani42/nvim-web-devicons", opt = true },
+    dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
     config = function()
       require("plugins-legacy.lualine-config")
     end,
@@ -204,7 +204,7 @@ return {
   },
   {
     "folke/trouble.nvim",
-    dependencies = "kyazdani42/nvim-web-devicons",
+    dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
       require("trouble").setup({})
     end,
