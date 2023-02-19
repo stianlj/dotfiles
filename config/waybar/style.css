@@ -1,13 +1,14 @@
 * {
   /* `otf-font-awesome` is required to be installed for icons */
-  font-family: MonoLisa, Roboto, Helvetica, Arial, sans-serif;
+  font-family: MonoLisa;
   font-size: 16px;
 }
 
 window#waybar {
   /* background-color: rgba(22, 19, 32, 0); */
-  background-color: transparent;
-  color: #d9e0ee;
+  background-color: #1a1b26;
+  /* background-color: transparent; */
+  padding: 10px 0;
 }
 
 window#waybar.hidden {
@@ -32,39 +33,44 @@ window#waybar.solo {
 /*   border: none; */
 /* } */
 
-#tags {
-  background-color: #161320;
+#workspaces {
+  background-color: #302d41;
   border-radius: 5px;
-  padding: 3px;
+  padding: 1px;
 }
 
-#tags button {
-  padding: 0 5px;
+#workspaces button {
+  padding: 8px 5px;
   background-color: transparent;
   color: #d9e0ee;
   /* Use box-shadow instead of border so the text isn't offset */
-  box-shadow: inset 0 -3px transparent;
+  /* box-shadow: inset 0 -3px transparent; */
   /* Avoid rounded borders under each workspace name */
   border: none;
   border-radius: 0;
 }
 
+#workspaces button .test {
+  font-size: 10px;
+}
+
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-#tags button:hover {
-  background: rgba(0, 0, 0, 0.2);
+/* #workspaces button:hover { */
+/*   background: rgba(0, 0, 0, 0.2); */
+/* } */
+
+#workspaces button.active {
+  color: #96cdfb;
 }
 
-#tags button.occupied {
-  background-color: #302d41;
-}
-
-#tags button:hover,
-#tags button.focused {
+#workspaces button:hover,
+#workspaces button.focused {
   background-color: #6e6c7e;
+  border-radius: 5px;
 }
 
-#tags button.urgent {
-  background-color: #f28fad;
+#workspaces button.urgent {
+  color: #f28fad;
 }
 
 #mode {
@@ -86,7 +92,7 @@ window#waybar.solo {
 #mode,
 #idle_inhibitor,
 #mpd {
-  padding: 0 10px;
+  /* padding: 0 10px; */
   color: #d9e0ee;
 }
 
@@ -111,13 +117,14 @@ window#waybar.solo {
 
 .modules-right,
 .modules-left {
-  padding: 3px;
-  border-radius: 5px;
-  background-color: #161320;
+  padding: 7px;
+  margin: 5px 0;
 }
 
 #clock {
-  /* background-color: #64727d; */
+  background-color: #302d41;
+  border-radius: 5px;
+  padding-bottom: 8px;
 }
 
 /* #battery { */

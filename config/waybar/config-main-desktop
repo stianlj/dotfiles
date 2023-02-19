@@ -1,30 +1,59 @@
 [
     {
-        "position": "bottom",
-        "height": 39, // Waybar height (to be removed for auto height)
+        "position": "right",
+        "height": "100%", // Waybar height (to be removed for auto height)
         "margin-top": 0,
-        "margin-right": 5,
-        "margin-bottom": 5,
-        "margin-left": 5,
-        "mode": "overlay",
-        "passthrough": true,
-        "gtk-layer-shell": true,
-        "output": "DP-4",
-        "modules-left": ["custom/media"],
-        "modules-center": ["river/tags"],
-        "modules-right": ["pulseaudio", "memory", "clock", "tray"],
-        "river/tags": {
-            "num-tags": 5
+        "margin-right": -1,
+        "margin-bottom": 0,
+        "margin-left": 0,
+        "layer": "top",
+        "exclusive": false,
+        "output": "DP-1",
+        "modules-left": ["wlr/workspaces"],
+        "modules-right": ["clock", "tray"],
+        "hyprland/window": {
+            "separate-outputs": false
+        },
+        "wlr/workspaces": {
+            "format": "<span font='Font Awesome 6 Free Solid' size='15pt'>{icon}</span> <span color='#6e6c7e' size='8pt'>/{name}</span>",
+            "all-outputs": true,
+            "active-only": false,
+            "format-icons": {
+                "1": "",
+                "2": "",
+                "3": "",
+                "4": "",
+                "5": "",
+                "6": "",
+                "7": "",
+                "8": "",
+                "9": "",
+                "10": ""
+            },
+            "sort-by-number": true
         },
         "tray": {
             "spacing": 10
         },
         "clock": {
-            "format": "{:%d/%m %H:%M}",
-            "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-        },
-        "memory": {
-            "format": "{}% "
+            "locale": "nb_NO.UTF-8",
+            "timezone": "Europe/Oslo",
+            "format": "<span weight='bold' size='20pt'>{:%H\n%M</span>\n<span size='8pt'>%d/%m</span>}",
+            "tooltip-format": "<big>{:%d. %B %Y}</big>\n\n<tt><small>{calendar}</small></tt>",
+            "calendar": {
+                "mode"          : "year",
+                "mode-mon-col"  : 3,
+                "weeks-pos"     : "right",
+                "on-scroll"     : 1,
+                "on-click-right": "mode",
+                "format": {
+                    "months":     "<span color='#ffead3'><b>{}</b></span>",
+                    "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                    "weeks":      "<span color='#99ffdd'><b>Uke {}</b></span>",
+                    "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                    "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                }
+            }
         },
         "pulseaudio": {
             "format": "{volume}% {icon}",
@@ -39,29 +68,7 @@
                 "default": ["", "", ""]
             },
             "on-click": "pavucontrol"
-        },
-        "custom/media": {
-            "format": "Playing: {}",
-            "return-type": "json",
-            "max-length": 100,
-            "escape": true,
-            "exec": "$HOME/.config/waybar/custom_modules/mediaplayer.py 2> /dev/null",
-            "on-click": "playerctl play-pause"
         }
     }
-    // {
-    //     "position": "bottom",
-    //     "height": 39, // Waybar height (to be removed for auto height)
-    //     "margin-top": 0,
-    //     "margin-right": 5,
-    //     "margin-bottom": 5,
-    //     "margin-left": 5,
-    //     "mode": "overlay",
-    //     "output": "DP-3",
-    //     "modules-center": ["river/tags"],
-    //     "river/tags": {
-    //         "num-tags": 5
-    //     }
-    // }
 ]
 // vim: filetype=jsonc
