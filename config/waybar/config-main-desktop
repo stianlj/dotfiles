@@ -40,7 +40,7 @@
             "locale": "nb_NO.UTF-8",
             "timezone": "Europe/Oslo",
             "format": "<span weight='bold' size='20pt'>{:%H\n%M</span>\n<span size='8pt'>%d/%m</span>}",
-            "tooltip-format": "<big>{:%d. %B %Y}</big>\n\n<tt><small>{calendar}</small></tt>",
+            "tooltip-format": "<span font_family='Ubuntu Mono'><big>{:%d. %B %Y}</big>\n\n<tt><small>{calendar}</small></tt></span>",
             "calendar": {
                 "mode"          : "year",
                 "mode-mon-col"  : 3,
