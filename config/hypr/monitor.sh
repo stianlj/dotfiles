@@ -8,7 +8,6 @@ function run_hyprctl {
   hyprctl --batch "$string"
 }
 
-eww daemon
 if [ "$COMPUTER_IDENTIFIER" = "main-desktop" ]; then
   OUTPUT_MAIN="DP-1"
   OUTPUT_UPPER="HDMI-A-1"
@@ -31,8 +30,9 @@ if [ "$COMPUTER_IDENTIFIER" = "main-desktop" ]; then
   string="$(printf "${separator}%s" "${CONFIG[@]}")"
   string="${string:${#separator}}"
   hyprctl --batch "$string"
-  eww open "bar-ultrawide"
+  waybar -c ~/.config/waybar/config-main-desktop
 elif [ "$COMPUTER_IDENTIFIER" = "work-laptop" ]; then
+  eww daemon
   if [ -d "/sys/class/drm/card1-DP-1" ]; then
     NO_OF_OUTPUTS=$(cat /sys/class/drm/card1-*/status | grep -w "connected" | wc -l)
   else
