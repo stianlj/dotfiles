@@ -38,9 +38,21 @@ elif [ "$COMPUTER_IDENTIFIER" = "work-laptop" ]; then
   else
     NO_OF_OUTPUTS=$(cat /sys/class/drm/card0-*/status | grep -w "connected" | wc -l)
   fi
-  # if [ "$NO_OF_OUTPUTS" -gt "1" ] && [ "$NO_OF_OUTPUTS" -lt "3"]; then
-  #   eww open "bar-dual-ultrawide"
-  if [ "$NO_OF_OUTPUTS" -gt "2" ]; then
+  if [ "$NO_OF_OUTPUTS" -gt "1" -a "$NO_OF_OUTPUTS" -lt "3" ]; then
+    OUTPUT_LEFT="eDP-1"
+    OUTPUT_CENTER="DP-4"
+    CONFIG=(
+      "keyword monitor $OUTPUT_LEFT,addreserved,0,0,47,0"
+      "keyword monitor $OUTPUT_LEFT,3840x2400,auto,3"
+      "keyword monitor $OUTPUT_CENTER,5120x1440,1280x0,1.4"
+      "keyword monitor $OUTPUT_CENTER,addreserved,10,10,400,447"
+    )
+    separator=" ; "
+    string="$(printf "${separator}%s" "${CONFIG[@]}")"
+    string="${string:${#separator}}"
+    hyprctl --batch "$string"
+    eww open bar
+  elif [ "$NO_OF_OUTPUTS" -gt "2" ]; then
     OUTPUT_LEFT="eDP-1"
     OUTPUT_CENTER="DP-2"
     OUTPUT_RIGHT="DP-5"
