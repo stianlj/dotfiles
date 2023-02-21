@@ -10,7 +10,7 @@ require("mason-lspconfig").setup({
     "bashls",
     "pyright",
     "emmet_ls",
-    "sumneko_lua",
+    "lua_ls",
     "intelephense",
     "yamlls",
     "tsserver",
@@ -56,7 +56,7 @@ lsp_config.tsserver.setup({})
 lsp_config.svelte.setup({})
 lsp_config.gopls.setup({})
 lsp_config.golangci_lint_ls.setup({})
-lsp_config.sumneko_lua.setup({
+lsp_config.lua_ls.setup({
   settings = {
     Lua = {
       completion = {
