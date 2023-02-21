@@ -23,9 +23,10 @@
 		eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
-(set-face-attribute 'default nil :font "MonoLisa" :height 150)
-(set-face-attribute 'fixed-pitch nil :font "MonoLisa" :height 150)
-(set-face-attribute 'variable-pitch nil :font "Roboto" :height 175 :weight 'regular)
+(set-face-attribute 'default nil :font "MonoLisa" :height 125)
+(set-face-attribute 'fixed-pitch nil :font "MonoLisa" :height 125)
+(set-face-attribute 'variable-pitch nil :font "Ubuntu" :height 145 :weight 'regular)
+(setq-default line-spacing 0.1)
 
 (hl-line-mode 1)
 (recentf-mode 1)
@@ -192,7 +193,7 @@
                   (org-level-6 . 1.1)
                   (org-level-7 . 1.1)
                   (org-level-8 . 1.1)))
-    (set-face-attribute (car face) nil :font "Roboto" :weight 'regular :height (cdr face)))
+    (set-face-attribute (car face) nil :font "Ubuntu" :weight 'regular :height (cdr face)))
 
   ;; Ensure that anything that should be fixed-pitch in Org files appears that way
   (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
