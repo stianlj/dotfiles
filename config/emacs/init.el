@@ -181,10 +181,6 @@
    ([remap describe-function] . helpful-callable))
 
 (defun slj/org-font-setup ()
-  (font-lock-add-keywords 'org-mode
-                          '(("^ *\\([-]\\) "
-                             (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
-
   (dolist (face '((org-level-1 . 1.2)
                   (org-level-2 . 1.1)
                   (org-level-3 . 1.05)
@@ -209,22 +205,21 @@
   (set-face-attribute 'line-number-current-line nil :inherit 'fixed-pitch))
 
 (defun slj/org-mode-setup ()
-  (org-indent-mode)
   (variable-pitch-mode 1)
   (auto-fill-mode 0)
-  (visual-line-mode 1)
-  (setq evil-auto-indent nil))
+  (visual-line-mode 1))
 
 (use-package org
   :hook (org-mode . slj/org-mode-setup)
   :config
   (setq org-ellipsis " ▾")
+  (setq org-startup-indented t
+	org-pretty-entities t
+	org-hide-emphasis-markers t
+	org-startup-with-inline-images t
+	org-image-actual-width '(300))
+  (setq evil-auto-indent t)
   (slj/org-font-setup))
-
-(use-package org-bullets
-  :hook (org-mode . org-bullets-mode)
-  :custom
-  (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
 
 (defun slj/org-mode-visual-fill ()
   (setq visual-fill-column-width 100
@@ -233,3 +228,25 @@
 
 (use-package visual-fill-column
   :hook (org-mode . slj/org-mode-visual-fill))
+
+(use-package org-appear
+  :after org
+  :hook (org-mode . org-appear-mode))
+
+(use-package org-superstar
+  :config
+  (setq org-superstar-special-todo-items t)
+  (add-hook 'org-mode-hook (lambda ()
+			     (org-superstar-mode 1))))
+
+;(use-package evil-org
+;  :ensure t
+;  :after org
+; :hook (org-mode . (lambda () evil-org-mode))
+; :config
+; (require 'evil-org-agenda)
+; (evil-org-agenda-set-keys))
+
+;; Look at this list, especially `evil-nerd-commenter`
+;; https://github.com/doomemacs/doomemacs/blob/master/modules/editor/evil/packages.el
+;; And https://hugocisneros.com/org-config/
