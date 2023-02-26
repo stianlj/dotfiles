@@ -17,10 +17,10 @@
 
 (global-display-line-numbers-mode 1)
 (dolist (mode '(org-mode-hook
-		term-mode-hook
-		shell-mode-hook
-		treemacs-mode-hook
-		eshell-mode-hook))
+                term-mode-hook
+                shell-mode-hook
+                treemacs-mode-hook
+                eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 (set-face-attribute 'default nil :font "MonoLisa" :height 125)
@@ -181,15 +181,15 @@
    ([remap describe-function] . helpful-callable))
 
 (defun slj/org-font-setup ()
-  (dolist (face '((org-level-1 . 1.2)
-                  (org-level-2 . 1.1)
-                  (org-level-3 . 1.05)
-                  (org-level-4 . 1.0)
-                  (org-level-5 . 1.1)
-                  (org-level-6 . 1.1)
-                  (org-level-7 . 1.1)
-                  (org-level-8 . 1.1)))
-    (set-face-attribute (car face) nil :font "Ubuntu" :weight 'regular :height (cdr face)))
+; (dolist (face '((org-level-1 . 1.2)
+;                 (org-level-2 . 1.1)
+;                 (org-level-3 . 1.05)
+;                 (org-level-4 . 1.0)
+;                 (org-level-5 . 1.1)
+;                 (org-level-6 . 1.1)
+;                 (org-level-7 . 1.1)
+;                 (org-level-8 . 1.1)))
+;   (set-face-attribute (car face) nil :font "Ubuntu" :weight 'regular :height (cdr face)))
 
   ;; Ensure that anything that should be fixed-pitch in Org files appears that way
   (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
@@ -214,10 +214,11 @@
   :config
   (setq org-ellipsis " ▾")
   (setq org-startup-indented t
-	org-pretty-entities t
-	org-hide-emphasis-markers t
-	org-startup-with-inline-images t
-	org-image-actual-width '(300))
+   org-adapt-indentation t
+   org-pretty-entities t
+   org-hide-emphasis-markers t
+   org-startup-with-inline-images t
+   org-image-actual-width '(300))
   (setq evil-auto-indent t)
   (slj/org-font-setup))
 
@@ -237,7 +238,7 @@
   :config
   (setq org-superstar-special-todo-items t)
   (add-hook 'org-mode-hook (lambda ()
-			     (org-superstar-mode 1))))
+                            (org-superstar-mode 1))))
 
 ;(use-package evil-org
 ;  :ensure t
