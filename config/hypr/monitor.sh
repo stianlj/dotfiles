@@ -43,9 +43,8 @@ elif [ "$COMPUTER_IDENTIFIER" = "work-laptop" ]; then
     OUTPUT_CENTER="DP-4"
     CONFIG=(
       "keyword monitor $OUTPUT_LEFT,addreserved,0,0,47,0"
-      "keyword monitor $OUTPUT_LEFT,3840x2400,auto,3"
-      "keyword monitor $OUTPUT_CENTER,5120x1440,1280x0,1.4"
-      "keyword monitor $OUTPUT_CENTER,addreserved,10,10,400,447"
+      "keyword monitor $OUTPUT_LEFT,3840x2400,auto,2"
+      "keyword monitor $OUTPUT_CENTER,1920x1080,1920x0,1"
     )
     separator=" ; "
     string="$(printf "${separator}%s" "${CONFIG[@]}")"
@@ -54,7 +53,7 @@ elif [ "$COMPUTER_IDENTIFIER" = "work-laptop" ]; then
     eww open bar
   elif [ "$NO_OF_OUTPUTS" -gt "2" ]; then
     OUTPUT_LEFT="eDP-1"
-    OUTPUT_CENTER="DP-2"
+    OUTPUT_CENTER="DP-3"
     OUTPUT_RIGHT="DP-5"
     CONFIG=(
       "keyword monitor $OUTPUT_CENTER,addreserved,0,0,47,0"
