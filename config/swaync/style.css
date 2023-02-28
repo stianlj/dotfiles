@@ -2,7 +2,7 @@
  * vim: ft=less
  */
 
-@define-color cc-bg rgba(26, 27, 38, 1);
+@define-color cc-bg rgba(26, 27, 38, 0.9);
 
 @define-color noti-border-color rgba(255, 255, 255, 0.15);
 @define-color noti-bg rgb(48, 48, 48);
