@@ -240,6 +240,13 @@
   (add-hook 'org-mode-hook (lambda ()
                             (org-superstar-mode 1))))
 
+(require 'org-crypt)
+(require 'epa-file)
+(epa-file-enable)
+(org-crypt-use-before-save-magic)
+(setq org-tags-exclude-from-inheritance (quote ("crypt")))
+(setq org-crypt-key nil)
+
 ;(use-package evil-org
 ;  :ensure t
 ;  :after org
