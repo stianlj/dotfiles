@@ -17,10 +17,10 @@
 
 (global-display-line-numbers-mode 1)
 (dolist (mode '(org-mode-hook
-                term-mode-hook
-                shell-mode-hook
-                treemacs-mode-hook
-                eshell-mode-hook))
+		term-mode-hook
+		shell-mode-hook
+		treemacs-mode-hook
+		eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 (set-face-attribute 'default nil :font "MonoLisa" :height 125)
@@ -214,11 +214,11 @@
   :config
   (setq org-ellipsis " ▾")
   (setq org-startup-indented t
-   org-adapt-indentation t
-   org-pretty-entities t
-   org-hide-emphasis-markers t
-   org-startup-with-inline-images t
-   org-image-actual-width '(300))
+	org-adapt-indentation t
+	org-pretty-entities t
+	org-hide-emphasis-markers t
+	org-startup-with-inline-images t
+	org-image-actual-width '(300))
   (setq evil-auto-indent t)
   (slj/org-font-setup))
 
@@ -238,7 +238,7 @@
   :config
   (setq org-superstar-special-todo-items t)
   (add-hook 'org-mode-hook (lambda ()
-                            (org-superstar-mode 1))))
+			     (org-superstar-mode 1))))
 
 ;(use-package evil-org
 ;  :ensure t
