@@ -102,10 +102,18 @@ window#waybar.hidden {
   margin: 5px 0;
 }
 
+#battery,
 #clock {
   background-color: #302d41;
   border-radius: 5px;
   padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+
+#battery {
+  padding-top: 8px;
+  color: #96cdfb;
+  font-size: 25px;
 }
 
 /* #battery { */
@@ -126,7 +134,7 @@ window#waybar.hidden {
 }
 
 #battery.critical:not(.charging) {
-  background-color: #f53c3c;
+  background-color: #f28fad;
   color: #ffffff;
   animation-name: blink;
   animation-duration: 0.5s;
@@ -200,7 +208,6 @@ label:focus {
 #tray {
   /* background-color: #2980b9; */
   background-color: #302d41;
-  margin-top: 8px;
   border-radius: 5px;
   padding-top: 8px;
   padding-bottom: 8px;
