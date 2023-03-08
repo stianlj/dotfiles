@@ -23,6 +23,12 @@ g.mapleader = " "
 g.localleader = " "
 o.termguicolors = true
 
+o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+o.foldcolumn = "1"
+o.foldlevel = 99
+o.foldlevelstart = 99
+o.foldenable = true
+
 g.cursorhold_updatetime = 200
 o.colorcolumn = "100"
 o.shell = "/usr/bin/fish"

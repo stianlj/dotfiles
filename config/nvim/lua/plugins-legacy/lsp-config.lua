@@ -49,6 +49,11 @@ lsp_config.util.default_config = vim.tbl_extend("force", lsp_config.util.default
   capabilities = cmp_nvim_lsp.default_capabilities(),
 })
 
+lsp_config.util.default_config.capabilities.textDocument.foldingRange = {
+  dynamicRange = false,
+  lineFoldingOnly = true,
+}
+
 lsp_config.bashls.setup({})
 lsp_config.pyright.setup({})
 lsp_config.emmet_ls.setup({})
