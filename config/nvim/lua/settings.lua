@@ -33,6 +33,7 @@ o.tabstop = 2
 o.number = true
 o.relativenumber = true
 o.mouse = "a"
+o.swapfile = false
 o.splitbelow = true
 o.splitright = true
 o.hidden = true
