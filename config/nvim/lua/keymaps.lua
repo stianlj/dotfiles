@@ -66,6 +66,14 @@ whichKey.register({
   prefix = "<leader>",
 })
 
+whichKey.register({
+  g = {
+    m = { '<cmd>lua require"treesj".toggle()<CR>', "Split/join under cursor" },
+  },
+}, {
+  mode = "n",
+})
+
 -- Own register for visual mode keymaps, since some of the mappings is the same as in normal mode
 whichKey.register({
   c = {
