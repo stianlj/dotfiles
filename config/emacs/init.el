@@ -268,7 +268,7 @@
            ((agenda "" ((org-deadline-warning-days 7)))
             (todo "NEXT"
                   ((org-agenda-overriding-header "Next Tasks")))
-            (todo "PROJ" ((org-agenda-overriding-header "Active Projects")))))
+            (todo "PROJECT" ((org-agenda-overriding-header "Active Projects")))))
 
           ("n" "Next Tasks"
            ((todo "NEXT"
@@ -283,30 +283,16 @@
             (org-agenda-files org-agenda-files)))
 
           ("w" "Workflow Status"
-           ((todo "WAIT"
+           ((todo "WAITING"
                   ((org-agenda-overriding-header "Waiting on External")
                    (org-agenda-files org-agenda-files)))
-            (todo "REVIEW"
-                  ((org-agenda-overriding-header "In Review")
-                   (org-agenda-files org-agenda-files)))
-            (todo "PLAN"
-                  ((org-agenda-overriding-header "In Planning")
-                   (org-agenda-todo-list-sublevels nil)
-                   (org-agenda-files org-agenda-files)))
-            (todo "BACKLOG"
-                  ((org-agenda-overriding-header "Project Backlog")
-                   (org-agenda-todo-list-sublevels nil)
-                   (org-agenda-files org-agenda-files)))
-            (todo "READY"
-                  ((org-agenda-overriding-header "Ready for Work")
-                   (org-agenda-files org-agenda-files)))
-            (todo "PROJ"
+            (todo "PROJECT"
                   ((org-agenda-overriding-header "Active Projects")
                    (org-agenda-files org-agenda-files)))
             (todo "COMPLETED"
                   ((org-agenda-overriding-header "Completed Projects")
                    (org-agenda-files org-agenda-files)))
-            (todo "CANC"
+            (todo "CANCELLED"
                   ((org-agenda-overriding-header "Cancelled Projects")
                    (org-agenda-files org-agenda-files)))))))
 
