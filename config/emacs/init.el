@@ -17,10 +17,10 @@
 
 (global-display-line-numbers-mode 1)
 (dolist (mode '(org-mode-hook
-                term-mode-hook
-                shell-mode-hook
-                treemacs-mode-hook
-                eshell-mode-hook))
+		term-mode-hook
+		shell-mode-hook
+		treemacs-mode-hook
+		eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 (set-face-attribute 'default nil :font "MonoLisa" :height 125)
@@ -212,7 +212,19 @@
 (use-package org
   :hook (org-mode . slj/org-mode-setup)
   :config
+
+  (setq org-directory "~/Nextcloud/Documents/Org")
   (setq org-ellipsis " ▾")
+  (setq org-superstar-todo-bullet-alist
+	'(("TODO" . ?☐)
+	  ("NEXT" . ?☐)
+	  ("HOLD" . ?🤚)
+	  ("HAPPENING" . ?🌴)
+	  ("PROJECT" . ?🚧)
+	  ("WAITING" . ?☕)
+	  ("CANCELLED" . ?✘)
+	  ("DONE" . ?✔)))
+  ;;(org-superstar-restart)
   (setq org-startup-indented t
 	org-adapt-indentation t
 	org-pretty-entities t
@@ -220,6 +232,115 @@
 	org-startup-with-inline-images t
 	org-image-actual-width '(300))
   (setq evil-auto-indent t)
+  (setq org-agenda-files
+	'("~/Nextcloud/Documents/Org/Projects/"
+	  "~/Nextcloud/Documents/Org/Tasks.org"
+	  "~/Nextcloud/Documents/Org/Habits.org"))
+  (setq org-agenda-start-with-log-mode t)
+  (setq org-log-time 'time)
+  (setq org-log-into-drawer t)
+  (setq org-agenda-start-on-weekday 1)
+  (setq org-habit-graph-column 60)
+  (setq org-todo-keywords
+        '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!)")
+          (sequence "HOLD(h)" "WAITING(w)" "HAPPENING(H)" "PROJECT(p)" "|" "COMPLETED(c)" "CANCELLED(k@)")))
+
+  (setq org-refile-targets
+        '(("Archive.org" :maxlevel . 1)
+          ("Tasks.org" :maxlevel . 1)))
+
+  (advice-add 'org-refile :after 'org-save-all-org-buffers)
+
+  (setq org-tag-alist
+        '((:startgroup)
+          (:endgroup)
+          ("@home" . ?H)
+          ("@work" . ?W)
+          ("@computer" . ?c)
+          ("agenda" . ?a)
+          ("planning" . ?p)
+          ("note" . ?n)
+          ("idea" . ?i)))
+
+
+  (setq org-agenda-custom-commands
+        '(("d" "Dashboard"
+           ((agenda "" ((org-deadline-warning-days 7)))
+            (todo "NEXT"
+                  ((org-agenda-overriding-header "Next Tasks")))
+            (todo "PROJ" ((org-agenda-overriding-header "Active Projects")))))
+
+          ("n" "Next Tasks"
+           ((todo "NEXT"
+                  ((org-agenda-overriding-header "Next Tasks")))))
+
+          ("h" "Home Tasks" tags-todo "+@home")
+
+          ;; Low-effort next actions
+          ("e" tags-todo "+TODO=\"NEXT\"+Effort<15&+Effort>0"
+           ((org-agenda-overriding-header "Low Effort Tasks")
+            (org-agenda-max-todos 20)
+            (org-agenda-files org-agenda-files)))
+
+          ("w" "Workflow Status"
+           ((todo "WAIT"
+                  ((org-agenda-overriding-header "Waiting on External")
+                   (org-agenda-files org-agenda-files)))
+            (todo "REVIEW"
+                  ((org-agenda-overriding-header "In Review")
+                   (org-agenda-files org-agenda-files)))
+            (todo "PLAN"
+                  ((org-agenda-overriding-header "In Planning")
+                   (org-agenda-todo-list-sublevels nil)
+                   (org-agenda-files org-agenda-files)))
+            (todo "BACKLOG"
+                  ((org-agenda-overriding-header "Project Backlog")
+                   (org-agenda-todo-list-sublevels nil)
+                   (org-agenda-files org-agenda-files)))
+            (todo "READY"
+                  ((org-agenda-overriding-header "Ready for Work")
+                   (org-agenda-files org-agenda-files)))
+            (todo "PROJ"
+                  ((org-agenda-overriding-header "Active Projects")
+                   (org-agenda-files org-agenda-files)))
+            (todo "COMPLETED"
+                  ((org-agenda-overriding-header "Completed Projects")
+                   (org-agenda-files org-agenda-files)))
+            (todo "CANC"
+                  ((org-agenda-overriding-header "Cancelled Projects")
+                   (org-agenda-files org-agenda-files)))))))
+
+  (setq org-capture-templates
+        `(("t" "🏢 Tasks")
+          ("tt" "🔨 Task" entry (file+olp "~/Nextcloud/Documents/Org/Tasks.org" "Inbox")
+           "* TODO %?\n  %U\n  %a\n  %i" :empty-lines 1)
+
+          ("tn" "📩 Next" entry (file+olp "~/Nextcloud/Documents/Org/Tasks.org" "Inbox")
+           "* NEXT %?\n  %U\n  %a\n  %i" :empty-lines 1)
+
+          ("n" "📔 Notes")
+
+          ("nl" "🎁 Wishlist" entry
+           (file+olp "~/Nextcloud/Documents/Org/Web-resources.org" "Wishlist")
+           "** %(org-cliplink-capture)\n %U\n %a\n %i" :empty-lines 1)
+
+          ("nw" "💨 Web resource" entry
+           (file+olp "~/Nextcloud/Documents/Org/Web-resources.org" "Inbox")
+           "** %(org-cliplink-capture)\n %U\n %a\n %i" :empty-lines 1)
+
+          ("np" "🎵 Playlist item" entry
+           (file+olp "~/Nextcloud/Documents/Org/Playlists.org" "Inbox")
+           "** %i\n %U\n %a" :empty-lines 1)
+
+          ("g" "😞 Generic")
+
+          ("gw" "Web resource" entry
+           (file+olp "~/Nextcloud/Documents/Org/Web-resources.org" "Inbox")
+           "%i" :empty-lines 1 :immediate-finish 1)))
+
+
+
+
   (slj/org-font-setup))
 
 (defun slj/org-mode-visual-fill ()
