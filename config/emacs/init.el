@@ -327,10 +327,20 @@
            (file+olp "~/Nextcloud/Documents/Org/Web-resources.org" "Inbox")
            "%i" :empty-lines 1 :immediate-finish 1)))
 
-
-
-
   (slj/org-font-setup))
+
+(use-package org-roam
+  :ensure t
+  :custom
+  (org-roam-directory "~/Nextcloud/Documents/Org/Roam")
+  (org-roam-completion-everywhere t)
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n i" . org-roam-node-insert)
+	 :map org-mode-map
+	 ("C-M-i"   . completion-at-point))
+  :config
+  (org-roam-setup))
 
 (defun slj/org-mode-visual-fill ()
   (setq visual-fill-column-width 100
