@@ -1,3 +1,25 @@
+;; Initialize package sources
+(require 'package)
+
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("org" . "https://orgmode.org/elpa/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
+
+(package-initialize)
+(unless package-archive-contents
+ (package-refresh-contents))
+
+;; Initialize use-package on non-Linux platforms
+(unless (package-installed-p 'use-package)
+   (package-install 'use-package))
+
+(require 'use-package)
+(setq use-package-always-ensure t)
+
+(use-package no-littering)
+(setq auto-save-file-name-transforms
+      `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
+
 (setq inhibit-startup-message t
       visible-bell t)
 
@@ -30,6 +52,8 @@
 
 (hl-line-mode 1)
 (recentf-mode 1)
+(add-to-list 'recentf-exclude no-littering-var-directory)
+(add-to-list 'recentf-exclude no-littering-etc-directory)
 
 (setq history-length 25)
 (savehist-mode 1)
@@ -41,30 +65,14 @@
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
-;; Initialize package sources
-(require 'package)
-
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                         ("org" . "https://orgmode.org/elpa/")
-                         ("elpa" . "https://elpa.gnu.org/packages/")))
-
-(package-initialize)
-(unless package-archive-contents
- (package-refresh-contents))
-
-;; Initialize use-package on non-Linux platforms
-(unless (package-installed-p 'use-package)
-   (package-install 'use-package))
-
-(require 'use-package)
-(setq use-package-always-ensure t)
-
-(use-package no-littering)
-(setq auto-save-file-name-transforms
-      `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
-(use-package recentf)
-(add-to-list 'recentf-exclude no-littering-var-directory)
-(add-to-list 'recentf-exclude no-littering-etc-directory)
+(use-package dashboard
+  :ensure t
+  :config
+  (setq dashboard-startup-banner 'logo)
+  (setq dashboard-items '((recents  . 5)
+			  (bookmarks . 5)
+			  (agenda . 5)))
+  (dashboard-setup-startup-hook))
 
 (use-package doom-themes
   :ensure t
