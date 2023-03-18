@@ -51,9 +51,15 @@
 (setq-default line-spacing 0.1)
 
 (hl-line-mode 1)
-(recentf-mode 1)
-(add-to-list 'recentf-exclude no-littering-var-directory)
-(add-to-list 'recentf-exclude no-littering-etc-directory)
+
+(use-package recentf
+  :config
+  (add-to-list 'recentf-exclude no-littering-var-directory)
+  (add-to-list 'recentf-exclude no-littering-etc-directory)
+  (add-to-list 'recentf-exclude "/home/stianlj/dotfiles/")
+  (recentf-mode 1)
+  (setq recentf-max-menu-items 25)
+  (setq recentf-max-saved-items 25))
 
 (setq history-length 25)
 (savehist-mode 1)
