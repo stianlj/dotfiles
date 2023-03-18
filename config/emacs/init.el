@@ -350,6 +350,9 @@
   (add-hook 'org-mode-hook (lambda ()
 			     (org-superstar-mode 1))))
 
+(use-package magit
+  :ensure t)
+
 (require 'org-crypt)
 (require 'epa-file)
 (epa-file-enable)
