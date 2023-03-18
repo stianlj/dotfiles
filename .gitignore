@@ -13,7 +13,11 @@ config/gtk-3.0/*
 mutt/mailboxes
 mutt/secrets
 config/systemd/user/multi-user.target.wants
-config/emacs/*
+config/emacs/eln-cache
+config/emacs/elpa
+config/emacs/etc
+config/emacs/var
+config/emacs/custom-vars.el
 config/fish/fishd.*
 .idea
 doom.d/*.elc
