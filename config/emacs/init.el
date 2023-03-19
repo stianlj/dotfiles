@@ -364,6 +364,10 @@
 
 (use-package org-appear
   :after org
+  :custom
+  (org-appear-autoemphasis  t)
+  (org-appear-autolinks t)
+  (org-appear-autosubmarkers t)
   :hook (org-mode . org-appear-mode))
 
 (use-package org-superstar
@@ -374,6 +378,9 @@
 
 (use-package org-cliplink
   :ensure t)
+
+(use-package org-yt
+  :straight (org-yt :type git :host github :repo "TobiasZawada/org-yt"))
 
 (use-package magit
   :ensure t)
