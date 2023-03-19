@@ -374,6 +374,9 @@
   (add-hook 'org-mode-hook (lambda ()
 			     (org-superstar-mode 1))))
 
+(use-package org-cliplink
+  :ensure t)
+
 (use-package magit
   :ensure t)
 
