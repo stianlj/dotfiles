@@ -15,6 +15,7 @@ mutt/secrets
 config/systemd/user/multi-user.target.wants
 config/emacs/eln-cache
 config/emacs/elpa
+config/emacs/straight
 config/emacs/etc
 config/emacs/var
 config/emacs/custom-vars.el
