@@ -428,12 +428,11 @@
   (org-roam-setup))
 
 (defun slj/org-mode-visual-fill ()
-  (setq visual-fill-column-width 100
-        visual-fill-column-center-text t)
+  (setq visual-fill-column-width 120)
   (visual-fill-column-mode 1))
 
-;(use-package visual-fill-column
-;  :hook (org-mode . slj/org-mode-visual-fill))
+(use-package visual-fill-column
+  :hook (org-mode . slj/org-mode-visual-fill))
 
 (use-package org-appear
   :after org
