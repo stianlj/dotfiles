@@ -432,8 +432,8 @@
         visual-fill-column-center-text t)
   (visual-fill-column-mode 1))
 
-(use-package visual-fill-column
-  :hook (org-mode . slj/org-mode-visual-fill))
+;(use-package visual-fill-column
+;  :hook (org-mode . slj/org-mode-visual-fill))
 
 (use-package org-appear
   :after org
@@ -488,3 +488,25 @@
 ;; Look at this list, especially `evil-nerd-commenter`
 ;; https://github.com/doomemacs/doomemacs/blob/master/modules/editor/evil/packages.el
 ;; And https://hugocisneros.com/org-config/
+
+(with-eval-after-load 'org
+
+  (defun slj-org-get-level-face (n)
+    "Get the right face for match N in font-lock matching of headlines.
+Modifies the orginal to make the font of the last star and the space
+after it also inherit the fixed-pitch font."
+    (let* ((org-l0 (- (match-end 2) (match-beginning 1) 1))
+       (org-l (if org-odd-levels-only (1+ (/ org-l0 2)) org-l0))
+       (org-f (if org-cycle-level-faces
+              (nth (% (1- org-l) org-n-level-faces) org-level-faces)
+            (nth (1- (min org-l org-n-level-faces)) org-level-faces))))
+      (cond
+       ((eq n 1) (if org-hide-leading-stars 'org-hide org-f))
+       ((eq n 2) `((t :inherit (fixed-pitch ,org-f)))) ;; changed here only
+       (t (unless org-level-color-stars-only org-f)))))
+
+  (advice-add 'org-get-level-face :override #'slj-org-get-level-face))
+
+(add-hook 'org-mode-hook
+          (lambda () 
+            (set-face-attribute 'org-hide nil :inherit 'fixed-pitch)))
