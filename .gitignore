@@ -19,6 +19,7 @@ config/emacs/straight
 config/emacs/etc
 config/emacs/var
 config/emacs/custom-vars.el
+config/emacs/local-variables.el
 config/fish/fishd.*
 .idea
 doom.d/*.elc

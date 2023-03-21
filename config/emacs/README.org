@@ -1,0 +1,24 @@
+* Config files for Emacs
+** Variables
+Make sure to have a ~local-variables.el~ with the following variables defined
+- ~slj/org-agenda-files~
+- ~slj/org-directory~
+- ~slj/org-roam-directory~
+- ~slj/org-refile-targets~
+- ~slj/dotfiles-directory~
+
+  *Example*
+  #+begin_src elisp
+(defvar slj/org-agenda-files
+      '("~/Documents/Org/Projects/"
+	"~/Documents/Org/Tasks.org"
+	"~/Documents/Org/Habits.org"))
+
+(defvar slj/org-directory "~/Documents/Org")
+(defvar slj/org-roam-directory "~/Documents/Org/Roam")
+(defvar slj/org-refile-targets
+        '(("Archive.org" :maxlevel . 1)
+          ("Tasks.org" :maxlevel . 1)))
+
+(defvar slj/dotfiles-directory "/full/path/to/dotfiles")
+  #+end_src
