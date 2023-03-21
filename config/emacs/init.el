@@ -517,6 +517,7 @@ after it also inherit the fixed-pitch font."
 (use-package noflet)
 ;; TODO: This is promising. Look further
 ;; `emacsclient -a "" -e "(slj/org-capture/open-frame)"`
+;; Also look at https://www.reddit.com/r/orgmode/comments/uycc8m/spawn_a_new_frame_for_orgcapture/
 (defun slj/org-capture/open-frame ()
   "Create a new frame and run `org-capture'."
   (interactive)
