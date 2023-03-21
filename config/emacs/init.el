@@ -75,6 +75,7 @@
   :ensure t
   :config
   (setq dashboard-startup-banner 'logo)
+  (setq dashboard-center-content t)
   (setq dashboard-items '((recents  . 5)
 			  (bookmarks . 5)
 			  (agenda . 5)))
