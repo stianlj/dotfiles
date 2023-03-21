@@ -7,8 +7,8 @@ Make sure to have a ~local-variables.el~ with the following variables defined
 - ~slj/org-refile-targets~
 - ~slj/dotfiles-directory~
 
-  *Example*
-  #+begin_src elisp
+*Example*
+#+begin_src elisp
 (defvar slj/org-agenda-files
       '("~/Documents/Org/Projects/"
 	"~/Documents/Org/Tasks.org"
@@ -21,4 +21,4 @@ Make sure to have a ~local-variables.el~ with the following variables defined
           ("Tasks.org" :maxlevel . 1)))
 
 (defvar slj/dotfiles-directory "/full/path/to/dotfiles")
-  #+end_src
+#+end_src
