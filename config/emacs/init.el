@@ -26,6 +26,10 @@
 (setq custom-file (locate-user-emacs-file "custom-vars.el"))
 (load custom-file 'noerror 'nomessage)
 
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+
 (setq org-roam-directory slj/org-roam-directory)
 
 (scroll-bar-mode -1)        ; Disable visible scrollbar
@@ -508,3 +512,32 @@ after it also inherit the fixed-pitch font."
 (add-hook 'org-mode-hook
           (lambda () 
             (set-face-attribute 'org-hide nil :inherit 'fixed-pitch)))
+
+;; Inspiration https://macowners.club/posts/org-capture-from-everywhere-macos/
+(use-package noflet)
+;; TODO: This is promising. Look further
+;; `emacsclient -a "" -e "(slj/org-capture/open-frame)"`
+(defun slj/org-capture/open-frame ()
+  "Create a new frame and run `org-capture'."
+  (interactive)
+  (make-frame '((name . "capture")
+                (top . 300)
+                (left . 700)
+                (width . 80)
+                (height . 25)))
+  (select-frame-by-name "capture")
+  (delete-other-windows)
+  (noflet ((switch-to-buffer-other-window (buf) (switch-to-buffer buf)))
+          (org-capture)))
+
+(defadvice org-capture-finalize
+    (after delete-capture-frame activate)
+  "Advise capture-finalize to close the frame."
+  (if (equal "capture" (frame-parameter nil 'name))
+      (delete-frame)))
+
+(defadvice org-capture-destroy
+    (after delete-capture-frame activate)
+  "Advise capture-destroy to close the frame."
+  (if (equal "capture" (frame-parameter nil 'name))
+      (delete-frame)))
