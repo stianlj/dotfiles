@@ -21,10 +21,12 @@
 (setq inhibit-startup-message t
       visible-bell t)
 
+(load (locate-user-emacs-file "local-variables.el"))
+
 (setq custom-file (locate-user-emacs-file "custom-vars.el"))
 (load custom-file 'noerror 'nomessage)
 
-(setq org-roam-directory "~/Nextcloud/Documents/Org/Roam")
+(setq org-roam-directory slj/org-roam-directory)
 
 (scroll-bar-mode -1)        ; Disable visible scrollbar
 (tool-bar-mode -1)          ; Disable the toolbar
@@ -56,7 +58,7 @@
   :config
   (add-to-list 'recentf-exclude no-littering-var-directory)
   (add-to-list 'recentf-exclude no-littering-etc-directory)
-  (add-to-list 'recentf-exclude "/home/stianlj/dotfiles/")
+  (add-to-list 'recentf-exclude slj/dotfiles-directory)
   (recentf-mode 1)
   (setq recentf-max-menu-items 25)
   (setq recentf-max-saved-items 25))
@@ -284,6 +286,7 @@
     `(org-table ((nil (:inherit 'fixed-pitch))))
     `(org-verbatim ((nil (:inherit 'fixed-pitch))))
     `(org-special-keyword ((nil (:inherit 'fixed-pitch))))
+    `(org-document-info-keyword ((nil (:inherit 'fixed-pitch))))
     `(org-meta-line ((nil (:inherit 'fixed-pitch))))
     `(org-checkbox ((nil (:inherit 'fixed-pitch))))))
 
@@ -296,7 +299,7 @@
   :hook (org-mode . slj/org-mode-setup)
   :config
 
-  (setq org-directory "~/Nextcloud/Documents/Org")
+  (setq org-directory slj/org-directory)
   (setq org-ellipsis " ▾")
   (setq org-superstar-todo-bullet-alist
 	'(("TODO" . ?☐)
@@ -315,10 +318,7 @@
 	org-startup-with-inline-images t
 	org-image-actual-width '(300))
   (setq evil-auto-indent t)
-  (setq org-agenda-files
-	'("~/Nextcloud/Documents/Org/Projects/"
-	  "~/Nextcloud/Documents/Org/Tasks.org"
-	  "~/Nextcloud/Documents/Org/Habits.org"))
+  (setq org-agenda-files slj/org-agenda-files)
   (setq org-agenda-start-with-log-mode t)
   (setq org-log-time 'time)
   (setq org-log-into-drawer t)
@@ -328,9 +328,7 @@
         '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!)")
           (sequence "HOLD(h)" "WAITING(w)" "HAPPENING(H)" "PROJECT(p)" "|" "COMPLETED(c)" "CANCELLED(k@)")))
 
-  (setq org-refile-targets
-        '(("Archive.org" :maxlevel . 1)
-          ("Tasks.org" :maxlevel . 1)))
+  (setq org-refile-targets slj/org-refile-targets)
 
   (advice-add 'org-refile :after 'org-save-all-org-buffers)
 
@@ -381,30 +379,30 @@
 
   (setq org-capture-templates
         `(("t" "🏢 Tasks")
-          ("tt" "🔨 Task" entry (file+olp "~/Nextcloud/Documents/Org/Tasks.org" "Inbox")
+          ("tt" "🔨 Task" entry (file+olp ,(concat org-directory "/Tasks.org") "Inbox")
            "* TODO %?\n  %U\n  %a\n  %i" :empty-lines 1)
 
-          ("tn" "📩 Next" entry (file+olp "~/Nextcloud/Documents/Org/Tasks.org" "Inbox")
+          ("tn" "📩 Next" entry (file+olp ,(concat org-directory "/Tasks.org") "Inbox")
            "* NEXT %?\n  %U\n  %a\n  %i" :empty-lines 1)
 
           ("n" "📔 Notes")
 
           ("nl" "🎁 Wishlist" entry
-           (file+olp "~/Nextcloud/Documents/Org/Web-resources.org" "Wishlist")
+           (file+olp ,(concat org-directory "/Web-resources.org") "Wishlist")
            "** %(org-cliplink-capture)\n %U\n %a\n %i" :empty-lines 1)
 
           ("nw" "💨 Web resource" entry
-           (file+olp "~/Nextcloud/Documents/Org/Web-resources.org" "Inbox")
+           (file+olp ,(concat org-directory "/Web-resources.org") "Inbox")
            "** %(org-cliplink-capture)\n %U\n %a\n %i" :empty-lines 1)
 
           ("np" "🎵 Playlist item" entry
-           (file+olp "~/Nextcloud/Documents/Org/Playlists.org" "Inbox")
+           (file+olp ,(concat org-directory "/Playlists.org") "Inbox")
            "** %i\n %U\n %a" :empty-lines 1)
 
           ("g" "😞 Generic")
 
           ("gw" "Web resource" entry
-           (file+olp "~/Nextcloud/Documents/Org/Web-resources.org" "Inbox")
+           (file+olp ,(concat org-directory "/Web-resources.org") "Inbox")
            "%i" :empty-lines 1 :immediate-finish 1)))
 
   (slj/org-font-setup))
