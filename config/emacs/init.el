@@ -513,32 +513,29 @@ after it also inherit the fixed-pitch font."
           (lambda () 
             (set-face-attribute 'org-hide nil :inherit 'fixed-pitch)))
 
-;; Inspiration https://macowners.club/posts/org-capture-from-everywhere-macos/
-(use-package noflet)
-;; TODO: This is promising. Look further
-;; `emacsclient -a "" -e "(slj/org-capture/open-frame)"`
-;; Also look at https://www.reddit.com/r/orgmode/comments/uycc8m/spawn_a_new_frame_for_orgcapture/
-(defun slj/org-capture/open-frame ()
-  "Create a new frame and run `org-capture'."
-  (interactive)
-  (make-frame '((name . "capture")
-                (top . 300)
-                (left . 700)
-                (width . 80)
-                (height . 25)))
+;;; System org-capture
+;;; taken from: https://www.reddit.com/r/emacs/comments/74gkeq/system_wide_org_capture/
+;;; USAGE: emacsclient -c -F '(quote (name . "capture"))' -e '(slj/activate-capture-frame)'
+(defadvice org-switch-to-buffer-other-window
+    (after supress-window-splitting activate)
+  "Delete the extra window if we're in a capture frame"
+  (if (equal "capture" (frame-parameter nil 'name))
+      (delete-other-windows)))
+
+(defun slj/activate-capture-frame ()
+  "run org-capture in capture frame"
   (select-frame-by-name "capture")
-  (delete-other-windows)
-  (noflet ((switch-to-buffer-other-window (buf) (switch-to-buffer buf)))
-          (org-capture)))
+  (switch-to-buffer (get-buffer-create "*scratch*"))
+  (org-capture))
 
 (defadvice org-capture-finalize
     (after delete-capture-frame activate)
-  "Advise capture-finalize to close the frame."
-  (if (equal "capture" (frame-parameter nil 'name))
-      (delete-frame)))
+  "Advise capture-finalize to close the frame"
+  (when (and (equal "capture" (frame-parameter nil 'name))
+             (not (eq this-command 'org-capture-refile)))
+    (delete-frame)))
 
-(defadvice org-capture-destroy
+(defadvice org-capture-refile
     (after delete-capture-frame activate)
-  "Advise capture-destroy to close the frame."
-  (if (equal "capture" (frame-parameter nil 'name))
-      (delete-frame)))
+  "Advise org-refile to close the frame"
+  (delete-frame))
