@@ -522,17 +522,23 @@ after it also inherit the fixed-pitch font."
   (if (equal "capture" (frame-parameter nil 'name))
       (delete-other-windows)))
 
-(defun slj/activate-capture-frame ()
+(defun slj/org-capture/open-frame ()
   "run org-capture in capture frame"
   (select-frame-by-name "capture")
   (switch-to-buffer (get-buffer-create "*scratch*"))
   (org-capture))
 
+(defun slj/org-roam-capture/open-frame ()
+  "run org-capture in capture frame"
+  (select-frame-by-name "capture")
+  (switch-to-buffer (get-buffer-create "*scratch*"))
+  (org-roam-capture))
+
 (defadvice org-capture-finalize
     (after delete-capture-frame activate)
   "Advise capture-finalize to close the frame"
   (when (and (equal "capture" (frame-parameter nil 'name))
-             (not (eq this-command 'org-capture-refile)))
+	     (not (eq this-command 'org-capture-refile)))
     (delete-frame)))
 
 (defadvice org-capture-refile
