@@ -529,7 +529,7 @@ after it also inherit the fixed-pitch font."
   (org-capture))
 
 (defun slj/org-roam-capture/open-frame ()
-  "run org-capture in capture frame"
+  "run org-roam-capture in capture frame"
   (select-frame-by-name "capture")
   (switch-to-buffer (get-buffer-create "*scratch*"))
   (org-roam-capture))
