@@ -44,6 +44,16 @@ null_ls.setup({
     null_ls.builtins.formatting.black,
     null_ls.builtins.formatting.isort,
     null_ls.builtins.formatting.gofumpt,
+    null_ls.builtins.code_actions.eslint_d.with({
+      filetypes = {
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "svelte",
+        "vue",
+      },
+    }),
     null_ls.builtins.formatting.trim_whitespace,
     null_ls.builtins.formatting.shfmt.with({
       extra_args = { "-i", "2", "-ci" },
