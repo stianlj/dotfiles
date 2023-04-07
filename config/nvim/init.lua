@@ -1,3 +1,4 @@
+vim.loader.enable()
 require("settings")
 require("impatient")
 require("plugins-legacy/lsp-config")
