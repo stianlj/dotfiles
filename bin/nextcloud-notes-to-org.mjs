@@ -11,12 +11,12 @@ const LINKS_FOLDER = 'Links/'
 const LINKS_SYNCED_FOLDER = 'Links/Synced/'
 
 async function orgProtocolCaptureLink({ title, url }) {
-  const parameters = {
+  const parameters = parameterize({
     template: 'L',
     url,
     title: title.replace(/"/g, '\\"'),
-  }
-  return shell.exec(`emacsclient -n "org-protocol://capture?${parameterize(parameters)}"`)
+  })
+  return shell.exec(`emacsclient -n "org-protocol://capture?${parameters}"`)
 }
 
 async function linkFileContentHandler(filepath) {
