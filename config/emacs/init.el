@@ -401,13 +401,10 @@
 
           ("np" "🎵 Playlist item" entry
            (file+olp ,(concat org-directory "/Playlists.org") "Inbox")
-           "** %i\n %U\n %a" :empty-lines 1)
+	   "** %i\n %U\n %a" :empty-lines 1)
 
-          ("g" "😞 Generic")
-
-          ("gw" "Web resource" entry
-           (file+olp ,(concat org-directory "/Web-resources.org") "Inbox")
-           "%i" :empty-lines 1 :immediate-finish 1)))
+	  ("L" "Protocol Link" entry (file+headline ,(concat org-directory "/Web-resources.org") "Inbox")
+	   "** [[%:link][%:description]]\n %U" :empty-lines 1 :immediate-finish t)))
 
   (slj/org-font-setup))
 
@@ -415,6 +412,10 @@
  "Run consult-ripgrep on the org roam directory"
  (interactive)
  (consult-ripgrep org-roam-directory nil))
+
+(use-package org-protocol
+  :straight (:type built-in)
+  :after org)
 
 (use-package org-roam
   :ensure t
