@@ -457,6 +457,11 @@
 (use-package org-yt
   :straight (org-yt :type git :host github :repo "TobiasZawada/org-yt"))
 
+(use-package org-pandoc-import
+  :straight (:host github
+             :repo "tecosaur/org-pandoc-import"
+             :files ("*.el" "filters" "preprocessors")))
+
 (use-package magit
   :ensure t)
 
