@@ -70,13 +70,6 @@ return {
     dependencies = "nvim-treesitter/nvim-treesitter",
   },
   {
-    "SmiteshP/nvim-gps",
-    dependencies = "nvim-treesitter/nvim-treesitter",
-    config = function()
-      require("nvim-gps").setup({})
-    end,
-  },
-  {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
     config = function()
