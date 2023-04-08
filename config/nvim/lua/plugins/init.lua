@@ -196,13 +196,6 @@ return {
     end,
   },
   {
-    "folke/trouble.nvim",
-    dependencies = "nvim-tree/nvim-web-devicons",
-    config = function()
-      require("trouble").setup({})
-    end,
-  },
-  {
     "folke/which-key.nvim",
     config = function()
       require("plugins-legacy.which-key-config")

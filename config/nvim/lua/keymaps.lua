@@ -1,4 +1,5 @@
 local map = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 local default_opts = { noremap = true, silent = true }
 local whichKey = require("which-key")
 
@@ -17,11 +18,10 @@ whichKey.register({
   },
   c = {
     name = "Code",
-    d = { "<cmd>Telescope lsp_definitions theme=ivy<CR>", "Definitions" },
-    R = { "<cmd>Telescope lsp_references theme=ivy<CR>", "References" },
-    i = { "<cmd>Telescope lsp_implementations theme=ivy<CR>", "Implementations" },
+    f = { "<cmd>Lspsaga lsp_finder<CR>", "LSP Finder" },
+    d = { "<cmd>Lspsaga goto_definition<CR>", "Go to definition" },
+    D = { "<cmd>Lspsaga show_line_diagnostics<CR>", "Show line diagnostics" },
     a = { "<cmd>Lspsaga code_action<CR>", "Code actions" },
-    D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Declarations" },
     l = {
       name = "LSP",
       r = { "<cmd>Lspsaga rename ++project<CR>", "Rename" },
@@ -29,8 +29,7 @@ whichKey.register({
     r = "Rename",
     n = "Next usage",
     p = "Previous usage",
-    h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Documentaion" },
-    x = { "<cmd>TroubleToggle<CR>", "Project diagnostics" },
+    h = { "<cmd>Lspsaga hover_doc<CR>", "Documentaion" },
   },
   d = {
     name = "DAP (debug)",
@@ -108,13 +107,16 @@ whichKey.register({
   d = textObjects,
 })
 
-vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
-vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
-vim.keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
-vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
-vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
-vim.keymap.set("n", "<c-n>", "<Plug>(YankyCycleForward)")
-vim.keymap.set("n", "<c-p>", "<Plug>(YankyCycleBackward)")
+keymap({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+keymap({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+keymap({ "n", "x" }, "y", "<Plug>(YankyYank)")
+keymap({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+keymap({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
+keymap("n", "<c-n>", "<Plug>(YankyCycleForward)")
+keymap("n", "<c-p>", "<Plug>(YankyCycleBackward)")
+
+keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
 
 -- don't use arrow keys
 map("", "<up>", "<nop>", { noremap = true })
@@ -156,9 +158,3 @@ map("n", "<C-c><C-c>", ":x<CR>", default_opts)
 
 -- A poor mans meta-x in Vim
 map("n", "<M-x>", "<cmd>Telescope commands theme=ivy<CR>", default_opts)
-
-map("n", "<leader>xw", "<cmd>TroubleToggle lsp_workspace_diagnostics<CR>", default_opts)
-map("n", "<leader>xd", "<cmd>TroubleToggle lsp_document_diagnostics<CR>", default_opts)
-map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<CR>", default_opts)
-map("n", "<leader>xl", "<cmd>TroubleToggle loclist<CR>", default_opts)
-map("n", "gR", "<cmd>TroubleToggle lsp_references<CR>", default_opts)

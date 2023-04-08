@@ -24,28 +24,9 @@ require("mason-lspconfig").setup({
 
 require("neodev").setup({})
 
--- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#customizing-how-diagnostics-are-displayed
-local default_on_attach = function(_, bufnr)
-  vim.api.nvim_create_autocmd("CursorHold", {
-    buffer = bufnr,
-    callback = function()
-      local opts = {
-        focusable = false,
-        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-        border = "rounded",
-        source = "always",
-        prefix = " ",
-        scope = "cursor",
-      }
-      vim.diagnostic.open_float(nil, opts)
-    end,
-  })
-end
-
 local lsp_config = require("lspconfig")
 
 lsp_config.util.default_config = vim.tbl_extend("force", lsp_config.util.default_config, {
-  on_attach = default_on_attach,
   capabilities = cmp_nvim_lsp.default_capabilities(),
 })
 
