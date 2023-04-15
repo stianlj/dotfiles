@@ -318,6 +318,8 @@
   (setq org-startup-indented t
 	org-adapt-indentation t
 	org-pretty-entities t
+	org-pretty-entities-include-sub-superscripts t
+	org-use-sub-superscripts '{}
 	org-hide-emphasis-markers t
 	org-startup-with-inline-images t
 	org-image-actual-width '(300))
