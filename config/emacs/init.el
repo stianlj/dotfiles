@@ -324,6 +324,9 @@
 	org-startup-with-inline-images t
 	org-image-actual-width '(300))
   (setq evil-auto-indent t)
+  (setq org-refile-use-outline-path 'file)
+  (setq org-outline-path-complete-in-steps nil)
+  (setq org-refile-allow-creating-parent-nodes 'confirm)
   (setq org-agenda-files slj/org-agenda-files)
   (setq org-agenda-start-with-log-mode t)
   (setq org-log-time 'time)
