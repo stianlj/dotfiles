@@ -15,6 +15,7 @@ bind p fish_clipboard_paste
 
 alias ls='exa --git --extended --octal-permissions'
 alias la='exa --git --extended --octal-permissions -la'
+alias tree='et -I --dirs-first'
 
 
 abbr --add --global vi 'nvim'
