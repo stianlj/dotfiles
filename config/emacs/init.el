@@ -14,9 +14,8 @@
 (straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
 
+(setq auto-save-default nil)
 (use-package no-littering)
-(setq auto-save-file-name-transforms
-      `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
 
 (setq inhibit-startup-message t
       visible-bell t)
@@ -63,6 +62,7 @@
   (add-to-list 'recentf-exclude no-littering-var-directory)
   (add-to-list 'recentf-exclude no-littering-etc-directory)
   (add-to-list 'recentf-exclude slj/dotfiles-directory)
+  (add-to-list 'recentf-exclude slj/recentf-exclude-directories)
   (recentf-mode 1)
   (setq recentf-max-menu-items 25)
   (setq recentf-max-saved-items 25))
