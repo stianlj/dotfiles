@@ -124,11 +124,15 @@ map("", "<down>", "<nop>", { noremap = true })
 map("", "<left>", "<nop>", { noremap = true })
 map("", "<right>", "<nop>", { noremap = true })
 
--- move around splits using Ctrl + {h,j,k,l}
-map("n", "<C-h>", "<C-w>h", default_opts)
-map("n", "<C-j>", "<C-w>j", default_opts)
-map("n", "<C-k>", "<C-w>k", default_opts)
-map("n", "<C-l>", "<C-w>l", default_opts)
+keymap("n", "<A-h>", require("smart-splits").resize_left)
+keymap("n", "<A-j>", require("smart-splits").resize_down)
+keymap("n", "<A-k>", require("smart-splits").resize_up)
+keymap("n", "<A-l>", require("smart-splits").resize_right)
+
+keymap("n", "<C-h>", require("smart-splits").move_cursor_left)
+keymap("n", "<C-j>", require("smart-splits").move_cursor_down)
+keymap("n", "<C-k>", require("smart-splits").move_cursor_up)
+keymap("n", "<C-l>", require("smart-splits").move_cursor_right)
 
 for i = 1, 9 do
   map("n", "<M-" .. i .. ">", "<cmd>BufferLineGoToBuffer " .. i .. "<CR>", default_opts)
