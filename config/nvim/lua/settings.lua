@@ -64,3 +64,11 @@ vim.cmd([[
     autocmd BufRead,BufNewFile *.hurl set filetype=hurl
   augroup END
 ]])
+
+vim.cmd([[
+  augroup remember_folds
+    autocmd!
+    autocmd BufWinLeave *.* mkview
+    autocmd BufWinEnter *.* silent! loadview
+  augroup END
+]])
