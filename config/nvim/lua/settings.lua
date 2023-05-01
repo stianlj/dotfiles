@@ -53,6 +53,7 @@ o.listchars:append("eol:↴")
 o.spelllang = { "en", "nb" }
 
 require("lazy").setup("plugins")
+require("custom-signs")
 
 -- TODO: Use neovim built-in API instead of this
 -- OR https://github.com/neovim/neovim/pull/16600#issuecomment-990409210
