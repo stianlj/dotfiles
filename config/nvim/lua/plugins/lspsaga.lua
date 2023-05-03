@@ -10,8 +10,7 @@ return {
         num_shortcut = false,
       },
       symbol_in_winbar = {
-        hide_keyword = false,
-        show_file = false,
+        enable = false,
       },
     })
   end,
