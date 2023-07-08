@@ -154,9 +154,6 @@ map("s", "<S-Tab>", "<cmd>lua require('luasnip').jump(-1)<CR>", default_opts)
 map("i", "<Tab>", "<cmd>lua require('luasnip').jump(1)<CR>", { noremap = false, silent = true })
 map("i", "<S-Tab>", "<cmd>lua require('luasnip').jump(-1)<CR>", default_opts)
 
--- Hop keys
-map("n", "s", "<cmd>lua require('hop').hint_words()<CR>", default_opts)
-
 -- Allow for more emaces-like buffer close (because I'm too used to magit)
 map("n", "<C-c><C-c>", ":x<CR>", default_opts)
 

@@ -9,13 +9,6 @@ return {
     end,
   },
   {
-    "phaazon/hop.nvim",
-    branch = "v1",
-    config = function()
-      require("plugins-legacy.hop-config")
-    end,
-  },
-  {
     "akinsho/bufferline.nvim",
     dependencies = "nvim-tree/nvim-web-devicons",
     version = "*",
