@@ -84,7 +84,6 @@ return {
       require("plugins-legacy.treesitter-context-config")
     end,
   },
-  "mrjones2014/nvim-ts-rainbow",
   {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
