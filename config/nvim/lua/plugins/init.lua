@@ -1,7 +1,6 @@
 return {
   "lewis6991/impatient.nvim",
   "dstein64/vim-startuptime",
-  "JoosepAlviste/nvim-ts-context-commentstring",
   {
     "numToStr/Comment.nvim",
     config = function()
@@ -59,29 +58,10 @@ return {
     end,
   },
   {
-    "nvim-treesitter/nvim-treesitter-refactor",
-    dependencies = "nvim-treesitter/nvim-treesitter",
-  },
-  {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
     config = function()
       require("plugins-legacy.lualine-config")
-    end,
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    config = function()
-      require("plugins-legacy.treesitter-config")
-    end,
-  },
-  "nvim-treesitter/nvim-treesitter-textobjects",
-  "nvim-treesitter/playground",
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    config = function()
-      require("plugins-legacy.treesitter-context-config")
     end,
   },
   {
