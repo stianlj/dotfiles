@@ -6,6 +6,7 @@ require("nvim-treesitter.configs").setup({
     "jsdoc",
     "svelte",
     "typescript",
+    "tsx",
     "html",
     "css",
     "lua",
@@ -22,6 +23,7 @@ require("nvim-treesitter.configs").setup({
     "graphql",
     "sql",
     "yaml",
+    "toml",
     "markdown",
     "http",
     "hurl",
@@ -29,6 +31,7 @@ require("nvim-treesitter.configs").setup({
     "diff",
     "vim",
     "vimdoc",
+    "regex",
   },
   highlight = {
     enable = true,
