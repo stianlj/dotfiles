@@ -27,6 +27,8 @@ require("nvim-treesitter.configs").setup({
     "hurl",
     "dockerfile",
     "diff",
+    "vim",
+    "vimdoc",
   },
   highlight = {
     enable = true,
