@@ -1,14 +1,41 @@
 return {
   "JoosepAlviste/nvim-ts-context-commentstring",
   {
-    "nvim-treesitter/nvim-treesitter-refactor",
-    dependencies = "nvim-treesitter/nvim-treesitter",
-  },
-  {
     "Wansmer/treesj",
     -- [[ keys = { "<space>m", "<space>j", "<space>s" }, ]]
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = true,
+  },
+  {
+    "HiPhish/rainbow-delimiters.nvim",
+    lazy = false,
+    config = function()
+      local rainbow_delimiters = require("rainbow-delimiters")
+
+      vim.g.rainbow_delimiters = {
+        strategy = {
+          [""] = rainbow_delimiters.strategy["global"],
+          vim = rainbow_delimiters.strategy["local"],
+        },
+        query = {
+          [""] = "rainbow-delimiters",
+          lua = "rainbow-blocks",
+        },
+        highlight = {
+          "RainbowDelimiterRed",
+          "RainbowDelimiterYellow",
+          "RainbowDelimiterBlue",
+          "RainbowDelimiterOrange",
+          "RainbowDelimiterGreen",
+          "RainbowDelimiterViolet",
+          "RainbowDelimiterCyan",
+        },
+      }
+    end,
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-refactor",
+    dependencies = "nvim-treesitter/nvim-treesitter",
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
