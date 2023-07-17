@@ -19,6 +19,7 @@ require("mason-lspconfig").setup({
     "jsonls",
     "gopls",
     "golangci_lint_ls",
+    "rust_analyzer",
   },
 })
 
@@ -36,9 +37,9 @@ lsp_config.util.default_config.capabilities.textDocument.foldingRange = {
 }
 
 lsp_config.bashls.setup({})
+lsp_config.rust_analyzer.setup({})
 lsp_config.pyright.setup({})
 lsp_config.emmet_ls.setup({})
-lsp_config.tsserver.setup({})
 lsp_config.svelte.setup({})
 lsp_config.gopls.setup({})
 lsp_config.golangci_lint_ls.setup({})
