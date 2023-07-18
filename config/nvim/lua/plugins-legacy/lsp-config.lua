@@ -55,12 +55,8 @@ lsp_config.lua_ls.setup({
 lsp_config.jsonls.setup({
   settings = {
     json = {
-      schemas = {
-        {
-          fileMatch = { "package.json" },
-          url = "https://json.schemastore.org/package.json",
-        },
-      },
+      schemas = require("schemastore").json.schemas(),
+      validate = { enable = true },
     },
   },
 })
@@ -150,11 +146,11 @@ lsp_config.intelephense.setup({
 lsp_config.yamlls.setup({
   settings = {
     yaml = {
-      validate = true,
-      schemas = {
-        ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-        ["kubernetes"] = "/.kubernetes/*.yaml",
+      schemaStore = {
+        enable = false,
       },
+      schemas = require("schemastore").yaml.schemas(),
+      validate = true,
     },
   },
 })

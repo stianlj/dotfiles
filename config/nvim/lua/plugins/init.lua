@@ -137,6 +137,7 @@ return {
     },
   },
   "evanleck/vim-svelte",
+  "b0o/schemastore.nvim",
   "nvim-telescope/telescope-ui-select.nvim",
   { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
   {
