@@ -143,6 +143,12 @@ map("n", "<M-k>", ":m .-2<CR>==", default_opts)
 map("v", "<M-j>", ":m '>+1<CR>gv=gv", default_opts)
 map("v", "<M-k>", ":m '<-2<CR>gv=gv", default_opts)
 
+-- harpoon
+keymap("n", "<M-m>", require("harpoon.mark").add_file)
+keymap("n", "<M-h>", require("harpoon.ui").toggle_quick_menu)
+keymap("n", "<M-Tab>", require("harpoon.ui").nav_next)
+keymap("n", "<M-S-Tab>", require("harpoon.ui").nav_prev)
+
 map("v", "<leader>y", '"+y', default_opts)
 
 map("n", "n", "nzzzv", default_opts)
