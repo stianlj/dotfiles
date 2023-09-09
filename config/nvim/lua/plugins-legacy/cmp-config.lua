@@ -12,6 +12,7 @@ cmp.setup({
     { name = "nvim_lua" },
     { name = "nvim_lsp" },
     { name = "path" },
+    { name = "vim-dadbod-completion" },
     { name = "luasnip", keyword_length = 1 },
     { name = "buffer", keyword_length = 5 },
     { name = "emoji" },
