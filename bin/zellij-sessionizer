@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+if [ "$1" != "" ]; then
+  session=$1
+else
+  session=$(find ~/Code -mindepth 1 -maxdepth 1 -type d,l | fzf)
+fi
+
+session_name=$(basename "$session")
+
+if ! zellij list-sessions | grep "$session_name"; then
+  echo "did not find session"
+  cd "$session"
+  zellij --session "$session_name"
+else
+  zellij attach "$session_name"
+fi
+
+# if [ "$TMUX" != "" ]; then
+#   tmux switch-client -t "$session_name"
+# else
+#   tmux attach -t "$session_name"
+# fi
