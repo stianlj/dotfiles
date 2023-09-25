@@ -24,6 +24,7 @@ g.localleader = " "
 o.termguicolors = true
 
 o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+o.fillchars:append({ diff = "╱" })
 o.foldcolumn = "1"
 o.foldlevel = 99
 o.foldlevelstart = 99
@@ -46,7 +47,7 @@ o.hidden = true
 o.wrap = false
 o.cursorline = true
 o.list = true
-o.cmdheight = 0
+o.cmdheight = 1
 o.listchars:append("space:⋅")
 o.listchars:append("eol:↴")
 --[[ o.spell = true ]]
