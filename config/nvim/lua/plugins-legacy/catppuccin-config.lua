@@ -1,10 +1,11 @@
-vim.g.catppuccin_flavour = "mocha"
+vim.g.catppuccin_flavour = "frappe"
 local colors = require("catppuccin.palettes").get_palette()
 
 require("catppuccin").setup({
   dim_inactive = {
     enabled = true,
   },
+  harpoon = true,
   styles = {
     comments = { "bold", "italic" },
     conditionals = { "italic" },
