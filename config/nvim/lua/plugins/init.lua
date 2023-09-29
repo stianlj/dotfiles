@@ -44,12 +44,6 @@ return {
   "theRealCarneiro/hyprland-vim-syntax",
   "stevearc/dressing.nvim",
   {
-    "lukas-reineke/indent-blankline.nvim",
-    config = function()
-      require("plugins-legacy.indent-blankline-config")
-    end,
-  },
-  {
     "catppuccin/nvim",
     name = "catppuccin",
     build = ":CatppuccinCompile",
