@@ -1,4 +1,3 @@
--- TODO: Toggle breakpoint kind of look kind of out of place. It also moves the gitsigns
 return {
   "luukvbaal/statuscol.nvim",
   config = function()
@@ -12,15 +11,13 @@ return {
           click = "v:lua.ScSa",
         },
         {
-          sign = {
-            name = { "todo*" },
-            maxwidth = 1,
-          },
+          sign = { name = { "Dap*" }, auto = true },
+          click = "v:lua.ScSa",
         },
         { text = { builtin.lnumfunc }, click = "v:lua.ScLa" },
         {
           sign = { namespace = { "gitsign*" } },
-          click = "v:lua:ScSa",
+          click = "v:lua.ScSa",
         },
       },
     })
