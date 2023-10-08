@@ -59,12 +59,12 @@ return {
       require("plugins-legacy.lualine-config")
     end,
   },
-  {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig",
-    "folke/neodev.nvim",
-  },
+  --[[ { ]]
+  --[[   "williamboman/mason.nvim", ]]
+  --[[   "williamboman/mason-lspconfig.nvim", ]]
+  --[[   "neovim/nvim-lspconfig", ]]
+  --[[   "folke/neodev.nvim", ]]
+  --[[ }, ]]
   "jbyuki/one-small-step-for-vimkind",
   {
     "rcarriga/nvim-dap-ui",
@@ -73,28 +73,28 @@ return {
       require("plugins-legacy.dap-config")
     end,
   },
-  {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      "L3MON4D3/LuaSnip",
-      "onsails/lspkind-nvim",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-nvim-lua",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-emoji",
-    },
-    config = function()
-      require("plugins-legacy.cmp-config")
-    end,
-  },
+  --[[ { ]]
+  --[[   "hrsh7th/nvim-cmp", ]]
+  --[[   dependencies = { ]]
+  --[[     "L3MON4D3/LuaSnip", ]]
+  --[[     "onsails/lspkind-nvim", ]]
+  --[[     "hrsh7th/cmp-buffer", ]]
+  --[[     "hrsh7th/cmp-nvim-lsp", ]]
+  --[[     "hrsh7th/cmp-nvim-lua", ]]
+  --[[     "hrsh7th/cmp-path", ]]
+  --[[     "hrsh7th/cmp-emoji", ]]
+  --[[   }, ]]
+  --[[   config = function() ]]
+  --[[     require("plugins-legacy.cmp-config") ]]
+  --[[   end, ]]
+  --[[ }, ]]
   {
     "rafamadriz/friendly-snippets",
     config = function()
       require("luasnip/loaders/from_vscode").lazy_load()
     end,
   },
-  "saadparwaiz1/cmp_luasnip",
+  --[[ "saadparwaiz1/cmp_luasnip", ]]
   {
     "norcalli/nvim-colorizer.lua",
     config = function()
