@@ -177,5 +177,5 @@ simplified_ui true
 default_shell "fish"
 pane_frames false
 theme "catppuccin-mocha"
-copy_command "wl-copy"                    // wayland
+copy_command "wl-copy"
 mirror_session true
