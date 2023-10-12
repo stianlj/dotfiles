@@ -159,13 +159,4 @@ return {
       require("plugins-legacy.which-key-config")
     end,
   },
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    config = function()
-      require("plugins-legacy.null-ls-config")
-    end,
-  },
 }
