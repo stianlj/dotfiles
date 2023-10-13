@@ -1,5 +1,4 @@
 return {
-  "lewis6991/impatient.nvim",
   "dstein64/vim-startuptime",
   {
     "numToStr/Comment.nvim",
@@ -11,6 +10,7 @@ return {
     "akinsho/bufferline.nvim",
     dependencies = "nvim-tree/nvim-web-devicons",
     version = "*",
+    enabled = false,
     config = function()
       require("plugins-legacy.bufferline-config")
     end,
@@ -58,12 +58,12 @@ return {
       require("plugins-legacy.lualine-config")
     end,
   },
-  {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig",
-    "folke/neodev.nvim",
-  },
+  --[[ { ]]
+  --[[   "williamboman/mason.nvim", ]]
+  --[[   "williamboman/mason-lspconfig.nvim", ]]
+  --[[   "neovim/nvim-lspconfig", ]]
+  --[[   "folke/neodev.nvim", ]]
+  --[[ }, ]]
   "jbyuki/one-small-step-for-vimkind",
   {
     "rcarriga/nvim-dap-ui",
@@ -72,28 +72,28 @@ return {
       require("plugins-legacy.dap-config")
     end,
   },
-  {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      "L3MON4D3/LuaSnip",
-      "onsails/lspkind-nvim",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-nvim-lua",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-emoji",
-    },
-    config = function()
-      require("plugins-legacy.cmp-config")
-    end,
-  },
+  --[[ { ]]
+  --[[   "hrsh7th/nvim-cmp", ]]
+  --[[   dependencies = { ]]
+  --[[     "L3MON4D3/LuaSnip", ]]
+  --[[     "onsails/lspkind-nvim", ]]
+  --[[     "hrsh7th/cmp-buffer", ]]
+  --[[     "hrsh7th/cmp-nvim-lsp", ]]
+  --[[     "hrsh7th/cmp-nvim-lua", ]]
+  --[[     "hrsh7th/cmp-path", ]]
+  --[[     "hrsh7th/cmp-emoji", ]]
+  --[[   }, ]]
+  --[[   config = function() ]]
+  --[[     require("plugins-legacy.cmp-config") ]]
+  --[[   end, ]]
+  --[[ }, ]]
   {
     "rafamadriz/friendly-snippets",
     config = function()
       require("luasnip/loaders/from_vscode").lazy_load()
     end,
   },
-  "saadparwaiz1/cmp_luasnip",
+  --[[ "saadparwaiz1/cmp_luasnip", ]]
   {
     "norcalli/nvim-colorizer.lua",
     config = function()
@@ -157,15 +157,6 @@ return {
     "folke/which-key.nvim",
     config = function()
       require("plugins-legacy.which-key-config")
-    end,
-  },
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    config = function()
-      require("plugins-legacy.null-ls-config")
     end,
   },
 }

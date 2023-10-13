@@ -22,3 +22,11 @@ truncation_symbol = "…/"
 
 [git_metrics]
 disabled = false
+
+[character]
+success_symbol = '[ INS ](bold bg:green fg:black) ❯'
+error_symbol = '[ INS ](bold bg:red fg:black) ❯'
+vimcmd_symbol = '[ NOR ](bold bg:blue fg:black) ❯'
+vimcmd_replace_one_symbol = '[ REP ](bold bg:cyan fg:black) ❯'
+vimcmd_replace_symbol = '[ REP ](bold bg:cyan fg:black) ❯'
+vimcmd_visual_symbol = '[ VIS ](bold bg:purple fg:black) ❯'

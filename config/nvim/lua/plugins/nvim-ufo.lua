@@ -29,6 +29,7 @@ end
 return {
   "kevinhwang91/nvim-ufo",
   event = "VeryLazy",
+  enabled = true,
   dependencies = { "kevinhwang91/promise-async" },
   config = function()
     require("ufo").setup({
