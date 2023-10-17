@@ -1,32 +1,28 @@
 add_newline = false
 format = """
+$status\
 $hostname\
 $directory\
-$git_branch\
-$git_commit\
-$git_state\
-$git_metrics\
-$git_status\
-$cmd_duration\
-$status\
 $character"""
+
+right_format = """$all"""
 
 [line_break]
 disabled = true
 
-[cmd_duration]
-format = "⏳ ($duration) (bold yellow)"
-
 [directory]
 truncation_symbol = "…/"
+
+[status]
+disabled = false
 
 [git_metrics]
 disabled = false
 
 [character]
-success_symbol = '[ INS ](bold bg:green fg:black) ❯'
-error_symbol = '[ INS ](bold bg:red fg:black) ❯'
-vimcmd_symbol = '[ NOR ](bold bg:blue fg:black) ❯'
-vimcmd_replace_one_symbol = '[ REP ](bold bg:cyan fg:black) ❯'
-vimcmd_replace_symbol = '[ REP ](bold bg:cyan fg:black) ❯'
-vimcmd_visual_symbol = '[ VIS ](bold bg:purple fg:black) ❯'
+success_symbol = '[ INS ](bold bg:green fg:#11111b) ➜'
+error_symbol = '[ INS ](bold bg:red fg:#11111b) ➜'
+vimcmd_symbol = '[ NOR ](bold bg:blue fg:#11111b) ➜'
+vimcmd_replace_one_symbol = '[ REP ](bold bg:cyan fg:#11111b) ➜'
+vimcmd_replace_symbol = '[ REP ](bold bg:cyan fg:#11111b) ➜'
+vimcmd_visual_symbol = '[ VIS ](bold bg:purple fg:#11111b) ➜'
