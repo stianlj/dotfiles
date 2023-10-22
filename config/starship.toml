@@ -14,6 +14,7 @@ disabled = true
 truncation_symbol = "…/"
 
 [status]
+symbol = '🔴 '
 disabled = false
 
 [git_metrics]
@@ -21,7 +22,7 @@ disabled = false
 
 [character]
 success_symbol = '[ INSERT ](bold bg:green fg:#11111b) ➜'
-error_symbol = '[ INSERT ](bold bg:red fg:#11111b) ➜'
+error_symbol = '[ INSERT ](bold bg:green fg:#11111b) ➜'
 vimcmd_symbol = '[ NORMAL ](bold bg:blue fg:#11111b) ➜'
 vimcmd_replace_one_symbol = '[ REPLACE ](bold bg:cyan fg:#11111b) ➜'
 vimcmd_replace_symbol = '[ REPLACE ](bold bg:cyan fg:#11111b) ➜'
