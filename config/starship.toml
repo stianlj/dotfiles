@@ -19,6 +19,13 @@ disabled = false
 [git_metrics]
 disabled = false
 
+[kubernetes]
+disabled = false
+format = '[$symbol$context( \($namespace\))]($style) '
+
+[gcloud]
+disabled = true
+
 [character]
 success_symbol = '[ INS ](bold bg:green fg:#11111b) ➜'
 error_symbol = '[ INS ](bold bg:red fg:#11111b) ➜'
