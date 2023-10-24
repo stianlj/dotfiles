@@ -65,6 +65,7 @@ window#waybar.hidden {
 #memory,
 #disk,
 #temperature,
+#custom-maildir,
 #backlight,
 #network,
 #pulseaudio,
@@ -102,6 +103,7 @@ window#waybar.hidden {
   margin: 5px 0;
 }
 
+#custom-maildir,
 #battery,
 #clock {
   background-color: #302d41;
@@ -114,6 +116,18 @@ window#waybar.hidden {
   padding-top: 8px;
   color: #96cdfb;
   font-size: 25px;
+}
+
+#custom-maildir {
+  padding-top: 8px;
+  color: #96cdfb;
+  /* font-size: 25px; */
+}
+
+#custom-maildir.newmail {
+  background-color: #a6da95;
+  color: #11111b;
+  /* font-size: 25px; */
 }
 
 /* #battery { */

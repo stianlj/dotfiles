@@ -11,7 +11,7 @@
         "exclusive": true,
         "output": "DP-1",
         "modules-left": ["hyprland/workspaces"],
-        "modules-right": ["custom/maildir" ,"clock", "tray"],
+        "modules-right": ["custom/pomodoro", "custom/maildir" ,"clock", "tray"],
         "hyprland/window": {
             "separate-outputs": true
         },
@@ -76,6 +76,12 @@
         "custom/maildir": {
             "exec": "~/bin/waybar-maildir.sh ~/Mail/Main/INBOX/new $USER_MAIL_ADDRESS",
             "format": " {}",
+            "return-type": "json"
+        },
+        "custom/pomodoro": {
+            "exec": "~/bin/pomodoro-status.sh",
+            "format": "🍅 {}",
+            "interval": "2",
             "return-type": "json"
         }
     }
