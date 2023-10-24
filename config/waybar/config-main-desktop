@@ -81,7 +81,7 @@
         "custom/pomodoro": {
             "exec": "~/bin/pomodoro-status.sh",
             "format": "🍅 {}",
-            "interval": "2",
+            "interval": 1,
             "return-type": "json"
         }
     }

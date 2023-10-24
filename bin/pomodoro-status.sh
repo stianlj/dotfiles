@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # TODO: Pomodoro in general:
-# * Fix interval
 # * Keyboard shortcuts in Hyprland
 # * Style
 # * Find a way to implement automatic break
