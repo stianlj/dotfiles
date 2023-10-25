@@ -10,16 +10,15 @@
         "layer": "top",
         "exclusive": true,
         "output": "DP-1",
-        "modules-left": ["wlr/workspaces"],
-        "modules-right": ["clock", "tray"],
+        "modules-left": ["hyprland/workspaces"],
+        "modules-right": ["custom/pomodoro", "custom/maildir" ,"clock", "tray"],
         "hyprland/window": {
-            "separate-outputs": false
+            "separate-outputs": true
         },
-        "wlr/workspaces": {
+        "hyprland/workspaces": {
             "on-click": "activate",
-            "format": "<span font='Font Awesome 6 Free Solid' size='15pt'>{icon}</span> <span color='#6e6c7e' size='8pt'>/{name}</span>",
             "all-outputs": true,
-            "active-only": false,
+            "format": "<span font='Font Awesome 6 Free Solid' size='15pt'>{icon}</span> <span color='#6e6c7e' size='8pt'>/{name}</span>",
             "format-icons": {
                 "1": "",
                 "2": "",
@@ -31,6 +30,9 @@
                 "8": "",
                 "9": "",
                 "10": ""
+            },
+            "persistent-workspaces": {
+                "*": 10
             },
             "sort-by-number": true
         },
@@ -70,6 +72,17 @@
                 "default": ["", "", ""]
             },
             "on-click": "pavucontrol"
+        },
+        "custom/maildir": {
+            "exec": "~/bin/waybar-maildir.sh ~/Mail/Main/INBOX/new $USER_MAIL_ADDRESS",
+            "format": " {}",
+            "return-type": "json"
+        },
+        "custom/pomodoro": {
+            "exec": "~/bin/pomodoro-status.sh",
+            "format": "🍅 {}",
+            "interval": 1,
+            "return-type": "json"
         }
     }
 ]
