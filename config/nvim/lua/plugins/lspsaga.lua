@@ -10,7 +10,7 @@ return {
         num_shortcut = false,
       },
       symbol_in_winbar = {
-        enable = true,
+        enable = false,
       },
     })
   end,
