@@ -1,12 +1,6 @@
 return {
   "dstein64/vim-startuptime",
   {
-    "numToStr/Comment.nvim",
-    config = function()
-      require("plugins-legacy.comment-config")
-    end,
-  },
-  {
     "akinsho/bufferline.nvim",
     dependencies = "nvim-tree/nvim-web-devicons",
     version = "*",

@@ -10,25 +10,32 @@
         "layer": "top",
         "exclusive": true,
         "output": "DP-1",
-        "modules-left": ["hyprland/workspaces"],
-        "modules-right": ["custom/pomodoro", "custom/maildir" ,"clock", "tray"],
+        "modules-left": [
+            "hyprland/workspaces"
+        ],
+        "modules-right": [
+            "custom/pomodoro",
+            "custom/maildir",
+            "clock",
+            "tray"
+        ],
         "hyprland/window": {
             "separate-outputs": true
         },
         "hyprland/workspaces": {
             "on-click": "activate",
             "all-outputs": true,
-            "format": "<span font='Font Awesome 6 Free Solid' size='15pt'>{icon}</span> <span color='#6e6c7e' size='8pt'>/{name}</span>",
+            "format": "<span size='15pt'>{icon}</span> <span color='#6e6c7e' size='8pt'>/{name}</span>",
             "format-icons": {
                 "1": "",
                 "2": "",
-                "3": "",
-                "4": "",
+                "3": "",
+                "4": "",
                 "5": "",
-                "6": "",
-                "7": "",
-                "8": "",
-                "9": "",
+                "6": "󰩪",
+                "7": "󰝚",
+                "8": "󰝚",
+                "9": "󰝚",
                 "10": ""
             },
             "persistent-workspaces": {
@@ -45,33 +52,19 @@
             "format": "<span weight='bold' size='20pt'>{:%H\n%M</span>\n<span size='8pt'>%d/%m</span>}",
             "tooltip-format": "<span font_family='Ubuntu Mono'><big>{:%d. %B %Y}</big>\n\n<tt><small>{calendar}</small></tt></span>",
             "calendar": {
-                "mode"          : "year",
-                "mode-mon-col"  : 3,
-                "weeks-pos"     : "right",
-                "on-scroll"     : 1,
+                "mode": "year",
+                "mode-mon-col": 3,
+                "weeks-pos": "right",
+                "on-scroll": 1,
                 "on-click-right": "mode",
                 "format": {
-                    "months":     "<span color='#ffead3'><b>{}</b></span>",
-                    "days":       "<span color='#ecc6d9'><b>{}</b></span>",
-                    "weeks":      "<span color='#99ffdd'><b>Uke {}</b></span>",
-                    "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-                    "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                    "months": "<span color='#ffead3'><b>{}</b></span>",
+                    "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                    "weeks": "<span color='#99ffdd'><b>Uke {}</b></span>",
+                    "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                    "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
                 }
             }
-        },
-        "pulseaudio": {
-            "format": "{volume}% {icon}",
-            "format-muted": "",
-            "format-icons": {
-                "headphone": "",
-                "hands-free": "",
-                "headset": "",
-                "phone": "",
-                "portable": "",
-                "car": "",
-                "default": ["", "", ""]
-            },
-            "on-click": "pavucontrol"
         },
         "custom/maildir": {
             "exec": "~/bin/waybar-maildir.sh ~/Mail/Main/INBOX/new $USER_MAIL_ADDRESS",
@@ -80,7 +73,7 @@
         },
         "custom/pomodoro": {
             "exec": "~/bin/pomodoro-status.sh",
-            "format": "🍅 {}",
+            "format": " {}",
             "interval": 1,
             "return-type": "json"
         }
