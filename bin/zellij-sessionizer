@@ -13,7 +13,7 @@ if ! zellij list-sessions | grep "$session_name"; then
   cd "$session"
   zellij --session "$session_name" --layout compact
 else
-  zellij attach "$session_name" --layout compact
+  zellij --layout compact attach "$session_name"
 fi
 
 # if [ "$TMUX" != "" ]; then
