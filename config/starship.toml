@@ -14,7 +14,7 @@ disabled = true
 truncation_symbol = "…/"
 
 [status]
-symbol = '🔴 '
+symbol = '(fg:#d20f39)  '
 disabled = false
 
 [git_metrics]
