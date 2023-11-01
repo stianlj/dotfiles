@@ -69,16 +69,18 @@
             }
         },
         "custom/github-notifications": {
-            "exec": "gh api notifications | jq '. | length'",
+            "exec": "~/bin/github-status-notifications.sh",
             "format": "󰊤 {}",
             "interval": 60,
-            "on-click": "xdg-open 'https://github.com/notifications?query=is%3Aunread'"
+            "on-click": "xdg-open 'https://github.com/notifications?query=is%3Aunread'",
+            "return-type": "json"
         },
         "custom/github-pr": {
-            "exec": "gh search prs --state=open --review-requested=@me --json repository | jq '. | length'",
+            "exec": "~/bin/github-status-pr.sh",
             "format": " {}",
             "interval": 60,
-            "on-click": "xdg-open 'https://github.com/pulls/review-requested'"
+            "on-click": "xdg-open 'https://github.com/pulls/review-requested'",
+            "return-type": "json"
         },
         "custom/maildir": {
             "exec": "~/bin/waybar-maildir.sh ~/Mail/Main/INBOX/new $USER_MAIL_ADDRESS",
