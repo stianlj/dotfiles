@@ -14,6 +14,8 @@
             "hyprland/workspaces"
         ],
         "modules-right": [
+            "custom/github-notifications",
+            "custom/github-pr",
             "custom/pomodoro",
             "custom/maildir",
             "clock",
@@ -65,6 +67,18 @@
                     "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
                 }
             }
+        },
+        "custom/github-notifications": {
+            "exec": "gh api notifications | jq '. | length'",
+            "format": "󰊤 {}",
+            "interval": 60,
+            "on-click": "xdg-open 'https://github.com/notifications?query=is%3Aunread'"
+        },
+        "custom/github-pr": {
+            "exec": "gh search prs --state=open --review-requested=@me --json repository | jq '. | length'",
+            "format": " {}",
+            "interval": 60,
+            "on-click": "xdg-open 'https://github.com/pulls/review-requested'"
         },
         "custom/maildir": {
             "exec": "~/bin/waybar-maildir.sh ~/Mail/Main/INBOX/new $USER_MAIL_ADDRESS",
