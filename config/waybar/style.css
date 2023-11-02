@@ -1,6 +1,6 @@
 * {
   /* `otf-font-awesome` is required to be installed for icons */
-  font-family: MonoLisa;
+  font-family: MonoLisa, 'Symbols Nerd Font Mono';
   font-size: 16px;
 }
 
@@ -17,7 +17,7 @@ window#waybar.hidden {
 #workspaces {
   background-color: #302d41;
   border-radius: 5px;
-  padding: 1px;
+  padding: 1px 3px;
 }
 
 #workspaces button {
