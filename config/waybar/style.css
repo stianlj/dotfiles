@@ -1,6 +1,6 @@
 * {
   /* `otf-font-awesome` is required to be installed for icons */
-  font-family: MonoLisa, 'Symbols Nerd Font Mono';
+  font-family: MonoLisa, "Symbols Nerd Font Mono";
   font-size: 16px;
 }
 
@@ -106,6 +106,9 @@ window#waybar.hidden {
 
 #network,
 #tray,
+#custom-github-pr,
+#custom-github-notifications,
+#custom-pomodoro,
 #custom-maildir,
 #battery,
 #clock {
@@ -124,6 +127,17 @@ window#waybar.hidden {
 #battery {
   color: #96cdfb;
   font-size: 15px;
+}
+
+#custom-github-pr,
+#custom-github-notifications,
+#custom-pomodoro {
+  padding-top: 8px;
+}
+
+#custom-pomodoro.running {
+  background-color: #cba6f7;
+  color: #11111b;
 }
 
 #custom-maildir {
