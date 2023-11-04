@@ -1,150 +1,148 @@
-[
-    {
-        "position": "right",
-        "height": "100%", // Waybar height (to be removed for auto height)
-        "width": 75,
-        "margin-top": 0,
-        "margin-right": -1,
-        "margin-bottom": 0,
-        "margin-left": 0,
-        "layer": "top",
-        "exclusive": true,
-        "output": "DP-1",
-        "modules-left": [
-            "hyprland/workspaces#main",
-            "hyprland/workspaces#secondary"
+{
+    "position": "right",
+    "height": "100%", // Waybar height (to be removed for auto height)
+    "width": 75,
+    "margin-top": 0,
+    "margin-right": -1,
+    "margin-bottom": 0,
+    "margin-left": 0,
+    "layer": "top",
+    "exclusive": true,
+    "output": "DP-1",
+    "modules-left": [
+        "hyprland/workspaces#main",
+        "hyprland/workspaces#secondary"
+    ],
+    "modules-right": [
+        "custom/github-notifications",
+        "custom/github-pr",
+        "custom/pomodoro",
+        "custom/maildir",
+        "clock",
+        "tray"
+    ],
+    "hyprland/window": {
+        "separate-outputs": true
+    },
+    "hyprland/workspaces#main": {
+        "on-click": "activate",
+        "format": "<span size='15pt'>{icon}</span> <span color='#6e6c7e' size='8pt'>/{name}</span>",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "󰩪",
+            "0": ""
+        },
+        "ignore-workspaces": [
+            "7",
+            "8",
+            "9"
         ],
-        "modules-right": [
-            "custom/github-notifications",
-            "custom/github-pr",
-            "custom/pomodoro",
-            "custom/maildir",
-            "clock",
-            "tray"
+        "persistent-workspaces": {
+            "1": [
+                "DP-1"
+            ],
+            "2": [
+                "DP-1"
+            ],
+            "3": [
+                "DP-1"
+            ],
+            "4": [
+                "DP-1"
+            ],
+            "5": [
+                "DP-1"
+            ],
+            "6": [
+                "DP-1"
+            ],
+            "0": [
+                "DP-1"
+            ]
+        },
+        "sort-by-number": true
+    },
+    "hyprland/workspaces#secondary": {
+        "on-click": "activate",
+        "format": "<span size='15pt'>{icon}</span> <span color='#6e6c7e' size='8pt'>/{name}</span>",
+        "format-icons": {
+            "7": "",
+            "8": "",
+            "9": "󰝚"
+        },
+        "ignore-workspaces": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "0"
         ],
-        "hyprland/window": {
-            "separate-outputs": true
-        },
-        "hyprland/workspaces#main": {
-            "on-click": "activate",
-            "format": "<span size='15pt'>{icon}</span> <span color='#6e6c7e' size='8pt'>/{name}</span>",
-            "format-icons": {
-                "1": "",
-                "2": "",
-                "3": "",
-                "4": "",
-                "5": "",
-                "6": "󰩪",
-                "0": ""
-            },
-            "ignore-workspaces": [
-                "7",
-                "8",
-                "9"
+        "persistent-workspaces": {
+            "7": [
+                "DP-1"
             ],
-            "persistent-workspaces": {
-                "1": [
-                    "DP-1"
-                ],
-                "2": [
-                    "DP-1"
-                ],
-                "3": [
-                    "DP-1"
-                ],
-                "4": [
-                    "DP-1"
-                ],
-                "5": [
-                    "DP-1"
-                ],
-                "6": [
-                    "DP-1"
-                ],
-                "0": [
-                    "DP-1"
-                ]
-            },
-            "sort-by-number": true
-        },
-        "hyprland/workspaces#secondary": {
-            "on-click": "activate",
-            "format": "<span size='15pt'>{icon}</span> <span color='#6e6c7e' size='8pt'>/{name}</span>",
-            "format-icons": {
-                "7": "",
-                "8": "",
-                "9": "󰝚"
-            },
-            "ignore-workspaces": [
-                "1",
-                "2",
-                "3",
-                "4",
-                "5",
-                "6",
-                "0"
+            "8": [
+                "DP-1"
             ],
-            "persistent-workspaces": {
-                "7": [
-                    "DP-1"
-                ],
-                "8": [
-                    "DP-1"
-                ],
-                "9": [
-                    "DP-1"
-                ]
-            },
-            "sort-by-number": true
+            "9": [
+                "DP-1"
+            ]
         },
-        "tray": {
-            "spacing": 10
-        },
-        "clock": {
-            "locale": "nb_NO.UTF-8",
-            "timezone": "Europe/Oslo",
-            "format": "<span weight='bold' size='20pt'>{:%H\n%M</span>\n<span size='8pt'>%d/%m</span>}",
-            "tooltip-format": "<span font_family='Ubuntu Mono'><big>{:%d. %B %Y}</big>\n\n<tt><small>{calendar}</small></tt></span>",
-            "calendar": {
-                "mode": "year",
-                "mode-mon-col": 3,
-                "weeks-pos": "right",
-                "on-scroll": 1,
-                "on-click-right": "mode",
-                "format": {
-                    "months": "<span color='#ffead3'><b>{}</b></span>",
-                    "days": "<span color='#ecc6d9'><b>{}</b></span>",
-                    "weeks": "<span color='#99ffdd'><b>Uke {}</b></span>",
-                    "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-                    "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
-                }
+        "sort-by-number": true
+    },
+    "tray": {
+        "spacing": 10
+    },
+    "clock": {
+        "locale": "nb_NO.UTF-8",
+        "timezone": "Europe/Oslo",
+        "format": "<span weight='bold' size='20pt'>{:%H\n%M</span>\n<span size='8pt'>%d/%m</span>}",
+        "tooltip-format": "<span font_family='Ubuntu Mono'><big>{:%d. %B %Y}</big>\n\n<tt><small>{calendar}</small></tt></span>",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "on-click-right": "mode",
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>Uke {}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
             }
-        },
-        "custom/github-notifications": {
-            "exec": "~/bin/github-status-notifications.sh",
-            "format": "󰊤 {}",
-            "interval": 60,
-            "on-click": "xdg-open 'https://github.com/notifications?query=is%3Aunread'",
-            "return-type": "json"
-        },
-        "custom/github-pr": {
-            "exec": "~/bin/github-status-pr.sh",
-            "format": " {}",
-            "interval": 60,
-            "on-click": "xdg-open 'https://github.com/pulls/review-requested'",
-            "return-type": "json"
-        },
-        "custom/maildir": {
-            "exec": "~/bin/waybar-maildir.sh ~/Mail/Main/INBOX/new $USER_MAIL_ADDRESS",
-            "format": " {}",
-            "return-type": "json"
-        },
-        "custom/pomodoro": {
-            "exec": "~/bin/pomodoro-status.sh",
-            "format": " {}",
-            "interval": 1,
-            "return-type": "json"
         }
+    },
+    "custom/github-notifications": {
+        "exec": "~/bin/github-status-notifications.sh",
+        "format": "<big>󰊤</big> {}",
+        "interval": 60,
+        "on-click": "xdg-open 'https://github.com/notifications?query=is%3Aunread'",
+        "return-type": "json"
+    },
+    "custom/github-pr": {
+        "exec": "~/bin/github-status-pr.sh",
+        "format": "<big></big> {}",
+        "interval": 60,
+        "on-click": "xdg-open 'https://github.com/pulls/review-requested'",
+        "return-type": "json"
+    },
+    "custom/maildir": {
+        "exec": "~/bin/waybar-maildir.sh ~/Mail/Main/INBOX/new $USER_MAIL_ADDRESS",
+        "format": "<big></big> {}",
+        "return-type": "json"
+    },
+    "custom/pomodoro": {
+        "exec": "~/bin/pomodoro-status.sh",
+        "format": "<big></big> {}",
+        "interval": 1,
+        "return-type": "json"
     }
-]
+}
 // vim: filetype=jsonc
