@@ -11,7 +11,8 @@
         "exclusive": true,
         "output": "DP-1",
         "modules-left": [
-            "hyprland/workspaces"
+            "hyprland/workspaces#main",
+            "hyprland/workspaces#secondary"
         ],
         "modules-right": [
             "custom/github-notifications",
@@ -24,9 +25,8 @@
         "hyprland/window": {
             "separate-outputs": true
         },
-        "hyprland/workspaces": {
+        "hyprland/workspaces#main": {
             "on-click": "activate",
-            "all-outputs": true,
             "format": "<span size='15pt'>{icon}</span> <span color='#6e6c7e' size='8pt'>/{name}</span>",
             "format-icons": {
                 "1": "",
@@ -35,13 +35,65 @@
                 "4": "",
                 "5": "",
                 "6": "󰩪",
-                "7": "󰝚",
-                "8": "󰝚",
-                "9": "󰝚",
-                "10": ""
+                "0": ""
             },
+            "ignore-workspaces": [
+                "7",
+                "8",
+                "9"
+            ],
             "persistent-workspaces": {
-                "*": 10
+                "1": [
+                    "DP-1"
+                ],
+                "2": [
+                    "DP-1"
+                ],
+                "3": [
+                    "DP-1"
+                ],
+                "4": [
+                    "DP-1"
+                ],
+                "5": [
+                    "DP-1"
+                ],
+                "6": [
+                    "DP-1"
+                ],
+                "0": [
+                    "DP-1"
+                ]
+            },
+            "sort-by-number": true
+        },
+        "hyprland/workspaces#secondary": {
+            "on-click": "activate",
+            "format": "<span size='15pt'>{icon}</span> <span color='#6e6c7e' size='8pt'>/{name}</span>",
+            "format-icons": {
+                "7": "",
+                "8": "",
+                "9": "󰝚"
+            },
+            "ignore-workspaces": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "0"
+            ],
+            "persistent-workspaces": {
+                "7": [
+                    "DP-1"
+                ],
+                "8": [
+                    "DP-1"
+                ],
+                "9": [
+                    "DP-1"
+                ]
             },
             "sort-by-number": true
         },
