@@ -13,6 +13,8 @@ return {
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-emoji",
       "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
+      "rafamadriz/friendly-snippets",
     },
     branch = "v3.x",
     config = function()
@@ -173,8 +175,14 @@ return {
       })
       local cmp = require("cmp")
       local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+      require("luasnip/loaders/from_vscode").lazy_load()
       cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
       cmp.setup({
+        snippet = {
+          expand = function(args)
+            require("luasnip").lsp_expand(args.body)
+          end,
+        },
         sources = {
           { name = "nvim_lua" },
           { name = "nvim_lsp" },
@@ -212,9 +220,9 @@ return {
             menu = {
               nvim_lsp = "[LSP]",
               nvim_lua = "[api]",
+              luasnip = "[snip]",
               buffer = "[buf]",
               path = "[path]",
-              luasnip = "[snip]",
             },
             mode = "symbol", -- show only symbol annotations
             maxwidth = 50, -- prevent the popup from showing more than provided characters
