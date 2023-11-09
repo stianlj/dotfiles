@@ -114,12 +114,6 @@ return {
     end,
   },
   {
-    "luukvbaal/stabilize.nvim",
-    config = function()
-      require("stabilize").setup()
-    end,
-  },
-  {
     "folke/todo-comments.nvim",
     dependencies = "nvim-lua/plenary.nvim",
     opts = {
