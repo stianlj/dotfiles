@@ -52,6 +52,7 @@ o.listchars:append("space:⋅")
 o.listchars:append("eol:↴")
 --[[ o.spell = true ]]
 o.spelllang = { "en", "nb" }
+o.splitkeep = "screen"
 
 require("lazy").setup("plugins")
 require("custom-signs")

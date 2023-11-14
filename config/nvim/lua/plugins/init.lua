@@ -66,28 +66,6 @@ return {
       require("plugins-legacy.dap-config")
     end,
   },
-  --[[ { ]]
-  --[[   "hrsh7th/nvim-cmp", ]]
-  --[[   dependencies = { ]]
-  --[[     "L3MON4D3/LuaSnip", ]]
-  --[[     "onsails/lspkind-nvim", ]]
-  --[[     "hrsh7th/cmp-buffer", ]]
-  --[[     "hrsh7th/cmp-nvim-lsp", ]]
-  --[[     "hrsh7th/cmp-nvim-lua", ]]
-  --[[     "hrsh7th/cmp-path", ]]
-  --[[     "hrsh7th/cmp-emoji", ]]
-  --[[   }, ]]
-  --[[   config = function() ]]
-  --[[     require("plugins-legacy.cmp-config") ]]
-  --[[   end, ]]
-  --[[ }, ]]
-  {
-    "rafamadriz/friendly-snippets",
-    config = function()
-      require("luasnip/loaders/from_vscode").lazy_load()
-    end,
-  },
-  --[[ "saadparwaiz1/cmp_luasnip", ]]
   {
     "norcalli/nvim-colorizer.lua",
     config = function()
@@ -95,6 +73,7 @@ return {
     end,
   },
   "tpope/vim-fugitive",
+  "tpope/vim-rhubarb",
   {
     "lewis6991/gitsigns.nvim",
     dependencies = {
@@ -132,12 +111,6 @@ return {
     "windwp/nvim-autopairs",
     config = function()
       require("nvim-autopairs").setup({})
-    end,
-  },
-  {
-    "luukvbaal/stabilize.nvim",
-    config = function()
-      require("stabilize").setup()
     end,
   },
   {

@@ -61,6 +61,12 @@ whichKey.register({
     p = { "<cmd>NvimTreeToggle<CR>", "Project sidebar" },
   },
   p = { "<Plug>(YankyRingHistory)", "Yank ring history" },
+  q = {
+    name = "Session",
+    s = { '<cmd>lua require("persistence").load()<CR>', "Restore session for the current directory" },
+    l = { '<cmd>lua require("persistence").load({ last = true })<CR>', "Restore the last session" },
+    d = { '<cmd>lua require("persistence").stop()<CR>', "Prevent current session from being saved on exit" },
+  },
 }, {
   prefix = "<leader>",
 })
