@@ -42,7 +42,7 @@ return {
         ensure_installed = {
           "bashls",
           "pyright",
-          "emmet_ls",
+          "emmet_language_server",
           "lua_ls",
           "intelephense",
           "yamlls",
