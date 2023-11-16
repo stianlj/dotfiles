@@ -39,11 +39,6 @@ window#waybar.hidden {
   color: #6e6c7e;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-/* #workspaces button:hover { */
-/*   background: rgba(0, 0, 0, 0.2); */
-/* } */
-
 #workspaces button.active {
   color: #96cdfb;
 }

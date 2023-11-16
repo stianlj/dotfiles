@@ -14,8 +14,6 @@
         "hyprland/workspaces#secondary"
     ],
     "modules-right": [
-        "custom/github-notifications",
-        "custom/github-pr",
         "custom/pomodoro",
         "custom/maildir",
         "clock",
