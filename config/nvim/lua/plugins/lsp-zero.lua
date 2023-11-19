@@ -40,6 +40,7 @@ return {
       require("mason").setup({})
       require("mason-lspconfig").setup({
         ensure_installed = {
+          "ansiblels",
           "bashls",
           "pyright",
           "emmet_language_server",
