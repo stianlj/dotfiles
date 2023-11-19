@@ -1,5 +1,10 @@
 return {
-  "JoosepAlviste/nvim-ts-context-commentstring",
+  {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    config = {
+      enable_autocmd = false,
+    },
+  },
   {
     "Wansmer/treesj",
     -- [[ keys = { "<space>m", "<space>j", "<space>s" }, ]]
@@ -92,10 +97,6 @@ return {
           enable = true,
           use_languagetree = true,
           additional_vim_regex_highlighting = false,
-        },
-        context_commentstring = {
-          enable = true,
-          enable_autocmd = false,
         },
         indent = {
           enable = true,
