@@ -36,6 +36,7 @@ return {
   "fladson/vim-kitty",
   "baskerville/vim-sxhkdrc",
   "theRealCarneiro/hyprland-vim-syntax",
+  "pearofducks/ansible-vim",
   "stevearc/dressing.nvim",
   {
     "catppuccin/nvim",
