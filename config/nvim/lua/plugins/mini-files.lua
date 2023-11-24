@@ -2,8 +2,11 @@ return {
   "echasnovski/mini.files",
   version = "*",
   config = {
-    options = {
-      use_as_default_explorer = false,
+    windows = {
+      preview = true,
+      width_focus = 50,
+      width_nofocus = 15,
+      width_preview = 25,
     },
   },
 }
