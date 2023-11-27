@@ -1,5 +1,7 @@
 return {
   "luukvbaal/statuscol.nvim",
+  -- TODO: Remove this when fix is merged
+  branch = "0.10",
   config = function()
     local builtin = require("statuscol.builtin")
     require("statuscol").setup({
