@@ -3,7 +3,7 @@
 if [ "$1" != "" ]; then
   session=$1
 else
-  session=$(find ~/Code -mindepth 1 -maxdepth 1 -type d,l | fzf)
+  session=$(find ~/Code/Work/applications ~/Code/Work/modules ~/Code/Personal -mindepth 1 -maxdepth 1 -type d,l | fzf)
 fi
 
 session_name=$(basename "$session")

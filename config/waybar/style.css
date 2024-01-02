@@ -17,7 +17,7 @@ window#waybar.hidden {
 #workspaces {
   background-color: #302d41;
   border-radius: 5px;
-  padding: 1px;
+  padding: 1px 3px;
 }
 
 #workspaces.secondary {
@@ -25,13 +25,14 @@ window#waybar.hidden {
 }
 
 #workspaces button {
-  padding: 8px 5px;
+  padding: 8px 1px;
   background-color: transparent;
   color: #d9e0ee;
   /* Use box-shadow instead of border so the text isn't offset */
   box-shadow: inset 0 -3px transparent;
   /* Avoid rounded borders under each workspace name */
   border: none;
+  padding-top: 8px;
   border-radius: 0;
 }
 
@@ -102,22 +103,29 @@ window#waybar.hidden {
   margin: 5px 0;
 }
 
+#network,
+#tray,
 #custom-github-pr,
 #custom-github-notifications,
 #custom-pomodoro,
 #custom-maildir,
 #battery,
 #clock {
-  background-color: #302d41;
-  border-radius: 5px;
+  padding-top: 8px;
   padding-bottom: 8px;
   margin-bottom: 8px;
+  background-color: #302d41;
+  border-radius: 5px;
+}
+
+#network {
+  color: #ebdbb2;
+  font-size: 15px;
 }
 
 #battery {
-  padding-top: 8px;
   color: #96cdfb;
-  font-size: 25px;
+  font-size: 15px;
 }
 
 #custom-github-pr,
@@ -232,13 +240,13 @@ label:focus {
   background-color: #eb4d4b;
 }
 
-#tray {
-  /* background-color: #2980b9; */
-  background-color: #302d41;
-  border-radius: 5px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-}
+/* #tray { */
+/*   background-color: #2980b9; */
+/*   background-color: #302d41; */
+/*   border-radius: 5px; */
+/*   padding-top: 8px; */
+/*   padding-bottom: 8px; */
+/* } */
 
 #tray > .passive {
   -gtk-icon-effect: dim;
