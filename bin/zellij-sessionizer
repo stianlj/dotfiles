@@ -11,8 +11,10 @@ session_name=$(basename "$session")
 if ! zellij list-sessions | grep "$session_name"; then
   echo "did not find session"
   cd "$session"
+  kitty @ set-spacing padding=0
   zellij --session "$session_name" --layout compact
 else
+  kitty @ set-spacing padding=0
   zellij --layout compact attach "$session_name"
 fi
 
