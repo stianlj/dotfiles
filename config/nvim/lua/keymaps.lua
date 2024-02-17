@@ -83,6 +83,7 @@ whichKey.register({
     l = { '<cmd>lua require("persistence").load({ last = true })<CR>', "Restore the last session" },
     d = { '<cmd>lua require("persistence").stop()<CR>', "Prevent current session from being saved on exit" },
   },
+  u = { "<cmd>UndotreeToggle<CR>", "Undotree" },
 }, {
   prefix = "<leader>",
 })
