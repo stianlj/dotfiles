@@ -2,6 +2,9 @@
 	email = stian@lundjohansen.no
 	name = Stian Lund Johansen
 
+[initl]
+	defaultBranch = main
+
 [init]
 	defaultBranch = main
 
@@ -23,3 +26,12 @@
 
 [diff]
     colorMoved = default
+
+[push]
+    autoSetupRemote = true
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
