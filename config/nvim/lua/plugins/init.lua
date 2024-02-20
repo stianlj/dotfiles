@@ -74,6 +74,7 @@ return {
     end,
   },
   "tpope/vim-fugitive",
+  "idanarye/vim-merginal",
   "tpope/vim-rhubarb",
   {
     "lewis6991/gitsigns.nvim",
