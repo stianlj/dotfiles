@@ -45,9 +45,10 @@ return {
           "pyright",
           "emmet_language_server",
           "lua_ls",
+          "vtsls",
           "intelephense",
           "yamlls",
-          "tsserver",
+          -- "tsserver",
           "svelte",
           "eslint",
           "jsonls",
@@ -61,7 +62,7 @@ return {
             local lua_opts = lsp_zero.nvim_lua_ls()
             lsp_config.lua_ls.setup(lua_opts)
           end,
-          tsserver = lsp_zero.noop,
+          -- tsserver = lsp_zero.noop,
           jsonls = function()
             lsp_config.jsonls.setup({
               settings = {
