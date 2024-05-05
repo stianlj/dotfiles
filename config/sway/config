@@ -178,6 +178,13 @@ default_floating_border pixel 0
     bindsym XF86AudioMute exec swayosd-client --output-volume mute-toggle
     bindsym XF86MonBrightnessUp exec light -A 5
     bindsym XF86MonBrightnessDown exec light -U 5
+
+    bindsym $mod+u exec rofimoji --selector wofi --clipboarder wl-copy --action copy
+    bindsym $mod+p exec grim -l 9 -g "$(slurp)" "$HOME/Nextcloud/Screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')"
+    bindsym $mod+ctrl+h exec copyq menu
+    bindsym $mod+y exec swaync-client -t -sw
+    bindsym $mod+backspace exec wlogout --buttons-per-row 2 --row-spacing 20 -p layer-shell
+
 #
 # Layout stuff:
 #
@@ -242,28 +249,11 @@ bindsym $mod+r mode "resize"
 
 
 exec_always ~/.config/sway/scripts/layout.sh
-exec sleep 1; nextcloud --logfile /tmp/nextcloud.log --background
-exec sleep 1; copyq
-exec sleep 1; udiskie --tray --no-automount &
+exec waybar -c ~/.config/waybar/config-main-desktop-sway
+exec nextcloud --logfile /tmp/nextcloud.log --background
+exec copyq
+exec udiskie --tray --no-automount
 exec swaync
 exec swayosd-server
-
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-}
 
 include /etc/sway/config.d/*
