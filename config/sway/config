@@ -74,7 +74,9 @@ gaps outer 2
 smart_borders on
 
 for_window [title="^.*"] title_format ""
-for_window [app_id="(?i)mpv"] floating enable, resize set 1280 720, border none
+for_window [app_id="(?i)mpv"] floating enable, border none, resize set 1280 720
+for_window [app_id="^(com.github.hluk.copyq)$"] floating enable, border none
+
 default_border pixel 1
 default_floating_border pixel 0
 
@@ -196,7 +198,7 @@ default_floating_border pixel 0
 
     # Switch the current container between different layout styles
     # bindsym $mod+s layout stacking
-    # bindsym $mod+w layout tabbed
+    bindsym $mod+g layout toggle tabbed split
     bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
