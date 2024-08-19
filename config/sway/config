@@ -4,6 +4,11 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+# TODO:
+# * Check out shikani
+# * Make mpv floating better if it's not widescreen ratio
+# * alternative to light (for laptop)
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -74,7 +79,7 @@ gaps outer 2
 smart_borders on
 
 for_window [title="^.*"] title_format ""
-for_window [app_id="(?i)mpv"] floating enable, border none, resize set 1280 720
+for_window [app_id="(?i)mpv"] floating enable, border none, resize set 720 576, position center
 for_window [app_id="^(com.github.hluk.copyq)$"] floating enable, border none
 
 default_border pixel 1
@@ -133,6 +138,8 @@ default_floating_border pixel 0
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
+
+    bindsym $mod+Shift+s sticky toggle
 #
 # Workspaces:
 #
@@ -199,7 +206,6 @@ default_floating_border pixel 0
     # Switch the current container between different layout styles
     # bindsym $mod+s layout stacking
     bindsym $mod+g layout toggle tabbed split
-    bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
