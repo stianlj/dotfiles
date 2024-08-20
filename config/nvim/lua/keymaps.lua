@@ -56,6 +56,7 @@ whichKey.register({
     o = { '<cmd>lua require("dap").step_over()<CR>', "Step over" },
     n = { '<cmd>lua require("osv").launch({port = 8086})<CR>', "Run Neovim debugger" },
   },
+  f = { "<cmd>SnipRun<CR>", "Run snippet" },
   g = {
     name = "Git",
     b = { "<cmd>MerginalToggle<CR>", "List branches" },
@@ -100,6 +101,7 @@ whichKey.register({
   c = {
     a = { "<cmd>lua vim.lsp.buf.range_code_action()<CR>", "Code actions (visual)" },
   },
+  f = { "<Plug>SnipRun<CR>", "Run snippet" },
   g = {
     name = "Git",
     s = { '<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', "Stage hunk (visual)" },
