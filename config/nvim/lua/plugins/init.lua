@@ -122,10 +122,4 @@ return {
       signs = false,
     },
   },
-  {
-    "folke/which-key.nvim",
-    config = function()
-      require("plugins-legacy.which-key-config")
-    end,
-  },
 }
