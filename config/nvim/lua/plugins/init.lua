@@ -62,7 +62,7 @@ return {
   "jbyuki/one-small-step-for-vimkind",
   {
     "rcarriga/nvim-dap-ui",
-    dependencies = "mfussenegger/nvim-dap",
+    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
     config = function()
       require("plugins-legacy.dap-config")
     end,
