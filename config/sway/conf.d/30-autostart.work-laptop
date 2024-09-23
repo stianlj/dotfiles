@@ -1,0 +1,8 @@
+# exec_always ~/.config/sway/scripts/layout.sh
+exec waybar -c ~/.config/waybar/config-work-laptop-sway-single
+exec nextcloud --logfile /tmp/nextcloud.log --background
+exec copyq
+exec udiskie --tray --no-automount
+exec nm-applet &
+exec swaync
+exec swayosd-server

@@ -1,0 +1,13 @@
+### Output configuration
+#
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+# output * bg ~/Wallpapers/6603a9635954506b80243366_clockwork-circus-color-04.jpg fill
+
+output HDMI-A-1 resolution 3840x2160 position 900,0
+output HDMI-A-1 scale 2
+
+output DP-1 resolution 5120x1440 position 0,1080
+output DP-1 scale 1.33333
+output DP-1 adaptive_sync off
+
+# You can get the names of your outputs by running: swaymsg -t get_outputs
