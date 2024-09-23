@@ -1,7 +1,7 @@
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-# output * bg ~/Wallpapers/6603a9635954506b80243366_clockwork-circus-color-04.jpg fill
+output * bg ~/Wallpapers/6603a9635954506b80243366_clockwork-circus-color-04.jpg fill
 
 output HDMI-A-1 resolution 3840x2160 position 900,0
 output HDMI-A-1 scale 2
