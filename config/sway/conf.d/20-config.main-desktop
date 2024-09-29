@@ -24,11 +24,16 @@ focus_follows_mouse yes
 gaps inner 10
 gaps outer 2
 smart_borders on
-smart_gaps on
+smart_gaps inverse_outer
+
+corner_radius 10
+blur enable
+shadows enable
+default_dim_inactive 0.1
 
 font pango: MonoLisa 12
 for_window [title="^.*"] title_format "%title"
-for_window [app_id="(?i)mpv"] floating enable, border none, resize set 720 576, position center
+for_window [app_id="(?i)mpv"] floating enable, border none, resize set 720 576, position center, dim_inactive 0
 for_window [app_id="^(com.github.hluk.copyq)$"] floating enable, border none
 
 default_border pixel 1
