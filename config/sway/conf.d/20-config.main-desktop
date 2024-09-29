@@ -23,6 +23,7 @@ focus_follows_mouse yes
 
 gaps inner 10
 gaps outer 2
+gaps horizontal 800
 smart_borders on
 smart_gaps inverse_outer
 

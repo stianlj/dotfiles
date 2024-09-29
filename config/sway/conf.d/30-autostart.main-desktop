@@ -1,4 +1,4 @@
-exec_always ~/.config/sway/scripts/layout.sh
+exec persway daemon -l 'mark --add _prev' -s 50 -k tabbed --default-layout 'stack_main'
 exec waybar -c ~/.config/waybar/config-main-desktop-sway
 exec nextcloud --logfile /tmp/nextcloud.log --background
 exec copyq
