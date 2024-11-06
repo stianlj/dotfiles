@@ -175,8 +175,8 @@ keybinds {
 
 on_force_close "detach"
 simplified_ui true
-default_shell "fish"
+default_shell "nu"
 pane_frames false
-theme "catppuccin-mocha"
+theme "catppuccin-macchiato"
 copy_command "wl-copy"
 mirror_session true
