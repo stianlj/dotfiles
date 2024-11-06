@@ -31,3 +31,4 @@ config/nvim/lua/packer_compiled.lua
 config/lazygit/state.yml
 config/tmux/plugins
 config/tmux/resurrect
+config/nushell/history.txt
