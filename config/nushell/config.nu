@@ -900,3 +900,4 @@ $env.config = {
 use ~/.cache/starship/init.nu
 source ~/.local/share/atuin/init.nu
 source ~/.cache/carapace/init.nu
+source ~/.zoxide.nu
