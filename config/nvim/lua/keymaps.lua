@@ -10,7 +10,8 @@ whichKey.add({
   {
     { "<leader>.", "<cmd>Telescope file_browser theme=ivy<CR>", desc = "Open filebrowser" },
     { "<leader>/", "<cmd>Telescope live_grep theme=ivy<CR>", desc = "Search in files" },
-    { "<leader><Space>", "<cmd>Telescope find_files theme=ivy<CR>", desc = "Find file" },
+    -- { "<leader><Space>", "<cmd>Telescope find_files theme=ivy<CR>", desc = "Find file" },
+    { "<leader><Space>", "<cmd>lua Snacks.picker.files({ ignored = true, hidden = true })<CR>", desc = "Find file" },
 
     { "<leader>b", group = "Buffers" },
     { "<leader>bb", "<cmd>Telescope buffers theme=ivy<CR>", desc = "Switch buffers" },

@@ -26,6 +26,15 @@ return {
     notifier = { enabled = true },
     quickfile = { enabled = true },
     words = { enabled = true },
+    picker = {
+      matcher = {
+        frecency = true,
+        history_bonus = true,
+      },
+      debug = {
+        scores = true,
+      },
+    },
   },
   keys = function()
     local snacks = require("snacks")
