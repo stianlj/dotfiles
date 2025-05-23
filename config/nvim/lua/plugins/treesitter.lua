@@ -89,6 +89,7 @@ return {
           "toml",
           "kdl",
           "markdown",
+          "markdown_inline",
           "http",
           "hurl",
           "dockerfile",

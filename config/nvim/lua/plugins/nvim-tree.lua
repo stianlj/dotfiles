@@ -12,7 +12,7 @@ return {
         enable = true,
       },
       filters = {
-        custom = { ".git", "node_modules" },
+        custom = { "node_modules" },
       },
       renderer = {
         highlight_opened_files = "icon",

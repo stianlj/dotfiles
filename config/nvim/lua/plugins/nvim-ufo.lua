@@ -34,6 +34,9 @@ return {
   config = function()
     require("ufo").setup({
       fold_virt_text_handler = virtual_text_hander,
+      provider_selector = function()
+        return { "lsp", "indent" }
+      end,
     })
     vim.keymap.set("n", "zR", require("ufo").openAllFolds)
     vim.keymap.set("n", "zM", require("ufo").closeAllFolds)

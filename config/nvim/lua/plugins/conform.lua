@@ -7,6 +7,9 @@ return {
       lua = { "stylua" },
       python = { "isort", "black" },
       javascript = { "prettierd" },
+      svelte = { "prettierd" },
+      typescript = { "prettierd" },
+      typescriptreact = { "prettierd" },
       --[[ go = { "gofumpt" }, ]]
       --[[ rust = { "rustfmt" }, ]]
       sh = { "shellharden", "shfmt" },
