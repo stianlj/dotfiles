@@ -21,7 +21,7 @@ require("catppuccin").setup({
     operators = {},
   },
   custom_highlights = {
-    IndentBlanklineContextChar = { fg = colors.yellow },
+    SnacksIndent1 = { fg = colors.yellow },
   },
 })
 
