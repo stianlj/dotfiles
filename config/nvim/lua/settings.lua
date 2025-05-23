@@ -19,6 +19,18 @@ if not vim.loop.fs_stat(lazypath) then
 end
 o.rtp:prepend(lazypath)
 
+vim.lsp.enable({
+  "lua",
+  "ansible",
+  "bashls",
+  "emmet",
+  "javascript",
+  "svelte",
+  "eslint",
+  "json",
+  "yaml",
+})
+
 g.mapleader = " "
 g.localleader = " "
 o.termguicolors = true
@@ -54,8 +66,55 @@ o.listchars:append("eol:↴")
 o.spelllang = { "en", "nb" }
 o.splitkeep = "screen"
 
-require("lazy").setup("plugins")
+require("lazy").setup({
+  { import = "plugins" },
+  { import = "plugins.lsp" },
+})
 require("custom-signs")
+
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "󰅚",
+      [vim.diagnostic.severity.WARN] = "󰀪",
+      [vim.diagnostic.severity.HINT] = "󰌶",
+      [vim.diagnostic.severity.INFO] = "",
+    },
+  },
+  virtual_lines = {
+    current_line = true,
+  },
+})
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("my.lsp", {}),
+  callback = function(args)
+    local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+    if
+        not client:supports_method("textDocument/willSaveWaitUntil")
+        and client:supports_method("textDocument/formatting")
+    then
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = vim.api.nvim_create_augroup("my.lsp", { clear = false }),
+        buffer = args.buf,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+        end,
+      })
+    end
+  end,
+})
+
+vim.filetype.add({
+  pattern = {
+    [".*/.*playbook.*.ya?ml"] = "yaml.ansible",
+    [".*/.*tasks.*/.*ya?ml"] = "yaml.ansible",
+    [".*/.*group_vars.*/.*ya?ml"] = "yaml.ansible",
+    [".*/.*host_vars.*/.*ya?ml"] = "yaml.ansible",
+    [".*/local.ya?ml"] = "yaml.ansible",
+    [".*-ansible/.*ya?ml"] = "yaml.ansible",
+  },
+})
 
 -- TODO: Use neovim built-in API instead of this
 -- OR https://github.com/neovim/neovim/pull/16600#issuecomment-990409210
