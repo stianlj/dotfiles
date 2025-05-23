@@ -10,8 +10,7 @@ return {
       svelte = { "prettierd" },
       typescript = { "prettierd" },
       typescriptreact = { "prettierd" },
-      --[[ go = { "gofumpt" }, ]]
-      --[[ rust = { "rustfmt" }, ]]
+      http = { "kulala" },
       sh = { "shellharden", "shfmt" },
       ["_"] = { "trim_whitespace", "trim_newlines" },
     },
@@ -19,6 +18,11 @@ return {
     formatters = {
       shfmt = {
         prepend_args = { "-i", "2", "-ci" },
+      },
+      kulala = {
+        command = "kulala-fmt",
+        args = { "format", "$FILENAME" },
+        stdin = false,
       },
     },
   },

@@ -29,6 +29,7 @@ vim.lsp.enable({
   "eslint",
   "json",
   "yaml",
+  "kulala",
 })
 
 g.mapleader = " "
