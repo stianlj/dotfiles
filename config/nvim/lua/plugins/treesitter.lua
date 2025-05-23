@@ -54,7 +54,11 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     event = "BufReadPost",
-    dependencies = { "nvim-treesitter/nvim-treesitter-textobjects", "nvim-treesitter/playground" },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      "nvim-treesitter/playground",
+      { "nushell/tree-sitter-nu", build = ":TSUpdate nu" },
+    },
     config = function()
       require("nvim-treesitter.configs").setup({
         ensure_installed = {
