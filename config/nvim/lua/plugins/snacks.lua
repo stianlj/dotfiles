@@ -91,6 +91,20 @@ return {
         end,
         desc = "Commands",
       },
+      {
+        "<leader>gb",
+        function()
+          Snacks.picker.git_branches()
+        end,
+        desc = "List branches",
+      },
+      {
+        "<leader>gl",
+        function()
+          Snacks.picker.git_log()
+        end,
+        desc = "List branches",
+      },
     }
   end,
 }

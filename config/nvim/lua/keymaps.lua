@@ -39,7 +39,6 @@ whichKey.add({
     { "<leader>gR", '<cmd>lua require"gitsigns".reset_buffer()<CR>', desc = "Reset buffer" },
     { "<leader>gS", '<cmd>lua require"gitsigns".stage_buffer()<CR>', desc = "Stage buffer" },
     { "<leader>gU", '<cmd>lua require"gitsigns".reset_buffer_index()<CR>', desc = "Reset buffer index" },
-    { "<leader>gb", "<cmd>MerginalToggle<CR>", desc = "List branches" },
     { "<leader>gc", "<cmd>Git commit<CR>", desc = "Commit" },
     { "<leader>gg", "<cmd>Git<CR>", desc = "Git status" },
     { "<leader>gp", '<cmd>lua require"gitsigns".preview_hunk()<CR>', desc = "Preview hunk" },
