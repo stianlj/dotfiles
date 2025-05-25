@@ -30,6 +30,7 @@ vim.lsp.enable({
   "json",
   "yaml",
   "kulala",
+  "docker-compose",
 })
 
 g.mapleader = " "
@@ -92,8 +93,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
     if
-        not client:supports_method("textDocument/willSaveWaitUntil")
-        and client:supports_method("textDocument/formatting")
+      not client:supports_method("textDocument/willSaveWaitUntil")
+      and client:supports_method("textDocument/formatting")
     then
       vim.api.nvim_create_autocmd("BufWritePre", {
         group = vim.api.nvim_create_augroup("my.lsp", { clear = false }),
@@ -114,6 +115,8 @@ vim.filetype.add({
     [".*/.*host_vars.*/.*ya?ml"] = "yaml.ansible",
     [".*/local.ya?ml"] = "yaml.ansible",
     [".*-ansible/.*ya?ml"] = "yaml.ansible",
+    ["compose.*%.ya?ml"] = "yaml.docker-compose",
+    ["docker%-compose.*%.ya?ml"] = "yaml.docker-compose",
   },
 })
 
