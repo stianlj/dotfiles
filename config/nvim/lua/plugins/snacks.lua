@@ -31,9 +31,9 @@ return {
         frecency = true,
         history_bonus = true,
       },
-      -- layout = {
-      --   preset = "ivy",
-      -- },
+      layout = {
+        preset = "ivy",
+      },
       debug = {
         scores = true,
       },
