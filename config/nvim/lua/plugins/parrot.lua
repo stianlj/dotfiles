@@ -1,20 +1,33 @@
 return {
   "frankroeder/parrot.nvim",
+  event = "VeryLazy",
   dependencies = { "ibhagwan/fzf-lua", "nvim-lua/plenary.nvim" },
-  config = function()
-    require("parrot").setup({
-      providers = {
-        anthropic = {
-          api_key = os.getenv("ANTHROPIC_API_KEY"),
+  opts = {
+    providers = {
+      openai = {
+        name = "openai",
+        endpoint = "https://api.openai.com/v1/chat/completions",
+        model_endpoint = "https://api.openai.com/v1/models",
+        api_key = os.getenv("OPENAI_API_KEY"),
+        params = {
+          chat = { temperature = 1.1, top_p = 1 },
+          command = { temperature = 1.1, top_p = 1 },
         },
-        openai = {
-          api_key = os.getenv("OPENAI_API_KEY"),
+        topic = {
+          model = "gpt-4.1",
+          params = { max_completion_tokens = 64 },
+        },
+        models = {
+          "gpt-4.1",
+          "gpt-4.1-nano-2025-04-14",
+          "o4-mini",
         },
       },
-      -- Hooks from https://github.com/frankroeder/dotfiles/blob/master/nvim/lua/plugins/parrot.lua
-      hooks = {
-        Complete = function(prt, params)
-          local template = [[
+    },
+    -- Hooks from https://github.com/frankroeder/dotfiles/blob/master/nvim/lua/plugins/parrot.lua
+    hooks = {
+      Complete = function(prt, params)
+        local template = [[
             I have the following code from {{filename}}:
 
             ```{{filetype}}
@@ -24,11 +37,11 @@ return {
             Please finish the code above carefully and logically.
             Respond just with the snippet of code that should be inserted."
           ]]
-          local model_obj = prt.get_model("command")
-          prt.Prompt(params, prt.ui.Target.append, model_obj, nil, template)
-        end,
-        CompleteFullContext = function(prt, params)
-          local template = [[
+        local model_obj = prt.get_model("command")
+        prt.Prompt(params, prt.ui.Target.append, model_obj, nil, template)
+      end,
+      CompleteFullContext = function(prt, params)
+        local template = [[
             I have the following code from {{filename}}:
 
             ```{{filetype}}
@@ -43,11 +56,11 @@ return {
             Please finish the code above carefully and logically.
             Respond just with the snippet of code that should be inserted."
           ]]
-          local model_obj = prt.get_model("command")
-          prt.Prompt(params, prt.ui.Target.append, model_obj, nil, template)
-        end,
-        CompleteMultiContext = function(prt, params)
-          local template = [[
+        local model_obj = prt.get_model("command")
+        prt.Prompt(params, prt.ui.Target.append, model_obj, nil, template)
+      end,
+      CompleteMultiContext = function(prt, params)
+        local template = [[
             I have the following code from {{filename}} and other realted files:
 
             ```{{filetype}}
@@ -62,11 +75,11 @@ return {
             Please finish the code above carefully and logically.
             Respond just with the snippet of code that should be inserted."
           ]]
-          local model_obj = prt.get_model("command")
-          prt.Prompt(params, prt.ui.Target.append, model_obj, nil, template)
-        end,
-        Explain = function(prt, params)
-          local template = [[
+        local model_obj = prt.get_model("command")
+        prt.Prompt(params, prt.ui.Target.append, model_obj, nil, template)
+      end,
+      Explain = function(prt, params)
+        local template = [[
             Your task is to take the code snippet from {{filename}} and explain it with gradually increasing complexity.
             Break down the code's functionality, purpose, and key components.
             The goal is to help the reader understand what the code does and how it works.
@@ -78,12 +91,12 @@ return {
             Use the markdown format with codeblocks and inline code.
             Explanation of the code above:
           ]]
-          local model = prt.get_model("command")
-          prt.logger.info("Explaining selection with model: " .. model.name)
-          prt.Prompt(params, prt.ui.Target.new, model, nil, template)
-        end,
-        FixBugs = function(prt, params)
-          local template = [[
+        local model = prt.get_model("command")
+        prt.logger.info("Explaining selection with model: " .. model.name)
+        prt.Prompt(params, prt.ui.Target.new, model, nil, template)
+      end,
+      FixBugs = function(prt, params)
+        local template = [[
             You are an expert in {{filetype}}.
             Fix bugs in the below code from {{filename}} carefully and logically:
             Your task is to analyze the provided {{filetype}} code snippet, identify
@@ -99,12 +112,12 @@ return {
 
             Fixed code:
           ]]
-          local model_obj = prt.get_model("command")
-          prt.logger.info("Fixing bugs in selection with model: " .. model_obj.name)
-          prt.Prompt(params, prt.ui.Target.new, model_obj, nil, template)
-        end,
-        Optimize = function(prt, params)
-          local template = [[
+        local model_obj = prt.get_model("command")
+        prt.logger.info("Fixing bugs in selection with model: " .. model_obj.name)
+        prt.Prompt(params, prt.ui.Target.new, model_obj, nil, template)
+      end,
+      Optimize = function(prt, params)
+        local template = [[
             You are an expert in {{filetype}}.
             Your task is to analyze the provided {{filetype}} code snippet and
             suggest improvements to optimize its performance. Identify areas
@@ -120,12 +133,12 @@ return {
 
             Optimized code:
           ]]
-          local model_obj = prt.get_model("command")
-          prt.logger.info("Optimizing selection with model: " .. model_obj.name)
-          prt.Prompt(params, prt.ui.Target.new, model_obj, nil, template)
-        end,
-        UnitTests = function(prt, params)
-          local template = [[
+        local model_obj = prt.get_model("command")
+        prt.logger.info("Optimizing selection with model: " .. model_obj.name)
+        prt.Prompt(params, prt.ui.Target.new, model_obj, nil, template)
+      end,
+      UnitTests = function(prt, params)
+        local template = [[
             I have the following code from {{filename}}:
 
             ```{{filetype}}
@@ -134,12 +147,12 @@ return {
 
             Please respond by writing table driven unit tests for the code above.
           ]]
-          local model_obj = prt.get_model("command")
-          prt.logger.info("Creating unit tests for selection with model: " .. model_obj.name)
-          prt.Prompt(params, prt.ui.Target.enew, model_obj, nil, template)
-        end,
-        Debug = function(prt, params)
-          local template = [[
+        local model_obj = prt.get_model("command")
+        prt.logger.info("Creating unit tests for selection with model: " .. model_obj.name)
+        prt.Prompt(params, prt.ui.Target.enew, model_obj, nil, template)
+      end,
+      Debug = function(prt, params)
+        local template = [[
             I want you to act as {{filetype}} expert.
             Review the following code, carefully examine it, and report potential
             bugs and edge cases alongside solutions to resolve them.
@@ -149,17 +162,17 @@ return {
             {{selection}}
             ```
           ]]
-          local model_obj = prt.get_model("command")
-          prt.logger.info("Debugging selection with model: " .. model_obj.name)
-          prt.Prompt(params, prt.ui.Target.enew, model_obj, nil, template)
-        end,
-        CommitMsg = function(prt, params)
-          local futils = require("parrot.file_utils")
-          if futils.find_git_root() == "" then
-            prt.logger.warning("Not in a git repository")
-            return
-          else
-            local template = [[
+        local model_obj = prt.get_model("command")
+        prt.logger.info("Debugging selection with model: " .. model_obj.name)
+        prt.Prompt(params, prt.ui.Target.enew, model_obj, nil, template)
+      end,
+      CommitMsg = function(prt, params)
+        local futils = require("parrot.file_utils")
+        if futils.find_git_root() == "" then
+          prt.logger.warning("Not in a git repository")
+          return
+        else
+          local template = [[
               I want you to act as a commit message generator. I will provide you
               with information about the task and the prefix for the task code, and
               I would like you to generate an appropriate commit message using the
@@ -170,22 +183,22 @@ return {
 
               Here are the changes that should be considered by this message:
             ]] .. vim.fn.system("git diff --no-color --no-ext-diff --staged")
-            local model_obj = prt.get_model("command")
-            prt.Prompt(params, prt.ui.Target.append, model_obj, nil, template)
-          end
-        end,
-        SpellCheck = function(prt, params)
-          local chat_prompt = [[
+          local model_obj = prt.get_model("command")
+          prt.Prompt(params, prt.ui.Target.append, model_obj, nil, template)
+        end
+      end,
+      SpellCheck = function(prt, params)
+        local chat_prompt = [[
             Your task is to take the text provided and rewrite it into a clear,
             grammatically correct version while preserving the original meaning
             as closely as possible. Correct any spelling mistakes, punctuation
             errors, verb tense issues, word choice problems, and other
             grammatical mistakes.
           ]]
-          prt.ChatNew(params, chat_prompt)
-        end,
-        CodeConsultant = function(prt, params)
-          local chat_prompt = [[
+        prt.ChatNew(params, chat_prompt)
+      end,
+      CodeConsultant = function(prt, params)
+        local chat_prompt = [[
             Your task is to analyze the provided {{filetype}} code and suggest
             improvements to optimize its performance. Identify areas where the
             code can be made more efficient, faster, or less resource-intensive.
@@ -199,10 +212,10 @@ return {
             {{filecontent}}
             ```
           ]]
-          prt.ChatNew(params, chat_prompt)
-        end,
-        ProofReader = function(prt, params)
-          local chat_prompt = [[
+        prt.ChatNew(params, chat_prompt)
+      end,
+      ProofReader = function(prt, params)
+        local chat_prompt = [[
             I want you to act as a proofreader. I will provide you with texts and
             I would like you to review them for any spelling, grammar, or
             punctuation errors. Once you have finished reviewing the text,
@@ -228,11 +241,10 @@ return {
 
             {ideal text}
           ]]
-          prt.ChatNew(params, chat_prompt)
-        end,
-      },
-    })
-  end,
+        prt.ChatNew(params, chat_prompt)
+      end,
+    },
+  },
   keys = {
     { "<leader>a",  group = "Code generation" },
     { "<leader>ac", "<cmd>PrtChatNew<cr>",       mode = { "n" }, desc = "New Chat" },
