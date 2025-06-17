@@ -13,6 +13,7 @@ return {
   "tpope/vim-repeat",
   "tpope/vim-eunuch",
   "tpope/vim-sleuth",
+  "AndrewRadev/switch.vim",
   "elkowar/yuck.vim",
   "gpanders/nvim-parinfer",
   {
