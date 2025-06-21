@@ -57,7 +57,6 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
       "nvim-treesitter/playground",
-      { "nushell/tree-sitter-nu", build = ":TSUpdate nu" },
     },
     config = function()
       require("nvim-treesitter.configs").setup({
