@@ -23,4 +23,5 @@ abbr --add --global vi 'nvim'
 abbr --add --global cat 'bat'
 
 starship init fish | source
-zoxide init fish | source
+zoxide init --cmd cd fish | source
+atuin init fish | source
