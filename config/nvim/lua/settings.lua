@@ -3,7 +3,6 @@ local g = vim.g
 
 -- TODO: Use https://github.com/m4xshen/autoclose.nvim
 -- https://github.com/barrett-ruth/import-cost.nvim
--- https://github.com/danymat/neogen - JSDoc and such
 -- https://www.youtube.com/watch?v=aqlxqpHs-aQ
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -39,6 +38,8 @@ o.termguicolors = true
 
 o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 o.fillchars:append({ diff = "╱" })
+-- o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- o.foldtext = "v:lua.vim.treesitter.foldtext()"
 o.foldcolumn = "1"
 o.foldlevel = 99
 o.foldlevelstart = 99
@@ -67,12 +68,12 @@ o.listchars:append("eol:↴")
 --[[ o.spell = true ]]
 o.spelllang = { "en", "nb" }
 o.splitkeep = "screen"
+o.conceallevel = 1
 
 require("lazy").setup({
   { import = "plugins" },
   { import = "plugins.lsp" },
 })
-require("custom-signs")
 
 vim.diagnostic.config({
   signs = {
@@ -93,8 +94,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
     if
-      not client:supports_method("textDocument/willSaveWaitUntil")
-      and client:supports_method("textDocument/formatting")
+        not client:supports_method("textDocument/willSaveWaitUntil")
+        and client:supports_method("textDocument/formatting")
     then
       vim.api.nvim_create_autocmd("BufWritePre", {
         group = vim.api.nvim_create_augroup("my.lsp", { clear = false }),
