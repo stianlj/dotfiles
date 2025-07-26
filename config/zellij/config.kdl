@@ -173,6 +173,7 @@ keybinds {
     }
 }
 
+layout_dir "/home/stianlj/.config/zellij/layouts"
 on_force_close "detach"
 simplified_ui true
 default_shell "nu"

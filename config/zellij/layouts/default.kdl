@@ -1,0 +1,55 @@
+layout {
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="file:~/.local/share/zellij/plugins/zjstatus/zjstatus.wasm" {
+                color_rosewater "#f5e0dc"
+                color_flamingo "#f2cdcd"
+                color_pink "#f5c2e7"
+                color_mauve "#cba6f7"
+                color_red "#f38ba8"
+                color_maroon "#eba0ac"
+                color_peach "#fab387"
+                color_yellow "#f9e2af"
+                color_green "#a6e3a1"
+                color_teal "#94e2d5"
+                color_sky "#89dceb"
+                color_sapphire "#74c7ec"
+                color_blue "#89b4fa"
+                color_lavender "#b4befe"
+                color_text "#cdd6f4"
+                color_subtext1 "#bac2de"
+                color_subtext0 "#a6adc8"
+                color_overlay2 "#9399b2"
+                color_overlay1 "#7f849c"
+                color_overlay0 "#6c7086"
+                color_surface2 "#585b70"
+                color_surface1 "#45475a"
+                color_surface0 "#313244"
+                color_base "#1e1e2e"
+                color_mantle "#181825"
+                color_crust "#11111b"
+
+                hide_frame_for_single_pane "true"
+
+                format_left   "{mode}#[fg=$blue,bg=$crust,bold] {session} {tabs}"
+                format_right  "{datetime}"
+                format_space  "#[bg=$crust]"
+
+                border_enabled  "false"
+
+                mode_normal  "#[fg=yellow,bg=$crust]   "
+                mode_locked  "#[fg=red,bg=$crust]   "
+
+                tab_normal   "#[fg=$overlay0,bg=$crust] {index}: {name} "
+                tab_active   "#[fg=$overlay2,bg=$crust,bold,italic] {index}: {name} "
+
+                datetime        "#[fg=$overlay0,bg=$crust,bold] {format} "
+                datetime_format "%A, %d %b %Y %H:%M"
+                datetime_timezone "Europe/Oslo"
+            }
+        }
+    }
+    tab name="nvim" focus=true borderless=true
+    tab name="shell"
+}
