@@ -1,6 +1,6 @@
 local function parrot_status()
   local status_info = require("parrot.config").get_status_info()
-  return string.format("AI: %s", status_info.model)
+  return string.format("󰚩  %s", status_info.model)
 end
 
 require("lualine").setup({
