@@ -1,14 +1,5 @@
 return {
   "dstein64/vim-startuptime",
-  {
-    "akinsho/bufferline.nvim",
-    dependencies = "nvim-tree/nvim-web-devicons",
-    version = "*",
-    enabled = false,
-    config = function()
-      require("plugins-legacy.bufferline-config")
-    end,
-  },
   "wakatime/vim-wakatime",
   "tpope/vim-repeat",
   "tpope/vim-eunuch",
