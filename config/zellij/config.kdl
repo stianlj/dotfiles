@@ -176,8 +176,8 @@ keybinds {
 layout_dir "/home/stianlj/.config/zellij/layouts"
 on_force_close "detach"
 simplified_ui true
-default_shell "nu"
+default_shell "fish"
 pane_frames false
-theme "catppuccin-macchiato"
+theme "catppuccin-mocha"
 copy_command "wl-copy"
 mirror_session true
