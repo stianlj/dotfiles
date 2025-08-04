@@ -24,3 +24,6 @@ abbr --add --global cat 'bat'
 
 starship init fish | source
 zoxide init fish | source
+direnv hook fish | source
+
+source /home/stianlj/packages/google-cloud-sdk/path.fish.inc

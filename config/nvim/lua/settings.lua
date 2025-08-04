@@ -72,7 +72,6 @@ require("lazy").setup({
   { import = "plugins" },
   { import = "plugins.lsp" },
 })
-require("custom-signs")
 
 vim.diagnostic.config({
   signs = {
