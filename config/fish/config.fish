@@ -23,7 +23,6 @@ abbr --add --global vi 'nvim'
 abbr --add --global cat 'bat'
 
 starship init fish | source
-zoxide init fish | source
+zoxide init --cmd cd fish | source
 direnv hook fish | source
-
-source /home/stianlj/packages/google-cloud-sdk/path.fish.inc
+atuin init fish | source

@@ -1,0 +1,27 @@
+[[plugin.deps]]
+use = "yazi-rs/plugins:full-border"
+rev = "71c4fc2"
+hash = "a61bb2d21a08bf1d18f0a549e5eb1475"
+
+[[plugin.deps]]
+use = "hankertrix/augment-command"
+rev = "55171f4"
+hash = "1e59c881ee8f6804a52cb16cf3c870d5"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:max-preview"
+rev = "71c4fc2"
+hash = "9bc26d10d2f6e2aa93b10905b1b76979"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:hide-preview"
+rev = "71c4fc2"
+hash = "5be5885898ca9df783bdec0d402bf4b0"
+
+[[plugin.deps]]
+use = "Rolv-Apneseth/starship"
+rev = "428d43a"
+hash = "73b1c5d91575dea1a49c66302860797"
+
+[flavor]
+deps = []

@@ -1,14 +1,5 @@
 return {
   "dstein64/vim-startuptime",
-  {
-    "akinsho/bufferline.nvim",
-    dependencies = "nvim-tree/nvim-web-devicons",
-    version = "*",
-    enabled = false,
-    config = function()
-      require("plugins-legacy.bufferline-config")
-    end,
-  },
   "wakatime/vim-wakatime",
   "tpope/vim-repeat",
   "tpope/vim-eunuch",
@@ -27,13 +18,6 @@ return {
       })
     end,
   },
-  --[[ { ]]
-  --[[   "michaelb/snipbuild", ]]
-  --[[   build = "bash ./install.sh", ]]
-  --[[   config = function() ]]
-  --[[     require("plugins-legacy.snipbuild-config") ]]
-  --[[   end, ]]
-  --[[ }, ]]
   "fladson/vim-kitty",
   "baskerville/vim-sxhkdrc",
   "theRealCarneiro/hyprland-vim-syntax",
@@ -54,12 +38,6 @@ return {
       require("plugins-legacy.lualine-config")
     end,
   },
-  --[[ { ]]
-  --[[   "williamboman/mason.nvim", ]]
-  --[[   "williamboman/mason-lspconfig.nvim", ]]
-  --[[   "neovim/nvim-lspconfig", ]]
-  --[[   "folke/neodev.nvim", ]]
-  --[[ }, ]]
   "jbyuki/one-small-step-for-vimkind",
   {
     "rcarriga/nvim-dap-ui",
