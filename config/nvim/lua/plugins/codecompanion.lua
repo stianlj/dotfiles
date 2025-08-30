@@ -45,4 +45,7 @@ Output only the commit message without any explanations and follow-up suggestion
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
   },
+  init = function()
+    require("plugins.codecompanion.fidget-spinner"):init()
+  end,
 }
