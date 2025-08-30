@@ -24,4 +24,5 @@ abbr --add --global cat 'bat'
 
 starship init fish | source
 zoxide init --cmd cd fish | source
+direnv hook fish | source
 atuin init fish | source
