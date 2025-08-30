@@ -1,8 +1,3 @@
-local function parrot_status()
-  local status_info = require("parrot.config").get_status_info()
-  return string.format("󰚩  %s", status_info.model)
-end
-
 require("lualine").setup({
   options = {
     theme = "catppuccin",
@@ -11,6 +6,6 @@ require("lualine").setup({
     globalstatus = true,
   },
   sections = {
-    lualine_b = { "branch", "diff", "diagnostics", parrot_status },
+    lualine_b = { "branch", "diff", "diagnostics" },
   },
 })
