@@ -17,7 +17,7 @@ bind p fish_clipboard_paste
 alias ls='exa --git --extended --octal-permissions'
 alias la='exa --git --extended --octal-permissions -la'
 alias tree='et -I --dirs-first'
-
+alias ssh='kitten ssh'
 
 abbr --add --global vi 'nvim'
 abbr --add --global cat 'bat'
