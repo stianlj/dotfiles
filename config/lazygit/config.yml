@@ -1,4 +1,5 @@
+---
 git:
   paging:
-    colorArg: never
-    pager: delta --dark --paging=never
+    colorArg: always
+    pager: diff-so-fancy
