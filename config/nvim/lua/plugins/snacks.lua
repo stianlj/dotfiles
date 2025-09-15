@@ -4,6 +4,7 @@ return {
   lazy = false,
   opts = {
     bigfile = { enabled = true },
+    lazygit = { configure = true },
     indent = {
       enabled = true,
       hl = {
@@ -101,9 +102,9 @@ return {
       {
         "<leader>gl",
         function()
-          Snacks.picker.git_log()
+          Snacks.lazygit()
         end,
-        desc = "List branches",
+        desc = "Lazygit",
       },
     }
   end,
