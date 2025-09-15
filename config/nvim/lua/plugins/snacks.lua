@@ -17,11 +17,7 @@ return {
         "SnacksIndent7",
         "SnacksIndent8",
       },
-      animate = {
-        duration = {
-          step = 10,
-        },
-      },
+      animate = { enabled = false },
     },
     input = { enabled = true },
     notifier = { enabled = true },
