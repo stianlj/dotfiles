@@ -27,4 +27,10 @@ return {
       blink = true,
     },
   },
+  keys = {
+    { "<leader>nn", "<cmd>Obsidian new<cr>",          desc = "Create a new note" },
+    { "<leader>ns", "<cmd>Obsidian search<cr>",       desc = "Search notes" },
+    { "<leader>nf", "<cmd>Obsidian quick_switch<cr>", desc = "Find a note" },
+    { "<leader>nt", "<cmd>Obsidian today<cr>",        desc = "Show todays daily" },
+  },
 }
