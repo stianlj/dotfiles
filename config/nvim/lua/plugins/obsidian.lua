@@ -17,7 +17,7 @@ return {
       },
     },
     daily_notes = {
-      folder = "Dailies",
+      folder = "0. Dailies",
     },
     picker = {
       name = "snacks.pick",
