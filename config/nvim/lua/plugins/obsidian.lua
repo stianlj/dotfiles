@@ -27,7 +27,7 @@ return {
       nvim_cmp = false,
       blink = true,
     },
-    -- checkbox = { order = { " ", ">", "x", "-" } },
+    checkbox = { order = { " ", ">", "x", "-" } },
     -- callbacks = {
     --   enter_note = function(_, note)
     --     vim.keymap.set("n", "<leader>ntd", function()
