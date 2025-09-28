@@ -105,9 +105,9 @@ vim.diagnostic.config({
       [vim.diagnostic.severity.INFO] = "",
     },
   },
-  virtual_lines = {
-    current_line = true,
-  },
+  -- virtual_lines = {
+  --   current_line = true,
+  -- },
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
