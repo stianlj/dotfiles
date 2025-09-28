@@ -13,11 +13,22 @@ return {
               enabled = true,
               min_level = "ERROR",
             },
+            {
+              name = "usages",
+              enabled = true,
+              include = { "refs", "defs", "impls" },
+              breakdown = true,
+              show_zero = true,
+            },
+            {
+              name = "complexity",
+              enabled = true,
+              min_level = "L",
+            },
           },
           style = {
             placement = "inline",
             prefix = "",
-            render = "focused",
           },
         },
       },
