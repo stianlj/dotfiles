@@ -7,6 +7,13 @@ return {
       profiles = {
         {
           name = "minimal",
+          providers = {
+            {
+              name = "diagnostics",
+              enabled = true,
+              min_level = "ERROR",
+            },
+          },
           style = {
             placement = "inline",
             prefix = "",
