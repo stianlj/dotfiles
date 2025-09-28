@@ -48,4 +48,11 @@ Output only the commit message without any explanations and follow-up suggestion
   init = function()
     require("plugins.codecompanion.fidget-spinner"):init()
   end,
+  keys = {
+    {
+      "<leader>ac",
+      "<cmd>CodeCompanion /commit_message<cr>",
+      desc = "Generate Commit Message",
+    },
+  },
 }
