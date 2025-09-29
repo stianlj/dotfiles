@@ -36,8 +36,6 @@ c.fonts.completion.entry = defaultFont
 c.content.notifications.enabled = False
 
 c.colors.webpage.preferred_color_scheme = "dark"
-c.colors.webpage.darkmode.enabled = True
-c.colors.webpage.darkmode.policy.images = "never"
 
 # Bindings
 config.bind(";gy", "hint links spawn --detach mpv --force-window yes {hint-url}")
