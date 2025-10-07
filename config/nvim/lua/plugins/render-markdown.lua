@@ -5,7 +5,7 @@ return {
       custom = {
         todo = {},
         in_progress = { raw = "[>]", rendered = "󰥔 ", highlight = "RenderMarkdownTodo", scope_highlight = nil },
-        cancelled = { raw = "[-]", rendered = "󰱒 ", highlight = "RenderMarkdownWarn", scope_highlight = nil },
+        cancelled = { raw = "[-]", rendered = "󰜺 ", highlight = "RenderMarkdownWarn", scope_highlight = nil },
       },
     },
   },
