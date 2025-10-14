@@ -25,4 +25,4 @@ abbr --add --global cat 'bat'
 starship init fish | source
 zoxide init --cmd cd fish | source
 direnv hook fish | source
-atuin init fish | source
+atuin init fish | grep -v 'bind -M insert -k up _atuin_bind_up' | source
