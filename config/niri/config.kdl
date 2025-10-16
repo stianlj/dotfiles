@@ -4,6 +4,7 @@
 // - waybar
 // - swayosd
 // - kitty
+// - waytrogen
 input {
     keyboard {
         repeat-delay 250
@@ -90,7 +91,7 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 
-// This line starts waybar, a commonly used bar for Wayland compositors.
+spawn-sh-at-startup "waytrogen --restore"
 spawn-sh-at-startup "waybar -c ~/.config/waybar/config-main-desktop-niri"
 spawn-sh-at-startup "vicinae server"
 spawn-at-startup "swayosd-server"
