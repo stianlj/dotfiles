@@ -94,6 +94,7 @@ layout {
 spawn-sh-at-startup "waytrogen --restore"
 spawn-sh-at-startup "waybar -c ~/.config/waybar/config-main-desktop-niri"
 spawn-sh-at-startup "vicinae server"
+spawn-at-startup "stasis"
 spawn-at-startup "swayosd-server"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
@@ -222,7 +223,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn-sh "vicinae vicinae://toggle"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Mod+Backspace hotkey-overlay-title="Lock the Screen: swaylock" { spawn-sh "swaylock --color 1a1b26"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.

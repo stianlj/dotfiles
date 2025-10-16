@@ -1,0 +1,28 @@
+app_default_timeout 300
+
+idle:
+  monitor_media true
+  ignore_remote_media true
+  respect_idle_inhibitors true
+
+  inhibit_apps [
+    "mpv"
+    r".*\.exe"
+    r"steam_app_.*"
+    r"firefox.*"
+  ]
+
+  lock_screen:
+    lock-command "swaylock"
+    timeout = 60
+    command "swaylock"
+    resume-command "notify-send 'Welcome Back $env.USER!'"
+  end
+
+  dpms:
+    timeout 600
+    command "niri msg action power-off-monitors"
+    resume-command "niri msg action power-on-monitors"
+  end
+
+end
