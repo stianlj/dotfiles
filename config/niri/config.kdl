@@ -106,7 +106,7 @@ hotkey-overlay {
     // skip-at-startup
 }
 environment {
-    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    // QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
     MOZ_ENABLE_WAYLAND "1"
     XDG_SESSION_TYPE "wayland"
     XDG_CURRENT_DESKTOP "niri"
