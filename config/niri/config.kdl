@@ -95,7 +95,8 @@ spawn-sh-at-startup "waytrogen --restore"
 spawn-sh-at-startup "waybar -c ~/.config/waybar/config-main-desktop-niri"
 spawn-sh-at-startup "vicinae server"
 spawn-at-startup "stasis"
-spawn-at-startup "swayosd-server"
+spawn-sh-at-startup "udiskie --tray --no-automount"
+spawn-sh-at-startup "swayosd-server"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
