@@ -13,14 +13,14 @@ idle:
   ]
 
   lock_screen:
-    lock-command "swaylock"
+    lock-command "hyprlock"
     timeout = 60
-    command "swaylock"
+    command "hyprlock"
     resume-command "notify-send 'Welcome Back $env.USER!'"
   end
 
   dpms:
-    timeout 600
+    timeout 900
     command "niri msg action power-off-monitors"
     resume-command "niri msg action power-on-monitors"
   end
