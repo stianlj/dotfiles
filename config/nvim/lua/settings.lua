@@ -18,20 +18,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 o.rtp:prepend(lazypath)
 
-vim.lsp.enable({
-  "lua",
-  "ansible",
-  "bashls",
-  "emmet",
-  "javascript",
-  "svelte",
-  "eslint",
-  "json",
-  "yaml",
-  "kulala",
-  "docker-compose",
-})
-
 g.mapleader = " "
 g.localleader = " "
 o.termguicolors = true
