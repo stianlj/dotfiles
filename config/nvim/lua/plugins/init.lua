@@ -52,7 +52,6 @@ return {
       require("colorizer").setup()
     end,
   },
-  "github/copilot.vim",
   "tpope/vim-fugitive",
   "idanarye/vim-merginal",
   "tpope/vim-rhubarb",
