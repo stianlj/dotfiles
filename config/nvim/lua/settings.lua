@@ -82,6 +82,59 @@ require("lazy").setup({
   { import = "plugins.lsp" },
 })
 
+vim.lsp.config("copilot", {
+  settings = {
+    telemetry = { enabled = false },
+  },
+})
+
+vim.lsp.config("lua_ls", {
+  telemetry = { enabled = false },
+  settings = {
+    Lua = {
+      runtime = {
+        version = "LuaJIT",
+      },
+      diagnostics = {
+        globals = {
+          "vim",
+          "require",
+        },
+      },
+    },
+  },
+})
+
+vim.lsp.config("jsonls", {
+  settings = {
+    json = {
+      schemas = require("schemastore").json.schemas(),
+      validate = { enable = true },
+    },
+  },
+})
+
+vim.lsp.config("yamlls", {
+  settings = {
+    json = {
+      schemas = require("schemastore").json.schemas(),
+      validate = { enable = true },
+    },
+  },
+})
+
+vim.lsp.enable("ansiblels")
+vim.lsp.enable("bashls")
+vim.lsp.enable("copiloto")
+vim.lsp.enable("jsonls")
+vim.lsp.enable("docker_compose_language_service")
+vim.lsp.enable("emmet_ls")
+vim.lsp.enable("eslint")
+vim.lsp.enable("lua_ls")
+vim.lsp.enable("svelte")
+vim.lsp.enable("vtsls")
+vim.lsp.enable("yamlls")
+
 vim.diagnostic.config({
   signs = {
     text = {
@@ -101,8 +154,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
     if
-        not client:supports_method("textDocument/willSaveWaitUntil")
-        and client:supports_method("textDocument/formatting")
+      not client:supports_method("textDocument/willSaveWaitUntil")
+      and client:supports_method("textDocument/formatting")
     then
       vim.api.nvim_create_autocmd("BufWritePre", {
         group = vim.api.nvim_create_augroup("my.lsp", { clear = false }),

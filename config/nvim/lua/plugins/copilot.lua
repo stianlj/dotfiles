@@ -1,6 +1,6 @@
 return {
   "zbirenbaum/copilot.lua",
-  dependencies = { "copilotlsp-nvim/copilot-lsp" },
+  -- dependencies = { "copilotlsp-nvim/copilot-lsp" },
   opts = {
     suggestion = {
       auto_trigger = true,
