@@ -5,6 +5,7 @@ set fish_greeting ""
 set -gx LIBVIRT_DEFAULT_URI qemu:///system
 set -gx EDITOR nvim
 set -gx VOLTA_HOME $HOME/.volta
+set -gx VOLTA_FEATURE_PNPM 1
 
 test -d "$HOME/.local/bin"; and set PATH "$HOME/.local/bin" $PATH
 test -d "$HOME/.npm-global/bin"; and set PATH "$HOME/.npm-global/bin" $PATH
