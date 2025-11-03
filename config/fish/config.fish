@@ -17,11 +17,12 @@ bind p fish_clipboard_paste
 
 alias ls='exa --git --extended --octal-permissions'
 alias la='exa --git --extended --octal-permissions -la'
-alias tree='et -I --dirs-first'
+alias tree='tre'
 alias ssh='kitten ssh'
+alias vi='nvim'
+alias cat='bat'
 
-abbr --add --global vi 'nvim'
-abbr --add --global cat 'bat'
+abbr --add --global s 'sesh connect $(sesh list -t -i | gum filter --limit 1 --no-sort --fuzzy --placeholder \'Pick a sesh\' --height 50 --prompt=\'⚡\')'
 
 starship init fish | source
 zoxide init --cmd cd fish | source
