@@ -70,18 +70,18 @@ repoPaths: {}
 theme:
   colors:
     text:
-      primary: "#F7F1FF"
-      secondary: "#5AD4E6"
-      inverted: "#F7F1FF"
-      faint: "#3E4057"
-      warning: "#FC618D"
-      success: "#7BD88F"
+      primary: "#E2E1ED"
+      secondary: "#666CA6"
+      inverted: "#242347"
+      faint: "#B0B3BF"
+      warning: "#E0AF68"
+      success: "#3DF294"
     background:
-      selected: "#535155"
+      selected: "#1B1B33"
     border:
-      primary: "#948AE3"
-      secondary: "#7BD88F"
-      faint: "#3E4057"
+      primary: "#383B5B"
+      secondary: "#39386B"
+      faint: "#2B2B40"
   ui:
     sectionsShowCount: true
     table:
