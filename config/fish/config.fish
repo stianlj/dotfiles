@@ -22,7 +22,7 @@ alias ssh='kitten ssh'
 alias vi='nvim'
 alias cat='bat'
 
-abbr --add --global s 'sesh connect $(sesh list -t -i | gum filter --limit 1 --no-sort --fuzzy --placeholder \'Pick a sesh\' --height 50 --prompt=\'⚡\')'
+abbr --add --global s 'kitten @ set-spacing padding=0; sesh connect $(sesh list -t -i | gum filter --limit 1 --no-sort --fuzzy --placeholder \'Pick a sesh\' --height 50 --prompt=\'⚡\'); kitten @ set-spacing padding=default'
 
 starship init fish | source
 zoxide init --cmd cd fish | source
