@@ -2,6 +2,7 @@ return {
   "gelguy/wilder.nvim",
   build = ":UpdateRemotePlugins",
   event = "VeryLazy",
+  enabled = false,
   dependencies = { "romgrk/fzy-lua-native" },
   config = function()
     local wilder = require("wilder")
