@@ -23,14 +23,6 @@ return {
   "theRealCarneiro/hyprland-vim-syntax",
   "pearofducks/ansible-vim",
   "stevearc/dressing.nvim",
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    build = ":CatppuccinCompile",
-    config = function()
-      require("plugins-legacy.catppuccin-config")
-    end,
-  },
   "jbyuki/one-small-step-for-vimkind",
   {
     "rcarriga/nvim-dap-ui",
