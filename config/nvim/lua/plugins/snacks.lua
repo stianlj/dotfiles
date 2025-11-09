@@ -19,11 +19,16 @@ return {
       },
       animate = { enabled = false },
     },
+    gh = {},
     input = { enabled = true },
     notifier = { enabled = true },
     quickfile = { enabled = true },
     words = { enabled = true },
     picker = {
+      sources = {
+        gh_issue = {},
+        gh_pr = {},
+      },
       matcher = {
         frecency = true,
         history_bonus = true,
@@ -96,11 +101,53 @@ return {
         desc = "List branches",
       },
       {
+        "<leader>gf",
+        function()
+          Snacks.picker.git_log_file()
+        end,
+        desc = "List branches",
+      },
+      {
+        "<leader>gL",
+        function()
+          Snacks.picker.git_log()
+        end,
+        desc = "List branches",
+      },
+      {
         "<leader>gl",
         function()
           Snacks.lazygit()
         end,
         desc = "Lazygit",
+      },
+      {
+        "<leader>gi",
+        function()
+          Snacks.picker.gh_issue()
+        end,
+        desc = "GitHub Issues (open)",
+      },
+      {
+        "<leader>gI",
+        function()
+          Snacks.picker.gh_issue({ state = "all" })
+        end,
+        desc = "GitHub Issues (all)",
+      },
+      {
+        "<leader>gm",
+        function()
+          Snacks.picker.gh_pr()
+        end,
+        desc = "GitHub Pull Requests (open)",
+      },
+      {
+        "<leader>gM",
+        function()
+          Snacks.picker.gh_pr({ state = "all" })
+        end,
+        desc = "GitHub Pull Requests (all)",
       },
     }
   end,
