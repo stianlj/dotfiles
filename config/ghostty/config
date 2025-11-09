@@ -1,0 +1,11 @@
+term = xterm-256color
+command = /usr/bin/fish
+
+theme = Catppuccin Mocha
+font-family = MonoLisa
+font-feature = +ss02 +ss08 +ss08
+font-thicken = true
+window-decoration = false
+window-padding-balance = true
+window-padding-x = 7
+window-padding-y = 5
