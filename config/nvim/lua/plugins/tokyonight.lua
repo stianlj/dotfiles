@@ -6,7 +6,7 @@ return {
     vim.api.nvim_command("colorscheme tokyonight")
   end,
   opts = {
-    style = "night",
+    style = "moon",
     styles = {
       comments = { italic = true, bold = true },
     },
