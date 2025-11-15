@@ -19,16 +19,20 @@ else
   )
 fi
 
+is_kitty() {
+  [[ "$TERM" == "xterm-kitty" ]]
+}
+
 session="${session#📁 }"
 session_name=$(basename "$session")
 
 if ! sesh list -t | grep "$session_name"; then
   echo "did not find session"
-  kitten @ set-spacing padding=0
+  is_kitty && kitten @ set-spacing padding=0
   sesh connect "$session"
-  kitten @ set-spacing padding=default
+  is_kitty && kitten @ set-spacing padding=default
 else
-  kitten @ set-spacing padding=0
+  is_kitty && kitten @ set-spacing padding=0
   sesh connect "$session_name"
-  kitten @ set-spacing padding=default
+  is_kitty && kitten @ set-spacing padding=default
 fi
