@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+if [ "$1" != "" ]; then
+  session=$1
+else
+  all_dirs=$(find ~/Code/projects ~/Code/configuration ~/Code/homelab ~/Code/scripts \
+    -mindepth 1 -maxdepth 1 -not -path '*/.*' -type d,l | sed 's/^/📁 /')
+
+  active_sessions=$(sesh list -t -i)
+
+  session=$(
+    printf "%s\n%s\n" "$active_sessions" "$all_dirs" | gum filter \
+      --limit 1 \
+      --no-sort \
+      --fuzzy \
+      --placeholder 'Pick a sesh or dir' \
+      --height 50 \
+      --prompt='⚡'
+  )
+fi
+
+session="${session#📁 }"
+session_name=$(basename "$session")
+
+if ! sesh list -t | grep "$session_name"; then
+  echo "did not find session"
+  cd "$session"
+  kitten @ set-spacing padding=0
+  sesh connect "$session"
+  kitten @ set-spacing padding=default
+else
+  kitten @ set-spacing padding=0
+  sesh connect "$session_name"
+  kitten @ set-spacing padding=default
+fi
