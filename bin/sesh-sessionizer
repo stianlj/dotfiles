@@ -31,9 +31,5 @@ session="${session#📁 }"
 session_name=$(basename "$session")
 
 is_kitty && kitten @ set-spacing padding=0
-if ! sesh list -t | grep "$session_name"; then
-  sesh connect "$session"
-else
-  sesh connect "$session_name"
-fi
+sesh connect "$session"
 is_kitty && kitten @ set-spacing padding=default
