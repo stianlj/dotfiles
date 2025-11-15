@@ -30,13 +30,10 @@ is_kitty() {
 session="${session#📁 }"
 session_name=$(basename "$session")
 
+is_kitty && kitten @ set-spacing padding=0
 if ! sesh list -t | grep "$session_name"; then
-  echo "did not find session"
-  is_kitty && kitten @ set-spacing padding=0
   sesh connect "$session"
-  is_kitty && kitten @ set-spacing padding=default
 else
-  is_kitty && kitten @ set-spacing padding=0
   sesh connect "$session_name"
-  is_kitty && kitten @ set-spacing padding=default
 fi
+is_kitty && kitten @ set-spacing padding=default
