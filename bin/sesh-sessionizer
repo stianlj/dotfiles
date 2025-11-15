@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 
+directories=(~/Code/projects ~/Code/configuration ~/Code/homelab ~/Code/scripts)
+
 if [ "$1" != "" ]; then
   session=$1
 else
-  all_dirs=$(find ~/Code/projects ~/Code/configuration ~/Code/homelab ~/Code/scripts \
-    -mindepth 1 -maxdepth 1 -not -path '*/.*' -type d,l | sed 's/^/📁 /')
+  all_dirs=$(
+    find "${directories[@]}" -mindepth 1 -maxdepth 1 -not -path '*/.*' \
+      -type d,l | sed 's/^/📁 /'
+  )
 
   active_sessions=$(sesh list -t -i)
 
