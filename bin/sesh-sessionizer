@@ -24,7 +24,6 @@ session_name=$(basename "$session")
 
 if ! sesh list -t | grep "$session_name"; then
   echo "did not find session"
-  cd "$session"
   kitten @ set-spacing padding=0
   sesh connect "$session"
   kitten @ set-spacing padding=default
