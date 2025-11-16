@@ -23,6 +23,7 @@ alias vi='nvim'
 alias cat='bat'
 
 abbr --add --global s 'sesh-sessionizer'
+abbr --add --global gl 'gitlab-clonizer'
 
 starship init fish | source
 zoxide init --cmd cd fish | source
