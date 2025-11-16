@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+IFS=':' read -ra directories <<<"$SESH_DIRECTORIES"
+
+# gh search repos --jq '.[].fullName' --json fullName --match name --owner nrkno --sort updated --limit 1000 -- 'dh-'
+
+repo=$(
+  gh search repos \
+    --json fullName \
+    --jq '.[].fullName' \
+    --owner stianlj \
+    --sort updated \
+    --limit 1000 |
+    gum filter \
+      --limit 1 \
+      --no-sort \
+      --fuzzy \
+      --placeholder 'Pick a repo' \
+      --height 50 \
+      --prompt='🔍'
+)
+
+base_folder=$(printf '%s\n' "${directories[@]}" | gum choose --limit 1)
+repo_folder="$base_folder/$(basename "$repo")"
+
+if [ -d "$repo_folder" ]; then
+  . sesh-sessionizer "$repo_folder"
+fi
+
+echo "$repo_folder"
+gh repo clone "$repo" "$repo_folder"
+. sesh-sessionizer "$repo_folder"
