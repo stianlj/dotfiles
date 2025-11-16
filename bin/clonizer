@@ -18,7 +18,7 @@ gum_filter_repo() {
 case $platform in
   "GitHub")
     repo=$(
-      gh search repos \
+      gum spin --spinner globe --show-output -- gh search repos \
         --json fullName \
         --jq '.[].fullName' \
         --owner stianlj \
@@ -30,7 +30,7 @@ case $platform in
     ;;
   "GitLab (local)")
     repo=$(
-      glab repo list -F json |
+      gum spin --spinner globe --show-output -- glab repo list -F json |
         jq -r .[].path_with_namespace |
         gum_filter_repo
     )
