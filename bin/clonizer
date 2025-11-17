@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+IFS=':' read -ra directories <<<"$SESH_DIRECTORIES"
+
+# gh search repos --jq '.[].fullName' --json fullName --match name --owner nrkno --sort updated --limit 1000 -- 'dh-'
+
+platform=$(printf "GitHub\nGitLab (local)" | gum choose --limit 1 --header "Select platform:")
+gum_filter_repo() {
+  gum filter \
+    --limit 1 \
+    --no-sort \
+    --fuzzy \
+    --placeholder 'Pick a repo' \
+    --height 50 \
+    --prompt='🔍'
+}
+
+case $platform in
+  "GitHub")
+    repo=$(
+      gum spin --spinner globe --show-output -- gh search repos \
+        --json fullName \
+        --jq '.[].fullName' \
+        --owner stianlj \
+        --sort updated \
+        --limit 1000 |
+        gum_filter_repo
+    )
+    clone_cmd=(gh repo clone)
+    ;;
+  "GitLab (local)")
+    repo=$(
+      gum spin --spinner globe --show-output -- glab repo list -F json |
+        jq -r .[].path_with_namespace |
+        gum_filter_repo
+    )
+    clone_cmd=(glab repo clone)
+    ;;
+  *)
+    echo "Invalid platform selected."
+    exit 1
+    ;;
+esac
+
+base_folder=$(printf '%s\n' "${directories[@]}" | gum choose --limit 1)
+repo_folder="$base_folder/$(basename "$repo")"
+
+if [ -d "$repo_folder" ]; then
+  . sesh-sessionizer "$repo_folder"
+fi
+
+echo "$repo_folder"
+"${clone_cmd[@]}" "$repo" "$repo_folder"
+. sesh-sessionizer "$repo_folder"

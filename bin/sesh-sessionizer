@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+IFS=':' read -ra directories <<<"$SESH_DIRECTORIES"
+
+if [ "$1" != "" ]; then
+  session=$1
+else
+  all_dirs=$(
+    find "${directories[@]}" -mindepth 1 -maxdepth 1 -not -path '*/.*' -type d,l |
+      sed 's/^/📁 /'
+  )
+
+  active_sessions=$(sesh list -t -i)
+
+  session=$(
+    printf "%s\n%s\n" "$active_sessions" "$all_dirs" | gum filter \
+      --limit 1 \
+      --no-sort \
+      --fuzzy \
+      --placeholder 'Pick a sesh or dir' \
+      --height 50 \
+      --prompt='⚡'
+  )
+fi
+
+is_kitty() {
+  [[ "$TERM" == "xterm-kitty" ]]
+}
+
+session="${session#📁 }"
+session_name=$(basename "$session")
+
+is_kitty && kitten @ set-spacing padding=0
+sesh connect "$session"
+is_kitty && kitten @ set-spacing padding=default
