@@ -6,6 +6,8 @@ return {
       theme = "tokyonight",
       section_separators = { left = "", right = "" },
       component_separators = {},
+      -- section_separators = { left = "", right = "" },
+      -- component_separators = { left = "", right = "" },
       globalstatus = true,
     },
     sections = {
@@ -26,8 +28,9 @@ return {
             return status.get() ~= nil
           end,
         },
+        { "filename", file_status = true, path = 1 },
       },
-      lualine_x = {
+      lualine_y = {
         {
           function()
             local status = require("sidekick.status").cli()
