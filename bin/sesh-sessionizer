@@ -2,31 +2,137 @@
 
 IFS=':' read -ra directories <<<"$SESH_DIRECTORIES"
 
-if [ "$1" != "" ]; then
-  session=$1
-else
-  all_dirs=$(
-    find "${directories[@]}" -mindepth 1 -maxdepth 1 -not -path '*/.*' -type d,l |
-      sed 's/^/📁 /'
+# Clone mode - integrated repo cloning functionality
+clone_mode() {
+  # Platform selection
+  platform=$(
+    printf "GitHub\nGitLab (local)" | fzf \
+      --header $'Keybindings:\n  Enter: Select platform\n  Ctrl-c/Esc: Cancel' \
+      --prompt='🌐 Platform: ' \
+      --height=40% \
+      --reverse \
+      --border
   )
 
-  active_sessions=$(sesh list -t -i)
+  # Exit if cancelled
+  if [ $? -ne 0 ]; then
+    exit 0
+  fi
 
-  session=$(
-    printf "%s\n%s\n" "$active_sessions" "$all_dirs" | gum filter \
-      --limit 1 \
-      --no-sort \
-      --fuzzy \
-      --placeholder 'Pick a sesh or dir' \
-      --height 50 \
-      --prompt='⚡'
+  fzf_filter_repo() {
+    fzf \
+      --header $'Keybindings:\n  Enter: Select repo\n  Ctrl-c/Esc: Cancel' \
+      --prompt='🔍 ' \
+      --height=50% \
+      --reverse \
+      --border \
+      --ansi
+  }
+
+  # Get repo list based on platform
+  case $platform in
+    "GitHub")
+      repo=$(
+        gh search repos \
+          --json fullName \
+          --jq '.[].fullName' \
+          --owner stianlj \
+          --sort updated \
+          --limit 1000 |
+          fzf_filter_repo
+      )
+      clone_cmd=(gh repo clone)
+      ;;
+    "GitLab (local)")
+      repo=$(
+        glab repo list -F json |
+          jq -r .[].path_with_namespace |
+          fzf_filter_repo
+      )
+      clone_cmd=(glab repo clone)
+      ;;
+    *)
+      echo "Invalid platform selected."
+      exit 1
+      ;;
+  esac
+
+  # Exit if no repo selected
+  if [ "$repo" = "" ]; then
+    exit 0
+  fi
+
+  # Select destination folder
+  base_folder=$(
+    printf '%s\n' "${directories[@]}" | fzf \
+      --header 'Select destination folder:' \
+      --prompt='📁 ' \
+      --height=40% \
+      --reverse \
+      --border
   )
-fi
+
+  # Exit if cancelled
+  if [ $? -ne 0 ]; then
+    exit 0
+  fi
+
+  repo_folder="$base_folder/$(basename "$repo")"
+
+  # If folder already exists, just connect to it
+  if [ -d "$repo_folder" ]; then
+    session="$repo_folder"
+  else
+    # Clone the repo
+    echo "Cloning $repo to $repo_folder..."
+    "${clone_cmd[@]}" "$repo" "$repo_folder"
+    session="$repo_folder"
+  fi
+}
+
+# Main session selector mode
+main_mode() {
+  if [ "$1" != "" ]; then
+    session=$1
+  else
+    all_dirs=$(
+      find "${directories[@]}" -mindepth 1 -maxdepth 1 -not -path '*/.*' -type d,l |
+        sed 's/^/📁 /'
+    )
+
+    active_sessions=$(sesh list -t -i)
+
+    session=$(
+      printf "%s\n%s\n" "$active_sessions" "$all_dirs" | fzf \
+        --bind "ctrl-g:execute($0 --clone)+abort" \
+        --header $'Keybindings:\n  Enter: Select session/dir\n  Ctrl-g: Clone new repo\n  Ctrl-c/Esc: Cancel' \
+        --header-lines=0 \
+        --prompt='⚡ ' \
+        --height=50% \
+        --reverse \
+        --border \
+        --ansi
+    )
+
+    # If aborted (Ctrl-g was pressed), exit cleanly
+    if [ $? -ne 0 ]; then
+      exit 0
+    fi
+  fi
+}
 
 is_kitty() {
   [[ "$TERM" == "xterm-kitty" ]]
 }
 
+# Parse arguments
+if [[ "$1" == "--clone" ]]; then
+  clone_mode
+else
+  main_mode "$@"
+fi
+
+# Connect to session
 session="${session#📁 }"
 session_name=$(basename "$session")
 
