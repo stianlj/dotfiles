@@ -6,7 +6,7 @@ IFS=':' read -ra directories <<<"$SESH_DIRECTORIES"
 clone_mode() {
   # Platform selection
   platform=$(
-    printf "GitHub\nGitLab (local)" | fzf \
+    printf "GitHub (nrk)\nGitHub (stianlj)\nGitLab (local)" | fzf \
       --header $'Keybindings:\n  Enter: Select platform\n  Ctrl-c/Esc: Cancel' \
       --prompt='🌐 Platform: ' \
       --height=40% \
@@ -31,7 +31,7 @@ clone_mode() {
 
   # Get repo list based on platform
   case $platform in
-    "GitHub")
+    "GitHub (private)")
       repo=$(
         gh search repos \
           --json fullName \
@@ -39,6 +39,19 @@ clone_mode() {
           --owner stianlj \
           --sort updated \
           --limit 1000 |
+          fzf_filter_repo
+      )
+      clone_cmd=(gh repo clone)
+      ;;
+    "GitHub (nrk)")
+      repo=$(
+        gh search repos \
+          --json fullName \
+          --jq '.[].fullName' \
+          --owner nrkno \
+          --sort updated \
+          --limit 1000 \
+          -- 'dh-' |
           fzf_filter_repo
       )
       clone_cmd=(gh repo clone)
