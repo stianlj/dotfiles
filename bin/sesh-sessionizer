@@ -115,16 +115,24 @@ main_mode() {
 
     active_sessions=$(sesh list -t -i)
 
+    # Build fzf command with conditional preview
+    fzf_cmd=(fzf
+      --bind "ctrl-g:execute($0 --clone)+abort"
+      --header $'Keybindings:\n  Enter: Select session/dir\n  Ctrl-g: Clone new repo\n  Ctrl-c/Esc: Cancel'
+      --header-lines=0
+      --prompt='⚡ '
+      --reverse
+      --border
+      --ansi
+    )
+
+    # Add preview only if NO_PREVIEW is false
+    if [[ "$NO_PREVIEW" != true ]]; then
+      fzf_cmd+=(--preview='sesh preview {}')
+    fi
+
     session=$(
-      printf "%s\n%s\n" "$active_sessions" "$all_dirs" | fzf \
-        --bind "ctrl-g:execute($0 --clone)+abort" \
-        --header $'Keybindings:\n  Enter: Select session/dir\n  Ctrl-g: Clone new repo\n  Ctrl-c/Esc: Cancel' \
-        --header-lines=0 \
-        --prompt='⚡ ' \
-        --height=50% \
-        --reverse \
-        --border \
-        --ansi
+      printf "%s\n%s\n" "$active_sessions" "$all_dirs" | "${fzf_cmd[@]}"
     )
 
     # If aborted (Ctrl-g was pressed), exit cleanly
@@ -138,11 +146,46 @@ is_kitty() {
   [[ "$TERM" == "xterm-kitty" ]]
 }
 
-# Parse arguments
-if [[ "$1" == "--clone" ]]; then
+CLONE_MODE=false
+NO_PREVIEW=false
+SESSION_ARG=""
+
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    --clone | -c)
+      CLONE_MODE=true
+      shift
+      ;;
+    --no-preview | -n)
+      NO_PREVIEW=true
+      shift
+      ;;
+    --help | -h)
+      echo "Usage: $0 [OPTIONS] [SESSION]"
+      echo ""
+      echo "Options:"
+      echo "  --clone, -c          Enter clone mode to add new repositories"
+      echo "  --no-preview, -n     Disable fzf preview in session selector"
+      echo "  --help, -h           Show this help message"
+      exit 0
+      ;;
+    -*)
+      echo "Error: Unknown option: $1" >&2
+      echo "Use --help for usage information" >&2
+      exit 1
+      ;;
+    *)
+      # Positional argument (session name)
+      SESSION_ARG="$1"
+      shift
+      ;;
+  esac
+done
+
+if [[ "$CLONE_MODE" == true ]]; then
   clone_mode
 else
-  main_mode "$@"
+  main_mode "$SESSION_ARG"
 fi
 
 # Connect to session
