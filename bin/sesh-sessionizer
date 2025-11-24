@@ -2,9 +2,7 @@
 
 IFS=':' read -ra directories <<<"$SESH_DIRECTORIES"
 
-# Clone mode - integrated repo cloning functionality
 clone_mode() {
-  # Platform selection
   platform=$(
     printf "GitHub (nrk)\nGitHub (stianlj)\nGitLab (local)" | fzf \
       --header $'Keybindings:\n  Enter: Select platform\n  Ctrl-c/Esc: Cancel' \
@@ -14,7 +12,6 @@ clone_mode() {
       --border
   )
 
-  # Exit if cancelled
   if [ $? -ne 0 ]; then
     exit 0
   fi
@@ -29,7 +26,6 @@ clone_mode() {
       --ansi
   }
 
-  # Get repo list based on platform
   case $platform in
     "GitHub (private)")
       repo=$(
@@ -70,12 +66,10 @@ clone_mode() {
       ;;
   esac
 
-  # Exit if no repo selected
   if [ "$repo" = "" ]; then
     exit 0
   fi
 
-  # Select destination folder
   base_folder=$(
     printf '%s\n' "${directories[@]}" | fzf \
       --header 'Select destination folder:' \
@@ -85,25 +79,21 @@ clone_mode() {
       --border
   )
 
-  # Exit if cancelled
   if [ $? -ne 0 ]; then
     exit 0
   fi
 
   repo_folder="$base_folder/$(basename "$repo")"
 
-  # If folder already exists, just connect to it
   if [ -d "$repo_folder" ]; then
     session="$repo_folder"
   else
-    # Clone the repo
     echo "Cloning $repo to $repo_folder..."
     "${clone_cmd[@]}" "$repo" "$repo_folder"
     session="$repo_folder"
   fi
 }
 
-# Main session selector mode
 main_mode() {
   if [ "$1" != "" ]; then
     session=$1
@@ -115,7 +105,6 @@ main_mode() {
 
     active_sessions=$(sesh list -t -i)
 
-    # Build fzf command with conditional preview
     fzf_cmd=(fzf
       --bind "ctrl-g:execute($0 --clone)+abort"
       --header $'Keybindings:\n  Enter: Select session/dir\n  Ctrl-g: Clone new repo\n  Ctrl-c/Esc: Cancel'
@@ -126,7 +115,6 @@ main_mode() {
       --ansi
     )
 
-    # Add preview only if NO_PREVIEW is false
     if [[ "$NO_PREVIEW" != true ]]; then
       fzf_cmd+=(--preview='sesh preview {}')
     fi
@@ -135,7 +123,6 @@ main_mode() {
       printf "%s\n%s\n" "$active_sessions" "$all_dirs" | "${fzf_cmd[@]}"
     )
 
-    # If aborted (Ctrl-g was pressed), exit cleanly
     if [ $? -ne 0 ]; then
       exit 0
     fi
@@ -175,7 +162,6 @@ while [[ $# -gt 0 ]]; do
       exit 1
       ;;
     *)
-      # Positional argument (session name)
       SESSION_ARG="$1"
       shift
       ;;
@@ -188,7 +174,6 @@ else
   main_mode "$SESSION_ARG"
 fi
 
-# Connect to session
 session="${session#📁 }"
 session_name=$(basename "$session")
 
