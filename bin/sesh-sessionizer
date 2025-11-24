@@ -27,7 +27,7 @@ clone_mode() {
   }
 
   case $platform in
-    "GitHub (private)")
+    "GitHub (stianlj)")
       repo=$(
         gh search repos \
           --json fullName \
