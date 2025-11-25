@@ -55,6 +55,7 @@ o.listchars:append("eol:↴")
 o.spelllang = { "en", "nb" }
 o.splitkeep = "screen"
 o.conceallevel = 1
+o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 o.clipboard = "unnamedplus"
 
