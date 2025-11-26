@@ -40,10 +40,11 @@ output "HDMI-A-1" {
     scale 2.0
     transform "normal"
     position x=974 y=0
-    // TODO: For next version
-    // layout {
-    //   always-center-single-column
-    // }
+    layout {
+      always-center-single-column
+      center-focused-column "always"
+      default-column-width { proportion 0.9; }
+    }
 }
 output "DP-1" {
     mode "5210x1440@119.970"
@@ -51,18 +52,21 @@ output "DP-1" {
     transform "normal"
     focus-at-startup
     position x=0 y=1080
+    layout {
+      always-center-single-column
+    }
 }
 
 layout {
-    gaps 16
-    center-focused-column "never"
-    always-center-single-column
+    gaps 8
+    background-color "transparent"
     preset-column-widths {
-        proportion 0.33333
-        proportion 0.5
-        proportion 0.66667
+        proportion 0.4
+        proportion 0.7
+        proportion 1.0
+        proportion 0.25
     }
-    default-column-width { proportion 0.5; }
+    default-column-width { proportion 0.25; }
     focus-ring {
         width 1
         active-gradient from="#80c8ff" to="#c7ff7f" angle=45 in="oklch longer hue"
@@ -103,8 +107,7 @@ spawn-sh-at-startup "udiskie --tray --no-automount"
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
 hotkey-overlay {
-    // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
-    // skip-at-startup
+    skip-at-startup
 }
 environment {
     // QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
@@ -116,6 +119,8 @@ environment {
     QT_QPA_PLATFORM "wayland"
     _JAVA_AWT_WM_NONREPARENTING "1"
     ELECTRON_OZONE_PLATFORM_HINT "auto"
+    QT_QPA_PLATFORMTHEME "gtk3"
+    QT_QPA_PLATFORMTHEME_QT6 "gtk3"
 }
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
@@ -153,6 +158,12 @@ animations {
 }
 
 window-rule {
+    match app-id=r#"firefox$"#
+    match app-id=r#"org.qutebrowser.qutebrowser$"#
+    default-column-width { proportion 0.4; }
+}
+
+window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     match app-id=r#"mpv$"#
     open-floating true
@@ -162,9 +173,41 @@ window-rule {
       off
     }
 }
+
 window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
+}
+
+window-rule {
+    match app-id=r#"^org\.gnome\."#
+    draw-border-with-background false
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+window-rule {
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    match app-id="Alacritty"
+    match app-id="zen"
+    match app-id="com.mitchellh.ghostty"
+    match app-id="kitty"
+    draw-border-with-background false
+}
+
+window-rule {
+    match app-id=r#"org.quickshell$"#
+    open-floating true
+}
+
+layer-rule {
+    match namespace="^quickshell$"
+    place-within-backdrop true
+}
+
+layer-rule {
+    match namespace="^quickshell$"
+    place-within-backdrop true
 }
 
 // Example: block out two password managers from screen capture.
