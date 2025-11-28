@@ -1,0 +1,47 @@
+window-rule {
+    match app-id=r#"firefox$"#
+    match app-id=r#"org.qutebrowser.qutebrowser$"#
+    default-column-width { proportion 0.4; }
+}
+
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id=r#"mpv$"#
+    open-floating true
+    default-column-width { fixed 1920; }
+    default-window-height { fixed 1080; }
+    focus-ring {
+      off
+    }
+}
+
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+window-rule {
+    match app-id=r#"^org\.gnome\."#
+    draw-border-with-background false
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+window-rule {
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    match app-id="Alacritty"
+    match app-id="zen"
+    match app-id="com.mitchellh.ghostty"
+    match app-id="kitty"
+    draw-border-with-background false
+}
+
+window-rule {
+    match app-id=r#"org.quickshell$"#
+    open-floating true
+}
+
+layer-rule {
+    match namespace="^noctalia-overview*"
+    place-within-backdrop true
+}

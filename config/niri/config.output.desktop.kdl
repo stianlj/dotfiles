@@ -1,0 +1,82 @@
+output "HDMI-A-1" {
+    mode "3840x2160@60.000"
+    scale 2.0
+    transform "normal"
+    position x=974 y=0
+    layout {
+      always-center-single-column
+      center-focused-column "always"
+      default-column-width { proportion 0.9; }
+    }
+}
+output "DP-1" {
+    mode "5210x1440@119.970"
+    scale 1.4
+    transform "normal"
+    focus-at-startup
+    position x=0 y=1080
+    layout {
+      always-center-single-column
+    }
+}
+
+layout {
+    gaps 8
+    background-color "transparent"
+    preset-column-widths {
+        proportion 0.4
+        proportion 0.7
+        proportion 1.0
+        proportion 0.25
+    }
+    default-column-width { proportion 0.25; }
+    focus-ring {
+        width 1
+        active-gradient from="#80c8ff" to="#c7ff7f" angle=45 in="oklch longer hue"
+        inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+    }
+    border {
+        off
+    }
+    shadow {
+        on
+        softness 30
+        spread 5
+        offset x=0 y=5
+        color "#0007"
+    }
+    struts {
+        // left 64
+        // right 64
+        // top 64
+        // bottom 64
+    }
+}
+
+workspace "main" {
+    open-on-output "DP-1"
+}
+workspace "code" {
+    open-on-output "DP-1"
+}
+workspace "extra-1" {
+    open-on-output "DP-1"
+}
+workspace "extra-2" {
+    open-on-output "DP-1"
+}
+workspace "extra-3" {
+    open-on-output "DP-1"
+}
+workspace "extra-4" {
+    open-on-output "DP-1"
+}
+workspace "entertainment-1" {
+    open-on-output "HDMI-A-1"
+}
+workspace "entertainment-2" {
+    open-on-output "HDMI-A-1"
+}
+workspace "windows" {
+    open-on-output "DP-1"
+}

@@ -1,0 +1,29 @@
+input {
+    keyboard {
+        repeat-delay 250
+        repeat-rate 100
+        xkb {
+            layout "us"
+            options "compose:ralt"
+        }
+        numlock
+    }
+
+    touchpad {
+        off
+    }
+
+    mouse {
+        // off
+        // natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-method "no-scroll"
+    }
+
+    trackpoint {
+        off
+    }
+    warp-mouse-to-focus
+    focus-follows-mouse max-scroll-amount="0%"
+}
