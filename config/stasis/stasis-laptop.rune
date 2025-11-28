@@ -1,0 +1,62 @@
+default_timeout 300
+
+stasis:
+  monitor_media true
+  ignore_remote_media true
+  respect_idle_inhibitors true
+
+  inhibit_apps [
+    "mpv"
+    r".*\.exe"
+    r"steam_app_.*"
+  ]
+
+  # Laptop-only AC actions
+  on_ac:
+    brightness:
+      timeout 120  # 2 minutes
+      command "brightnessctl set 30%"
+    end
+
+    dpms:
+      timeout 300  # 5 minutes
+      command "niri msg action power-off-monitors"
+    end
+
+    lock_screen:
+      timeout 60  # 2 minutes
+      command "hyprlock"
+    end
+
+    suspend:
+      timeout 300  # 5 minutes
+      command "systemctl suspend"
+    end
+  end
+
+  # Laptop-only battery actions
+  on_battery:
+    brightness:
+      timeout 60  # 1 minute
+      command "brightnessctl set 20%"
+    end
+
+    dpms:
+      timeout 120  # 2 minutes
+      command "niri msg action power-off-monitors"
+      resume-command "niri msg action power-on-monitors"
+    end
+
+    lock_screen:
+      timeout 60  # 1 minute
+      command "hyprlock"
+      resume-command "notify-send 'Welcome back $env.USER!'"
+    end
+
+    suspend:
+      timeout 360  # 6 minutes
+      command "systemctl suspend"
+    end
+  end
+
+end
