@@ -1,0 +1,20 @@
+binds {
+    Mod+1 { focus-workspace "main"; }
+    Mod+2 { focus-workspace "code"; }
+    Mod+3 { focus-workspace "extra-1"; }
+    Mod+4 { focus-workspace "extra-2"; }
+    Mod+5 { focus-workspace "extra-3"; }
+    Mod+6 { focus-workspace "extra-4"; }
+    Mod+7 { focus-workspace "entertainment-1"; }
+    Mod+8 { focus-workspace "entertainment-2"; }
+    Mod+9 { focus-workspace "windows"; }
+    Mod+Ctrl+1 { move-column-to-workspace "main"; }
+    Mod+Ctrl+2 { move-column-to-workspace "code"; }
+    Mod+Ctrl+3 { move-column-to-workspace "extra-1"; }
+    Mod+Ctrl+4 { move-column-to-workspace "extra-2"; }
+    Mod+Ctrl+5 { move-column-to-workspace "extra-3"; }
+    Mod+Ctrl+6 { move-column-to-workspace "extra-4"; }
+    Mod+Ctrl+7 { move-column-to-workspace "entertainment-1"; }
+    Mod+Ctrl+8 { move-column-to-workspace "entertainment-2"; }
+    Mod+Ctrl+9 { move-column-to-workspace "windows"; }
+}
