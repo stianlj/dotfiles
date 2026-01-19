@@ -108,16 +108,6 @@ keymap({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
 keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
 keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
 
-keymap("n", "<M-S-h>", require("smart-splits").resize_left)
-keymap("n", "<M-S-j>", require("smart-splits").resize_down)
-keymap("n", "<M-S-k>", require("smart-splits").resize_up)
-keymap("n", "<M-S-l>", require("smart-splits").resize_right)
-
-keymap("n", "<C-h>", require("smart-splits").move_cursor_left)
-keymap("n", "<C-j>", require("smart-splits").move_cursor_down)
-keymap("n", "<C-k>", require("smart-splits").move_cursor_up)
-keymap("n", "<C-l>", require("smart-splits").move_cursor_right)
-
 -- keymap("n", "<M-S-h>", require("smart-splits").resize_left)
 -- keymap("n", "<M-S-j>", require("smart-splits").resize_down)
 -- keymap("n", "<M-S-k>", require("smart-splits").resize_up)
