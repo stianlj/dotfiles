@@ -1,6 +1,6 @@
-app_default_timeout 300
+default_timeout 300
 
-idle:
+stasis:
   monitor_media true
   ignore_remote_media true
   respect_idle_inhibitors true
@@ -9,13 +9,12 @@ idle:
     "mpv"
     r".*\.exe"
     r"steam_app_.*"
-    r"firefox.*"
   ]
 
   lock_screen:
-    lock-command "hyprlock"
-    timeout = 60
-    command "hyprlock"
+    lock-command "dms ipc call lock lock"
+    timeout 60
+    command "dms ipc call lock lock"
     resume-command "notify-send 'Welcome Back $env.USER!'"
   end
 

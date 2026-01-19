@@ -175,7 +175,6 @@ else
 fi
 
 session="${session#📁 }"
-session_name=$(basename "$session")
 
 is_kitty && kitten @ set-spacing padding=0
 sesh connect "$session"

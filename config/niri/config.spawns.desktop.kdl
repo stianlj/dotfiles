@@ -1,0 +1,4 @@
+spawn-sh-at-startup "vicinae server"
+spawn-at-startup "stasis"
+spawn-at-startup "qs" "-c" "noctalia-shell"
+spawn-sh-at-startup "udiskie --tray --no-automount"
