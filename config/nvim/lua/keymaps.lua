@@ -57,7 +57,11 @@ whichKey.add({
       desc = "Prevent current session from being saved on exit",
     },
     { "<leader>ql", '<cmd>lua require("persistence").load({ last = true })<CR>', desc = "Restore the last session" },
-    { "<leader>qs", '<cmd>lua require("persistence").load()<CR>', desc = "Restore session for the current directory" },
+    {
+      "<leader>qs",
+      '<cmd>lua require("persistence").load()<CR>',
+      desc = "Restore session for the current directory",
+    },
 
     { "<leader>u", "<cmd>UndotreeToggle<CR>", desc = "Undotree" },
   },
@@ -100,17 +104,9 @@ keymap({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
 keymap({ "n", "x" }, "y", "<Plug>(YankyYank)")
 keymap({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
 keymap({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
-keymap("n", "<c-n>", "<Plug>(YankyCycleForward)")
-keymap("n", "<c-p>", "<Plug>(YankyCycleBackward)")
 
 keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
 keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
-
--- don't use arrow keys
-map("", "<up>", "<nop>", { noremap = true })
-map("", "<down>", "<nop>", { noremap = true })
-map("", "<left>", "<nop>", { noremap = true })
-map("", "<right>", "<nop>", { noremap = true })
 
 keymap("n", "<M-S-h>", require("smart-splits").resize_left)
 keymap("n", "<M-S-j>", require("smart-splits").resize_down)
