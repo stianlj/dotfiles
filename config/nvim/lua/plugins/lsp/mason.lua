@@ -8,6 +8,9 @@ return {
   },
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
+    dependencies = {
+      { "mason-org/mason.nvim", opts = {} },
+    },
     opts = {
       ensure_installed = {
         "ansible-language-server",
