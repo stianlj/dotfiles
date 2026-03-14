@@ -1,7 +1,10 @@
 window-rule {
     match app-id=r#"firefox$"#
     match app-id=r#"org.qutebrowser.qutebrowser$"#
-    default-column-width { proportion 0.4; }
+    match app-id=r#"org.telegram.desktop$"#
+    match app-id=r#"vesktop$"#
+    match app-id=r#"Bitwarden$"#
+    default-column-width { proportion 0.45; }
 }
 
 window-rule {
@@ -18,6 +21,8 @@ window-rule {
 window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
+    tiled-state true
+    draw-border-with-background false
 }
 
 window-rule {
