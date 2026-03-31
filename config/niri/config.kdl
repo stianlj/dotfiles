@@ -1,7 +1,9 @@
 include "./config.input.desktop.kdl"
 include "./config.output.desktop.kdl"
-include "./config.misc.desktop.kdl"
+include "./config.misc.kdl"
 include "./config.spawns.desktop.kdl"
 include "./config.rule.kdl"
 include "./config.bindings.all.kdl"
 include "./config.bindings.desktop.kdl"
+
+include "dms/cursor.kdl"
