@@ -46,3 +46,6 @@ config/niri/dms/
 *.bak
 *.backup*
 *_bak.*
+
+/*.md
+!README.md
