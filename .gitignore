@@ -33,3 +33,15 @@ config/tmux/plugins
 config/tmux/resurrect
 config/nushell/history.txt
 config/yazi/plugins
+
+# Autogenererte filer
+config/fish/conf.d/fish_frozen_key_bindings.fish
+config/fish/fish_variables
+config/qutebrowser/qsettings/
+config/hypr/dms/
+config/niri/dms/
+
+# Backup-filer
+*.bak
+*.backup*
+*_bak.*
