@@ -1,20 +1,21 @@
-default_timeout 300
-
-stasis:
+default:
+  enable_loginctl false
   monitor_media true
-  ignore_remote_media true
+  ignore_remote_media false
   respect_idle_inhibitors true
+  enable_dbus_inhibit true
 
   inhibit_apps [
-    "mpv"
     r".*\.exe"
     r"steam_app_.*"
+    r"Geforce NOW*"
   ]
 
   lock_screen:
-    lock-command "dms ipc call lock lock"
     timeout 60
-    command "dms ipc call lock lock"
+    command "hyprlock"
+    #command "/home/$env.USER/bin/lock"
+    #command "qs -c noctalia-shell ipc call lockScreen lock"
     resume-command "notify-send 'Welcome Back $env.USER!'"
   end
 
