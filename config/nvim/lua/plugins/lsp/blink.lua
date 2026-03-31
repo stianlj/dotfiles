@@ -29,7 +29,7 @@ return {
       preset = "enter",
       ["<C-k>"] = { "select_prev", "fallback" },
       ["<C-j>"] = { "select_next", "fallback" },
-      ["<Tab>"] = { "accept", "fallback" },
+      -- ["<Tab>"] = { "accept", "fallback" },
       ["<C-c>"] = { "cancel", "fallback" },
     },
 
