@@ -1,0 +1,13 @@
+#!/bin/sh
+# Update global tmux server environment from current client's environment.
+# Called via client-attached hook so that variables are available in all
+# sessions after reconnecting (e.g. after a machine restart).
+for var in SESH_DIRECTORIES VAULT_ADDR DISPLAY WAYLAND_DISPLAY SWAYSOCK \
+           XDG_CURRENT_DESKTOP OPENAI_API_KEY ANTHROPIC_API_KEY \
+           KITTY_LISTEN_ON KITTY_WINDOW_ID; do
+  val=$(tmux show-environment "$var" 2>/dev/null)
+  case "$val" in
+    -*) ;;
+    *=*) tmux set-environment -g "$var" "${val#*=}" ;;
+  esac
+done
