@@ -11,12 +11,12 @@ defaultFont = "14px MonoLisa"
 defaultZoom = "100%"
 defaultPadding = {"top": 10, "bottom": 10, "left": 10, "right": 10}
 startpageUrl = os.getenv("DEFAULT_STARTPAGE", "https://start.duckduckgo.com/")
-searchEngineUrl = os.getenv("DEFAULT_SEARCH_ENGINE", "https://duckduckgo.com/")
+searchEngineUrl = os.getenv("DEFAULT_SEARCH_ENGINE", "https://duckduckgo.com/?q={}")
 
 # Config
 config.load_autoconfig(False)
 c.url.start_pages = [startpageUrl]
-c.url.searchengines = {"DEFAULT": searchEngineUrl + "?q={}"}
+c.url.searchengines = {"DEFAULT": searchEngineUrl}
 
 c.zoom.default = defaultZoom
 
