@@ -29,10 +29,10 @@ return {
     checkbox = { order = { " ", ">", "x", "-" } },
   },
   keys = {
-    { "<leader>xn", "<cmd>Obsidian new<cr>", desc = "Create a new note" },
-    { "<leader>xl", "<cmd>Obsidian search<cr>", desc = "Search notes" },
+    { "<leader>xn", "<cmd>Obsidian new<cr>",          desc = "Create a new note" },
+    { "<leader>xl", "<cmd>Obsidian search<cr>",       desc = "Search notes" },
     { "<leader>xl", "<cmd>Obsidian quick_switch<cr>", desc = "Find a note" },
-    { "<leader>xd", "<cmd>Obsidian today<cr>", desc = "Show todays daily" },
+    { "<leader>xd", "<cmd>Obsidian today<cr>",        desc = "Show todays daily" },
     {
       "<leader>xtd",
       function()
