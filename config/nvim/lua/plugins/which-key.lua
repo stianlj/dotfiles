@@ -22,7 +22,6 @@ return {
         { "<leader>clr", "<cmd>Lspsaga rename ++project<CR>",                   desc = "Rename" },
         { "<leader>cn",  desc = "Next usage" },
         { "<leader>cp",  desc = "Previous usage" },
-        { "<leader>cr",  desc = "Rename" },
 
         { "<leader>d",   group = "DAP (debug)" },
         { "<leader>db",  "<cmd>lua require'dap'.toggle_breakpoint()<CR>",       desc = "Toggle breakpoint" },
