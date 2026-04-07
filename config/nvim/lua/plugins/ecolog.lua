@@ -10,7 +10,7 @@ return {
   opts = {
     integrations = {
       blink_cmp = true,
-      lspsaga = true,
+      lspsaga = false,
     },
     load_shell = {
       enabled = true,
