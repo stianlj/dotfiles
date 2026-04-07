@@ -17,49 +17,49 @@ return {
         {
           "<leader>cd",
           function()
-            Snacks.picker.lsp_definitions()
+            require("snacks").picker.lsp_definitions()
           end,
           desc = "Go to definition",
         },
         {
           "<leader>cr",
           function()
-            Snacks.picker.lsp_references()
+            require("snacks").picker.lsp_references()
           end,
           desc = "Find references",
         },
         {
           "<leader>ci",
           function()
-            Snacks.picker.lsp_implementations()
+            require("snacks").picker.lsp_implementations()
           end,
           desc = "Find implementations",
         },
         {
           "<leader>ct",
           function()
-            Snacks.picker.lsp_type_definitions()
+            require("snacks").picker.lsp_type_definitions()
           end,
           desc = "Type definitions",
         },
         {
           "<leader>cs",
           function()
-            Snacks.picker.lsp_symbols()
+            require("snacks").picker.lsp_symbols()
           end,
           desc = "Document symbols",
         },
         {
           "<leader>cS",
           function()
-            Snacks.picker.lsp_workspace_symbols()
+            require("snacks").picker.lsp_workspace_symbols()
           end,
           desc = "Workspace symbols",
         },
         {
           "<leader>cq",
           function()
-            Snacks.picker.diagnostics()
+            require("snacks").picker.diagnostics()
           end,
           desc = "All diagnostics",
         },
