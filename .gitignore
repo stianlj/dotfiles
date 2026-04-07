@@ -17,6 +17,11 @@ ncmpcpp/error.log
 config/fish/fishd.*
 config/fish/conf.d/fish_frozen_key_bindings.fish
 config/fish/fish_variables
+config/fish/completions/
+config/fish/functions/wt.fish
+
+# nushell
+config/nushell/vendor/
 
 # Qt/qutebrowser
 config/qutebrowser/qsettings/
