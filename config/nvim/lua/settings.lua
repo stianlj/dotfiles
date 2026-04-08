@@ -47,7 +47,6 @@ o.hidden = true
 o.wrap = false
 o.cursorline = true
 o.list = true
--- o.cmdheight = 1
 o.listchars:append("space:⋅")
 o.listchars:append("eol:↴")
 --[[ o.spell = true ]]
@@ -149,7 +148,7 @@ vim.diagnostic.config({
   -- },
 })
 
-o.cmdheight = 0
+vim.o.cmdheight = 0
 require('vim._core.ui2').enable({
   enable = true,
   msg = {
@@ -196,6 +195,37 @@ require('vim._core.ui2').enable({
     },
   },
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "msg",
+  callback = function()
+    local ui2 = require("vim._core.ui2")
+    local win = ui2.wins and ui2.wins.msg
+    if win and vim.api.nvim_win_is_valid(win) then
+      vim.api.nvim_set_option_value(
+        "winhighlight",
+        "Normal:NormalFloat,FloatBorder:FloatBorder",
+        { scope = "local", win = win }
+      )
+    end
+  end,
+})
+
+local ui2 = require("vim._core.ui2")
+local msgs = require("vim._core.ui2.messages")
+local orig_set_pos = msgs.set_pos
+msgs.set_pos = function(tgt)
+  orig_set_pos(tgt)
+  if (tgt == "msg" or tgt == nil) and vim.api.nvim_win_is_valid(ui2.wins.msg) then
+    pcall(vim.api.nvim_win_set_config, ui2.wins.msg, {
+      relative = "editor",
+      anchor = "NE",
+      row = 1,
+      col = vim.o.columns - 1,
+      border = "rounded",
+    })
+  end
+end
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("my.lsp", {}),
