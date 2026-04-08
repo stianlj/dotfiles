@@ -1,7 +1,22 @@
-include "./config.input.desktop.kdl"
-include "./config.output.desktop.kdl"
-include "./config.misc.desktop.kdl"
-include "./config.spawns.desktop.kdl"
-include "./config.rule.kdl"
-include "./config.bindings.all.kdl"
-include "./config.bindings.desktop.kdl"
+// Common
+include "./common/misc.kdl"
+// include "./common/rule.kdl"
+include "./common/bindings.kdl"
+
+// DMS
+include optional=true "./dms/outputs.kdl"
+include optional=true "./dms/cursor.kdl"
+include optional=true "./dms/windowrules.kdl"
+
+// Type-specific
+// --laptop
+include optional=true "./type-laptop/input.kdl"
+include optional=true "./type-laptop/layout.kdl"
+include optional=true "./type-laptop/spawns.kdl"
+// --desktop
+// include optional=true "./type-desktop/input.kdl"
+// include optional=true "./type-desktop/output.kdl"
+// include optional=true "./type-desktop/spawns.kdl"
+
+// Machine-specific
+// include optional=true "./machine-work-laptop-1/overrides.kdl"
