@@ -12,17 +12,61 @@ return {
         { "<leader>bd", "<cmd>bd!<CR>", desc = "Kill buffer" },
 
         { "<leader>c", group = "Code" },
-        { "<leader>cD", "<cmd>Lspsaga show_line_diagnostics<CR>", desc = "Show line diagnostics" },
-        { "<leader>ca", "<cmd>Lspsaga code_action<CR>", desc = "Code actions" },
-        { "<leader>cd", "<cmd>Lspsaga goto_definition<CR>", desc = "Go to definition" },
-        { "<leader>cf", "<cmd>Lspsaga lsp_finder<CR>", desc = "LSP Finder" },
-        { "<leader>ch", "<cmd>Lspsaga hover_doc<CR>", desc = "Documentaion" },
+        { "<leader>cD", vim.diagnostic.open_float, desc = "Show line diagnostics" },
+        { "<leader>ca", vim.lsp.buf.code_action, desc = "Code actions" },
+        {
+          "<leader>cd",
+          function()
+            require("snacks").picker.lsp_definitions()
+          end,
+          desc = "Go to definition",
+        },
+        {
+          "<leader>cr",
+          function()
+            require("snacks").picker.lsp_references()
+          end,
+          desc = "Find references",
+        },
+        {
+          "<leader>ci",
+          function()
+            require("snacks").picker.lsp_implementations()
+          end,
+          desc = "Find implementations",
+        },
+        {
+          "<leader>ct",
+          function()
+            require("snacks").picker.lsp_type_definitions()
+          end,
+          desc = "Type definitions",
+        },
+        {
+          "<leader>cs",
+          function()
+            require("snacks").picker.lsp_symbols()
+          end,
+          desc = "Document symbols",
+        },
+        {
+          "<leader>cS",
+          function()
+            require("snacks").picker.lsp_workspace_symbols()
+          end,
+          desc = "Workspace symbols",
+        },
+        {
+          "<leader>cq",
+          function()
+            require("snacks").picker.diagnostics()
+          end,
+          desc = "All diagnostics",
+        },
+        { "<leader>ch", vim.lsp.buf.hover, desc = "Documentation" },
 
         { "<leader>cl", group = "LSP" },
-        { "<leader>clr", "<cmd>Lspsaga rename ++project<CR>", desc = "Rename" },
-        { "<leader>cn", desc = "Next usage" },
-        { "<leader>cp", desc = "Previous usage" },
-        { "<leader>cr", desc = "Rename" },
+        { "<leader>clr", vim.lsp.buf.rename, desc = "Rename" },
 
         { "<leader>d", group = "DAP (debug)" },
         { "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", desc = "Toggle breakpoint" },
@@ -56,7 +100,11 @@ return {
           '<cmd>lua require("persistence").stop()<CR>',
           desc = "Prevent current session from being saved on exit",
         },
-        { "<leader>ql", '<cmd>lua require("persistence").load({ last = true })<CR>', desc = "Restore the last session" },
+        {
+          "<leader>ql",
+          '<cmd>lua require("persistence").load({ last = true })<CR>',
+          desc = "Restore the last session",
+        },
         {
           "<leader>qs",
           '<cmd>lua require("persistence").load()<CR>',

@@ -1,1 +1,0 @@
-spawn-sh-at-startup "udiskie --tray --no-automount"

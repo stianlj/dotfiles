@@ -1,27 +1,27 @@
 [[plugin.deps]]
+use = "Rolv-Apneseth/starship"
+rev = "a63550b"
+hash = "c2021386289a0cbb3e152a052f67c177"
+
+[[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "71c4fc2"
-hash = "a61bb2d21a08bf1d18f0a549e5eb1475"
+rev = "d1c8baa"
+hash = "3996fc74044bc44144b323686f887e1"
 
 [[plugin.deps]]
 use = "hankertrix/augment-command"
-rev = "55171f4"
-hash = "1e59c881ee8f6804a52cb16cf3c870d5"
+rev = "120406f"
+hash = "e83ccc99739cd500fb1b1014dc45824a"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:max-preview"
-rev = "71c4fc2"
-hash = "9bc26d10d2f6e2aa93b10905b1b76979"
+use = "navysky12/comicthumb"
+rev = "fa398e8"
+hash = "345d65c19cdd4bc0a2210bf1be50038c"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:hide-preview"
-rev = "71c4fc2"
-hash = "5be5885898ca9df783bdec0d402bf4b0"
-
-[[plugin.deps]]
-use = "Rolv-Apneseth/starship"
-rev = "428d43a"
-hash = "73b1c5d91575dea1a49c66302860797"
+use = "wylie102/duckdb"
+rev = "3f8c863"
+hash = "87b9233a74325e95011670ed20bbd0d4"
 
 [flavor]
 deps = []

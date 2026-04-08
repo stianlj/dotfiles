@@ -11,8 +11,9 @@ keymap({ "n", "x" }, "y", "<Plug>(YankyYank)")
 keymap({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
 keymap({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
 
-keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
-keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+-- Diagnostic navigation (built-in: vim.diagnostic.goto_prev/next)
+keymap("n", "[e", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
+keymap("n", "]e", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
 
 keymap("n", "<M-S-h>", require("smart-splits").resize_left)
 keymap("n", "<M-S-j>", require("smart-splits").resize_down)

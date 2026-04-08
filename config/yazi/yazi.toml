@@ -89,6 +89,27 @@ suppress_preload = false
 
 [plugin]
 
+prepend_preloaders = [
+	{ name = "*.cb[7rz]", run = "comicthumb" },
+	{ name = "*.csv", run = "duckdb", multi = false },
+	{ name = "*.tsv", run = "duckdb", multi = false },
+	{ name = "*.json", run = "duckdb", multi = false },
+	{ name = "*.parquet", run = "duckdb", multi = false },
+	{ name = "*.txt", run = "duckdb", multi = false },
+	{ name = "*.xlsx", run = "duckdb", multi = false }
+]
+prepend_previewers = [
+	{ name = "*.cb[7rz]", run = "comicthumb" },
+	{ name = "*.csv", run = "duckdb" },
+	{ name = "*.tsv", run = "duckdb" },
+	{ name = "*.json", run = "duckdb" },
+	{ name = "*.parquet", run = "duckdb" },
+	{ name = "*.txt", run = "duckdb" },
+	{ name = "*.xlsx", run = "duckdb" },
+	{ name = "*.db", run = "duckdb" },
+	{ name = "*.duckdb", run = "duckdb" }
+]
+
 preloaders = [
 	# Image
 	{ mime = "image/vnd.djvu", run = "noop" },
@@ -101,12 +122,12 @@ preloaders = [
 previewers = [
 	{ name = "*/", run = "folder", sync = true },
 	# Code
-	{ mime = "text/*",                 run = "code" },
+	# { mime = "text/*",                 run = "code" },
 	{ mime = "*/xml",                  run = "code" },
 	{ mime = "*/javascript",           run = "code" },
 	{ mime = "*/wine-extension-ini", run = "code" },
 	# JSON
-	{ mime = "application/json", run = "json" },
+	# { mime = "application/json", run = "json" },
 	# Image
 	{ mime = "image/vnd.djvu", run = "noop" },
 	{ mime = "image/*",        run = "image" },

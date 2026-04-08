@@ -1,18 +1,40 @@
-ncmpcpp/error.log
+# === Editor/IDE ===
+.idea
+Session.vim
+doom.d/*.elc
+
+# === Node.js ===
+package-lock.json
+node_modules
+
+# === Logs ===
 *.log
-config/i3/config
-config/polybar/mounts.ini
-config/vifm/vifminfo*
-config/vifm/vifm-help.txt
+ncmpcpp/error.log
+
+# === Autogenererte filer ===
+
+# Fish shell
+config/fish/fishd.*
+config/fish/conf.d/fish_frozen_key_bindings.fish
+config/fish/fish_variables
+config/fish/completions/
+config/fish/functions/wt.fish
+
+# nushell
+config/nushell/vendor/
+
+# Qt/qutebrowser
+config/qutebrowser/qsettings/
 config/qutebrowser/quickmarks
 config/qutebrowser/autoconfig.yml
 config/qutebrowser/private.py
 config/qutebrowser/bookmarks/
-config/gtk-3.0/*
-!config/gtk-3.0/gtk.css
-mutt/mailboxes
-mutt/secrets
-config/systemd/user/multi-user.target.wants
+
+# DMS (Dank Material Shell)
+config/hypr/dms/
+config/niri/dms/
+
+# Emacs
 config/emacs/eln-cache
 config/emacs/elpa
 config/emacs/straight
@@ -20,16 +42,35 @@ config/emacs/etc
 config/emacs/var
 config/emacs/custom-vars.el
 config/emacs/local-variables.el
-config/fish/fishd.*
-.idea
-doom.d/*.elc
+
+# GTK
+config/gtk-3.0/*
+!config/gtk-3.0/gtk.css
+
+# Systemd
+config/systemd/user/multi-user.target.wants
+
+# === Backup-filer ===
+*.bak
+*.backup*
+*_bak.*
+
+# === App-spesifikke ===
+config/i3/config
+config/polybar/mounts.ini
+config/vifm/vifminfo*
+config/vifm/vifm-help.txt
+mutt/mailboxes
+mutt/secrets
 termux-emacs.d/variables.el
-package-lock.json
-node_modules
-Session.vim
-config/nvim/lua/packer_compiled.lua
 config/lazygit/state.yml
 config/tmux/plugins
 config/tmux/resurrect
 config/nushell/history.txt
 config/yazi/plugins
+config/nvim/lua/packer_compiled.lua
+config/nvim/lazy-lock.json
+
+# === Rot-nivå filer ===
+/*.md
+!README.md

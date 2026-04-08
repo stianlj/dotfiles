@@ -7,7 +7,6 @@ return {
   },
   {
     "Wansmer/treesj",
-    -- [[ keys = { "<space>m", "<space>j", "<space>s" }, ]]
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = true,
   },
@@ -39,134 +38,109 @@ return {
     end,
   },
   {
-    "nvim-treesitter/nvim-treesitter-refactor",
-    dependencies = "nvim-treesitter/nvim-treesitter",
-  },
-  --[[ { ]]
-  --[[   "nvim-treesitter/nvim-treesitter-context", ]]
-  --[[   config = function() ]]
-  --[[     require("treesitter-context").setup({ ]]
-  --[[       max_lines = 3, ]]
-  --[[     }) ]]
-  --[[   end, ]]
-  --[[ }, ]]
-  {
     "nvim-treesitter/nvim-treesitter",
-    tag = "v0.9.3",
+    branch = "main",
     build = ":TSUpdate",
     event = "BufReadPost",
     dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      "nvim-treesitter/playground",
+      { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
     },
     config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = {
-          "javascript",
-          "json",
-          "jsonc",
-          "jsdoc",
-          "jinja",
-          "svelte",
-          "typescript",
-          "tsx",
-          "html",
-          "comment",
-          "css",
-          "lua",
-          "luadoc",
-          "php",
-          "bash",
-          "fish",
-          "gitcommit",
-          "gitignore",
-          "go",
-          "python",
-          "rust",
-          "make",
-          "graphql",
-          "sql",
-          "jq",
-          "yaml",
-          "toml",
-          "kdl",
-          "markdown",
-          "markdown_inline",
-          "http",
-          "hurl",
-          "dockerfile",
-          "diff",
-          "vim",
-          "vimdoc",
-          "regex",
-        },
-        highlight = {
-          enable = true,
-          use_languagetree = true,
-          additional_vim_regex_highlighting = false,
-        },
-        indent = {
-          enable = true,
-        },
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = "<CR>",
-            node_incremental = "<CR>",
-            scope_incremental = "<S-CR>",
-            node_decremental = "<BS>",
-          },
-        },
-        refactor = {
-          highlight_definitions = {
-            enable = true,
-            clear_on_cursor_move = true,
-          },
-          navigation = {
-            enable = true,
-            keymaps = {
-              goto_next_usage = "<leader>cn",
-              goto_previous_usage = "<leader>cp",
-            },
-          },
-          smart_rename = {
-            enable = true,
-            keymaps = {
-              smart_rename = "<leader>cr",
-            },
-          },
-        },
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true, -- automatically jump forward to matching textobj
-            keymaps = {
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
-              ["ic"] = "@class.inner",
-            },
-          },
-        },
-        playground = {
-          enable = true,
-          disable = {},
-          updatetime = 25,         -- Debounced time for highlighting nodes in the playground from source code
-          persist_queries = false, -- Whether the query persists across vim sessions
-          keybindings = {
-            toggle_query_editor = "o",
-            toggle_hl_groups = "i",
-            toggle_injected_languages = "t",
-            toggle_anonymous_nodes = "a",
-            toggle_language_display = "I",
-            focus_language = "f",
-            unfocus_language = "F",
-            update = "R",
-            goto_node = "<cr>",
-            show_help = "?",
-          },
-        },
+      local ensure_installed = {
+        "javascript",
+        "json",
+        "jsdoc",
+        "jinja",
+        "svelte",
+        "typescript",
+        "tsx",
+        "html",
+        "comment",
+        "css",
+        "lua",
+        "luadoc",
+        "php",
+        "bash",
+        "fish",
+        "gitcommit",
+        "gitignore",
+        "go",
+        "python",
+        "rust",
+        "make",
+        "graphql",
+        "sql",
+        "jq",
+        "yaml",
+        "toml",
+        "kdl",
+        "markdown",
+        "markdown_inline",
+        "http",
+        "hurl",
+        "dockerfile",
+        "diff",
+        "vim",
+        "vimdoc",
+        "regex",
+      }
+
+      local already_installed = require("nvim-treesitter.config").get_installed()
+      local parsers_to_install = vim
+        .iter(ensure_installed)
+        :filter(function(parser)
+          return not vim.tbl_contains(already_installed, parser)
+        end)
+        :totable()
+
+      if #parsers_to_install > 0 then
+        require("nvim-treesitter").install(parsers_to_install)
+      end
+
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function()
+          pcall(vim.treesitter.start)
+          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end,
       })
+
+      vim.keymap.set("n", "<CR>", function()
+        local inc_sel = require("nvim-treesitter.incremental_selection")
+        if vim.fn.mode() == "n" then
+          inc_sel.init_selection()
+        else
+          inc_sel.node_incremental()
+        end
+      end, { desc = "Treesitter incremental selection" })
+
+      vim.keymap.set("x", "<CR>", function()
+        require("nvim-treesitter.incremental_selection").node_incremental()
+      end, { desc = "Treesitter node incremental" })
+
+      vim.keymap.set("x", "<S-CR>", function()
+        require("nvim-treesitter.incremental_selection").scope_incremental()
+      end, { desc = "Treesitter scope incremental" })
+
+      vim.keymap.set("x", "<BS>", function()
+        require("nvim-treesitter.incremental_selection").node_decremental()
+      end, { desc = "Treesitter node decremental" })
+
+      local ts_select = require("nvim-treesitter-textobjects.select")
+      vim.keymap.set({ "o", "x" }, "af", function()
+        ts_select.select_textobject("@function.outer", "textobjects")
+      end, { desc = "Select function outer" })
+
+      vim.keymap.set({ "o", "x" }, "if", function()
+        ts_select.select_textobject("@function.inner", "textobjects")
+      end, { desc = "Select function inner" })
+
+      vim.keymap.set({ "o", "x" }, "ac", function()
+        ts_select.select_textobject("@class.outer", "textobjects")
+      end, { desc = "Select class outer" })
+
+      vim.keymap.set({ "o", "x" }, "ic", function()
+        ts_select.select_textobject("@class.inner", "textobjects")
+      end, { desc = "Select class inner" })
     end,
   },
 }

@@ -38,7 +38,6 @@ o.expandtab = true
 o.shiftwidth = 2
 o.smartindent = true
 o.tabstop = 2
-o.number = true
 o.relativenumber = true
 o.mouse = "a"
 o.swapfile = false
@@ -57,12 +56,12 @@ o.splitkeep = "screen"
 o.conceallevel = 1
 o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
-o.clipboard = "unnamedplus"
+o.clipboard:append("unnamedplus")
 
 local function paste()
   return {
-    vim.fn.split(vim.fn.getreg(""), "\n"),
     vim.fn.getregtype(""),
+    vim.fn.split(vim.fn.getreg(""), "\n"),
   }
 end
 

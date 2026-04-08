@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  echo "Bruk: $0 KILDE [KILDE ...] DEST" >&2
+  echo "Eksempel: $0 fil1 dirA dirB /path/til/dest/" >&2
+  exit 2
+}
+
+(($# >= 2)) || usage
+
+dest="${@: -1}"
+sources=("${@:1:$#-1}")
+
+# Hvis DEST er lokal sti, sørg for at den finnes
+if [[ "$dest" != *:* ]]; then
+  mkdir -p -- "$dest"
+fi
+
+# Bygg rsync-opsjoner:
+# -r: rekursiv, -l: bevar symlinks som symlinks
+# --no-* for ikke å bevare rettigheter/eier/gruppe/tid
+# --info=progress2 for samlet prosentvis fremdrift
+# --remove-source-files sletter KUN filer som er overført OK
+# --partial for å kunne gjenoppta avbrutte filer
+rsync_opts=(
+  -r -l
+  --no-perms --no-owner --no-group --no-times
+  --info=progress2 --human-readable --partial
+  --remove-source-files
+  --protect-args
+)
+
+# Utfør én rsync for alle kilder for å få samlet progress
+if rsync "${rsync_opts[@]}" -- "${sources[@]}" "$dest"; then
+  rc=0
+else
+  rc=$?
+  echo "Advarsel: rsync returnerte kode $rc. Noen filer kan være kopiert og slettet, andre ikke." >&2
+fi
+
+# Slett tomme kataloger i kildene (symlinker røres ikke)
+for src in "${sources[@]}"; do
+  if [[ -d "$src" && ! -L "$src" ]]; then
+    find "$src" -depth -type d -empty -delete
+  fi
+done
+
+exit "$rc"
