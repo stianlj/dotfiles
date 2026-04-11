@@ -1,5 +1,7 @@
 # dotfiles
 
+> **Unmaintained.** New dotfiles live at [stianlj/dots](https://github.com/stianlj/dots) (managed with [chezmoi](https://www.chezmoi.io/)).
+
 My personal configuration files for Linux desktop and development environment.
 
 ## Structure
