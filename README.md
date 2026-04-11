@@ -1,6 +1,6 @@
 # dotfiles
 
-Personal configuration files for Linux desktop and development environment.
+My personal configuration files for Linux desktop and development environment.
 
 ## Structure
 
@@ -23,12 +23,3 @@ Personal configuration files for Linux desktop and development environment.
 - **Multiplexer**: Tmux (with sesh) / Zellij
 - **File manager**: Yazi, Vifm
 - **Notifications**: Mako, SwayNC
-
-## Environment Variables
-
-- `WALLPAPER` -- Path to wallpaper image
-- `LAT_LON` -- Latitude,longitude for redshift (optional)
-- `COMPUTER_IDENTIFIER` -- Machine identifier for profile switching
-- `WIRED_ETHERNET_INTERFACE` -- Interface name for network stats in waybar
-- `LEFT_MONITOR` / `CENTER_MONITOR` / `RIGHT_MONITOR` -- Monitor names for multi-head setups (optional)
-- `CENTER_POLYBAR_BOTTOM` -- Set to put polybar at the bottom (optional)
