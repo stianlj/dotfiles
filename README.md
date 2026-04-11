@@ -1,14 +1,34 @@
 # dotfiles
 
-## Environment variables
+Personal configuration files for Linux desktop and development environment.
 
-In order to make these things work, you have to set some environment variables
+## Structure
 
-* `WALLPAPER`: **string** Add wallpaper.
-* `LAT_LON`: **string** If you use redshift. _Optional_
-* `WIRED_ETHERNET_INTERFACE`: **string** To show network stats for wired ethernet.
-* `LEFT_MONITOR`: **string** Self explanatory. Use if triple monitor. _Optional_
-* `CENTER_MONITOR`: **string** Again ...
-* `RIGHT_MONITOR`: **string** Yeah. _Optional_
-* `CENTER_POLYBAR_BOTTOM`: **boolean** Use this if polybar should be at bottom.
-* `COMPUTER_IDENTIFIER`: **string** Identify the machine.
+| Path          | Description                                                       |
+| ------------- | ----------------------------------------------------------------- |
+| `config/`     | Per-app configs (nvim, fish, hypr, niri, waybar, tmux, etc.)      |
+| `bin/`        | Executable shell scripts (sessionizer, launchers, status scripts) |
+| `doom.d/`     | Doom Emacs config                                                 |
+| `dir_colors/` | Custom dircolors theme                                            |
+| `mutt/`       | Neomutt mail config                                               |
+| `vimrc`       | Standalone Vim config                                             |
+
+## Key Tools
+
+- **Shell**: Fish (with Starship prompt, Atuin history)
+- **Editor**: Neovim (lazy.nvim, LSP, Conform.nvim format-on-save) / Doom Emacs
+- **Terminal**: Ghostty, Kitty, Wezterm
+- **Window managers**: Hyprland, Niri, Sway
+- **Bar**: Waybar (profile-specific configs for desktop/laptop)
+- **Multiplexer**: Tmux (with sesh) / Zellij
+- **File manager**: Yazi, Vifm
+- **Notifications**: Mako, SwayNC
+
+## Environment Variables
+
+- `WALLPAPER` -- Path to wallpaper image
+- `LAT_LON` -- Latitude,longitude for redshift (optional)
+- `COMPUTER_IDENTIFIER` -- Machine identifier for profile switching
+- `WIRED_ETHERNET_INTERFACE` -- Interface name for network stats in waybar
+- `LEFT_MONITOR` / `CENTER_MONITOR` / `RIGHT_MONITOR` -- Monitor names for multi-head setups (optional)
+- `CENTER_POLYBAR_BOTTOM` -- Set to put polybar at the bottom (optional)
