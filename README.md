@@ -1,6 +1,6 @@
 # dotfiles
 
-> **Unmaintained.** New dotfiles live at [stianlj/dots](https://codeberg.org/stianlj/dotfiles) (managed with [chezmoi](https://www.chezmoi.io/)).
+> **Unmaintained.** New dotfiles live at codeberg.org: [stianlj/dotfiles](https://codeberg.org/stianlj/dotfiles)
 
 My personal configuration files for Linux desktop and development environment.
 
